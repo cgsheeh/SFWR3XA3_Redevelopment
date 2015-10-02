@@ -12,7 +12,11 @@ This document contains a detailed plan for the implementation of a Proof of Conc
 \end{abstract}
 
 \section{Introduction}
-Building a decentralized e-commerce network is an exciting endeavour with many fundamentally important components. The project has a unique set of functional requirements and many equally essential non-functional requirements that must be met. From the technical perspective, we must build a distributed computer system (network) that can communicate between nodes without the use of a centralized server. We must also build a graphical front-end to display this information to the user in a visually appealing way. From an economic perspective, we must build a system to ensure that trades are well defined and that each side understands the contractual nature of the exchange. Each of these approaches to the project has different risks and 
+Building a decentralized e-commerce network is an exciting endeavour with many fundamentally important components. The project has a unique set of functional requirements and many equally essential non-functional requirements that must be met. From the technical perspective, we must build a distributed computer system (network) that can communicate between nodes without the use of a centralized server. We must also build a graphical front-end to display this information to the user in a visually appealing way. From an economic perspective, we must build a system to ensure that trades are well defined and that each side understands the contractual nature of the exchange. Each of these approaches to the project has different risks and considerations. 
+
+\section{Plan}
+Our plan is to implement both the server and client components of this project. We will create a daemon to listen on a computer port, which will access data from other network nodes as well as provide information to the graphical front end application. Using the graphical interface, we will allow users to create online stores, post product listings and prices, and initiate trade deals with other users on the network. 
+
 
 \section{Risks}
 Will a part of the implementation be difficult?
