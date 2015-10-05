@@ -1,26 +1,569 @@
 \documentclass{article}
+\usepackage{xcolor} % for different colour comments
 
 %% Comments
 \newif\ifcomments\commentstrue
 
 \newcommand{\cs}[1]{\authornote{blue}{cs}{#1}} %Connor
 \newcommand{\dm}[1]{\authornote{blue}{dm}{#1}} %Danny
-\newcommand{\sm}[1]{\authornote{blue}{sm}{#1}} %Shani
+\newcommand{\sm}[1]{\authornote{blue}{SM}{#1}} %Shani
 
+\renewcommand*\contentsname{Table of Contents}
 
 \begin{document}
+	
+%not sure if the subsections should be in the table of contents.. we might have to change that
 
 \title{OpenBazaar Redevelopment - Requirements}
 \author{The Fair Traders \\ Daniel Mandel - mandeldr \\ Shandelle Murray - murras25 \\ Connor Sheehan - sheehacg}
 \date{\today}
 \maketitle
+\tableofcontents
+\addcontentsline{toc}{section}{Revision History}
+\section*{Revision History}
+
+\addcontentsline{toc}{section}{Template Used}
+\section*{Template Used}
 
 \begin{abstract}
 This documents outlines requirements for the OpenBazaar redevelopment project.
 \end{abstract}
 
-\section{Introduction}
+\addcontentsline{toc}{section}{Project Drivers}
+\section*{Project Drivers}
 
+\section{The Purpose of the Project}
 
+\subsection{The User Business or Background of the Project Effort}
+\subparagraph{Content}
+\subparagraph{Motivation}
+\subparagraph{Considerations}
+\subparagraph{Form}
+
+\subsection{Goals of the Project}
+\subparagraph{Content}
+\subparagraph{Motivation}
+\subparagraph{Examples}
+\subparagraph{Measurement}
+\subparagraph{Form}
+
+\section{The Stakeholders}
+
+\subsection{The Client}
+\subparagraph{Content}
+\subparagraph{Motivation}
+\subparagraph{Considerations}
+\subparagraph{Form}
+
+\subsection{The Customer}
+\subparagraph{Content}
+\subparagraph{Motivation}
+\subparagraph{Form}
+
+\subsection{Other Stakeholders}
+\subparagraph{Content}
+\subparagraph{Motivation}
+\subparagraph{Form}
+
+\subsection{The Hands-On Users of the Product}
+\subparagraph{Content}
+\subparagraph{Motivation}
+\subparagraph{Examples}
+\subparagraph{Form}
+
+\subsection{Personas}
+\subparagraph{Content}
+\subparagraph{Motivation}
+\subparagraph{Form}
+
+\subsection{Priorities Assigned to Users}
+\subparagraph{Content}
+\subparagraph{Motivation}
+\subparagraph{Form}
+
+\subsection{User Participation}
+\subparagraph{Content}
+\subparagraph{Motivation}
+\subparagraph{Form}
+
+\subsection{Maintenance Users and Service Technicians}
+\subparagraph{Content}
+\subparagraph{Motivation}
+\subparagraph{Form}
+
+\addcontentsline{toc}{section}{Project Constraints}
+\section*{Project Constraints}
+
+\section{Mandated Constraints}
+
+\subsection{Solution Constraints}
+\subparagraph{Content}
+\subparagraph{Motivation}
+\subparagraph{Examples}
+\subparagraph{Considerations}
+\subparagraph{Form}
+
+\subsection{Implementation Environment of the Current System}
+\subparagraph{Content}
+\subparagraph{Motivation}
+\subparagraph{Examples}
+\subparagraph{Considerations}
+\subparagraph{Form}
+
+\subsection{Partner or Collaborative Applications}
+\subparagraph{Content}
+\subparagraph{Motivation}
+\subparagraph{Examples}
+\subparagraph{Considerations}
+\subparagraph{Form}
+
+\subsection{Off-the-Shelf Software}
+\subparagraph{Content}
+\subparagraph{Motivation}
+\subparagraph{Considerations}
+\subparagraph{Form}
+
+\subsection{Anticipated Workplace Environment}
+\subparagraph{Content}
+\subparagraph{Motivation}
+\subparagraph{Examples}
+\subparagraph{Considerations}
+\subparagraph{Form}
+
+\subsection{Schedule Constraints}
+\subparagraph{Content}
+\subparagraph{Motivation}
+\subparagraph{Examples}
+\subparagraph{Considerations}
+\subparagraph{Form}
+
+\subsection{Budget Constraints}
+\subparagraph{Content}
+\subparagraph{Motivation}
+\subparagraph{Considerations}
+\subparagraph{Form}
+
+\subsection{Enterprise Constraints}
+\subparagraph{Content}
+\subparagraph{Motivation}
+\subparagraph{Examples}
+\subparagraph{Considerations}
+
+\section{Naming Conventions and Terminology}
+\subsection{Definitions of All Terms, Including Acronyms, Used by Stakeholders Involved in the Project}
+\subparagraph{Content}
+\subparagraph{Motivation}
+\subparagraph{Examples}
+\subparagraph{Considerations}
+\subparagraph{Form}
+
+\section{Relevant Facts and Assumptions}
+\subsection{Relevant Facts}
+\subparagraph{Content}
+\subparagraph{Motivation}
+\subparagraph{Examples}
+
+\subsection{Business Rules}
+\subparagraph{Content}
+\subparagraph{Motivation}
+\subparagraph{Examples}
+\subparagraph{Form}
+
+\subsection{Assumptions}
+\subparagraph{Content}
+\subparagraph{Motivation}
+\subparagraph{Examples}
+\subparagraph{Considerations}
+\subparagraph{Form}
+
+\addcontentsline{toc}{section}{Functional Requirements}
+\section*{Functional Requirements}
+
+\section{The Scope of the Work}
+\subsection{The Current Situation}
+\subparagraph{Content}
+\subparagraph{Motivation}
+\subparagraph{Form}
+
+\subsection{The Context of the Work}
+\subparagraph{Content}
+\subparagraph{Motivation}
+\subparagraph{Examples}
+\subparagraph{Considerations}
+\subparagraph{Form}
+
+\subsection{Work Partitioning}
+\subparagraph{Content}
+\subparagraph{Motivation}
+\subparagraph{Examples}
+\subparagraph{Considerations}
+\subparagraph{Form}
+
+\subsection{Specifying a Business Use Case (BUC)}
+\subparagraph{Content}
+\subparagraph{Motivation}
+\subparagraph{Examples}
+\subparagraph{Considerations}
+\subparagraph{Form}
+
+\section{Business Data Model and Data Dictionary}
+
+\subsection{Business Data Model}
+\subparagraph{Content}
+\subparagraph{Motivation}
+\subparagraph{Examples}
+\subparagraph{Considerations}
+\subparagraph{Form}
+
+\subsection{Data Dictionary}
+\subparagraph{Content}
+\subparagraph{Motivation}
+\subparagraph{Examples}
+\subparagraph{Considerations}
+\subparagraph{Form}
+
+\section{The Scope of the Product}
+\subsection{Product Boundary}
+\subparagraph{Examples}
+\subparagraph{Form}
+
+\subsection{Product Use Case Table}
+
+\subsection{Individual Product Use Cases}
+\subparagraph{Form}
+
+\section{Functional Requirements}
+
+\subsection{Functional Requirements}
+\subparagraph{Content}
+\subparagraph{Motivation}
+\subparagraph{Examples}
+\subparagraph{Considerations}
+\subparagraph{Form}
+
+\addcontentsline{toc}{section}{Non-functional Requirements}
+\section*{Non-functional Requirements}
+
+\section{Look and Feel Requirements}
+\subsection{Appearance Requirements}
+\subparagraph{Content}
+\subparagraph{Motivation}
+\subparagraph{Examples}
+\subparagraph{Fit Criterion}
+\subparagraph{Considerations}
+
+\subsection{Style Requirements}
+\subparagraph{Content}
+\subparagraph{Motivation}
+\subparagraph{Examples}
+\subparagraph{Fit Criterion}
+\subparagraph{Considerations}
+
+\section{Usability and Humanity Requirements}
+\subsection{Ease of Use Requirements}
+\subparagraph{Content}
+\subparagraph{Motivation}
+\subparagraph{Examples}
+\subparagraph{Fit Criterion}
+\subparagraph{Considerations}
+
+\subsection{Personalization and Internationalization Requirements}
+\subparagraph{Content}
+\subparagraph{Motivation}
+\subparagraph{Examples}
+\subparagraph{Considerations}
+
+\subsection{Learning Requirements}
+\subparagraph{Content}
+\subparagraph{Motivation}
+\subparagraph{Examples}
+\subparagraph{Fit Criterion}
+\subparagraph{Considerations}
+
+\subsection{Understandability and Politeness Requirements}
+\subparagraph{Content}
+\subparagraph{Motivation}
+\subparagraph{Examples}
+\subparagraph{Considerations}
+
+\subsection{Accessibility Requirements}
+\subparagraph{Content}
+\subparagraph{Motivation}
+\subparagraph{Examples}
+\subparagraph{Considerations}
+
+\section{Performance Requirements}
+\subsection{Speed and Latency Requirements}
+\subparagraph{Content}
+\subparagraph{Motivation}
+\subparagraph{Examples}
+\subparagraph{Fit Criterion}
+\subparagraph{Considerations}
+
+\subsection{Safety-Critical Requirements}
+\subparagraph{Content}
+\subparagraph{Motivation}
+\subparagraph{Examples}
+\subparagraph{Fit Criterion}
+\subparagraph{Considerations}
+
+\subsection{Precision or Accuracy Requirements}
+\subparagraph{Content}
+\subparagraph{Motivation}
+\subparagraph{Examples}
+\subparagraph{Considerations}
+
+\subsection{Reliability and Availability Requirements}
+\subparagraph{Content}
+\subparagraph{Motivation}
+\subparagraph{Examples}
+\subparagraph{Considerations}
+
+\subsection{Robustness or Fault-Tolerance Requirements}
+\subparagraph{Content}
+\subparagraph{Motivation}
+\subparagraph{Examples}
+\subparagraph{Considerations}
+
+\subsection{Capacity Requirements}
+\subparagraph{Content}
+\subparagraph{Motivation}
+\subparagraph{Examples}
+\subparagraph{Fit Criterion}
+
+\subsection{Scalability or Extensibility Requirements}
+\subparagraph{Content}
+\subparagraph{Motivation}
+\subparagraph{Examples}
+
+\subsection{Longevity Requirements}
+\subparagraph{Content}
+\subparagraph{Motivation}
+\subparagraph{Examples}
+
+\section{Operational and Environmental Requirements}
+
+\subsection{Expected Physical Environment}
+\subparagraph{Content}
+\subparagraph{Motivation}
+\subparagraph{Examples}
+\subparagraph{Considerations}
+
+\subsection{Requirements for Interfacing with Adjacent Systems}
+\subparagraph{Content}
+\subparagraph{Motivation}
+\subparagraph{Examples}
+\subparagraph{Fit Criterion}
+
+\subsection{Productization Requirements}
+\subparagraph{Content}
+\subparagraph{Motivation}
+\subparagraph{Examples}
+\subparagraph{Considerations}
+
+\subsection{Release Requirements}
+\subparagraph{Content}
+\subparagraph{Motivation}
+\subparagraph{Examples}
+\subparagraph{Fit Criterion}
+\subparagraph{Considerations}
+
+\section{Maintainability and Support Requirements}
+
+\subsection{Maintenance Requirements}
+\subparagraph{Content}
+\subparagraph{Motivation}
+\subparagraph{Examples}
+\subparagraph{Considerations}
+
+\subsection{Supportability Requirements}
+\subparagraph{Content}
+\subparagraph{Motivation}
+\subparagraph{Considerations}
+
+\subsection{Adaptability Requirements}
+\subparagraph{Content}
+\subparagraph{Motivation}
+\subparagraph{Examples}
+\subparagraph{Fit Criterion}
+\subparagraph{Considerations}
+
+\section{Security Requirements}
+
+\subsection{Access Requirements}
+\subparagraph{Content}
+\subparagraph{Motivation}
+\subparagraph{Examples}
+\subparagraph{Fit Criterion}
+\subparagraph{Considerations}
+
+\subsection{Integrity Requirements}
+\subparagraph{Content}
+\subparagraph{Motivation}
+\subparagraph{Examples}
+\subparagraph{Considerations}
+
+\subsection{Privacy Requirements}
+\subparagraph{Content}
+\subparagraph{Motivation}
+\subparagraph{Examples}
+\subparagraph{Considerations}
+
+\subsection{Audit Requirements}
+\subparagraph{Content}
+\subparagraph{Motivation}
+\subparagraph{Considerations}
+
+\subsection{Immunity Requirements}
+\subparagraph{Content}
+\subparagraph{Motivation}
+\subparagraph{Considerations}
+
+\section{Cultural Requirements}
+\subsection{Cultural Requirements}
+\subparagraph{Content}
+\subparagraph{Motivation}
+\subparagraph{Examples}
+\subparagraph{Considerations}
+
+\section{Legal Requirements}
+\subsection{Compliance Requirements}
+\subparagraph{Content}
+\subparagraph{Motivation}
+\subparagraph{Examples}
+\subparagraph{Fit Criterion}
+\subparagraph{Considerations}
+
+\subsection{Standards Requirements}
+\subparagraph{Content}
+\subparagraph{Motivation}
+\subparagraph{Examples}
+\subparagraph{Fit Criterion}
+\subparagraph{Considerations}
+
+\addcontentsline{toc}{section}{Project Issues}
+\section*{Project Issues}
+
+\section{Open Issues}
+\subsection{Appearance Requirements}
+\subparagraph{Content}
+\subparagraph{Motivation}
+\subparagraph{Examples}
+\subparagraph{Considerations}
+\subparagraph{Form}
+
+\section{Off-the-Shelf Solutions}
+
+\subsection{Ready-Made Products}
+\subparagraph{Content}
+\subparagraph{Motivation}
+\subparagraph{Considerations}
+
+\subsection{Reusable Components}
+\subparagraph{Content}
+\subparagraph{Motivation}
+
+\subsection{Products That Can Be Copied}
+\subparagraph{Content}
+\subparagraph{Motivation}
+\subparagraph{Examples}
+\subparagraph{Considerations}
+\subparagraph{Form}
+
+\section{New Problems}
+
+\subsection{Effects on the Current Environment}
+\subparagraph{Content}
+\subparagraph{Motivation}
+\subparagraph{Examples}
+\subparagraph{Considerations}
+\subparagraph{Form}
+
+\subsection{Effects on the Installed Systems}
+\subparagraph{Content}
+\subparagraph{Motivation}
+\subparagraph{Form}
+
+\subsection{Potential User Problems}
+\subparagraph{Content}
+\subparagraph{Motivation}
+
+\subsection{Limitations in the Anticipated Implementation Environment That May Inhibit the New Product}
+\subparagraph{Content}
+\subparagraph{Motivation}
+\subparagraph{Examples}
+\subparagraph{Considerations}
+
+\subsection{Follow-Up Problems}
+\subparagraph{Content}
+\subparagraph{Motivation}
+\subparagraph{Considerations}
+
+\section{Tasks}
+
+\subsection{Project Planning}
+\subparagraph{Content}
+\subparagraph{Motivation}
+\subparagraph{Considerations}
+\subparagraph{Form}
+
+\subsection{Planning of the Development Phase}
+\subparagraph{Content}
+\subparagraph{Motivation}
+\subparagraph{Considerations}
+\subparagraph{Form}
+
+\section{Migration to the New Product}
+
+\subsection{Requirements for Migration to the New Product}
+\subparagraph{Content}
+\subparagraph{Motivation}
+\subparagraph{Considerations}
+\subparagraph{Form}
+
+\subsection{Data That Has to Be Modified or Translated for the New System}
+\subparagraph{Content}
+\subparagraph{Motivation}
+\subparagraph{Considerations}
+\subparagraph{Form}
+
+\section{Risks}
+
+\subparagraph{Content}
+\subparagraph{Motivation}
+\subparagraph{Considerations}
+\subparagraph{Form}
+
+\section{Costs}
+
+\section{User Documentation and Training}
+
+\subsection{User Documentation Requirements}
+\subparagraph{Content}
+\subparagraph{Motivation}
+\subparagraph{Examples}
+\subparagraph{Considerations}
+
+\subsection{Training Requirements}
+\subparagraph{Content}
+\subparagraph{Motivation}
+\subparagraph{Considerations}
+
+\section{Waiting Room}
+
+\subparagraph{Content}
+\subparagraph{Motivation}
+\subparagraph{Considerations}
+
+\section{Ideas for Solutions}
+
+\subsection{User Documentation Requirements}
+\subparagraph{Content}
+\subparagraph{Motivation}
+\subparagraph{Considerations}
+\subparagraph{Form}
+
+\addcontentsline{toc}{section}{List of Figures}
+\section*{List of Figures}
 
 \end{document}
