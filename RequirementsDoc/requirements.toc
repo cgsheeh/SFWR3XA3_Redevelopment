@@ -1,0 +1,338 @@
+\contentsline {section}{Revision History}{4}
+\contentsline {section}{Template Used}{4}
+\contentsline {section}{Project Drivers}{4}
+\contentsline {section}{\numberline {1}The Purpose of the Project}{4}
+\contentsline {subsection}{\numberline {1.1}The User Business or Background of the Project Effort}{4}
+\contentsline {subsection}{\numberline {1.2}Goals of the Project}{5}
+\contentsline {section}{\numberline {2}The Stakeholders}{5}
+\contentsline {subsection}{\numberline {2.1}Traders}{5}
+\contentsline {subsection}{\numberline {2.2}Buyers}{5}
+\contentsline {subsection}{\numberline {2.3}Other Stakeholders}{5}
+\contentsline {subsection}{\numberline {2.4}The Hands-On Users of the Product}{6}
+\contentsline {subsection}{\numberline {2.5}Priorities Assigned to Users}{6}
+\contentsline {subsection}{\numberline {2.6}User Participation}{6}
+\contentsline {subsection}{\numberline {2.7}Maintenance Users and Service Technicians}{6}
+\contentsline {section}{Project Constraints}{6}
+\contentsline {section}{\numberline {3}Mandated Constraints}{6}
+\contentsline {subsection}{\numberline {3.1}Solution Constraints}{6}
+\contentsline {subsection}{\numberline {3.2}Implementation Environment of the Current System}{7}
+\contentsline {subsection}{\numberline {3.3}Partner or Collaborative Applications}{7}
+\contentsline {subsection}{\numberline {3.4}Off-the-Shelf Software}{7}
+\contentsline {subsection}{\numberline {3.5}Anticipated Workplace Environment}{7}
+\contentsline {subsection}{\numberline {3.6}Schedule Constraints}{7}
+\contentsline {subsection}{\numberline {3.7}Budget Constraints}{7}
+\contentsline {section}{\numberline {4}Naming Conventions and Terminology}{7}
+\contentsline {subsection}{\numberline {4.1}Definitions of All Terms}{7}
+\contentsline {section}{\numberline {5}Relevant Facts and Assumptions}{8}
+\contentsline {subsection}{\numberline {5.1}Facts}{8}
+\contentsline {subsection}{\numberline {5.2}Assumptions}{8}
+\contentsline {section}{Functional Requirements}{8}
+\contentsline {section}{\numberline {6}The Scope of the Work}{8}
+\contentsline {subsection}{\numberline {6.1}The Current Situation}{8}
+\contentsline {subparagraph}{Content}{8}
+\contentsline {subparagraph}{Motivation}{8}
+\contentsline {subparagraph}{Form}{8}
+\contentsline {subsection}{\numberline {6.2}The Context of the Work}{8}
+\contentsline {subparagraph}{Content}{8}
+\contentsline {subparagraph}{Motivation}{8}
+\contentsline {subparagraph}{Examples}{8}
+\contentsline {subparagraph}{Considerations}{8}
+\contentsline {subparagraph}{Form}{8}
+\contentsline {subsection}{\numberline {6.3}Work Partitioning}{8}
+\contentsline {subparagraph}{Content}{8}
+\contentsline {subparagraph}{Motivation}{8}
+\contentsline {subparagraph}{Examples}{8}
+\contentsline {subparagraph}{Considerations}{8}
+\contentsline {subparagraph}{Form}{9}
+\contentsline {subsection}{\numberline {6.4}Specifying a Business Use Case (BUC)}{9}
+\contentsline {subparagraph}{Content}{9}
+\contentsline {subparagraph}{Motivation}{9}
+\contentsline {subparagraph}{Examples}{9}
+\contentsline {subparagraph}{Considerations}{9}
+\contentsline {subparagraph}{Form}{9}
+\contentsline {section}{\numberline {7}Business Data Model and Data Dictionary}{9}
+\contentsline {subsection}{\numberline {7.1}Business Data Model}{9}
+\contentsline {subparagraph}{Content}{9}
+\contentsline {subparagraph}{Motivation}{9}
+\contentsline {subparagraph}{Examples}{9}
+\contentsline {subparagraph}{Considerations}{9}
+\contentsline {subparagraph}{Form}{9}
+\contentsline {subsection}{\numberline {7.2}Data Dictionary}{9}
+\contentsline {subparagraph}{Content}{9}
+\contentsline {subparagraph}{Motivation}{9}
+\contentsline {subparagraph}{Examples}{9}
+\contentsline {subparagraph}{Considerations}{9}
+\contentsline {subparagraph}{Form}{9}
+\contentsline {section}{\numberline {8}The Scope of the Product}{10}
+\contentsline {subsection}{\numberline {8.1}Product Boundary}{10}
+\contentsline {subparagraph}{Examples}{10}
+\contentsline {subparagraph}{Form}{10}
+\contentsline {subsection}{\numberline {8.2}Product Use Case Table}{10}
+\contentsline {subsection}{\numberline {8.3}Individual Product Use Cases}{10}
+\contentsline {subparagraph}{Form}{10}
+\contentsline {section}{\numberline {9}Functional Requirements}{10}
+\contentsline {subsection}{\numberline {9.1}Functional Requirements}{10}
+\contentsline {subparagraph}{Content}{10}
+\contentsline {subparagraph}{Motivation}{10}
+\contentsline {subparagraph}{Examples}{10}
+\contentsline {subparagraph}{Considerations}{10}
+\contentsline {section}{Non-functional Requirements}{10}
+\contentsline {subparagraph}{Form}{10}
+\contentsline {section}{\numberline {10}Look and Feel Requirements}{10}
+\contentsline {subsection}{\numberline {10.1}Appearance Requirements}{10}
+\contentsline {subparagraph}{Content}{10}
+\contentsline {subparagraph}{Motivation}{10}
+\contentsline {subparagraph}{Examples}{10}
+\contentsline {subparagraph}{Fit Criterion}{10}
+\contentsline {subparagraph}{Considerations}{10}
+\contentsline {subsection}{\numberline {10.2}Style Requirements}{11}
+\contentsline {subparagraph}{Content}{11}
+\contentsline {subparagraph}{Motivation}{11}
+\contentsline {subparagraph}{Examples}{11}
+\contentsline {subparagraph}{Fit Criterion}{11}
+\contentsline {subparagraph}{Considerations}{11}
+\contentsline {section}{\numberline {11}Usability and Humanity Requirements}{11}
+\contentsline {subsection}{\numberline {11.1}Ease of Use Requirements}{11}
+\contentsline {subparagraph}{Content}{11}
+\contentsline {subparagraph}{Motivation}{11}
+\contentsline {subparagraph}{Examples}{11}
+\contentsline {subparagraph}{Fit Criterion}{11}
+\contentsline {subparagraph}{Considerations}{11}
+\contentsline {subsection}{\numberline {11.2}Personalization and Internationalization Requirements}{11}
+\contentsline {subparagraph}{Content}{11}
+\contentsline {subparagraph}{Motivation}{11}
+\contentsline {subparagraph}{Examples}{11}
+\contentsline {subparagraph}{Considerations}{11}
+\contentsline {subsection}{\numberline {11.3}Learning Requirements}{11}
+\contentsline {subparagraph}{Content}{11}
+\contentsline {subparagraph}{Motivation}{11}
+\contentsline {subparagraph}{Examples}{11}
+\contentsline {subparagraph}{Fit Criterion}{12}
+\contentsline {subparagraph}{Considerations}{12}
+\contentsline {subsection}{\numberline {11.4}Understandability and Politeness Requirements}{12}
+\contentsline {subparagraph}{Content}{12}
+\contentsline {subparagraph}{Motivation}{12}
+\contentsline {subparagraph}{Examples}{12}
+\contentsline {subparagraph}{Considerations}{12}
+\contentsline {subsection}{\numberline {11.5}Accessibility Requirements}{12}
+\contentsline {subparagraph}{Content}{12}
+\contentsline {subparagraph}{Motivation}{12}
+\contentsline {subparagraph}{Examples}{12}
+\contentsline {subparagraph}{Considerations}{12}
+\contentsline {section}{\numberline {12}Performance Requirements}{12}
+\contentsline {subsection}{\numberline {12.1}Speed and Latency Requirements}{12}
+\contentsline {subparagraph}{Content}{12}
+\contentsline {subparagraph}{Motivation}{12}
+\contentsline {subparagraph}{Examples}{12}
+\contentsline {subparagraph}{Fit Criterion}{12}
+\contentsline {subparagraph}{Considerations}{12}
+\contentsline {subsection}{\numberline {12.2}Safety-Critical Requirements}{12}
+\contentsline {subparagraph}{Content}{12}
+\contentsline {subparagraph}{Motivation}{12}
+\contentsline {subparagraph}{Examples}{13}
+\contentsline {subparagraph}{Fit Criterion}{13}
+\contentsline {subparagraph}{Considerations}{13}
+\contentsline {subsection}{\numberline {12.3}Precision or Accuracy Requirements}{13}
+\contentsline {subparagraph}{Content}{13}
+\contentsline {subparagraph}{Motivation}{13}
+\contentsline {subparagraph}{Examples}{13}
+\contentsline {subparagraph}{Considerations}{13}
+\contentsline {subsection}{\numberline {12.4}Reliability and Availability Requirements}{13}
+\contentsline {subparagraph}{Content}{13}
+\contentsline {subparagraph}{Motivation}{13}
+\contentsline {subparagraph}{Examples}{13}
+\contentsline {subparagraph}{Considerations}{13}
+\contentsline {subsection}{\numberline {12.5}Robustness or Fault-Tolerance Requirements}{13}
+\contentsline {subparagraph}{Content}{13}
+\contentsline {subparagraph}{Motivation}{13}
+\contentsline {subparagraph}{Examples}{13}
+\contentsline {subparagraph}{Considerations}{13}
+\contentsline {subsection}{\numberline {12.6}Capacity Requirements}{13}
+\contentsline {subparagraph}{Content}{13}
+\contentsline {subparagraph}{Motivation}{13}
+\contentsline {subparagraph}{Examples}{13}
+\contentsline {subparagraph}{Fit Criterion}{14}
+\contentsline {subsection}{\numberline {12.7}Scalability or Extensibility Requirements}{14}
+\contentsline {subparagraph}{Content}{14}
+\contentsline {subparagraph}{Motivation}{14}
+\contentsline {subparagraph}{Examples}{14}
+\contentsline {subsection}{\numberline {12.8}Longevity Requirements}{14}
+\contentsline {subparagraph}{Content}{14}
+\contentsline {subparagraph}{Motivation}{14}
+\contentsline {subparagraph}{Examples}{14}
+\contentsline {section}{\numberline {13}Operational and Environmental Requirements}{14}
+\contentsline {subsection}{\numberline {13.1}Expected Physical Environment}{14}
+\contentsline {subparagraph}{Content}{14}
+\contentsline {subparagraph}{Motivation}{14}
+\contentsline {subparagraph}{Examples}{14}
+\contentsline {subparagraph}{Considerations}{14}
+\contentsline {subsection}{\numberline {13.2}Requirements for Interfacing with Adjacent Systems}{14}
+\contentsline {subparagraph}{Content}{14}
+\contentsline {subparagraph}{Motivation}{14}
+\contentsline {subparagraph}{Examples}{14}
+\contentsline {subparagraph}{Fit Criterion}{14}
+\contentsline {subsection}{\numberline {13.3}Productization Requirements}{14}
+\contentsline {subparagraph}{Content}{14}
+\contentsline {subparagraph}{Motivation}{15}
+\contentsline {subparagraph}{Examples}{15}
+\contentsline {subparagraph}{Considerations}{15}
+\contentsline {subsection}{\numberline {13.4}Release Requirements}{15}
+\contentsline {subparagraph}{Content}{15}
+\contentsline {subparagraph}{Motivation}{15}
+\contentsline {subparagraph}{Examples}{15}
+\contentsline {subparagraph}{Fit Criterion}{15}
+\contentsline {subparagraph}{Considerations}{15}
+\contentsline {section}{\numberline {14}Maintainability and Support Requirements}{15}
+\contentsline {subsection}{\numberline {14.1}Maintenance Requirements}{15}
+\contentsline {subparagraph}{Content}{15}
+\contentsline {subparagraph}{Motivation}{15}
+\contentsline {subparagraph}{Examples}{15}
+\contentsline {subparagraph}{Considerations}{15}
+\contentsline {subsection}{\numberline {14.2}Supportability Requirements}{15}
+\contentsline {subparagraph}{Content}{15}
+\contentsline {subparagraph}{Motivation}{15}
+\contentsline {subparagraph}{Considerations}{15}
+\contentsline {subsection}{\numberline {14.3}Adaptability Requirements}{15}
+\contentsline {subparagraph}{Content}{15}
+\contentsline {subparagraph}{Motivation}{15}
+\contentsline {subparagraph}{Examples}{16}
+\contentsline {subparagraph}{Fit Criterion}{16}
+\contentsline {subparagraph}{Considerations}{16}
+\contentsline {section}{\numberline {15}Security Requirements}{16}
+\contentsline {subsection}{\numberline {15.1}Access Requirements}{16}
+\contentsline {subparagraph}{Content}{16}
+\contentsline {subparagraph}{Motivation}{16}
+\contentsline {subparagraph}{Examples}{16}
+\contentsline {subparagraph}{Fit Criterion}{16}
+\contentsline {subparagraph}{Considerations}{16}
+\contentsline {subsection}{\numberline {15.2}Integrity Requirements}{16}
+\contentsline {subparagraph}{Content}{16}
+\contentsline {subparagraph}{Motivation}{16}
+\contentsline {subparagraph}{Examples}{16}
+\contentsline {subparagraph}{Considerations}{16}
+\contentsline {subsection}{\numberline {15.3}Privacy Requirements}{16}
+\contentsline {subparagraph}{Content}{16}
+\contentsline {subparagraph}{Motivation}{16}
+\contentsline {subparagraph}{Examples}{16}
+\contentsline {subparagraph}{Considerations}{16}
+\contentsline {subsection}{\numberline {15.4}Audit Requirements}{16}
+\contentsline {subparagraph}{Content}{16}
+\contentsline {subparagraph}{Motivation}{17}
+\contentsline {subparagraph}{Considerations}{17}
+\contentsline {subsection}{\numberline {15.5}Immunity Requirements}{17}
+\contentsline {subparagraph}{Content}{17}
+\contentsline {subparagraph}{Motivation}{17}
+\contentsline {subparagraph}{Considerations}{17}
+\contentsline {section}{\numberline {16}Cultural Requirements}{17}
+\contentsline {subsection}{\numberline {16.1}Cultural Requirements}{17}
+\contentsline {subparagraph}{Content}{17}
+\contentsline {subparagraph}{Motivation}{17}
+\contentsline {subparagraph}{Examples}{17}
+\contentsline {subparagraph}{Considerations}{17}
+\contentsline {section}{\numberline {17}Legal Requirements}{17}
+\contentsline {subsection}{\numberline {17.1}Compliance Requirements}{17}
+\contentsline {subparagraph}{Content}{17}
+\contentsline {subparagraph}{Motivation}{17}
+\contentsline {subparagraph}{Examples}{17}
+\contentsline {subparagraph}{Fit Criterion}{17}
+\contentsline {subparagraph}{Considerations}{17}
+\contentsline {subsection}{\numberline {17.2}Standards Requirements}{17}
+\contentsline {subparagraph}{Content}{17}
+\contentsline {subparagraph}{Motivation}{17}
+\contentsline {subparagraph}{Examples}{18}
+\contentsline {subparagraph}{Fit Criterion}{18}
+\contentsline {section}{Project Issues}{18}
+\contentsline {subparagraph}{Considerations}{18}
+\contentsline {section}{\numberline {18}Open Issues}{18}
+\contentsline {subsection}{\numberline {18.1}Appearance Requirements}{18}
+\contentsline {subparagraph}{Content}{18}
+\contentsline {subparagraph}{Motivation}{18}
+\contentsline {subparagraph}{Examples}{18}
+\contentsline {subparagraph}{Considerations}{18}
+\contentsline {subparagraph}{Form}{18}
+\contentsline {section}{\numberline {19}Off-the-Shelf Solutions}{18}
+\contentsline {subsection}{\numberline {19.1}Ready-Made Products}{18}
+\contentsline {subparagraph}{Content}{18}
+\contentsline {subparagraph}{Motivation}{18}
+\contentsline {subparagraph}{Considerations}{18}
+\contentsline {subsection}{\numberline {19.2}Reusable Components}{18}
+\contentsline {subparagraph}{Content}{18}
+\contentsline {subparagraph}{Motivation}{18}
+\contentsline {subsection}{\numberline {19.3}Products That Can Be Copied}{18}
+\contentsline {subparagraph}{Content}{18}
+\contentsline {subparagraph}{Motivation}{18}
+\contentsline {subparagraph}{Examples}{19}
+\contentsline {subparagraph}{Considerations}{19}
+\contentsline {subparagraph}{Form}{19}
+\contentsline {section}{\numberline {20}New Problems}{19}
+\contentsline {subsection}{\numberline {20.1}Effects on the Current Environment}{19}
+\contentsline {subparagraph}{Content}{19}
+\contentsline {subparagraph}{Motivation}{19}
+\contentsline {subparagraph}{Examples}{19}
+\contentsline {subparagraph}{Considerations}{19}
+\contentsline {subparagraph}{Form}{19}
+\contentsline {subsection}{\numberline {20.2}Effects on the Installed Systems}{19}
+\contentsline {subparagraph}{Content}{19}
+\contentsline {subparagraph}{Motivation}{19}
+\contentsline {subparagraph}{Form}{19}
+\contentsline {subsection}{\numberline {20.3}Potential User Problems}{19}
+\contentsline {subparagraph}{Content}{19}
+\contentsline {subparagraph}{Motivation}{19}
+\contentsline {subsection}{\numberline {20.4}Limitations in the Anticipated Implementation Environment That May Inhibit the New Product}{19}
+\contentsline {subparagraph}{Content}{19}
+\contentsline {subparagraph}{Motivation}{19}
+\contentsline {subparagraph}{Examples}{19}
+\contentsline {subparagraph}{Considerations}{19}
+\contentsline {subsection}{\numberline {20.5}Follow-Up Problems}{20}
+\contentsline {subparagraph}{Content}{20}
+\contentsline {subparagraph}{Motivation}{20}
+\contentsline {subparagraph}{Considerations}{20}
+\contentsline {section}{\numberline {21}Tasks}{20}
+\contentsline {subsection}{\numberline {21.1}Project Planning}{20}
+\contentsline {subparagraph}{Content}{20}
+\contentsline {subparagraph}{Motivation}{20}
+\contentsline {subparagraph}{Considerations}{20}
+\contentsline {subparagraph}{Form}{20}
+\contentsline {subsection}{\numberline {21.2}Planning of the Development Phase}{20}
+\contentsline {subparagraph}{Content}{20}
+\contentsline {subparagraph}{Motivation}{20}
+\contentsline {subparagraph}{Considerations}{20}
+\contentsline {subparagraph}{Form}{20}
+\contentsline {section}{\numberline {22}Migration to the New Product}{20}
+\contentsline {subsection}{\numberline {22.1}Requirements for Migration to the New Product}{20}
+\contentsline {subparagraph}{Content}{20}
+\contentsline {subparagraph}{Motivation}{20}
+\contentsline {subparagraph}{Considerations}{20}
+\contentsline {subparagraph}{Form}{20}
+\contentsline {subsection}{\numberline {22.2}Data That Has to Be Modified or Translated for the New System}{21}
+\contentsline {subparagraph}{Content}{21}
+\contentsline {subparagraph}{Motivation}{21}
+\contentsline {subparagraph}{Considerations}{21}
+\contentsline {subparagraph}{Form}{21}
+\contentsline {section}{\numberline {23}Risks}{21}
+\contentsline {subparagraph}{Content}{21}
+\contentsline {subparagraph}{Motivation}{21}
+\contentsline {subparagraph}{Considerations}{21}
+\contentsline {subparagraph}{Form}{21}
+\contentsline {section}{\numberline {24}Costs}{21}
+\contentsline {section}{\numberline {25}User Documentation and Training}{21}
+\contentsline {subsection}{\numberline {25.1}User Documentation Requirements}{21}
+\contentsline {subparagraph}{Content}{21}
+\contentsline {subparagraph}{Motivation}{21}
+\contentsline {subparagraph}{Examples}{21}
+\contentsline {subparagraph}{Considerations}{21}
+\contentsline {subsection}{\numberline {25.2}Training Requirements}{21}
+\contentsline {subparagraph}{Content}{21}
+\contentsline {subparagraph}{Motivation}{21}
+\contentsline {subparagraph}{Considerations}{21}
+\contentsline {section}{\numberline {26}Waiting Room}{22}
+\contentsline {subparagraph}{Content}{22}
+\contentsline {subparagraph}{Motivation}{22}
+\contentsline {subparagraph}{Considerations}{22}
+\contentsline {section}{\numberline {27}Ideas for Solutions}{22}
+\contentsline {subsection}{\numberline {27.1}User Documentation Requirements}{22}
+\contentsline {subparagraph}{Content}{22}
+\contentsline {subparagraph}{Motivation}{22}
+\contentsline {subparagraph}{Considerations}{22}
+\contentsline {section}{List of Figures}{22}
+\contentsline {subparagraph}{Form}{22}
