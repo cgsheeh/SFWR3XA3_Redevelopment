@@ -16,6 +16,8 @@ This document outlines the test plan for the Openbazaar redevelopment project.
 
 \tableofcontents
 
+\clearpage
+
 \addcontentsline{toc}{section}{Revision History}
 \section*{Revision History}
 
@@ -70,18 +72,34 @@ Some of these risks may include the following:
  \item
 The selling of illegal goods or services.
  \item
-IP spoofing and false Identification of a user, marketplace or notary.
+IP spoofing and false identification/location of a user, marketplace or notary.
  \item
 The price of a bitcoin.
 \end{itemize}
 
 \addcontentsline{toc}{section}{Features to be Tested}
 \section*{Features to be Tested}
-This is the features section.
+This following is a list of functionality areas to be focused on:
+\newline
+\begin{itemize}
+ \item
+The buyers side, ability to view markets and market items correctly from market to market.
+ \item
+The sellers side, ability to post items for sale with the correct product details.
+ \item
+The notary side, ability to offer notary services.
+\end{itemize}
 
 \addcontentsline{toc}{section}{Features not to be Tested}
 \section*{Features not to be Tested}
-This is the not tested features.
+The following areas will not be focused on during the testing of the application:
+\newline
+\begin{itemize}
+ \item
+The appearence or general look and feel of the application.
+ \item
+The network or ability to search for peers on the network.
+\end{itemize}
 
 \addcontentsline{toc}{section}{Approach}
 \section*{Approach}
@@ -97,7 +115,16 @@ This is the resumption/suspension requirements.
 
 \addcontentsline{toc}{section}{Test Deliverables}
 \section*{Test Deliverables}
-This is the test deliverables.
+\begin{itemize}
+ \item
+Test Plan Revision 0
+ \item
+Test Report Revision 0
+ \item
+Test Plan Revision 1
+ \item
+Test Report Revision 1
+\end{itemize}
 
 \addcontentsline{toc}{section}{Remaining Test Tasks}
 \section*{Remaining Test Tasks}
@@ -105,20 +132,32 @@ This is the remaining test task section.
 
 \addcontentsline{toc}{section}{Environmental Needs}
 \section*{Environmental Needs}
-This is the section describing the required platform for use.
+The following are needed in order to support the testing:
+\newline
+\begin{itemize}
+ \item
+PyUnit Framework
+ \item
+Python IDE such as PyCharm
+ \item
+A desktop computer with OS X or Linux installed with the bash terminal.
+\end{itemize}
 
 \addcontentsline{toc}{section}{Schedule}
 \section*{Schedule}
-This is the schedule.
 
-\addcontentsline{toc}{section}{Approval}
-\section*{Approval}
-This is the approval section.
+
+\addcontentsline{toc}{section}{Approvals}
+\section*{Approvals}
+This is the approvals section.
 
 \addcontentsline{toc}{section}{Summary}
 \section*{Summary}
-This is the summary area.
-
+OpenBazaar will exist only if the three main users have the ability to do what they need.
+Buyers need to have the ability to post items for sale and the information that goes along with it.
+Sellers need to be able to view all of the items in a particular marketplace as well as each one individually.
+Notaries must be able to provide there services to both parties to ensure a fair transaction always occurs over the OpenBazaar.
+This test plan provides a framework for how the functionality will be tested for each significant role in the OpenBazaar.
 
 
 \end{document}
