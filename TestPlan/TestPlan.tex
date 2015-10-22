@@ -45,9 +45,9 @@ IEEE Test Plan outline is used.
 
 \addcontentsline{toc}{section}{Introduction}
 \section*{Introduction}
-This is the test plan for the OpenBazaar's desktop application.
+This is the test plan for the OpenBazaar desktop application.
 It will include only the most relevent portions of the project that are related to the process of completing a transaction over the network.
-The main intention of this plan is to simulate a user interacting with the system in real time in order to ensure the applications robustness and reliability.
+The main intention of this plan is to simulate a user interacting with the system in real time in order to ensure the robustness and reliability of the application.
 
 \addcontentsline{toc}{section}{Test Items}
 \section*{Test Items}
@@ -55,40 +55,40 @@ The following is a list of the most significant portions of the application to b
 \newline
 \begin{enumerate}
  \item
-Viewing a markets items.
+Viewing a market's items
  \item
-Purchasing items using a Ricardian Contract.
+Purchasing items using a Ricardian Contract
  \item
-Rating a marketplace.
+Rating a marketplace
 \item
-Creating a Ricardian contract.
+Creating a Ricardian contract
 \end{enumerate}
 
 \addcontentsline{toc}{section}{Software Risk Issues}
 \section*{Software Risk Issues}
-With an online decentralized marketplace there comes significant software risks that are out of the developers control.
+With an online decentralized marketplace, there comes significant software risks that are out of the developer's control.
 Some of these risks may include the following:
 \newline
 \begin{itemize}
  \item
-The selling of illegal goods or services.
+The selling of illegal goods or services
  \item
-IP spoofing and false identification/location of a user, marketplace or notary.
+IP spoofing and false identification/location of a user, marketplace, or notary
  \item
-The price of a bitcoin.
+The price of a bitcoin
 \end{itemize}
 
 \addcontentsline{toc}{section}{Features to be Tested}
 \section*{Features to be Tested}
-This following is a list of functionality areas to be focused on:
+The following is a list of functionality aspects to be focused on:
 \newline
 \begin{itemize}
  \item
-The buyers side, ability to view markets and market items correctly from market to market.
+A buyer must have the ability to view markets and market items correctly from market to market.
  \item
-The sellers side, ability to post items for sale with the correct product details.
+A seller must have the ability to post items for sale with the correct product details.
  \item
-The notary side, ability to offer notary services.
+The notary must have the ability to offer notary/mediation services.
 \end{itemize}
 
 \addcontentsline{toc}{section}{Features not to be Tested}
@@ -97,20 +97,20 @@ The following areas will not be focused on during the testing of the application
 \newline
 \begin{itemize}
  \item
-The appearence or general look and feel of the application.
+The appearence or general look and feel of the application
  \item
-The network or ability to search for peers on the network.
+The network or ability to search for peers on the network
 \item
-The accessibility requirements of the project.
+The accessibility requirements of the project
 \end{itemize}
 
 \addcontentsline{toc}{section}{Approach}
 \section*{Approach}
-The relevant components of this test plan relate to the GUI and the controllers in the application. User input into text fields, drop down panels and other graphical boxes will need to be checked for validity and security. On a commerce related application, injections and other malicious methods are viciously pursued by people with bad intentions. Unit testing of functions which convert input into machine readable format will ensure a safer trading environment for users. Since the creation of a reliable, secure peer-to-peer network is outside the scope of this project we will implement the principle of hardware hiding within our application. Our GUI will then use an interface that could be applied to any network. This API will be unit tested to ensure it is valid and secure to use. On this platform, Ricardian contracts are used to create both machine and human readable agreements about transactions between parties. The functions used to turn user input into a Ricardian contract will be unit tested, verifying that the ID created is global and unique, signatures are valid and content does not contain any injections, malicious code or otherwise undesired data. Each contract is also accompanied by a hash to provide authenticity, which can be tested for accuracy.
+The relevant components of this test plan relate to the GUI and the controllers in the application. User input into text fields, drop down panels and other graphical boxes will need to be checked for validity and security. On a commerce related application, injections and other malicious methods are viciously pursued by people with bad intentions. Unit testing of functions which convert input into machine readable format will ensure a safer trading environment for users. Since the creation of a reliable and secure peer-to-peer network is outside the scope of this project, we will implement the principle of hardware hiding within our application. Our GUI will then use an interface that could be applied to any network. This API will be unit tested to ensure it is valid and secure to use. On this platform, Ricardian contracts are used to create both machine and human readable agreements about transactions between parties. The functions used to turn user input into a Ricardian contract will be unit tested, verifying that the ID created is global and unique, signatures are valid, and content does not contain any injections, malicious code or otherwise undesired data. Each contract is also accompanied by a hash to provide authenticity, which can be tested for accuracy.
 
 \addcontentsline{toc}{section}{Item Pass/Fail Criteria}
 \section*{Item Pass/Fail Criteria}
-There will be a variety of criterion that all unit tests will have to pass to
+There will be a variety of criterion that all unit tests will have to pass to...
 
 \addcontentsline{toc}{section}{Suspension Requirements and Resumption Requirements}
 \section*{Suspension Requirements and Resumption Requirements}
@@ -143,7 +143,7 @@ PyUnit Framework
  \item
 Python IDE such as PyCharm
  \item
-A desktop computer with OS X or Linux installed with the bash terminal.
+A desktop computer with OS X or Linux installed with the bash terminal
 \end{itemize}
 
 \addcontentsline{toc}{section}{Schedule}
@@ -159,7 +159,7 @@ This is the approvals section.
 OpenBazaar will exist only if the three main users have the ability to do what they need.
 Buyers need to have the ability to post items for sale and the information that goes along with it.
 Sellers need to be able to view all of the items in a particular marketplace as well as each one individually.
-Notaries must be able to provide there services to both parties to ensure a fair transaction always occurs over the OpenBazaar.
+Notaries must be able to provide their services to both parties to ensure a fair transaction always occurs over the OpenBazaar.
 This test plan provides a framework for how the functionality will be tested for each significant role in the OpenBazaar.
 
 

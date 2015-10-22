@@ -7,11 +7,11 @@
 \contentsline {section}{Features to be Tested}{4}
 \contentsline {section}{Features not to be Tested}{4}
 \contentsline {section}{Approach}{4}
-\contentsline {section}{Item Pass/Fail Criteria}{4}
-\contentsline {section}{Suspension Requirements and Resumption Requirements}{4}
-\contentsline {section}{Test Deliverables}{4}
+\contentsline {section}{Item Pass/Fail Criteria}{5}
+\contentsline {section}{Suspension Requirements and Resumption Requirements}{5}
+\contentsline {section}{Test Deliverables}{5}
 \contentsline {section}{Remaining Test Tasks}{5}
 \contentsline {section}{Environmental Needs}{5}
-\contentsline {section}{Schedule}{5}
-\contentsline {section}{Approvals}{5}
-\contentsline {section}{Summary}{5}
+\contentsline {section}{Schedule}{6}
+\contentsline {section}{Approvals}{6}
+\contentsline {section}{Summary}{6}
