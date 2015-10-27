@@ -10,18 +10,27 @@ if [ $(whoami) != "root" ]
 fi
 
 # Install python and python-dev
-sudo apt-get install python
-sudo apt-get install python-dev
+apt-get install python
+apt-get install python-dev
 
 # Install pyforms dependencies
-sudo apt-get install python-setuptools
-sudo apt-get install python-opengl
-sudo apt-get install python-opencv
-sudo apt-get install pyqt4-dev-tools python-qt4
-sudo apt-get install python-qt4-gl
+#	python-setuptools
+#	python-opengl
+#	python-opencv
+#	pyqt4-dev-tools
+#	python-qt4
+#	python-qt4-gl
+apt-get install python-setuptools
+apt-get install python-opengl
+apt-get install python-opencv
+apt-get install pyqt4-dev-tools python-qt4
+apt-get install python-qt4-gl
 
 # Install pip
-sudo python get-pip.py
+python get-pip.py
 
-# Install pyforms
-sudo pip install pyforms
+# Install python packages
+#	pyforms
+#	bitcoin
+pip install pyforms
+pip install bitcoin
