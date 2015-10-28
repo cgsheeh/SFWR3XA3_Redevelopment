@@ -27,7 +27,7 @@ apt-get install pyqt4-dev-tools python-qt4
 apt-get install python-qt4-gl
 
 # Install pip
-python get-pip.py
+apt-get install python-pip python-dev build-essential
 
 # Install python packages
 #	pyforms
