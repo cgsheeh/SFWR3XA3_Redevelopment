@@ -1,0 +1,55 @@
+This file contains a rough outline of important events to complete the OpenBazaar redevelopment project
+
+THINGS TO DO (not chronological)
+*********************************
+
+1. Create ER-diagrams
+2. Finish requirements document
+3. Implement tests
+4. Implement Ricardian contracts
+5. Implement node initialization (first run create GUID, etc.)
+6. 
+
+
+THINGS TO LEARN (at least one group member)
+*********************************
+
+1. Bitcoin
+2. SQLite3
+3. OpenBazaar trade flows
+4. PyForms framework
+5. Doxygen for Python
+	- https://www.stack.nl/~dimitri/doxygen/manual/docblocks.html#pythonblocks
+6. P2P network (time permitting)
+
+
+REMAINING DELIVERABLES
+****************************
+1. Design document revision 0
+	- Wk of November 2nd
+
+2. Revision 0 demonstration
+	- wk of Nov 9
+
+3. Peer evaluation
+	- wk of Nov 16
+
+4. User guide rev 0
+	- wk of Nov 16
+
+5. Test report revision 0
+	- wk of Nov 23
+
+6. Final demonstration
+	- wk of Nov 30
+	
+7. Final documentation
+	- December 8th
+	- Includes:
+		Problem statement
+		Reqs doc
+		Design doc
+		Test plan
+		Test report
+		User guide
+		Source code
