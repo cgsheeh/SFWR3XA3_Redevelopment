@@ -54,14 +54,16 @@ The main intention of this plan is to simulate a user interacting with the syste
 The following is a list of the most significant portions of the application to be tested:
 \newline
 \begin{enumerate}
- \item
-Viewing a market's items
- \item
-Purchasing items using a Ricardian Contract
- \item
-Rating a marketplace
 \item
-Creating a Ricardian contract
+Overall ease of use for sample users including the process of installation
+\item
+Correctness of messages being sent and received between mock server and application front-end
+\item
+Security of Ricardian contracts in order to prevent unauthorized changes
+\item
+Functionality of a user related to viewing a market's items, creating a Ricardian contract, purchasing items, rating a marketplace, and communicated with other users
+
+
 \end{enumerate}
 
 \addcontentsline{toc}{section}{Software Risk Issues}
@@ -89,6 +91,10 @@ A buyer must have the ability to view markets and market items correctly from ma
 A seller must have the ability to post items for sale with the correct product details.
  \item
 The notary must have the ability to offer notary/mediation services.
+\item
+A user must have the ability to rate a marketplace
+\item
+A user must have the ability to communicate with other users
 \end{itemize}
 
 \addcontentsline{toc}{section}{Features not to be Tested}
@@ -108,9 +114,11 @@ The accessibility requirements of the project
 \section*{Approach}
 The relevant components of this test plan relate to the GUI and the controllers in the application. User input into text fields, drop down panels and other graphical boxes will need to be checked for validity and security. On a commerce related application, injections and other malicious methods are viciously pursued by people with bad intentions. Unit testing of functions which convert input into machine readable format will ensure a safer trading environment for users. Since the creation of a reliable and secure peer-to-peer network is outside the scope of this project, we will implement the principle of hardware hiding within our application. Our GUI will then use an interface that could be applied to any network. This API will be unit tested to ensure it is valid and secure to use. On this platform, Ricardian contracts are used to create both machine and human readable agreements about transactions between parties. The functions used to turn user input into a Ricardian contract will be unit tested, verifying that the ID created is global and unique, signatures are valid, and content does not contain any injections, malicious code or otherwise undesired data. Each contract is also accompanied by a hash to provide authenticity, which can be tested for accuracy.
 
+In order to test ease of use, a sample user, such as a person that does not specialize in software, will be timed performing various tasks such as creating a contract, buying an item, and installing the software. An acceptable time limit in order to satisfy the ease of use requirement will be determined at a later date.
+
 \addcontentsline{toc}{section}{Item Pass/Fail Criteria}
 \section*{Item Pass/Fail Criteria}
-There will be a variety of criterion that all unit tests will have to pass to...
+There will be a variety of criterion that all unit tests will have to pass in order to satisfy the functional and nonfunctional requirements.
 
 \addcontentsline{toc}{section}{Suspension Requirements and Resumption Requirements}
 \section*{Suspension Requirements and Resumption Requirements}
