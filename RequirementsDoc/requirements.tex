@@ -1,5 +1,8 @@
 \documentclass{article}
+
 \usepackage{xcolor} % for different colour comments
+\usepackage{graphicx}
+\graphicspath{{/home/danny/Pictures/}}
 
 %% Comments
 \newif\ifcomments\commentstrue
@@ -17,16 +20,35 @@
 \author{The Fair Traders \\ Daniel Mandel - mandeldr \\ Shandelle Murray - murras25 \\ Connor Sheehan - sheehacg}
 \date{\today}
 \maketitle
-\tableofcontents
-\addcontentsline{toc}{section}{Revision History}
-
-\addcontentsline{toc}{section}{Template Used}
-\section*{Template Used}
-We have used the Volere Template as a guide for creating this requirements document.
 
 \begin{abstract}
 This documents outlines requirements for the OpenBazaar redevelopment project.
 \end{abstract}
+
+\newpage
+
+\tableofcontents
+
+\addcontentsline{toc}{section}{Revision History}
+\section*{Revision History}
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{||c c c c||} 
+ \hline
+ Revision Number & Revision Date & Description of Change & Author \\ [0.5ex] 
+ \hline\hline
+ 1 & November 2nd, 2015 & Created Revision History & Daniel Mandel \\ [1ex] 
+ \hline
+\end{tabular}
+\caption{Table to capture the history of the document}
+\label{table:1}
+\end{table}
+
+\addcontentsline{toc}{section}{References}
+\section*{References}
+We have used the Volere Template as a guide for creating this requirements document.
+http://docs.openbazaar.org/
 
 \addcontentsline{toc}{section}{Project Drivers}
 \section*{Project Drivers}
@@ -47,14 +69,18 @@ The project will be developed as an open-source, peer-to-peer network.
 The main goals of the project include:
 
 \begin{itemize}
-\item
-Eliminating the need for centralized e-commerce services.
 
 \item
-Reduce the overhead cost of doing business and trading over the internet by eliminating third-party fees.
+Create an online marketplace that is scalable, free of intermediaries and their fees, and cannot be censored.
 
 \item
-Creating a permissionless, censorship-resistant trade platform.
+Eliminating the need for centralized e-commerce services and websites.
+
+\item
+Reduce the overhead cost of doing business and trading over the internet by using our software. Essentially making trade free again.
+
+\item
+Create a permissionless, censorship-resistant trade platform that will connect the entire world.
 \end{itemize}
 
 \section{The Stakeholders}
@@ -240,58 +266,54 @@ Git - Source control for the project. Includes features such as revision history
 \begin{itemize}
 	
 \item
-Our biggest assumption in this project is that all users have and understand what Bitcoin is.
+Our biggest assumption in this project is that all users have and understand what Bitcoin is. As well as a basic understanding of what a peer to peer application is.
 \end{itemize}
 
 \subsection{Facts}
 \begin{itemize}
 	
 \item
+There are existing frameworks for GUI's. PyQt in particular will be used for the implementation of the client side. 
+\item
+We will only be developing the client side of the application due to the time constraint of this project.
 	
 \end{itemize} 
 
 \section{The Scope of the Work}
 \subsection{The Current Situation}
 \subparagraph{Content}
-\subparagraph{Motivation}
-\subparagraph{Form}
+A software application to connect users from all around the world to conduct trade freely is required. Users can add any peers to the network, as well as view their stores, and search for items to purchase. They will also have the ability to have their own market to sell items.
 
 \subsection{The Context of the Work}
-\subparagraph{Content}
-\subparagraph{Motivation}
-\subparagraph{Examples}
-\subparagraph{Considerations}
-\subparagraph{Form}
+\includegraphics{Trade_Flow_Ecommerce_Physical_Goods_Fixed.jpg}
+
 
 \subsection{Work Partitioning}
-\subparagraph{Content}
-\subparagraph{Motivation}
-\subparagraph{Examples}
-\subparagraph{Considerations}
-\subparagraph{Form}
 
-\subsection{Specifying a Business Use Case (BUC)}
-\subparagraph{Content}
-\subparagraph{Motivation}
-\subparagraph{Examples}
-\subparagraph{Considerations}
-\subparagraph{Form}
+\begin{table}[h!]
+\centering
+\begin{tabular}{||c c c ||}
+ \hline
+ \textbf {Event Name} & \textbf{Input and Output} & \textbf{Summary of BUC} \\ [0.5ex]
+ \hline
+\end{tabular}
+\caption{Table to capture the inputs and outputs of an event}
+\label{table:2}
+\end{table}
 
 \section{Business Data Model and Data Dictionary}
 
-\subsection{Business Data Model}
-\subparagraph{Content}
-\subparagraph{Motivation}
-\subparagraph{Examples}
-\subparagraph{Considerations}
-\subparagraph{Form}
+\begin{table}[h!]
+\centering
+\begin{tabular}{||c c c ||}
+ \hline
+ \textbf {Name} & \textbf{Content} & \textbf{Type} \\ [0.5ex]
+ \hline
+\end{tabular}
+\caption{Table to capture all the applications data, and type}
+\label{table:3}
+\end{table}
 
-\subsection{Data Dictionary}
-\subparagraph{Content}
-\subparagraph{Motivation}
-\subparagraph{Examples}
-\subparagraph{Considerations}
-\subparagraph{Form}
 
 \section{The Scope of the Product}
 \subsection{Product Boundary}
