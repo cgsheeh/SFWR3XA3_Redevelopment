@@ -193,7 +193,7 @@ Fit Criterion: Users must have a Bitcoin wallet installed on there computer.
 
 \begin{itemize}
 \item
-The application will be developed on Ubuntu 14, using Python 2, and PyQT as the GUI framework. The framework was chosen because of its cross-platform abilities and versatility. Ubuntu was chosen because of the compatability it has with the existing off-the-shelf softwares (OpenBazaar Server), Git and the other partner applications that make the OpenBazaar function. 
+The application will be developed on Ubuntu 14, using Python 2, and PyQT as the GUI framework. The framework was chosen because of its cross-platform abilities and versatility. Ubuntu was chosen because of the compatability it has with the existing off-the-shelf softwares (OpenBazaar Server), Git, and the other partner applications that make the OpenBazaar function. 
 \end{itemize}
 
 \subsection{Partner or Collaborative Applications}
@@ -208,7 +208,7 @@ BitCoin will be a vital application serving as the medium of exchange on OpenBaz
 \begin{itemize}
 	
 \item
-There is an existing off-the-shelf software but it is in the beta development phase, with development focus on the front end (backend complete), and testing. The front end or client side of the application will act similarily to an online classifides system like Ebay, Amazon, Kijiji, Craigslist, but populated only you want to see.	
+There is an existing off-the-shelf software, but it is in the beta development phase, with development focus on the front end (backend complete) and testing. The front end or client side of the application will act similarily to an online classifieds system like Ebay, Amazon, Kijiji, Craigslist;however, it will be populated with only what a user would like to see.	
 
 	
 \end{itemize}
@@ -217,7 +217,7 @@ There is an existing off-the-shelf software but it is in the beta development ph
 \begin{itemize}
 	
 \item
-This system is intended for use anywhere there is a working internet connection. This enables users to connect from all around the world to buy and sell that previosuly could not. Virtually the anticipated workplace environment is the entire civilized world.
+This system is intended for use anywhere that there is a working internet connection. This enables users to connect from all around the world to buy and sell products and services. Virtually, the anticipated workplace environment is the entire civilized world.
 	
 	
 \end{itemize}
@@ -247,15 +247,19 @@ Not applicable.
 \begin{itemize}
 	
 \item
-Python - is a widely used and versatile high level programming language.
+Python: a widely used and versatile high level programming language
 \item
-IDE - integrated development evironment.
+IDE: integrated development environment
 \item
-PyCharm - the chosen IDE for the project.	
+PyCharm: the chosen IDE for the project.	
 \item
-GUI - Graphical User Interface.
+GUI: graphical User Interface
 \item
-Git - Source control for the project. Includes features such as revision history.
+Git: source control for the projec, includes features such as revision history
+\item
+Bitcoin: digital store of value and online payment system
+\item
+Ricardian contract: 
 
 \end{itemize}
 
@@ -266,14 +270,14 @@ Git - Source control for the project. Includes features such as revision history
 \begin{itemize}
 	
 \item
-Our biggest assumption in this project is that all users have and understand what Bitcoin is. As well as a basic understanding of what a peer to peer application is.
+Our biggest assumption in this project is that all users have and understand what Bitcoin is as well as have a basic understanding of what a peer-to-peer application is.
 \end{itemize}
 
 \subsection{Facts}
 \begin{itemize}
 	
 \item
-There are existing frameworks for GUI's. PyQt in particular will be used for the implementation of the client side. 
+There are existing frameworks for GUIs. PyQt in particular will be used for the implementation of the client side. 
 \item
 We will only be developing the client side of the application due to the time constraint of this project.
 	
@@ -285,7 +289,7 @@ We will only be developing the client side of the application due to the time co
 A software application to connect users from all around the world to conduct trade freely is required. Users can add any peers to the network, as well as view their stores, and search for items to purchase. They will also have the ability to have their own market to sell items.
 
 \subsection{The Context of the Work}
-\includegraphics{Trade_Flow_Ecommerce_Physical_Goods_Fixed.jpg}
+%\includegraphics{Trade_Flow_Ecommerce_Physical_Goods_Fixed.jpg}
 
 
 \subsection{Work Partitioning}
@@ -329,40 +333,47 @@ A software application to connect users from all around the world to conduct tra
 \section*{Functional Requirements}
 \begin{enumerate}
 \item
-The application must be able to connect two users without the use of a centralized server or database.
+The application shall have the capability of connecting two users without the use of a centralized server or database.
 \item
-The application must be able to simulate trade between two people.
+The application shall simulate trade between two people.
 \item
-Users must be able to list an item for sale on the application.
+Users shall have the ability to list an item for sale on the application.
 \item
-Users must be able to find items for sale on the application.
+Users shall have the ability to find and search through items for sale on the application.
 \item
-Users should be able to formally define trade contract terms.
+Users shall have the ability to access a seller's store.
 \item
-Users should be able to list any good or service they are in a position to offer for trade.
+Users shall have the ability to formally define trade contract terms through a Ricardian contract.
 \item
-Buyers and sellers should be able to find notaries to oversee the fairness and completeness of transactions.
+Users shall have the ability to list any good or service they are in a position to offer for trade.
+\item
+Buyers and sellers shall have the ability to find and choose notaries to oversee the fairness and completeness of transactions.
+\item
+Users shall have the ability to exchange messages with other users.
+\item
+Buyers shall have the ability to rate sellers with whom they have engaged in trade with.
+\item
+Users shall have the ability to access a seller's reputation.
+\item
+Buyers and sellers shall have the ability to create arbitration cases when they are not satisfied with the progress of a trade.
+\item
+Notaries shall have the ability to mediate a trade based on the terms of the contract by deciding on the outcomes of arbitration cases.
+
+
 \end{enumerate}
 
 \addcontentsline{toc}{section}{Non-functional Requirements}
 \section*{Non-functional Requirements}
-\begin{enumerate}
-\item
-The details of the contract must be user specific. A contract will be short with little detail, long and highly detailed or anywhere in between.
 
-\item
-
-\end{enumerate}
 \section{Look and Feel Requirements}
 \subsection{Appearance Requirements}
-The look and feel of the application must be on par with existing internet commerce services, such as Alibaba and eBay. 
+The look and feel of the application should be on par with existing internet commerce services, such as Alibaba and eBay. 
 
 \subsection{Style Requirements}
-\subparagraph{Content}
-\subparagraph{Motivation}
-\subparagraph{Examples}
-\subparagraph{Fit Criterion}
-\subparagraph{Considerations}
+\begin{itemize}
+\item
+The layout of the application should be organized logically.
+\end{itemize}
 
 \section{Usability and Humanity Requirements}
 \begin{itemize}
@@ -370,7 +381,7 @@ The look and feel of the application must be on par with existing internet comme
 The platform should be deployable by a person with little to no technical computer knowledge.
 
 \item
-The platform should be accessible by any person who could access a marketplace in the real world (ie. anyone should be able to access the platform by their mid-teens).
+The platform should be accessible by any person who could access a marketplace in the real world. For instance, anyone should be able to access the platform by their mid-teens.
 \end{itemize}
 
 \subsection{Personalization and Internationalization Requirements}
@@ -414,266 +425,146 @@ The interface should be traversable with the tab button, to allow persons with h
 
 \section{Performance Requirements}
 \subsection{Speed and Latency Requirements}
-\subparagraph{Content}
-\subparagraph{Motivation}
-\subparagraph{Examples}
-\subparagraph{Fit Criterion}
-\subparagraph{Considerations}
+
 
 
 \subsection{Precision or Accuracy Requirements}
-\subparagraph{Content}
-\subparagraph{Motivation}
-\subparagraph{Examples}
-\subparagraph{Considerations}
+
 
 \subsection{Reliability and Availability Requirements}
-\subparagraph{Content}
-\subparagraph{Motivation}
-\subparagraph{Examples}
-\subparagraph{Considerations}
+
 
 \subsection{Robustness or Fault-Tolerance Requirements}
-\subparagraph{Content}
-\subparagraph{Motivation}
-\subparagraph{Examples}
-\subparagraph{Considerations}
+
 
 \subsection{Capacity Requirements}
-\subparagraph{Content}
-\subparagraph{Motivation}
-\subparagraph{Examples}
-\subparagraph{Fit Criterion}
+
 
 \subsection{Scalability or Extensibility Requirements}
 The application will be implemented as an easily scalable network of nodes that run the trade protocol. In the early days of the application the network will have few known nodes, but as more nodes are added the network will be able to expand. 
 
 \subsection{Longevity Requirements}
-\subparagraph{Content}
-\subparagraph{Motivation}
-\subparagraph{Examples}
 
 \section{Operational and Environmental Requirements}
 
 \subsection{Expected Physical Environment}
-\subparagraph{Content}
-\subparagraph{Motivation}
-\subparagraph{Examples}
-\subparagraph{Considerations}
+
 
 \subsection{Requirements for Interfacing with Adjacent Systems}
-\subparagraph{Content}
-\subparagraph{Motivation}
-\subparagraph{Examples}
-\subparagraph{Fit Criterion}
+
 
 \subsection{Productization Requirements}
-\subparagraph{Content}
-\subparagraph{Motivation}
-\subparagraph{Examples}
-\subparagraph{Considerations}
+
 
 \subsection{Release Requirements}
-\subparagraph{Content}
-\subparagraph{Motivation}
-\subparagraph{Examples}
-\subparagraph{Fit Criterion}
-\subparagraph{Considerations}
+
 
 \section{Maintainability and Support Requirements}
 
 \subsection{Maintenance Requirements}
-\subparagraph{Content}
-\subparagraph{Motivation}
-\subparagraph{Examples}
-\subparagraph{Considerations}
+
 
 \subsection{Supportability Requirements}
-\subparagraph{Content}
-\subparagraph{Motivation}
-\subparagraph{Considerations}
+
 
 \subsection{Adaptability Requirements}
-\subparagraph{Content}
-\subparagraph{Motivation}
-\subparagraph{Examples}
-\subparagraph{Fit Criterion}
-\subparagraph{Considerations}
+
 
 \section{Security Requirements}
 
 \subsection{Access Requirements}
-\subparagraph{Content}
-\subparagraph{Motivation}
-\subparagraph{Examples}
-\subparagraph{Fit Criterion}
-\subparagraph{Considerations}
+
 
 \subsection{Integrity Requirements}
-\subparagraph{Content}
-\subparagraph{Motivation}
-\subparagraph{Examples}
-\subparagraph{Considerations}
+
 
 \subsection{Privacy Requirements}
-\subparagraph{Content}
-\subparagraph{Motivation}
-\subparagraph{Examples}
-\subparagraph{Considerations}
+
 
 \subsection{Audit Requirements}
-\subparagraph{Content}
-\subparagraph{Motivation}
-\subparagraph{Considerations}
 
 \subsection{Immunity Requirements}
-\subparagraph{Content}
-\subparagraph{Motivation}
-\subparagraph{Considerations}
+
 
 \section{Cultural Requirements}
 \subsection{Cultural Requirements}
-\subparagraph{Content}
-\subparagraph{Motivation}
-\subparagraph{Examples}
-\subparagraph{Considerations}
+
 
 \section{Legal Requirements}
 \subsection{Compliance Requirements}
-\subparagraph{Content}
-\subparagraph{Motivation}
-\subparagraph{Examples}
-\subparagraph{Fit Criterion}
-\subparagraph{Considerations}
+
 
 \subsection{Standards Requirements}
-\subparagraph{Content}
-\subparagraph{Motivation}
-\subparagraph{Examples}
-\subparagraph{Fit Criterion}
-\subparagraph{Considerations}
+
 
 \addcontentsline{toc}{section}{Project Issues}
 \section*{Project Issues}
 
 \section{Open Issues}
-\subsection{Appearance Requirements}
-\subparagraph{Content}
-\subparagraph{Motivation}
-\subparagraph{Examples}
-\subparagraph{Considerations}
-\subparagraph{Form}
 
 \section{Off-the-Shelf Solutions}
 
 \subsection{Ready-Made Products}
-\subparagraph{Content}
-\subparagraph{Motivation}
-\subparagraph{Considerations}
+
 
 \subsection{Reusable Components}
-\subparagraph{Content}
-\subparagraph{Motivation}
+
 
 \subsection{Products That Can Be Copied}
-\subparagraph{Content}
-\subparagraph{Motivation}
-\subparagraph{Examples}
-\subparagraph{Considerations}
-\subparagraph{Form}
+
 
 \section{New Problems}
 
 \subsection{Effects on the Current Environment}
-\subparagraph{Content}
-\subparagraph{Motivation}
-\subparagraph{Examples}
-\subparagraph{Considerations}
-\subparagraph{Form}
+
 
 \subsection{Effects on the Installed Systems}
-\subparagraph{Content}
-\subparagraph{Motivation}
-\subparagraph{Form}
+
 
 \subsection{Potential User Problems}
-\subparagraph{Content}
-\subparagraph{Motivation}
+
 
 \subsection{Limitations in the Anticipated Implementation Environment That May Inhibit the New Product}
-\subparagraph{Content}
-\subparagraph{Motivation}
-\subparagraph{Examples}
-\subparagraph{Considerations}
+
 
 \subsection{Follow-Up Problems}
-\subparagraph{Content}
-\subparagraph{Motivation}
-\subparagraph{Considerations}
+
 
 \section{Tasks}
 
 \subsection{Project Planning}
-\subparagraph{Content}
-\subparagraph{Motivation}
-\subparagraph{Considerations}
-\subparagraph{Form}
+
 
 \subsection{Planning of the Development Phase}
-\subparagraph{Content}
-\subparagraph{Motivation}
-\subparagraph{Considerations}
-\subparagraph{Form}
+
 
 \section{Migration to the New Product}
 
 \subsection{Requirements for Migration to the New Product}
-\subparagraph{Content}
-\subparagraph{Motivation}
-\subparagraph{Considerations}
-\subparagraph{Form}
+
 
 \subsection{Data That Has to Be Modified or Translated for the New System}
-\subparagraph{Content}
-\subparagraph{Motivation}
-\subparagraph{Considerations}
-\subparagraph{Form}
+
 
 \section{Risks}
-
-\subparagraph{Content}
-\subparagraph{Motivation}
-\subparagraph{Considerations}
-\subparagraph{Form}
 
 \section{Costs}
 
 \section{User Documentation and Training}
 
 \subsection{User Documentation Requirements}
-\subparagraph{Content}
-\subparagraph{Motivation}
-\subparagraph{Examples}
-\subparagraph{Considerations}
+
 
 \subsection{Training Requirements}
-\subparagraph{Content}
-\subparagraph{Motivation}
-\subparagraph{Considerations}
+
 
 \section{Waiting Room}
 
-\subparagraph{Content}
-\subparagraph{Motivation}
-\subparagraph{Considerations}
 
 \section{Ideas for Solutions}
 
 \subsection{User Documentation Requirements}
-\subparagraph{Content}
-\subparagraph{Motivation}
-\subparagraph{Considerations}
-\subparagraph{Form}
+
 
 \addcontentsline{toc}{section}{List of Figures}
 \section*{List of Figures}
