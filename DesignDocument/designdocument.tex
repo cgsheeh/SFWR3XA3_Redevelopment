@@ -46,12 +46,48 @@ This documents outlines design for the OpenBazaar redevelopment project.
 
 \addcontentsline{toc}{section}{Introduction}
 \section*{Introduction}
+\subsection{Purpose}
+The purpose of the document is to describe the implementation of the OpenBazaar that was described in the Software Requirements Specification (SRS) document that was completed earlier this semester.
+
+\subsection{Scope}
+This document describes the implementation details of all major functions that create the OpenBazaar, from every users perspective(buyer, seller, notary).
+
+This document is intended for future developers, and designers who wish to improve or better understand the design of the OpenBazaar.
+
 
 \addcontentsline{toc}{section}{Anticipated and Unlikely Changes}
 \section*{Anticipated and Unlikely Changes}
+This section is intended for all possible changes that may occur to the system. They will be listed in order from most likely to least likely.
+\newline
+\newline
+\subsection{Anticipated Changes}
+\begin{itemize}
+\item
+The hardware the OpenBazaar runs on
+\item
+The operating system the Openbazaar runs on
+\item
+The users public and private key
+\item
+The users role(buyer, seller, notary)
+\item
+The users IP Address
+\item
+The users Bitcoin information
+\item
+The users digital signature
+\item
+The users GUID
+\item
+The users market (items, price, description)
+\item
+The users personal settings (display picture)
+\item
+The algorithm to search for nodes on the network
+\end{itemize}
 
-\section{Anticipated Changes}
-\section{Unlikely Changes}
+\subsection{Unlikely Changes}
+
 
 \addcontentsline{toc}{section}{Module Hierarchy}
 \section*{Module Hierarchy}
@@ -61,9 +97,7 @@ This documents outlines design for the OpenBazaar redevelopment project.
 
 \addcontentsline{toc}{section}{Module Decomposition}
 \section*{Module Decomposition}
-\section{Hardware Hiding Modules}
-\section{Behaviour Hiding Modules}
-\section{Software Decision Modules}
+
 
 \addcontentsline{toc}{section}{Traceability Matrix}
 \section*{Traceability Matrix}
