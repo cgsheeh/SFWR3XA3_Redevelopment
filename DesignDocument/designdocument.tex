@@ -1,14 +1,48 @@
 \documentclass{article}
 
+\usepackage{xcolor} % for different colour comments
+\usepackage{graphicx}
+\graphicspath{{/home/danny/Pictures/}}
+
+%% Comments
+\newif\ifcomments\commentstrue
+
+\newcommand{\cs}[1]{\authornote{blue}{cs}{#1}} %Connor
+\newcommand{\dm}[1]{\authornote{blue}{dm}{#1}} %Danny
+\newcommand{\sm}[1]{\authornote{blue}{SM}{#1}} %Shani
+
+\renewcommand*\contentsname{Table of Contents}
 
 \begin{document}
 
-% Create title page
-\title{OpenBazaar Redevelopment Design Document}
-\author{Daniel Mandel - mandeldr@mcmaster.ca\\Shandelle Murray - murras25@mcmaster.ca\\Connor Sheehan}
-\date{Monday, November 2nd, 2015}
+\title{OpenBazaar Redevelopment - Requirements}
+\author{The Fair Traders \\ Daniel Mandel - mandeldr \\ Shandelle Murray - murras25 \\ Connor Sheehan - sheehacg}
+\date{\today}
 \maketitle
 
+\begin{abstract}
+This documents outlines requirements for the OpenBazaar redevelopment project.
+\end{abstract}
 
+\newpage
+
+\tableofcontents
+
+\addcontentsline{toc}{section}{Revision History}
+\section*{Revision History}
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{||c c c c||}
+ \hline
+ Revision Number & Revision Date & Description of Change & Author \\ [0.5ex]
+ \hline\hline
+ 1 & November 4th, 2015 & Created Revision History & Daniel Mandel \\ [1ex]
+ \hline
+\end{tabular}
+\caption{Table to capture the history of the document}
+\label{table:1}
+\end{table}
 
 \end{document}
+
