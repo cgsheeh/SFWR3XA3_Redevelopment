@@ -2,7 +2,7 @@
 
 \usepackage{xcolor} % for different colour comments
 \usepackage{graphicx}
-\graphicspath{{/home/danny/Pictures/}}
+\graphicspath{{/home/danny/Pictures/}} %Will need to be compiled on Danny's machine with this line!!!
 
 %% Comments
 \newif\ifcomments\commentstrue
@@ -15,7 +15,7 @@
 
 \begin{document}
 
-\title{OpenBazaar Redevelopment - Requirements}
+\title{OpenBazaar Redevelopment - Design Document}
 \author{The Fair Traders \\ Daniel Mandel - mandeldr \\ Shandelle Murray - murras25 \\ Connor Sheehan - sheehacg}
 \date{\today}
 \maketitle
@@ -84,20 +84,201 @@ The users market (items, price, description)
 The users personal settings (display picture)
 \item
 The algorithm to search for nodes on the network
+\item
+Personalization options for a user market.
 \end{itemize}
 
 \subsection{Unlikely Changes}
+\begin{itemize}
+\item
+Bitcoin as a medium of exchange
 
+\item
+Ricardian contract structure
+
+\item
+
+\end{itemize}
 
 \addcontentsline{toc}{section}{Module Hierarchy}
 \section*{Module Hierarchy}
+This section outlines the modules used in the implementation of the application. Each module is organized and decomposed according to the type of secret it contains.
+\begin{itemize}
+\item
+Server/Network Module
+\item
+Connector Module
+\item
+GUI Module
+\item
+Node Module
+\item
+Identity Module
+\item
+Ricardian Contract Module
+\item
+DHT/Routing Table Module
+\item
+Settings Module
+\item
+Store Module
+\item
+Notary Module
+\item
+Bitcoin Module
+\end{itemize}
+
+
+
+\begin{itemize}
+\item
+Hardware Hiding Module
+\begin{itemize}
+\item
+GUI Module. This module will contain hardware-independent modules from the PyQt4 library.
+\end{itemize}
+
+\item
+Behaviour Hiding Module
+\begin{itemize}
+
+
+\item
+Node Module
+\begin{itemize}
+\item
+Routing table module
+\item
+Published contract module
+\end{itemize}
+
+
+\item
+Identity Module
+\begin{itemize}
+\item
+Settings Module
+
+\item
+Stores Module
+
+\item
+Notaries Module
+
+\item
+Active Contract Module
+\end{itemize} % End id module itemize
+
+\end{itemize} % End Behaviour hiding itemize
+
+\item
+Software Decision Module % More related to algorithms, hashing 
+\begin{itemize}
+\item
+Algorithms Module
+
+\item
+Initialization Module
+\end{itemize} % End Software Decision itemize
+
+\end{itemize} % End Module hierarchy itemize
+
+
+
+
 
 \addcontentsline{toc}{section}{Connection Between Requirements and Design}
 \section*{Connection Between Requirements and Design}
 
 \addcontentsline{toc}{section}{Module Decomposition}
 \section*{Module Decomposition}
+Below is a decomposition of each module in the application design, with details of the module's provided services and encapsulated secrets.
 
+\subsection{Hardware Hiding Modules}
+\begin{enumerate}
+\item
+GUI Module
+
+\begin{itemize}
+\item
+\textbf{Secret:} The underlying machine hardware and operating system environment for the application.
+
+\item
+\textbf{Services:} The GUI module is responsible for handling user interaction with the system. Provides controllers which take inputted data and relay to the frontend-to-backend connector for further analysis and use.
+
+\item
+\textbf{Implemented by:} The module has been partly implemented via the PyQt4 framework. Implementation will be done by creating components which inherit from classes in the PyQt4 module.
+\end{itemize}
+\end{enumerate}
+
+\subsection{Behaviour Hiding Modules}
+\begin{enumerate}
+\item
+Backend Module
+\begin{itemize}
+\item
+\textbf{Secret:} The underlying data and behaviour requirements of the system.
+
+\item
+\textbf{Services:} The backend module is primarily responsible for holding all of the modules relevant to system requirements. It holds user data including all given personalization data, trade contracts and application settings. User interaction will pass through the connector module to this module.
+\end{itemize}
+
+\item
+Node module
+\begin{itemize}
+\item
+\textbf{Secret:} Information related to the peer-to-peer networking component of the application.
+
+\item
+\textbf{Services:} This module provides all data and behaviours that make a machine a valid network node.
+\end{itemize}
+
+\item
+DHT Module
+\begin{itemize}
+\item
+\textbf{Secret:} The contents and implementation of the distributed hash table and routing talbes for the Kademlia peer-to-peer network.
+
+\item
+\textbf{Services:} The DHT module provides information about the distributed hash table used for networking. The module does node lookups and returns information about 
+\end{itemize}
+\end{enumerate}
+
+\subsection*{Description}
+The OpenBazaar modules are broken up into logical components, abstracting away portions of the application that do not depend on one another. The first logical decomposition of the application is to abstract the details of the graphical user interface from the details of the data implementation. Each of these respective components will run as its own thread in the application environment. The data implementation can then be manipulated and accessed by the user via interaction with the GUI. To facilitate this interaction a connector module will be created. This module will expose an interface for the GUI to interact with that submits and returns data for graphical display to the user.
+
+\subsection*{Front-End Client}
+\begin{itemize}
+\item
+BazaarMain
+
+%Sublist in BazaarMain
+\begin{itemize}
+\item
+Inherits from QMainWindow in PyQt4 module
+
+\item
+All other GUI components are contained within the QMainWindow
+
+\item
+Instance variable menuBar holds the menu bar of the application
+\end{itemize}
+
+\item
+\end{itemize}
+
+
+\subsection*{Back-End Server}
+\begin{itemize}
+\item
+
+\end{itemize}
+
+\subsection*{Server-Client Connection}
+\begin{itemize}
+\item
+
+\end{itemize}
 
 \addcontentsline{toc}{section}{Traceability Matrix}
 \section*{Traceability Matrix}
