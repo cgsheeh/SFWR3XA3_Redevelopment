@@ -43,6 +43,8 @@ This documents outlines design for the OpenBazaar redevelopment project.
  \hline\hline
  1 & November 4th, 2015 & Created Revision History & Daniel Mandel \\ [1ex]
  \hline
+ 2 & November 6th, 2015 & Added to Introduction, added numbering, created tables & Shandelle Murray \\ [1ex]
+ \hline
 \end{tabular}
 \caption{Table to capture the history of the document}
 \label{table:1}
@@ -68,21 +70,38 @@ The purpose of this project is to design and implement OpenBazaar, a free, open 
 This section is intended for all possible changes that may occur to the system. They will be listed in order from most likely to least likely.
 \newline
 \newline
-\subsection{Anticipated Changes}
+\subsection{Anticipated Changes} %need to have 1 ac per module (secret)
 \begin{description}
 	\item[AC1]
-	The hardware the OpenBazaar runs on
+	The hardware and operating system the OpenBazaar runs on
 	\item[AC2]
-	The operating system the Openbazaar runs on
+	
 	\item[AC3]
 	A user's information such as their: public and private key, role (buyer, seller, notary), IP Address, Bitcoin information, digital signature, GUID, market(items,price,description), and personal settings (i.e. display picture)
 	\item[AC4]
 	The algorithm to search for nodes on the network
 	\item[AC5]
 	Personalization options for a user market
+	\item[AC6]
+	
+	\item[AC7]
+	
+	\item[AC8]
+	
+	\item[AC9]
+	
+	\item[AC10]
+	
+	\item[AC11]
+	
+	\item[AC12]
+	
 \end{description}
 
 \subsection{Unlikely Changes}
+
+The following are aspects of the design that are unlikely to change.
+
 \begin{description}
 \item[UC1]
 Bitcoin as a medium of exchange
@@ -90,26 +109,25 @@ Bitcoin as a medium of exchange
 \item[UC2]
 Ricardian contract structure
 
-\item
 
 \end{description}
 
 \addcontentsline{toc}{section}{Module Hierarchy}
 \section*{Module Hierarchy}
-This section outlines the modules used in the implementation of the application. Each module is organized and decomposed according to the type of secret it contains.
+This section outlines the modules used in the implementation of the application. Each module is organized and decomposed according to the type of secret it contains. The following modules are represented by leaves in the hierarchy tree.
 \begin{description}
 \item[M1]
-Server/Network Module
-\item[M2]
-Connector Module
-\item[M3]
 GUI Module
+\item[M2]
+Server/Network Module %add to table somewhere
+\item[M3]
+Connector Module %add to table
 \item[M4]
-Node Module
+Published Contract Module
 \item[M5]
-Identity/Backend Module
+Algorithms Module
 \item[M6]
-Ricardian Contract Module
+Active Contract Module
 \item[M7]
 DHT/Routing Table Module
 \item[M8]
@@ -119,7 +137,10 @@ Store Module
 \item[M10]
 Notary Module
 \item[M11]
-Bitcoin Module
+Bitcoin Module % add to table
+\item[M12]
+Initialization Module
+
 \end{description}
 
 \begin{table}[h!]
@@ -133,11 +154,11 @@ Bitcoin Module
 		\midrule
 		
 		\multirow{5}{0.4\textwidth}{Behaviour-Hiding Module} & Node Module & Published Contract Module \\
+		& ~ & DHT/Routing Table Module\\
 		& Identity Module & Settings Module\\
 		& ~ & Store Module\\
 		& ~ & Notary Module\\
 		& ~ & Active Contract Module\\
-		& DHT/Routing Table Module & ~\\
 		\midrule
 		
 		\multirow{3}{0.4\textwidth}{Software Decision Module} & Algorithms Module & ~ \\
@@ -248,6 +269,58 @@ Instance variable menuBar holds the menu bar of the application
 \addcontentsline{toc}{section}{Traceability Matrix}
 \section*{Traceability Matrix}
 
+Below are two traceability matrices. The first demonstrates the connection between the functional requirements and modules while the second describes the connection between the anticipated changes and modules.
+
+\begin{table}[]
+	\centering
+	\begin{tabular}{p{0.2\textwidth} p{0.6\textwidth}}
+		\toprule
+		\textbf{Req.} & \textbf{Modules}\\
+		\midrule
+		R1 & M1, M7\\
+		R2 & M1, M7\\
+		R3 & M6, M9\\
+		R4 & M3, M9\\
+		R5 & M3, M9\\
+		R6 & M4, M6\\
+		R7 & M4, M6\\
+		R8 & M10\\
+		R9 & \\ % messages
+		R10 & \\ % rate sellers
+		R11 & \\ %reputation
+		R12 & M10\\
+		R13 & M10\\
+		\bottomrule
+	\end{tabular}
+	\caption{Trace Between Requirements and Modules}
+	
+\end{table}
+
+\begin{table}[]
+	\centering
+	\begin{tabular}{p{0.2\textwidth} p{0.6\textwidth}}
+		\toprule
+		\textbf{AC} & \textbf{Modules}\\
+		\midrule
+		AC1 & M3\\ %should be one to one.. need to organize anticipated changes
+		AC2 & M3\\
+		AC3 & M8\\
+		AC4 & \\
+		AC5 & \\
+		AC6 & \\
+		AC7 & \\
+		AC8 & \\
+		AC9 & \\
+		AC10 & \\
+		AC11 & \\
+		AC12 & \\
+		
+		\bottomrule
+	\end{tabular}
+	\caption{Trace Between Anticipated Changes and Modules}
+	
+\end{table}
+
 \addcontentsline{toc}{section}{Use Hierarchy Between Modules}
 \section*{Use Hierarchy Between Modules}
 
@@ -351,7 +424,6 @@ Ledger Module
 Contains info created as the contract is signed and processed, to ensure validity
 
 \end{comment}
-
 
 \end{document}
 
