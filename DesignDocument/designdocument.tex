@@ -47,12 +47,14 @@ This documents outlines design for the OpenBazaar redevelopment project.
 \addcontentsline{toc}{section}{Introduction}
 \section*{Introduction}
 \subsection{Purpose}
-The purpose of the document is to describe the implementation of the OpenBazaar that was described in the Software Requirements Specification (SRS) document that was completed earlier this semester.
+The purpose of this document is to describe the implementation of the OpenBazaar that was described in the Software Requirements Specification (SRS) document completed earlier this semester. It aims to outline a design that will meet all of the functional and non-functional requirements described in the SRS. It is also meant to be a template for creating the Module Interface Specification document, MIS, which will describe the modules in further detail. 
+
+The design principle being used to implement this project is the principle of information hiding which was first described by David Parnas (Parnas,1972). The idea behind this design strategy is that each module contains some secret, essentially hiding a design decision from the rest of the system. As a result of this method of modularization, aspects of the system that are likely to change are hidden within a module and, when changed, do not affect the rest of the modules. This is important for any software design as technology is constantly evolving and software often needs to be updated in order to remain relevant.
+
+This document is intended for future developers and designers who wish to improve or better understand the design of the OpenBazaar.
 
 \subsection{Scope}
-This document describes the implementation details of all major functions that create the OpenBazaar, from every users perspective(buyer, seller, notary).
-
-This document is intended for future developers, and designers who wish to improve or better understand the design of the OpenBazaar.
+The purpose of this project is to design and implement OpenBazaar, a free, open market run through a peer-to-peer network that aims to replace centralized services such as eBay or Amazon by providing a means in which to participate in online trade. Major users of the OpenBazaar include buyers, sellers, and notaries. This document describes the implementation details of all major functions that create the OpenBazaar, from every type of user's perspective: buyers, sellers, and notaries.
 
 
 \addcontentsline{toc}{section}{Anticipated and Unlikely Changes}
@@ -62,30 +64,16 @@ This section is intended for all possible changes that may occur to the system. 
 \newline
 \subsection{Anticipated Changes}
 \begin{itemize}
-\item
-The hardware the OpenBazaar runs on
-\item
-The operating system the Openbazaar runs on
-\item
-The users public and private key
-\item
-The users role(buyer, seller, notary)
-\item
-The users IP Address
-\item
-The users Bitcoin information
-\item
-The users digital signature
-\item
-The users GUID
-\item
-The users market (items, price, description)
-\item
-The users personal settings (display picture)
-\item
-The algorithm to search for nodes on the network
-\item
-Personalization options for a user market.
+	\item
+	The hardware the OpenBazaar runs on
+	\item
+	The operating system the Openbazaar runs on
+	\item
+	A user's information such as their: public and private key, role (buyer, seller, notary), IP Address, Bitcoin information, digital signature, GUID, market(items,price,description), and personal settings (i.e. display picture)
+	\item
+	The algorithm to search for nodes on the network
+	\item
+	Personalization options for a user market
 \end{itemize}
 
 \subsection{Unlikely Changes}
@@ -291,88 +279,88 @@ Instance variable menuBar holds the menu bar of the application
 % EXTREMELY ROUGH MODULE DECOMPOSITION
 Modules for GUI 
 
-    QMainWindow - RedevBazaar 
+QMainWindow - RedevBazaar 
 
-        Holds everything else in the application 
+Holds everything else in the application 
 
-        RedevBazaarConnector 
+RedevBazaarConnector 
 
-    QVBoxLayout 
+QVBoxLayout 
 
-        Main layout for two windows 
+Main layout for two windows 
 
-    QLabel - Logo 
+QLabel - Logo 
 
-        Holds main logo, top right corner 
+Holds main logo, top right corner 
 
-    Avatar photo - QLabel 
+Avatar photo - QLabel 
 
-        Holds any chosen avatar logo from the user 
+Holds any chosen avatar logo from the user 
 
-    QLineEdit - Search bar 
+QLineEdit - Search bar 
 
-    QTabWidget 
+QTabWidget 
 
-        Holds the menus for messages, etc 
+Holds the menus for messages, etc 
 
-    QButton - Search 
+QButton - Search 
 
-    QListWidget - Merchant list 
+QListWidget - Merchant list 
 
-    QLineEdit - Add merchants 
+QLineEdit - Add merchants 
 
-    QButton - Add Merchant confirm 
+QButton - Add Merchant confirm 
 
-    QListWidget - Notary list 
+QListWidget - Notary list 
 
-    QLineEdit - Add Notary 
+QLineEdit - Add Notary 
 
-    QButton - Add notary confirm 
+QButton - Add notary confirm 
 
-    QListWidget - Past contracts 
+QListWidget - Past contracts 
 
- 
+
 Modules for Server 
 Networking 
 
-    The server end of the application has a networking component to enable the decentralization of the application. 
+The server end of the application has a networking component to enable the decentralization of the application. 
 
-    This component includes: 
+This component includes: 
 
-        Unique GUID for network node 
+Unique GUID for network node 
 
-            Create a public key between 1 - 2^256, derive private key from that 
+Create a public key between 1 - 2^256, derive private key from that 
 
-            Sign own public key with private key 
+Sign own public key with private key 
 
-            SHA256 this self-signed key 
+SHA256 this self-signed key 
 
-            RIPEMD160 the SHA256 hash 
+RIPEMD160 the SHA256 hash 
 
-        Distributed hash table 
+Distributed hash table 
 
-            Row would be GUID, dynamic IP, port, contract hash, keyword 
+Row would be GUID, dynamic IP, port, contract hash, keyword 
 
-            Contains list of nodes within similar range. Allows for easy finding of other network nodes 
+Contains list of nodes within similar range. Allows for easy finding of other network nodes 
 
-     
+
 
 Ricardian Contracts 
 Metadata 
 
-    Info about contract creation date, valid period etc 
+Info about contract creation date, valid period etc 
 
 ID Module 
 
-    Contains all user info as given by the user 
+Contains all user info as given by the user 
 
 Trade module 
 
-    Contains information regarding services/goods provided and bitcoin amount received 
+Contains information regarding services/goods provided and bitcoin amount received 
 
 Ledger Module 
 
-    Contains info created as the contract is signed and processed, to ensure validity
+Contains info created as the contract is signed and processed, to ensure validity
 
 \end{comment}
 
