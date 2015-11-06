@@ -2,6 +2,8 @@
 
 \usepackage{xcolor} % for different colour comments
 \usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{multirow}
 \graphicspath{{/home/danny/Pictures/}} %Will need to be compiled on Danny's machine with this line!!!
 
 %% Comments
@@ -29,6 +31,8 @@ This documents outlines design for the OpenBazaar redevelopment project.
 \tableofcontents
 
 \addcontentsline{toc}{section}{Revision History}
+
+\newpage
 \section*{Revision History}
 
 \begin{table}[h!]
@@ -43,6 +47,8 @@ This documents outlines design for the OpenBazaar redevelopment project.
 \caption{Table to capture the history of the document}
 \label{table:1}
 \end{table}
+
+\newpage
 
 \addcontentsline{toc}{section}{Introduction}
 \section*{Introduction}
@@ -63,116 +69,87 @@ This section is intended for all possible changes that may occur to the system. 
 \newline
 \newline
 \subsection{Anticipated Changes}
-\begin{itemize}
-	\item
+\begin{description}
+	\item[AC1]
 	The hardware the OpenBazaar runs on
-	\item
+	\item[AC2]
 	The operating system the Openbazaar runs on
-	\item
+	\item[AC3]
 	A user's information such as their: public and private key, role (buyer, seller, notary), IP Address, Bitcoin information, digital signature, GUID, market(items,price,description), and personal settings (i.e. display picture)
-	\item
+	\item[AC4]
 	The algorithm to search for nodes on the network
-	\item
+	\item[AC5]
 	Personalization options for a user market
-\end{itemize}
+\end{description}
 
 \subsection{Unlikely Changes}
-\begin{itemize}
-\item
+\begin{description}
+\item[UC1]
 Bitcoin as a medium of exchange
 
-\item
+\item[UC2]
 Ricardian contract structure
 
 \item
 
-\end{itemize}
+\end{description}
 
 \addcontentsline{toc}{section}{Module Hierarchy}
 \section*{Module Hierarchy}
 This section outlines the modules used in the implementation of the application. Each module is organized and decomposed according to the type of secret it contains.
-\begin{itemize}
-\item
+\begin{description}
+\item[M1]
 Server/Network Module
-\item
+\item[M2]
 Connector Module
-\item
+\item[M3]
 GUI Module
-\item
+\item[M4]
 Node Module
-\item
-Identity Module
-\item
+\item[M5]
+Identity/Backend Module
+\item[M6]
 Ricardian Contract Module
-\item
+\item[M7]
 DHT/Routing Table Module
-\item
+\item[M8]
 Settings Module
-\item
+\item[M9]
 Store Module
-\item
+\item[M10]
 Notary Module
-\item
+\item[M11]
 Bitcoin Module
-\end{itemize}
+\end{description}
 
+\begin{table}[h!]
+	\centering
+	\begin{tabular}{p{0.4\textwidth} p{0.4\textwidth} p{0.4\textwidth}}
+		\toprule
+		\textbf{Level 1} & \textbf{Level 2} & \textbf{Level 3}\\
+		\midrule
+		
+		{Hardware-Hiding Module} & GUI Module & ~ \\
+		\midrule
+		
+		\multirow{5}{0.4\textwidth}{Behaviour-Hiding Module} & Node Module & Published Contract Module \\
+		& Identity Module & Settings Module\\
+		& ~ & Store Module\\
+		& ~ & Notary Module\\
+		& ~ & Active Contract Module\\
+		& DHT/Routing Table Module & ~\\
+		\midrule
+		
+		\multirow{3}{0.4\textwidth}{Software Decision Module} & Algorithms Module & ~ \\
+		& Initialization Module & ~ \\
+		\bottomrule
+		
+	\end{tabular}
+	\caption{Module Hierarchy}
+	\label{TblMH}
+\end{table}
 
-
-\begin{itemize}
-\item
-Hardware Hiding Module
-\begin{itemize}
-\item
-GUI Module. This module will contain hardware-independent modules from the PyQt4 library.
-\end{itemize}
-
-\item
-Behaviour Hiding Module
-\begin{itemize}
-
-
-\item
-Node Module
-\begin{itemize}
-\item
-Routing table module
-\item
-Published contract module
-\end{itemize}
-
-
-\item
-Identity Module
-\begin{itemize}
-\item
-Settings Module
-
-\item
-Stores Module
-
-\item
-Notaries Module
-
-\item
-Active Contract Module
-\end{itemize} % End id module itemize
-
-\end{itemize} % End Behaviour hiding itemize
-
-\item
-Software Decision Module % More related to algorithms, hashing 
-\begin{itemize}
-\item
-Algorithms Module
-
-\item
-Initialization Module
-\end{itemize} % End Software Decision itemize
-
-\end{itemize} % End Module hierarchy itemize
-
-
-
+%front end client, back-end server, server-client connection?
 
 
 \addcontentsline{toc}{section}{Connection Between Requirements and Design}
@@ -202,7 +179,7 @@ GUI Module
 \subsection{Behaviour Hiding Modules}
 \begin{enumerate}
 \item
-Backend Module
+Identity/Backend Module
 \begin{itemize}
 \item
 \textbf{Secret:} The underlying data and behaviour requirements of the system.
@@ -274,6 +251,17 @@ Instance variable menuBar holds the menu bar of the application
 \addcontentsline{toc}{section}{Use Hierarchy Between Modules}
 \section*{Use Hierarchy Between Modules}
 
+\addcontentsline{toc}{section}{Detailed Timeline}
+\section*{Detailed Timeline}
+
+\addcontentsline{toc}{section}{Gantt Chart}
+\section*{Gantt Chart}
+
+\addcontentsline{toc}{section}{Pert Chart}
+\section*{Pert Chart}
+
+\addcontentsline{toc}{section}{References}
+\section*{References}
 
 \begin{comment}
 % EXTREMELY ROUGH MODULE DECOMPOSITION
@@ -363,7 +351,6 @@ Ledger Module
 Contains info created as the contract is signed and processed, to ensure validity
 
 \end{comment}
-
 
 
 \end{document}
