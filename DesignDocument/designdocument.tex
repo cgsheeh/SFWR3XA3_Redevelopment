@@ -4,7 +4,7 @@
 \usepackage{graphicx}
 \usepackage{booktabs}
 \usepackage{multirow}
-\graphicspath{{/home/danny/Pictures/}} %Will need to be compiled on Danny's machine with this line!!!
+\graphicspath{{images/}} %Will need to be compiled on Danny's machine with this line!!!
 
 %% Comments
 \newif\ifcomments\commentstrue
@@ -329,38 +329,7 @@ Initialization Module
 \subsection*{Description}
 The OpenBazaar modules are broken up into logical components, abstracting away portions of the application that do not depend on one another. The first logical decomposition of the application is to abstract the details of the graphical user interface from the details of the data implementation. Each of these respective components will run as its own thread in the application environment. The data implementation can then be manipulated and accessed by the user via interaction with the GUI. To facilitate this interaction a connector module will be created. This module will expose an interface for the GUI to interact with that submits and returns data for graphical display to the user.
 
-\subsection*{Front-End Client}
-\begin{itemize}
-\item
-BazaarMain
 
-%Sublist in BazaarMain
-\begin{itemize}
-\item
-Inherits from QMainWindow in PyQt4 module
-
-\item
-All other GUI components are contained within the QMainWindow
-
-\item
-Instance variable menuBar holds the menu bar of the application
-\end{itemize}
-
-\item
-\end{itemize}
-
-
-\subsection*{Back-End Server}
-\begin{itemize}
-\item
-
-\end{itemize}
-
-\subsection*{Server-Client Connection}
-\begin{itemize}
-\item
-
-\end{itemize}
 
 \addcontentsline{toc}{section}{Traceability Matrix}
 \section*{Traceability Matrix}
@@ -419,107 +388,23 @@ Below are two traceability matrices. The first demonstrates the connection betwe
 
 \addcontentsline{toc}{section}{Use Hierarchy Between Modules}
 \section*{Use Hierarchy Between Modules}
+\includegraphics{use_hierarchy}
 
+Above is a use hierarchy for the modules in the OpenBazaar application.
 \addcontentsline{toc}{section}{Detailed Timeline}
 \section*{Detailed Timeline}
 
 \addcontentsline{toc}{section}{Gantt Chart}
 \section*{Gantt Chart}
+\includegraphics{gantt_chart}
 
+Included above is a Gantt chart outlining project deadlines.
 \addcontentsline{toc}{section}{Pert Chart}
 \section*{Pert Chart}
 
 \addcontentsline{toc}{section}{References}
 \section*{References}
 
-\begin{comment}
-% EXTREMELY ROUGH MODULE DECOMPOSITION
-Modules for GUI 
-
-QMainWindow - RedevBazaar 
-
-Holds everything else in the application 
-
-RedevBazaarConnector 
-
-QVBoxLayout 
-
-Main layout for two windows 
-
-QLabel - Logo 
-
-Holds main logo, top right corner 
-
-Avatar photo - QLabel 
-
-Holds any chosen avatar logo from the user 
-
-QLineEdit - Search bar 
-
-QTabWidget 
-
-Holds the menus for messages, etc 
-
-QButton - Search 
-
-QListWidget - Merchant list 
-
-QLineEdit - Add merchants 
-
-QButton - Add Merchant confirm 
-
-QListWidget - Notary list 
-
-QLineEdit - Add Notary 
-
-QButton - Add notary confirm 
-
-QListWidget - Past contracts 
-
-
-Modules for Server 
-Networking 
-
-The server end of the application has a networking component to enable the decentralization of the application. 
-
-This component includes: 
-
-Unique GUID for network node 
-
-Create a public key between 1 - 2^256, derive private key from that 
-
-Sign own public key with private key 
-
-SHA256 this self-signed key 
-
-RIPEMD160 the SHA256 hash 
-
-Distributed hash table 
-
-Row would be GUID, dynamic IP, port, contract hash, keyword 
-
-Contains list of nodes within similar range. Allows for easy finding of other network nodes 
-
-
-
-Ricardian Contracts 
-Metadata 
-
-Info about contract creation date, valid period etc 
-
-ID Module 
-
-Contains all user info as given by the user 
-
-Trade module 
-
-Contains information regarding services/goods provided and bitcoin amount received 
-
-Ledger Module 
-
-Contains info created as the contract is signed and processed, to ensure validity
-
-\end{comment}
 
 \end{document}
 
