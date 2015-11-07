@@ -250,13 +250,82 @@ Node module
 DHT Module
 \begin{itemize}
 \item
-\textbf{Secret:} The contents and implementation of the distributed hash table and routing talbes for the Kademlia peer-to-peer network.
+\textbf{Secret:} The contents and implementation of the distributed hash table and routing tables for the Kademlia peer-to-peer network.
 
 \item
 \textbf{Services:} The DHT module provides information about the distributed hash table used for networking. The module does node lookups and returns information about 
 \end{itemize}
-\end{enumerate}
 
+\item
+Published Contract Module
+\begin{itemize}
+\item
+\textbf{Secret:} Implementation structure of published contracts available on the network.
+
+\item
+\textbf{Services:} The Published Contract module holds information about all the published contracts known to the network node. Published contracts include information about the publisher that can be used to request detailed store, user or notary information to display.
+\end{itemize}
+
+\item
+Settings Module
+\begin{itemize}
+\item
+\textbf{Secret:} Encryption and storage of confidential user data.
+
+\item
+\textbf{Services:} The Settings Module provides the implementation and storage of user settings and personal information.
+\end{itemize}
+
+\item
+Store Module
+\begin{itemize}
+\item
+\textbf{Secret:} Implementation of store data.
+
+\item
+\textbf{Services:} Holds information about stores that have been visited on the application for future use. For example if the node is no longer on the network (machine is offline, application is not active) the store can still be visited for viewing.
+\end{itemize}
+
+\item
+Notary Module
+\begin{itemize}
+\item
+\textbf{Secret:} Implementation of notary data.
+
+\item
+\textbf{Services:} Holds information about known notaries for viewing and messaging.
+\end{itemize}
+
+\item
+Active Contract Module
+\begin{itemize]
+\item
+\textbf{Secret:} Storage of confidential contract and ledger data.
+
+\item
+\textbf{Services:} Securely stores details about contracts currently undertaken by the user. This includes all the potential roles of notary, buyer or seller.
+\end{itemize}
+
+\item
+Algorithms Module
+\begin{itemize}
+\item
+\textbf{Secret:} Algorithms used by application.
+
+\item
+\textbf{Services:} Contains and performs algorithmic calculations such as hashes, public and private key generation.
+\end{itemize}
+
+\item
+Initialization Module
+\begin{itemize}
+\item
+\textbf{Secret:} Bootstrap procedure and node initialization information.
+
+\item
+\textbf{Services:} Provides initialization steps of application for first use including pubkey and privkey generation, GUID creation and connecting the node to the network.
+\end{itemize}
+\end{enumerate}
 \subsection*{Description}
 The OpenBazaar modules are broken up into logical components, abstracting away portions of the application that do not depend on one another. The first logical decomposition of the application is to abstract the details of the graphical user interface from the details of the data implementation. Each of these respective components will run as its own thread in the application environment. The data implementation can then be manipulated and accessed by the user via interaction with the GUI. To facilitate this interaction a connector module will be created. This module will expose an interface for the GUI to interact with that submits and returns data for graphical display to the user.
 
