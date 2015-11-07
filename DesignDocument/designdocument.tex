@@ -57,7 +57,7 @@ This documents outlines design for the OpenBazaar redevelopment project.
 \subsection{Purpose}
 The purpose of this document is to describe the implementation of the OpenBazaar that was described in the Software Requirements Specification (SRS) document completed earlier this semester. It aims to outline a design that will meet all of the functional and non-functional requirements described in the SRS. It is also meant to be a template for creating the Module Interface Specification document, MIS, which will describe the modules in further detail. 
 
-The design principle being used to implement this project is the principle of information hiding which was first described by David Parnas (Parnas,1972). The idea behind this design strategy is that each module contains some secret, essentially hiding a design decision from the rest of the system. As a result of this method of modularization, aspects of the system that are likely to change are hidden within a module and, when changed, do not affect the rest of the modules. This is important for any software design as technology is constantly evolving and software often needs to be updated in order to remain relevant.
+The design principle being used to implement this project is the principle of information hiding which was first described by David Parnas. The idea behind this design strategy is that each module contains some secret, essentially hiding a design decision from the rest of the system. As a result of this method of modularization, aspects of the system that are likely to change are hidden within a module and, when changed, do not affect the rest of the modules. This is important for any software design as technology is constantly evolving and software often needs to be updated in order to remain relevant.
 
 This document is intended for future developers and designers who wish to improve or better understand the design of the OpenBazaar. It is organized into sections of anticipated and unlikely changes to the design, a description of the module hierarchy, a decomposition of each module in the design, and traceability matrices demonstrating the connections between modules and requirements as well as modules and anticipated changes.
 
@@ -70,7 +70,7 @@ The purpose of this project is to design and implement OpenBazaar, a free, open 
 This section is intended for all possible changes that may occur to the system. They will be listed in order from most likely to least likely.
 \newline
 \newline
-\subsection{Anticipated Changes} %need to have 1 ac per module (secret)
+\subsection{Anticipated Changes}
 \begin{description}
 	\item[AC1]
 	The hardware and operating system the OpenBazaar runs on
@@ -81,27 +81,29 @@ This section is intended for all possible changes that may occur to the system. 
 	\item[AC4]
 	The algorithm to search for nodes on the network
 	\item[AC5]
-	Personalization options for a users market
+	Personalization options for a user's market
 	\item[AC6]
-	Personalization of a users search preferences
+	Personalization of a user's search preferences
 	\item[AC7]
-	The users currency, (i.e. Bitcoins to another currency)
+	The user's currency, (i.e. Bitcoins to another currency)
 	\item[AC8]
-	The users current role (buyer, seller, notary)
+	The user's current role (buyer, seller, notary)
 	\item[AC9]
-	The users location and IP Address
+	The user's location and IP Address
 	\item[AC10]
-	The users Bitcoin wallet information
+	The user's Bitcoin wallet information
 	\item[AC11]
-	The users GUID
+	The user's GUID
 	\item[AC12]
-	The users market information (i.e. items, price, pictures, description etc)
+	The user's market information (i.e. items, price, pictures, description etc)
 	\item[AC13]
-	The users personal settings (i.e. display picture)
+	The user's personal settings (i.e. display picture)
 	\item[AC14]
-	The users digital signature
+	The user's digital signature
 	\item[AC15]
-	The users shipping information
+	The user's shipping information
+	\item[AC16]
+	The status of a contract (i.e. active, published)
 \end{description}
 
 \subsection{Unlikely Changes}
@@ -128,7 +130,7 @@ Absence of Location Restrictions
 Absence of Intermediary Fees
 
 \item[UC7]
-The users privacy, security, and anonymity
+The user's privacy, security, and anonymity
 
 \item[UC8]
 The network architecture governing peer-to-peer connections
@@ -144,11 +146,11 @@ This section outlines the modules used in the implementation of the application.
 \item[M1]
 GUI Module
 \item[M2]
-Server/Network Module %add to table somewhere
+Backend Module
 \item[M3]
-Connector Module %add to table
-\item[M4]
 Published Contract Module
+\item[M4]
+Identity Module
 \item[M5]
 Algorithms Module
 \item[M6]
@@ -162,9 +164,10 @@ Store Module
 \item[M10]
 Notary Module
 \item[M11]
-Bitcoin Module % add to table
-\item[M12]
 Initialization Module
+\item[M12]
+Node Module
+
 
 \end{description}
 
@@ -178,12 +181,14 @@ Initialization Module
 		{Hardware-Hiding Module} & GUI Module & ~ \\
 		\midrule
 		
-		\multirow{5}{0.4\textwidth}{Behaviour-Hiding Module} & Node Module & Published Contract Module \\
+		\multirow{7}{0.4\textwidth}{Behaviour-Hiding Module} & {Backend Module} & Published Contract Module \\
 		& ~ & DHT/Routing Table Module\\
-		& Identity Module & Settings Module\\
+		& ~ & Settings Module\\
 		& ~ & Store Module\\
 		& ~ & Notary Module\\
 		& ~ & Active Contract Module\\
+		& ~ & Identity Module\\
+		& ~ & Node Module\\
 		\midrule
 		
 		\multirow{3}{0.4\textwidth}{Software Decision Module} & Algorithms Module & ~ \\
@@ -253,7 +258,7 @@ DHT Module
 \textbf{Secret:} The contents and implementation of the distributed hash table and routing tables for the Kademlia peer-to-peer network.
 
 \item
-\textbf{Services:} The DHT module provides information about the distributed hash table used for networking. The module does node lookups and returns information about 
+\textbf{Services:} The DHT module provides information about the distributed hash table used for networking. The module does node lookups and returns information about the node.
 \end{itemize}
 
 \item
@@ -298,7 +303,7 @@ Notary Module
 
 \item
 Active Contract Module
-\begin{itemize]
+\begin{itemize}
 \item
 \textbf{Secret:} Storage of confidential contract and ledger data.
 
@@ -327,7 +332,7 @@ Initialization Module
 \end{itemize}
 \end{enumerate}
 \subsection*{Description}
-The OpenBazaar modules are broken up into logical components, abstracting away portions of the application that do not depend on one another. The first logical decomposition of the application is to abstract the details of the graphical user interface from the details of the data implementation. Each of these respective components will run as its own thread in the application environment. The data implementation can then be manipulated and accessed by the user via interaction with the GUI. To facilitate this interaction a connector module will be created. This module will expose an interface for the GUI to interact with that submits and returns data for graphical display to the user.
+The OpenBazaar modules are broken up into logical components, abstracting away portions of the application that do not depend on one another. The first logical decomposition of the application is to abstract the details of the graphical user interface from the details of the data implementation. Each of these respective components will run as its own thread in the application environment. The data implementation can then be manipulated and accessed by the user via interaction with the GUI. An additional connector module may need to be implemented to expose an interface for the GUI to interact with that submits and returns data for graphical display to the user.
 
 
 
@@ -336,23 +341,23 @@ The OpenBazaar modules are broken up into logical components, abstracting away p
 
 Below are two traceability matrices. The first demonstrates the connection between the functional requirements and modules while the second describes the connection between the anticipated changes and modules.
 
-\begin{table}[]
+\begin{table}[h!]
 	\centering
 	\begin{tabular}{p{0.2\textwidth} p{0.6\textwidth}}
 		\toprule
 		\textbf{Req.} & \textbf{Modules}\\
 		\midrule
-		R1 & M1, M7\\
-		R2 & M1, M7\\
-		R3 & M6, M9\\
-		R4 & M3, M9\\
-		R5 & M3, M9\\
-		R6 & M4, M6\\
-		R7 & M4, M6\\
+		R1 & M7, M11, M12\\
+		R2 & M2, M4, M5, M7, M12\\
+		R3 & M3, M6, M9\\
+		R4 & M1, M9\\
+		R5 & M9\\
+		R6 & M3, M6\\
+		R7 & M3, M6\\
 		R8 & M10\\
-		R9 & \\ % messages
-		R10 & \\ % rate sellers
-		R11 & \\ %reputation
+		R9 & M7, M12\\
+		R10 & M8\\ % rate sellers
+		R11 & M8, M9 \\ %reputation
 		R12 & M10\\
 		R13 & M10\\
 		\bottomrule
@@ -361,24 +366,28 @@ Below are two traceability matrices. The first demonstrates the connection betwe
 	
 \end{table}
 
-\begin{table}[]
+\begin{table}[h!]
 	\centering
 	\begin{tabular}{p{0.2\textwidth} p{0.6\textwidth}}
 		\toprule
 		\textbf{AC} & \textbf{Modules}\\
 		\midrule
-		AC1 & M3\\ %should be one to one.. need to organize anticipated changes
-		AC2 & M3\\
-		AC3 & M8\\
-		AC4 & \\
-		AC5 & \\
-		AC6 & \\
-		AC7 & \\
-		AC8 & \\
-		AC9 & \\
-		AC10 & \\
-		AC11 & \\
-		AC12 & \\
+		AC1 & M1\\ 
+		AC2 & M5\\
+		AC3 & M11, M2\\
+		AC4 & M5\\
+		AC5 & M9\\
+		AC6 & M8\\
+		AC7 & M4\\
+		AC8 & M12, M10\\
+		AC9 & M11\\
+		AC10 & M8\\
+		AC11 & M11\\
+		AC12 & M9\\
+		AC13 & M8\\
+		AC14 & M7\\
+		AC15 & M8\\
+		AC16 & M3, M6\\
 		
 		\bottomrule
 	\end{tabular}
@@ -388,7 +397,7 @@ Below are two traceability matrices. The first demonstrates the connection betwe
 
 \addcontentsline{toc}{section}{Use Hierarchy Between Modules}
 \section*{Use Hierarchy Between Modules}
-\includegraphics{use_hierarchy}
+\includegraphics[scale=0.5]{use_hierarchy}
 
 Above is a use hierarchy for the modules in the OpenBazaar application.
 \addcontentsline{toc}{section}{Detailed Timeline}
@@ -396,14 +405,10 @@ Above is a use hierarchy for the modules in the OpenBazaar application.
 
 \addcontentsline{toc}{section}{Gantt Chart}
 \section*{Gantt Chart}
-\includegraphics{gantt_chart}
+\includegraphics[scale=0.5]{gantt_chart}
 
 Included above is a Gantt chart outlining project deadlines.
-\addcontentsline{toc}{section}{Pert Chart}
-\section*{Pert Chart}
 
-\addcontentsline{toc}{section}{References}
-\section*{References}
 
 
 \end{document}
