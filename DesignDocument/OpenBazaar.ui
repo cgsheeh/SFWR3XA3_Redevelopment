@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>OpenBazaar</class>
+ <widget class="QMainWindow" name="OpenBazaar">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1163</width>
+    <height>867</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>OpenBazaar</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>../../Pictures/OpenBazaarIcon.png</normaloff>../../Pictures/OpenBazaarIcon.png</iconset>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0" rowspan="2" colspan="2">
+     <widget class="QLabel" name="displayPicture">
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap>../../Pictures/default-avatar.png</pixmap>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="2" rowspan="3" colspan="3">
+     <widget class="QLabel" name="label">
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap>../../Pictures/OpenBazaarBanner.png</pixmap>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="5" colspan="2">
+     <widget class="QLabel" name="label_3">
+      <property name="text">
+       <string>My Merchants</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="4" rowspan="4" colspan="3">
+     <widget class="QListWidget" name="listWidget">
+      <item>
+       <property name="text">
+        <string>Merchant 1</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Merchant 2</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Merchant 3</string>
+       </property>
+      </item>
+     </widget>
+    </item>
+    <item row="2" column="0">
+     <widget class="QLabel" name="accountBalance">
+      <property name="text">
+       <string>Account Balance</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="1">
+     <widget class="QComboBox" name="currencySelector">
+      <item>
+       <property name="text">
+        <string>$CAD</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>$MBTC</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>$BTC</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>$USD</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>$EUR</string>
+       </property>
+      </item>
+     </widget>
+    </item>
+    <item row="3" column="2">
+     <widget class="QLineEdit" name="lineEdit">
+      <property name="text">
+       <string>Search the OpenBazaar!</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="3">
+     <widget class="QPushButton" name="pushButton">
+      <property name="text">
+       <string>Search</string>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="0" colspan="2">
+     <widget class="QLabel" name="label_2">
+      <property name="text">
+       <string>Recent Transactions</string>
+      </property>
+     </widget>
+    </item>
+    <item row="5" column="0" rowspan="3" colspan="2">
+     <widget class="QTableWidget" name="tableWidget">
+      <column>
+       <property name="text">
+        <string>Date</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Price</string>
+       </property>
+      </column>
+     </widget>
+    </item>
+    <item row="5" column="4" colspan="2">
+     <widget class="QLineEdit" name="lineEdit_2">
+      <property name="text">
+       <string>Enter Store GUID</string>
+      </property>
+     </widget>
+    </item>
+    <item row="5" column="6">
+     <widget class="QPushButton" name="pushButton_2">
+      <property name="text">
+       <string>Add Store</string>
+      </property>
+     </widget>
+    </item>
+    <item row="6" column="5" colspan="2">
+     <widget class="QLabel" name="label_4">
+      <property name="text">
+       <string>My Notaries</string>
+      </property>
+     </widget>
+    </item>
+    <item row="7" column="4" colspan="3">
+     <widget class="QListWidget" name="listWidget_2">
+      <item>
+       <property name="text">
+        <string>Notary 1</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Notary 2</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Notary 3</string>
+       </property>
+      </item>
+     </widget>
+    </item>
+    <item row="8" column="4" colspan="2">
+     <widget class="QLineEdit" name="lineEdit_3">
+      <property name="text">
+       <string>Enter Notary GUID</string>
+      </property>
+     </widget>
+    </item>
+    <item row="8" column="6">
+     <widget class="QPushButton" name="pushButton_3">
+      <property name="text">
+       <string>Add Notary</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1163</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuHome">
+    <property name="title">
+     <string>Home</string>
+    </property>
+    <addaction name="actionMy_Listings"/>
+    <addaction name="actionMy_Orders"/>
+    <addaction name="actionMy_Settings"/>
+    <addaction name="separator"/>
+   </widget>
+   <widget class="QMenu" name="menuMessages">
+    <property name="title">
+     <string>Messages</string>
+    </property>
+    <addaction name="actionSend_a_Message"/>
+    <addaction name="actionInbo"/>
+    <addaction name="actionOutbox"/>
+   </widget>
+   <widget class="QMenu" name="menuContracts">
+    <property name="title">
+     <string>Contracts</string>
+    </property>
+    <addaction name="actionPurchased"/>
+    <addaction name="actionSold"/>
+    <addaction name="actionActive"/>
+   </widget>
+   <widget class="QMenu" name="menuStore">
+    <property name="title">
+     <string>Stores</string>
+    </property>
+    <addaction name="actionCreate_a_Store"/>
+    <addaction name="actionView_a_Store"/>
+    <addaction name="actionFind"/>
+   </widget>
+   <widget class="QMenu" name="menuNotaries">
+    <property name="title">
+     <string>Notaries</string>
+    </property>
+    <addaction name="actionBecome_a_Notary"/>
+    <addaction name="actionFind_a_Notary"/>
+    <addaction name="actionHelp_with_Notaries"/>
+   </widget>
+   <widget class="QMenu" name="menuHelp">
+    <property name="title">
+     <string>Help</string>
+    </property>
+    <addaction name="actionGet_Help_Online"/>
+    <addaction name="actionUser_Guide"/>
+   </widget>
+   <addaction name="menuHome"/>
+   <addaction name="menuMessages"/>
+   <addaction name="menuContracts"/>
+   <addaction name="menuStore"/>
+   <addaction name="menuNotaries"/>
+   <addaction name="menuHelp"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionMy_Listings">
+   <property name="text">
+    <string>My Listings</string>
+   </property>
+  </action>
+  <action name="actionMy_Orders">
+   <property name="text">
+    <string>My Orders</string>
+   </property>
+  </action>
+  <action name="actionMy_Settings">
+   <property name="text">
+    <string>My Settings</string>
+   </property>
+  </action>
+  <action name="actionSend_a_Message">
+   <property name="text">
+    <string>Send a Message</string>
+   </property>
+  </action>
+  <action name="actionInbo">
+   <property name="text">
+    <string>Inbox</string>
+   </property>
+  </action>
+  <action name="actionOutbox">
+   <property name="text">
+    <string>Outbox</string>
+   </property>
+  </action>
+  <action name="actionPurchased">
+   <property name="text">
+    <string>Purchased</string>
+   </property>
+  </action>
+  <action name="actionSold">
+   <property name="text">
+    <string>Sold</string>
+   </property>
+  </action>
+  <action name="actionActive">
+   <property name="text">
+    <string>Active</string>
+   </property>
+  </action>
+  <action name="actionCreate_a_Store">
+   <property name="text">
+    <string>Create a Store</string>
+   </property>
+  </action>
+  <action name="actionView_a_Store">
+   <property name="text">
+    <string>View a Store</string>
+   </property>
+  </action>
+  <action name="actionFind">
+   <property name="text">
+    <string>Find a Store</string>
+   </property>
+  </action>
+  <action name="actionBecome_a_Notary">
+   <property name="text">
+    <string>Become a Notary</string>
+   </property>
+  </action>
+  <action name="actionFind_a_Notary">
+   <property name="text">
+    <string>Find a Notary</string>
+   </property>
+  </action>
+  <action name="actionHelp_with_Notaries">
+   <property name="text">
+    <string>Help with Notaries</string>
+   </property>
+  </action>
+  <action name="actionGet_Help_Online">
+   <property name="text">
+    <string>Get Help Online</string>
+   </property>
+  </action>
+  <action name="actionUser_Guide">
+   <property name="text">
+    <string>User Guide</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
