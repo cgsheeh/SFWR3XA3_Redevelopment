@@ -15,7 +15,7 @@
   </property>
   <property name="windowIcon">
    <iconset>
-    <normaloff>../../Pictures/OpenBazaarIcon.png</normaloff>../../Pictures/OpenBazaarIcon.png</iconset>
+    <normaloff>images/small_logo.jpeg</normaloff>images/small_logo.jpeg</iconset>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
@@ -25,17 +25,7 @@
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap>../../Pictures/default-avatar.png</pixmap>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="2" rowspan="3" colspan="3">
-     <widget class="QLabel" name="openBazaarBanner">
-      <property name="text">
-       <string/>
-      </property>
-      <property name="pixmap">
-       <pixmap>../../Pictures/OpenBazaarBanner.png</pixmap>
+       <pixmap>images/default-avatar.png</pixmap>
       </property>
      </widget>
     </item>
@@ -124,6 +114,16 @@
     </item>
     <item row="5" column="0" rowspan="3" colspan="2">
      <widget class="QTableWidget" name="recentTransactionsTable">
+      <row>
+       <property name="text">
+        <string>Fake Transaction 1</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>Fake Transaction 2</string>
+       </property>
+      </row>
       <column>
        <property name="text">
         <string>Date</string>
@@ -188,6 +188,51 @@
       <property name="text">
        <string>Add Notary</string>
       </property>
+     </widget>
+    </item>
+    <item row="1" column="2">
+     <widget class="QLabel" name="openBazaarBanner">
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap>images/logo.png</pixmap>
+      </property>
+     </widget>
+    </item>
+    <item row="7" column="2">
+     <widget class="QTabWidget" name="tabMenu">
+      <property name="currentIndex">
+       <number>4</number>
+      </property>
+      <property name="tabsClosable">
+       <bool>true</bool>
+      </property>
+      <widget class="QWidget" name="tab">
+       <attribute name="title">
+        <string>Welcome</string>
+       </attribute>
+      </widget>
+      <widget class="QWidget" name="tab_2">
+       <attribute name="title">
+        <string>New Contract</string>
+       </attribute>
+      </widget>
+      <widget class="QWidget" name="tab_3">
+       <attribute name="title">
+        <string>My Store</string>
+       </attribute>
+      </widget>
+      <widget class="QWidget" name="tab_4">
+       <attribute name="title">
+        <string>Jim's Store</string>
+       </attribute>
+      </widget>
+      <widget class="QWidget" name="tab_5">
+       <attribute name="title">
+        <string>Jim's Notary Info</string>
+       </attribute>
+      </widget>
      </widget>
     </item>
    </layout>
