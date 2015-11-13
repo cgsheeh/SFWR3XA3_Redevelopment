@@ -1,6 +1,6 @@
 __author__ = 'connor'
 
-class Notary:
+class Notary(object):
     def __init__(self):
         self.t = []
 

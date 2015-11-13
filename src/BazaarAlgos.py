@@ -1,7 +1,7 @@
 __author__ = 'connor'
 import hashlib
 
-class Algorithms:
+class Algorithms(object):
 
     # Calculates distance between two given nodes
     def calculate_node_distance(self, node1, node2):

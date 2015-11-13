@@ -1,6 +1,6 @@
 __author__ = 'connor'
 
-class Settings:
+class Settings(object):
     ## Create settings object
     def __init__(self):
         self.something = 1

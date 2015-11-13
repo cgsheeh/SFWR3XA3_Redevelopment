@@ -1,6 +1,6 @@
 __author__ = 'connor'
 
-class DHT:
+class DHT(object):
     def __init__(self):
         self.some = 1
 
