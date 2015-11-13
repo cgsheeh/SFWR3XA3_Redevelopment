@@ -19,6 +19,113 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
+    <item row="2" column="1">
+     <widget class="QComboBox" name="currencySelector">
+      <item>
+       <property name="text">
+        <string>CAD</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>MBTC</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>BTC</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>USD</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>EUR</string>
+       </property>
+      </item>
+     </widget>
+    </item>
+    <item row="0" column="0" rowspan="2" colspan="2">
+     <widget class="QLabel" name="displayPicture">
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap>images/default-avatar.png</pixmap>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="5" colspan="2">
+     <widget class="QLabel" name="myMerchantsLabel">
+      <property name="text">
+       <string>My Merchants</string>
+      </property>
+     </widget>
+    </item>
+    <item row="5" column="6">
+     <widget class="QPushButton" name="addStoreButton">
+      <property name="text">
+       <string>Add Store</string>
+      </property>
+     </widget>
+    </item>
+    <item row="6" column="5" colspan="2">
+     <widget class="QLabel" name="myNotariesLabel">
+      <property name="text">
+       <string>My Notaries</string>
+      </property>
+     </widget>
+    </item>
+    <item row="8" column="4" colspan="2">
+     <widget class="QLineEdit" name="addNotaryText">
+      <property name="text">
+       <string>Enter Notary GUID</string>
+      </property>
+     </widget>
+    </item>
+    <item row="8" column="6">
+     <widget class="QPushButton" name="addNotaryButton">
+      <property name="text">
+       <string>Add Notary</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="0">
+     <widget class="QLabel" name="label">
+      <property name="text">
+       <string>$14,092</string>
+      </property>
+     </widget>
+    </item>
+    <item row="5" column="4" colspan="2">
+     <widget class="QLineEdit" name="addStoreText">
+      <property name="text">
+       <string>Enter Store GUID</string>
+      </property>
+     </widget>
+    </item>
+    <item row="7" column="4" colspan="3">
+     <widget class="QListWidget" name="myNotariesList">
+      <item>
+       <property name="text">
+        <string>Notary 1</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Notary 2</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Notary 3</string>
+       </property>
+      </item>
+     </widget>
+    </item>
     <item row="7" column="2">
      <widget class="QTabWidget" name="tabMenu">
       <property name="currentIndex">
@@ -36,9 +143,24 @@
          <rect>
           <x>-5</x>
           <y>1</y>
-          <width>531</width>
+          <width>611</width>
           <height>441</height>
          </rect>
+        </property>
+        <property name="html">
+         <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Ubuntu'; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:20px; margin-bottom:10px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'arial'; font-size:x-large; font-weight:496; color:#666666;&quot;&gt;Getting started&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:20px; margin-bottom:10px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'arial'; font-size:large; font-weight:496; color:#666666;&quot;&gt;Set Up Your Store&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'arial'; font-size:14px; color:#666666; background-color:#ffffff;&quot;&gt;Add a Bitcoin address you own in case of refunds, be sure to hit save in &lt;/span&gt;&lt;span style=&quot; font-family:'arial'; font-size:14px; font-weight:696; color:#666666;&quot;&gt;Settings&lt;/span&gt;&lt;span style=&quot; font-family:'arial'; font-size:14px; color:#666666; background-color:#ffffff;&quot;&gt;, and make a backup of your keys in the &lt;/span&gt;&lt;span style=&quot; font-family:'arial'; font-size:14px; font-weight:696; color:#666666;&quot;&gt;Backup&lt;/span&gt;&lt;span style=&quot; font-family:'arial'; font-size:14px; color:#666666; background-color:#ffffff;&quot;&gt; section.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:20px; margin-bottom:10px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'arial'; font-size:large; font-weight:496; color:#666666;&quot;&gt;Select a Notary&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'arial'; font-size:14px; color:#666666; background-color:#ffffff;&quot;&gt;Notaries are a trusted third party to prevent scams. Only select a notary you trust, especially for larger transactions. For test transactions, you can use the &amp;quot;Test Notary.&amp;quot;&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:20px; margin-bottom:10px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'arial'; font-size:large; font-weight:496; color:#666666;&quot;&gt;Put an Item Up for Sale or Find an Item to Buy&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'arial'; font-size:14px; color:#666666; background-color:#ffffff;&quot;&gt;If selling an item, be sure to use descriptive keywords. Click on the markets you see on the right side of the screen to view their items, or use the search bar above. &lt;/span&gt;&lt;span style=&quot; font-family:'arial'; font-size:14px; color:#666666;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-family:'arial'; font-size:14px; color:#666666; background-color:#ffffff;&quot;&gt;You can directly contact other online users by selecting the blue Message Me button in their store front. Manage your messages in the &lt;/span&gt;&lt;span style=&quot; font-family:'arial'; font-size:14px; font-weight:696; color:#666666;&quot;&gt;Messages&lt;/span&gt;&lt;span style=&quot; font-family:'arial'; font-size:14px; color:#666666; background-color:#ffffff;&quot;&gt; tab.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;img src=&quot;http://i.imgur.com/jAtFHXV.gif&quot; style=&quot;vertical-align: middle;&quot; /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'arial'; font-size:14px; color:#666666; background-color:#ffffff;&quot;&gt;Your purchases and sales are in the &lt;/span&gt;&lt;span style=&quot; font-family:'arial'; font-size:14px; font-weight:696; color:#666666;&quot;&gt;Orders&lt;/span&gt;&lt;span style=&quot; font-family:'arial'; font-size:14px; color:#666666; background-color:#ffffff;&quot;&gt; tab. &lt;/span&gt;&lt;span style=&quot; font-family:'arial'; font-size:14px; color:#666666;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-family:'arial'; font-size:14px; color:#666666; background-color:#ffffff;&quot;&gt;Please report problems to our &lt;/span&gt;&lt;a href=&quot;https://github.com/OpenBazaar&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;Github&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-family:'arial'; font-size:14px; color:#666666; background-color:#ffffff;&quot;&gt; or &lt;/span&gt;&lt;a href=&quot;https://www.reddit.com/r/OpenBazaar/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;subreddit&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-family:'arial'; font-size:14px; color:#666666; background-color:#ffffff;&quot;&gt;. Enjoy!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
        </widget>
       </widget>
@@ -264,45 +386,6 @@
       </widget>
      </widget>
     </item>
-    <item row="2" column="1">
-     <widget class="QComboBox" name="currencySelector">
-      <item>
-       <property name="text">
-        <string>CAD</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>MBTC</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>BTC</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>USD</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>EUR</string>
-       </property>
-      </item>
-     </widget>
-    </item>
-    <item row="0" column="0" rowspan="2" colspan="2">
-     <widget class="QLabel" name="displayPicture">
-      <property name="text">
-       <string/>
-      </property>
-      <property name="pixmap">
-       <pixmap>images/default-avatar.png</pixmap>
-      </property>
-     </widget>
-    </item>
     <item row="1" column="4" rowspan="4" colspan="3">
      <widget class="QListWidget" name="merchantsList">
       <item>
@@ -322,21 +405,7 @@
       </item>
      </widget>
     </item>
-    <item row="0" column="5" colspan="2">
-     <widget class="QLabel" name="myMerchantsLabel">
-      <property name="text">
-       <string>My Merchants</string>
-      </property>
-     </widget>
-    </item>
-    <item row="4" column="0" colspan="2">
-     <widget class="QLabel" name="recentTransactionsLabel">
-      <property name="text">
-       <string>Recent Transactions</string>
-      </property>
-     </widget>
-    </item>
-    <item row="5" column="0" rowspan="3" colspan="2">
+    <item row="7" column="0" colspan="2">
      <widget class="QTableWidget" name="recentTransactionsTable">
       <row>
        <property name="text">
@@ -360,88 +429,34 @@
       </column>
      </widget>
     </item>
-    <item row="5" column="4" colspan="2">
-     <widget class="QLineEdit" name="addStoreText">
+    <item row="6" column="0">
+     <widget class="QLabel" name="recentTransactionsLabel">
       <property name="text">
-       <string>Enter Store GUID</string>
+       <string>Recent Transactions</string>
       </property>
      </widget>
     </item>
-    <item row="5" column="6">
-     <widget class="QPushButton" name="addStoreButton">
+    <item row="0" column="2" rowspan="2">
+     <widget class="QLabel" name="label_2">
       <property name="text">
-       <string>Add Store</string>
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap>images/banner.png</pixmap>
       </property>
      </widget>
     </item>
-    <item row="6" column="5" colspan="2">
-     <widget class="QLabel" name="myNotariesLabel">
-      <property name="text">
-       <string>My Notaries</string>
-      </property>
-     </widget>
-    </item>
-    <item row="7" column="4" colspan="3">
-     <widget class="QListWidget" name="myNotariesList">
-      <item>
-       <property name="text">
-        <string>Notary 1</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Notary 2</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Notary 3</string>
-       </property>
-      </item>
-     </widget>
-    </item>
-    <item row="8" column="4" colspan="2">
-     <widget class="QLineEdit" name="addNotaryText">
-      <property name="text">
-       <string>Enter Notary GUID</string>
-      </property>
-     </widget>
-    </item>
-    <item row="8" column="6">
-     <widget class="QPushButton" name="addNotaryButton">
-      <property name="text">
-       <string>Add Notary</string>
-      </property>
-     </widget>
-    </item>
-    <item row="2" column="2">
+    <item row="4" column="2">
      <widget class="QLineEdit" name="searchBarText">
       <property name="text">
        <string>Search the OpenBazaar!</string>
       </property>
      </widget>
     </item>
-    <item row="2" column="3">
+    <item row="4" column="3">
      <widget class="QPushButton" name="searchButton">
       <property name="text">
        <string>Search</string>
-      </property>
-     </widget>
-    </item>
-    <item row="2" column="0">
-     <widget class="QLabel" name="label">
-      <property name="text">
-       <string>$14,092</string>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="2">
-     <widget class="QLabel" name="openBazaarBanner">
-      <property name="text">
-       <string/>
-      </property>
-      <property name="pixmap">
-       <pixmap>images/logo.png</pixmap>
       </property>
      </widget>
     </item>
