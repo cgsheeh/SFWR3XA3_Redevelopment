@@ -6,7 +6,8 @@
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
-
+from storeMenu import *
+from ContractGen import *
 from PyQt4 import QtCore, QtGui
 
 try:
@@ -78,7 +79,6 @@ class Ui_OpenBazaar(object):
         self.myNotariesList.addItem(item)
         self.gridLayout.addWidget(self.myNotariesList, 7, 4, 1, 3)
         self.tabMenu = QtGui.QTabWidget(self.centralwidget)
-        self.tabMenu.setTabsClosable(True)
         self.tabMenu.setObjectName(_fromUtf8("tabMenu"))
         self.tab = QtGui.QWidget()
         self.tab.setObjectName(_fromUtf8("tab"))
@@ -262,6 +262,16 @@ class Ui_OpenBazaar(object):
         self.menubar.addAction(self.menuNotaries.menuAction())
         self.menubar.addAction(self.menuHelp.menuAction())
 
+        self.newContractTab = QtGui.QWidget()
+        self.newContractUi = ContractGenUi()
+        self.newContractUi.setupUi(self.newContractTab)
+        self.tabMenu.addTab(self.newContractTab, "New Contract")
+
+        #self.exampleStoreTab = QtGui.QWidget()
+        #self.exampleStoreUi = storeTab()
+        #self.exampleStoreUi.setupUi(self.exampleStoreTab)
+        #self.tabMenu.addTab(self.exampleStoreTab, "Someone's Store")
+
         self.retranslateUi(OpenBazaar)
         self.tabMenu.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(OpenBazaar)
@@ -366,6 +376,12 @@ class Ui_OpenBazaar(object):
         self.actionHelp_with_Notaries.setText(_translate("OpenBazaar", "Help with Notaries", None))
         self.actionGet_Help_Online.setText(_translate("OpenBazaar", "Get Help Online", None))
         self.actionUser_Guide.setText(_translate("OpenBazaar", "User Guide", None))
+
+
+    ##
+    # Create a tab with the new contract menu
+    #
+    #def create_contract_tab(self):
 
 
 if __name__ == "__main__":

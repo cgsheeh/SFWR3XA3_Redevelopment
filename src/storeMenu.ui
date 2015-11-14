@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Form</class>
- <widget class="QWidget" name="Form">
+ <class>StoreMenu</class>
+ <widget class="QWidget" name="StoreMenu">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -24,7 +24,7 @@
    </property>
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
-     <widget class="QLabel" name="label">
+     <widget class="QLabel" name="storeName">
       <property name="text">
        <string>Store Owner's Name</string>
       </property>
@@ -33,7 +33,7 @@
     <item>
      <layout class="QHBoxLayout" name="horizontalLayout">
       <item>
-       <widget class="QTableWidget" name="tableWidget">
+       <widget class="QTableWidget" name="itemsTable">
         <row>
          <property name="text">
           <string>Hat</string>
@@ -114,14 +114,14 @@
      </layout>
     </item>
     <item>
-     <widget class="QPushButton" name="pushButton_2">
+     <widget class="QPushButton" name="messageUser">
       <property name="text">
        <string>Direct Message</string>
       </property>
      </widget>
     </item>
     <item>
-     <widget class="QPushButton" name="pushButton">
+     <widget class="QPushButton" name="reportUser">
       <property name="text">
        <string>Report This User</string>
       </property>
