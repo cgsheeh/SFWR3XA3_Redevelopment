@@ -129,7 +129,7 @@
     <item row="7" column="2">
      <widget class="QTabWidget" name="tabMenu">
       <property name="currentIndex">
-       <number>0</number>
+       <number>5</number>
       </property>
       <property name="tabsClosable">
        <bool>true</bool>

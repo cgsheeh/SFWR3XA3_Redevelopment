@@ -214,6 +214,7 @@ class Ui_OpenBazaar(object):
         ##
         # Create a new message tab
         #
+        self.new_message_scroll = QtGui.QScrollArea()
         self.new_message_tab = QtGui.QWidget()
         self.new_message_ui = SendMessage_Ui()
         self.new_message_ui.setupUi(self.new_message_tab)

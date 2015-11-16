@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'Settings.ui'
+# Settings implementation generated from reading ui file 'Settings.ui'
 #
-# Created: Mon Nov 16 00:10:10 2015
+# Created: Mon Nov 16 11:58:38 2015
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -24,11 +24,11 @@ except AttributeError:
         return QtGui.QApplication.translate(context, text, disambig)
 
 class Settings_Ui(object):
-    def setupUi(self, Form):
-        Form.setObjectName(_fromUtf8("Form"))
-        Form.resize(1027, 758)
-        self.verticalLayoutWidget = QtGui.QWidget(Form)
-        self.verticalLayoutWidget.setGeometry(QtCore.QRect(0, 10, 771, 1201))
+    def setupUi(self, Settings):
+        Settings.setObjectName(_fromUtf8("Settings"))
+        Settings.resize(1027, 1300)
+        self.verticalLayoutWidget = QtGui.QWidget(Settings)
+        self.verticalLayoutWidget.setGeometry(QtCore.QRect(170, 10, 771, 1201))
         self.verticalLayoutWidget.setObjectName(_fromUtf8("verticalLayoutWidget"))
         self.verticalLayout = QtGui.QVBoxLayout(self.verticalLayoutWidget)
         self.verticalLayout.setMargin(0)
@@ -300,64 +300,64 @@ class Settings_Ui(object):
         self.gridLayout_6.addWidget(self.textBrowser_2, 1, 0, 1, 2)
         self.verticalLayout.addLayout(self.gridLayout_6)
 
-        self.retranslateUi(Form)
-        QtCore.QMetaObject.connectSlotsByName(Form)
+        self.retranslateUi(Settings)
+        QtCore.QMetaObject.connectSlotsByName(Settings)
 
-    def retranslateUi(self, Form):
-        Form.setWindowTitle(_translate("Form", "Form", None))
-        self.label_17.setText(_translate("Form", "Email", None))
-        self.label_3.setText(_translate("Form", "Communication Info", None))
-        self.lineEdit_2.setText(_translate("Form", "Bitcoin address to send all incoming fees or refunds to", None))
-        self.textEdit.setHtml(_translate("Form", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+    def retranslateUi(self, Settings):
+        Settings.setWindowTitle(_translate("Settings", "Settings", None))
+        self.label_17.setText(_translate("Settings", "Email", None))
+        self.label_3.setText(_translate("Settings", "Communication Info", None))
+        self.lineEdit_2.setText(_translate("Settings", "Bitcoin address to send all incoming fees or refunds to", None))
+        self.textEdit.setHtml(_translate("Settings", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'Ubuntu\'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Enter a short description about your store</p></body></html>", None))
-        self.label_7.setText(_translate("Form", "Nickname", None))
-        self.label_8.setText(_translate("Form", "Bitcoin Receiving Address", None))
-        self.label.setText(_translate("Form", "Store Details", None))
-        self.label_9.setText(_translate("Form", "Store Description", None))
-        self.pushButton.setText(_translate("Form", "Add", None))
-        self.label_13.setText(_translate("Form", "The addresses below are notaries used during transactions.", None))
-        self.label_6.setText(_translate("Form", "Trusted Notaries", None))
-        self.lineEdit_3.setText(_translate("Form", "Enter a notary\'s OB guid", None))
-        self.label_16.setText(_translate("Form", "Bitcoin Public Key (Uncompressed)", None))
-        self.label_2.setText(_translate("Form", "OpenBazaar Keys", None))
-        self.label_15.setText(_translate("Form", "BIP32 Seed", None))
-        self.label_14.setText(_translate("Form", "PGP Public Key", None))
-        self.label_4.setText(_translate("Form", "Notary Details", None))
-        self.textBrowser.setHtml(_translate("Form", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+        self.label_7.setText(_translate("Settings", "Nickname", None))
+        self.label_8.setText(_translate("Settings", "Bitcoin Receiving Address", None))
+        self.label.setText(_translate("Settings", "Store Details", None))
+        self.label_9.setText(_translate("Settings", "Store Description", None))
+        self.pushButton.setText(_translate("Settings", "Add", None))
+        self.label_13.setText(_translate("Settings", "The addresses below are notaries used during transactions.", None))
+        self.label_6.setText(_translate("Settings", "Trusted Notaries", None))
+        self.lineEdit_3.setText(_translate("Settings", "Enter a notary\'s OB guid", None))
+        self.label_16.setText(_translate("Settings", "Bitcoin Public Key (Uncompressed)", None))
+        self.label_2.setText(_translate("Settings", "OpenBazaar Keys", None))
+        self.label_15.setText(_translate("Settings", "BIP32 Seed", None))
+        self.label_14.setText(_translate("Settings", "PGP Public Key", None))
+        self.label_4.setText(_translate("Settings", "Notary Details", None))
+        self.textBrowser.setHtml(_translate("Settings", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'Ubuntu\'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">Fees</span></p>\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">If your services are needed during a dispute, a fee can be requested from the participants of the transaction you are involved with. What percentage of each transaction would you like to request for your services?</p></body></html>", None))
-        self.comboBox.setItemText(0, _translate("Form", "0", None))
-        self.comboBox.setItemText(1, _translate("Form", "1", None))
-        self.comboBox.setItemText(2, _translate("Form", "2", None))
-        self.comboBox.setItemText(3, _translate("Form", "3", None))
-        self.comboBox.setItemText(4, _translate("Form", "4", None))
-        self.comboBox.setItemText(5, _translate("Form", "5", None))
-        self.comboBox.setItemText(6, _translate("Form", "6", None))
-        self.comboBox.setItemText(7, _translate("Form", "7", None))
-        self.comboBox.setItemText(8, _translate("Form", "8", None))
-        self.comboBox.setItemText(9, _translate("Form", "9", None))
-        self.comboBox.setItemText(10, _translate("Form", "10", None))
-        self.label_10.setText(_translate("Form", "Make me a notary", None))
-        self.label_11.setText(_translate("Form", "%", None))
-        self.label_12.setText(_translate("Form", "Description of your services", None))
-        self.label_5.setText(_translate("Form", "Shipping Information", None))
-        self.label_19.setText(_translate("Form", "City", None))
-        self.label_24.setText(_translate("Form", "Recipient Name", None))
-        self.lineEdit_6.setText(_translate("Form", "Name visible on your package", None))
-        self.label_23.setText(_translate("Form", "Province/Region", None))
-        self.label_22.setText(_translate("Form", "Zip", None))
-        self.label_20.setText(_translate("Form", "Street 1", None))
-        self.label_18.setText(_translate("Form", "Street 2", None))
-        self.label_21.setText(_translate("Form", "Country", None))
-        self.textBrowser_2.setHtml(_translate("Form", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+        self.comboBox.setItemText(0, _translate("Settings", "0", None))
+        self.comboBox.setItemText(1, _translate("Settings", "1", None))
+        self.comboBox.setItemText(2, _translate("Settings", "2", None))
+        self.comboBox.setItemText(3, _translate("Settings", "3", None))
+        self.comboBox.setItemText(4, _translate("Settings", "4", None))
+        self.comboBox.setItemText(5, _translate("Settings", "5", None))
+        self.comboBox.setItemText(6, _translate("Settings", "6", None))
+        self.comboBox.setItemText(7, _translate("Settings", "7", None))
+        self.comboBox.setItemText(8, _translate("Settings", "8", None))
+        self.comboBox.setItemText(9, _translate("Settings", "9", None))
+        self.comboBox.setItemText(10, _translate("Settings", "10", None))
+        self.label_10.setText(_translate("Settings", "Make me a notary", None))
+        self.label_11.setText(_translate("Settings", "%", None))
+        self.label_12.setText(_translate("Settings", "Description of your services", None))
+        self.label_5.setText(_translate("Settings", "Shipping InSettingsation", None))
+        self.label_19.setText(_translate("Settings", "City", None))
+        self.label_24.setText(_translate("Settings", "Recipient Name", None))
+        self.lineEdit_6.setText(_translate("Settings", "Name visible on your package", None))
+        self.label_23.setText(_translate("Settings", "Province/Region", None))
+        self.label_22.setText(_translate("Settings", "Zip", None))
+        self.label_20.setText(_translate("Settings", "Street 1", None))
+        self.label_18.setText(_translate("Settings", "Street 2", None))
+        self.label_21.setText(_translate("Settings", "Country", None))
+        self.textBrowser_2.setHtml(_translate("Settings", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'Ubuntu\'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Note: This information will be encrypted and only be sent to your seller when you have marked your order for payment.</p></body></html>", None))
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Note: This inSettingsation will be encrypted and only be sent to your seller when you have marked your order for payment.</p></body></html>", None))
 
