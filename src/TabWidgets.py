@@ -1,8 +1,10 @@
+__author__ = 'connor'
+
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'Settings.ui'
+# Form implementation generated from reading ui file 'storeMenu.ui'
 #
-# Created: Mon Nov 16 12:25:23 2015
+# Created: Fri Nov 13 14:07:26 2015
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -23,6 +25,117 @@ except AttributeError:
     def _translate(context, text, disambig):
         return QtGui.QApplication.translate(context, text, disambig)
 
+
+##
+# This class contains the UI for a user's store
+#
+class storeTab(object):
+    def setupUi(self, Form):
+        Form.setObjectName(_fromUtf8("Form"))
+        Form.resize(552, 475)
+        self.verticalLayoutWidget = QtGui.QWidget(Form)
+        self.verticalLayoutWidget.setGeometry(QtCore.QRect(10, 10, 531, 461))
+        self.verticalLayoutWidget.setObjectName(_fromUtf8("verticalLayoutWidget"))
+        self.verticalLayout = QtGui.QVBoxLayout(self.verticalLayoutWidget)
+        self.verticalLayout.setMargin(0)
+        self.verticalLayout.setObjectName(_fromUtf8("verticalLayout"))
+        self.label = QtGui.QLabel(self.verticalLayoutWidget)
+        self.label.setObjectName(_fromUtf8("bitcoin_balance_label"))
+        self.verticalLayout.addWidget(self.label)
+        self.horizontalLayout = QtGui.QHBoxLayout()
+        self.horizontalLayout.setObjectName(_fromUtf8("horizontalLayout"))
+        self.tableWidget = QtGui.QTableWidget(self.verticalLayoutWidget)
+        self.tableWidget.setObjectName(_fromUtf8("tableWidget"))
+        self.tableWidget.setColumnCount(3)
+        self.tableWidget.setRowCount(3)
+        item = QtGui.QTableWidgetItem()
+        self.tableWidget.setVerticalHeaderItem(0, item)
+        item = QtGui.QTableWidgetItem()
+        self.tableWidget.setVerticalHeaderItem(1, item)
+        item = QtGui.QTableWidgetItem()
+        self.tableWidget.setVerticalHeaderItem(2, item)
+        item = QtGui.QTableWidgetItem()
+        self.tableWidget.setHorizontalHeaderItem(0, item)
+        item = QtGui.QTableWidgetItem()
+        self.tableWidget.setHorizontalHeaderItem(1, item)
+        item = QtGui.QTableWidgetItem()
+        self.tableWidget.setHorizontalHeaderItem(2, item)
+        item = QtGui.QTableWidgetItem()
+        self.tableWidget.setItem(0, 0, item)
+        item = QtGui.QTableWidgetItem()
+        self.tableWidget.setItem(0, 1, item)
+        item = QtGui.QTableWidgetItem()
+        self.tableWidget.setItem(0, 2, item)
+        item = QtGui.QTableWidgetItem()
+        self.tableWidget.setItem(1, 0, item)
+        item = QtGui.QTableWidgetItem()
+        self.tableWidget.setItem(1, 1, item)
+        item = QtGui.QTableWidgetItem()
+        self.tableWidget.setItem(1, 2, item)
+        item = QtGui.QTableWidgetItem()
+        self.tableWidget.setItem(2, 0, item)
+        item = QtGui.QTableWidgetItem()
+        self.tableWidget.setItem(2, 1, item)
+        item = QtGui.QTableWidgetItem()
+        self.tableWidget.setItem(2, 2, item)
+        self.horizontalLayout.addWidget(self.tableWidget)
+        self.verticalLayout.addLayout(self.horizontalLayout)
+        self.pushButton_2 = QtGui.QPushButton(self.verticalLayoutWidget)
+        self.pushButton_2.setObjectName(_fromUtf8("pushButton_2"))
+        self.verticalLayout.addWidget(self.pushButton_2)
+        self.pushButton = QtGui.QPushButton(self.verticalLayoutWidget)
+        self.pushButton.setObjectName(_fromUtf8("pushButton"))
+        self.verticalLayout.addWidget(self.pushButton)
+        self.horizontalLayout_2 = QtGui.QHBoxLayout()
+        self.horizontalLayout_2.setObjectName(_fromUtf8("horizontalLayout_2"))
+        self.verticalLayout.addLayout(self.horizontalLayout_2)
+
+        self.retranslateUi(Form)
+        QtCore.QMetaObject.connectSlotsByName(Form)
+
+    def retranslateUi(self, Form):
+        Form.setWindowTitle(_translate("Form", "Form", None))
+        self.label.setText(_translate("Form", "Store Owner\'s Name", None))
+        item = self.tableWidget.verticalHeaderItem(0)
+        item.setText(_translate("Form", "Hat", None))
+        item = self.tableWidget.verticalHeaderItem(1)
+        item.setText(_translate("Form", "Table", None))
+        item = self.tableWidget.verticalHeaderItem(2)
+        item.setText(_translate("Form", "Chair", None))
+        item = self.tableWidget.horizontalHeaderItem(0)
+        item.setText(_translate("Form", "Description", None))
+        item = self.tableWidget.horizontalHeaderItem(1)
+        item.setText(_translate("Form", "Price", None))
+        item = self.tableWidget.horizontalHeaderItem(2)
+        item.setText(_translate("Form", "# Available", None))
+        __sortingEnabled = self.tableWidget.isSortingEnabled()
+        self.tableWidget.setSortingEnabled(False)
+        item = self.tableWidget.item(0, 0)
+        item.setText(_translate("Form", "Put on your head", None))
+        item = self.tableWidget.item(0, 1)
+        item.setText(_translate("Form", "$5BTC", None))
+        item = self.tableWidget.item(0, 2)
+        item.setText(_translate("Form", "10", None))
+        item = self.tableWidget.item(1, 0)
+        item.setText(_translate("Form", "Put stuff on it", None))
+        item = self.tableWidget.item(1, 1)
+        item.setText(_translate("Form", "100BTC", None))
+        item = self.tableWidget.item(1, 2)
+        item.setText(_translate("Form", "45", None))
+        item = self.tableWidget.item(2, 0)
+        item.setText(_translate("Form", "Sit on it", None))
+        item = self.tableWidget.item(2, 1)
+        item.setText(_translate("Form", "0.5 BTC", None))
+        item = self.tableWidget.item(2, 2)
+        item.setText(_translate("Form", "150", None))
+        self.tableWidget.setSortingEnabled(__sortingEnabled)
+        self.pushButton_2.setText(_translate("Form", "Direct Message", None))
+        self.pushButton.setText(_translate("Form", "Report This User", None))
+
+
+##
+# This class contains the UI for the "My Settings" tab
+#
 class Settings_Ui(object):
     def setupUi(self, Form):
         Form.setObjectName(_fromUtf8("Form"))
@@ -364,4 +477,199 @@ class Settings_Ui(object):
 "</style></head><body style=\" font-family:\'Ubuntu\'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Note: This information will be encrypted and only be sent to your seller when you have marked your order for payment.</p></body></html>", None))
         self.pushButton_2.setText(_translate("Form", "Save Changes", None))
+
+##
+# This class contains the UI for the "Send a message" tab
+#
+class SendMessage_Ui(object):
+    def setupUi(self, Form):
+        Form.setObjectName(_fromUtf8("Form"))
+        Form.resize(400, 413)
+        self.verticalLayoutWidget = QtGui.QWidget(Form)
+        self.verticalLayoutWidget.setGeometry(QtCore.QRect(10, 10, 381, 391))
+        self.verticalLayoutWidget.setObjectName(_fromUtf8("verticalLayoutWidget"))
+        self.verticalLayout = QtGui.QVBoxLayout(self.verticalLayoutWidget)
+        self.verticalLayout.setMargin(0)
+        self.verticalLayout.setObjectName(_fromUtf8("verticalLayout"))
+        self.label_2 = QtGui.QLabel(self.verticalLayoutWidget)
+        font = QtGui.QFont()
+        font.setPointSize(14)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_2.setFont(font)
+        self.label_2.setObjectName(_fromUtf8("label_2"))
+        self.verticalLayout.addWidget(self.label_2)
+        self.horizontalLayout = QtGui.QHBoxLayout()
+        self.horizontalLayout.setObjectName(_fromUtf8("horizontalLayout"))
+        self.label = QtGui.QLabel(self.verticalLayoutWidget)
+        self.label.setObjectName(_fromUtf8("label"))
+        self.horizontalLayout.addWidget(self.label)
+        self.lineEdit = QtGui.QLineEdit(self.verticalLayoutWidget)
+        self.lineEdit.setObjectName(_fromUtf8("lineEdit"))
+        self.horizontalLayout.addWidget(self.lineEdit)
+        self.verticalLayout.addLayout(self.horizontalLayout)
+        self.lineEdit_2 = QtGui.QLineEdit(self.verticalLayoutWidget)
+        self.lineEdit_2.setObjectName(_fromUtf8("lineEdit_2"))
+        self.verticalLayout.addWidget(self.lineEdit_2)
+        self.textEdit = QtGui.QTextEdit(self.verticalLayoutWidget)
+        self.textEdit.setObjectName(_fromUtf8("textEdit"))
+        self.verticalLayout.addWidget(self.textEdit)
+        self.horizontalLayout_2 = QtGui.QHBoxLayout()
+        self.horizontalLayout_2.setObjectName(_fromUtf8("horizontalLayout_2"))
+        spacerItem = QtGui.QSpacerItem(100, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
+        self.horizontalLayout_2.addItem(spacerItem)
+        self.pushButton = QtGui.QPushButton(self.verticalLayoutWidget)
+        self.pushButton.setObjectName(_fromUtf8("pushButton"))
+        self.horizontalLayout_2.addWidget(self.pushButton)
+        self.pushButton_2 = QtGui.QPushButton(self.verticalLayoutWidget)
+        self.pushButton_2.setAutoFillBackground(False)
+        self.pushButton_2.setObjectName(_fromUtf8("pushButton_2"))
+        self.horizontalLayout_2.addWidget(self.pushButton_2)
+        self.verticalLayout.addLayout(self.horizontalLayout_2)
+
+        self.retranslateUi(Form)
+        QtCore.QMetaObject.connectSlotsByName(Form)
+
+    def retranslateUi(self, Form):
+        Form.setWindowTitle(_translate("Form", "Form", None))
+        self.label_2.setText(_translate("Form", "Send Message", None))
+        self.label.setText(_translate("Form", "To:", None))
+        self.lineEdit_2.setText(_translate("Form", "Enter a subject line", None))
+        self.textEdit.setHtml(_translate("Form", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'Ubuntu\'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Enter a message</p></body></html>", None))
+        self.pushButton.setText(_translate("Form", "Cancel", None))
+        self.pushButton_2.setText(_translate("Form", "Send", None))
+
+##
+# This class contains the UI for the "My Orders" menu
+#
+class Ui_OrdersMenu(object):
+    def setupUi(self, OrdersMenu):
+        OrdersMenu.setObjectName(_fromUtf8("OrdersMenu"))
+        OrdersMenu.resize(400, 300)
+        self.verticalLayoutWidget = QtGui.QWidget(OrdersMenu)
+        self.verticalLayoutWidget.setGeometry(QtCore.QRect(10, 10, 381, 281))
+        self.verticalLayoutWidget.setObjectName(_fromUtf8("verticalLayoutWidget"))
+        self.verticalLayout = QtGui.QVBoxLayout(self.verticalLayoutWidget)
+        self.verticalLayout.setMargin(0)
+        self.verticalLayout.setObjectName(_fromUtf8("verticalLayout"))
+        self.OrderLabel = QtGui.QLabel(self.verticalLayoutWidget)
+        self.OrderLabel.setObjectName(_fromUtf8("OrderLabel"))
+        self.verticalLayout.addWidget(self.OrderLabel)
+        self.horizontalLayout = QtGui.QHBoxLayout()
+        self.horizontalLayout.setObjectName(_fromUtf8("horizontalLayout"))
+        self.seller = QtGui.QListView(self.verticalLayoutWidget)
+        self.seller.setObjectName(_fromUtf8("seller"))
+        self.horizontalLayout.addWidget(self.seller)
+        self.sellerBar = QtGui.QScrollBar(self.verticalLayoutWidget)
+        self.sellerBar.setOrientation(QtCore.Qt.Vertical)
+        self.sellerBar.setObjectName(_fromUtf8("sellerBar"))
+        self.horizontalLayout.addWidget(self.sellerBar)
+        self.buyerBar = QtGui.QScrollBar(self.verticalLayoutWidget)
+        self.buyerBar.setOrientation(QtCore.Qt.Vertical)
+        self.buyerBar.setObjectName(_fromUtf8("buyerBar"))
+        self.horizontalLayout.addWidget(self.buyerBar)
+        self.buyer = QtGui.QListView(self.verticalLayoutWidget)
+        self.buyer.setObjectName(_fromUtf8("buyer"))
+        self.horizontalLayout.addWidget(self.buyer)
+        self.verticalLayout.addLayout(self.horizontalLayout)
+
+        self.retranslateUi(OrdersMenu)
+        QtCore.QMetaObject.connectSlotsByName(OrdersMenu)
+
+    def retranslateUi(self, OrdersMenu):
+        OrdersMenu.setWindowTitle(_translate("OrdersMenu", "Form", None))
+        self.OrderLabel.setText(_translate("OrdersMenu", "Orders", None))
+
+##
+# This class contains the UI for the New Contract tab
+#
+class ContractGenUi(object):
+    def setupUi(self, Form):
+        Form.setObjectName(_fromUtf8("Form"))
+        Form.resize(788, 376)
+        Form.setAutoFillBackground(False)
+        self.gridLayoutWidget = QtGui.QWidget(Form)
+        self.gridLayoutWidget.setGeometry(QtCore.QRect(10, 10, 671, 235))
+        self.gridLayoutWidget.setObjectName(_fromUtf8("gridLayoutWidget"))
+        self.gridLayout = QtGui.QGridLayout(self.gridLayoutWidget)
+        self.gridLayout.setMargin(0)
+        self.gridLayout.setObjectName(_fromUtf8("gridLayout"))
+        self.label = QtGui.QLabel(self.gridLayoutWidget)
+        font = QtGui.QFont()
+        font.setPointSize(14)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label.setFont(font)
+        self.label.setObjectName(_fromUtf8("label"))
+        self.gridLayout.addWidget(self.label, 1, 0, 1, 1)
+        self.lineEdit_2 = QtGui.QLineEdit(self.gridLayoutWidget)
+        self.lineEdit_2.setObjectName(_fromUtf8("lineEdit_2"))
+        self.gridLayout.addWidget(self.lineEdit_2, 3, 1, 1, 1)
+        self.label_7 = QtGui.QLabel(self.gridLayoutWidget)
+        font = QtGui.QFont()
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_7.setFont(font)
+        self.label_7.setObjectName(_fromUtf8("label_7"))
+        self.gridLayout.addWidget(self.label_7, 6, 0, 1, 1)
+        self.lineEdit_4 = QtGui.QLineEdit(self.gridLayoutWidget)
+        self.lineEdit_4.setObjectName(_fromUtf8("lineEdit_4"))
+        self.gridLayout.addWidget(self.lineEdit_4, 5, 1, 1, 1)
+        self.lineEdit_5 = QtGui.QLineEdit(self.gridLayoutWidget)
+        self.lineEdit_5.setObjectName(_fromUtf8("lineEdit_5"))
+        self.gridLayout.addWidget(self.lineEdit_5, 6, 1, 1, 1)
+        self.lineEdit_3 = QtGui.QLineEdit(self.gridLayoutWidget)
+        self.lineEdit_3.setObjectName(_fromUtf8("lineEdit_3"))
+        self.gridLayout.addWidget(self.lineEdit_3, 4, 1, 1, 1)
+        self.label_6 = QtGui.QLabel(self.gridLayoutWidget)
+        font = QtGui.QFont()
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_6.setFont(font)
+        self.label_6.setObjectName(_fromUtf8("label_6"))
+        self.gridLayout.addWidget(self.label_6, 5, 0, 1, 1)
+        self.label_4 = QtGui.QLabel(self.gridLayoutWidget)
+        font = QtGui.QFont()
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_4.setFont(font)
+        self.label_4.setObjectName(_fromUtf8("label_4"))
+        self.gridLayout.addWidget(self.label_4, 3, 0, 1, 1)
+        self.label_5 = QtGui.QLabel(self.gridLayoutWidget)
+        font = QtGui.QFont()
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_5.setFont(font)
+        self.label_5.setObjectName(_fromUtf8("label_5"))
+        self.gridLayout.addWidget(self.label_5, 4, 0, 1, 1)
+        self.label_2 = QtGui.QLabel(self.gridLayoutWidget)
+        font = QtGui.QFont()
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_2.setFont(font)
+        self.label_2.setLayoutDirection(QtCore.Qt.RightToLeft)
+        self.label_2.setAutoFillBackground(False)
+        self.label_2.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_2.setObjectName(_fromUtf8("label_2"))
+        self.gridLayout.addWidget(self.label_2, 2, 1, 1, 1)
+        self.pushButton = QtGui.QPushButton(Form)
+        self.pushButton.setGeometry(QtCore.QRect(520, 260, 161, 27))
+        self.pushButton.setObjectName(_fromUtf8("pushButton"))
+
+        self.retranslateUi(Form)
+        QtCore.QMetaObject.connectSlotsByName(Form)
+
+    def retranslateUi(self, Form):
+        Form.setWindowTitle(_translate("Form", "Form", None))
+        self.label.setText(_translate("Form", "Contract Generator", None))
+        self.label_7.setText(_translate("Form", "Offer expiry date", None))
+        self.label_6.setText(_translate("Form", "Price (in BTC) of item to sell", None))
+        self.label_4.setText(_translate("Form", "Your Bitcoin address", None))
+        self.label_5.setText(_translate("Form", "Name of item to sell", None))
+        self.label_2.setText(_translate("Form", "Contract", None))
+        self.pushButton.setText(_translate("Form", "Generate Contract", None))
 

@@ -7,11 +7,7 @@
 #
 # WARNING! All changes made in this file will be lost!
 
-from storeMenu import *
-from ContractGen import *
-from orderTab import *
-from sendMessage import *
-from Settings import *
+from TabWidgets import *
 from PyQt4 import QtCore, QtGui
 
 try:
