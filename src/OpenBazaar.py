@@ -204,6 +204,30 @@ class Ui_OpenBazaar(object):
         self.gridLayout.addWidget(self.searchButton, 4, 3, 1, 1)
 
         ##
+        # Create "New Contract" Tab
+        #
+        self.newContractTab = QtGui.QWidget()
+        self.newContractUi = ContractGenUi()
+        self.newContractUi.setupUi(self.newContractTab)
+        self.tabMenu.addTab(self.newContractTab, "New Contract")
+
+        ##
+        # Create a blank store tab
+        #
+        self.exampleStoreTab = QtGui.QWidget()
+        self.exampleStoreUi = storeTab()
+        self.exampleStoreUi.setupUi(self.exampleStoreTab)
+        self.tabMenu.addTab(self.exampleStoreTab, "Someone's Store")
+
+        ##
+        # Create a "My orders" tab
+        #
+        self.orders_tab = QtGui.QWidget()
+        self.orders_tab_ui = Ui_OrdersMenu()
+        self.orders_tab_ui.setupUi(self.orders_tab)
+        self.tabMenu.addTab(self.orders_tab, "My Orders")
+
+        ##
         # Set grid layout as central widget
         #
         OpenBazaar.setCentralWidget(self.centralwidget)
@@ -238,6 +262,7 @@ class Ui_OpenBazaar(object):
         self.actionMy_Listings.setObjectName(_fromUtf8("actionMy_Listings"))
         self.actionMy_Orders = QtGui.QAction(OpenBazaar)
         self.actionMy_Orders.setObjectName(_fromUtf8("actionMy_Orders"))
+        self.actionMy_Orders.triggered.connect(lambda x: self.tabMenu.setCurrentIndex(self.tabMenu.indexOf(self.orders_tab)))
         self.actionMy_Settings = QtGui.QAction(OpenBazaar)
         self.actionMy_Settings.setObjectName(_fromUtf8("actionMy_Settings"))
         self.actionSend_a_Message = QtGui.QAction(OpenBazaar)
@@ -297,29 +322,7 @@ class Ui_OpenBazaar(object):
         self.menubar.addAction(self.menuNotaries.menuAction())
         self.menubar.addAction(self.menuHelp.menuAction())
 
-        ##
-        # Create "New Contract" Tab
-        #
-        self.newContractTab = QtGui.QWidget()
-        self.newContractUi = ContractGenUi()
-        self.newContractUi.setupUi(self.newContractTab)
-        self.tabMenu.addTab(self.newContractTab, "New Contract")
 
-        ##
-        # Create a blank store tab
-        #
-        self.exampleStoreTab = QtGui.QWidget()
-        self.exampleStoreUi = storeTab()
-        self.exampleStoreUi.setupUi(self.exampleStoreTab)
-        self.tabMenu.addTab(self.exampleStoreTab, "Someone's Store")
-
-        ##
-        # Create a "My orders" tab
-        #
-        self.orders_tab = QtGui.QWidget()
-        self.orders_tab_ui = Ui_OrdersMenu()
-        self.orders_tab_ui.setupUi(self.orders_tab)
-        self.tabMenu.addTab(self.orders_tab, "My Orders")
 
 
 
