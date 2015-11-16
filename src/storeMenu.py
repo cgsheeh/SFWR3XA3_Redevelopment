@@ -34,7 +34,7 @@ class storeTab(object):
         self.verticalLayout.setMargin(0)
         self.verticalLayout.setObjectName(_fromUtf8("verticalLayout"))
         self.label = QtGui.QLabel(self.verticalLayoutWidget)
-        self.label.setObjectName(_fromUtf8("label"))
+        self.label.setObjectName(_fromUtf8("bitcoin_balance_label"))
         self.verticalLayout.addWidget(self.label)
         self.horizontalLayout = QtGui.QHBoxLayout()
         self.horizontalLayout.setObjectName(_fromUtf8("horizontalLayout"))

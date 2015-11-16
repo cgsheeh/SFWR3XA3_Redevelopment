@@ -8,6 +8,7 @@
 # WARNING! All changes made in this file will be lost!
 from storeMenu import *
 from ContractGen import *
+from orderTab import *
 from PyQt4 import QtCore, QtGui
 
 try:
@@ -26,49 +27,93 @@ except AttributeError:
 
 class Ui_OpenBazaar(object):
     def setupUi(self, OpenBazaar):
+        ##
+        # Set object name and initial size
+        #
         OpenBazaar.setObjectName(_fromUtf8("OpenBazaar"))
         OpenBazaar.resize(1163, 867)
+
+        ##
+        # Set tray logo
+        #
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap(_fromUtf8("images/small_logo.jpeg")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         OpenBazaar.setWindowIcon(icon)
+
+        ##
+        # Create center widget, main grid layout
+        #
         self.centralwidget = QtGui.QWidget(OpenBazaar)
         self.centralwidget.setObjectName(_fromUtf8("centralwidget"))
         self.gridLayout = QtGui.QGridLayout(self.centralwidget)
         self.gridLayout.setObjectName(_fromUtf8("gridLayout"))
         self.currencySelector = QtGui.QComboBox(self.centralwidget)
         self.currencySelector.setObjectName(_fromUtf8("currencySelector"))
+
+        ##
+        # Add currency conversion options
+        #
         self.currencySelector.addItem(_fromUtf8(""))
         self.currencySelector.addItem(_fromUtf8(""))
         self.currencySelector.addItem(_fromUtf8(""))
         self.currencySelector.addItem(_fromUtf8(""))
         self.currencySelector.addItem(_fromUtf8(""))
         self.gridLayout.addWidget(self.currencySelector, 2, 1, 1, 1)
+
+        ##
+        # Add display picture for user
+        #
         self.displayPicture = QtGui.QLabel(self.centralwidget)
         self.displayPicture.setText(_fromUtf8(""))
         self.displayPicture.setPixmap(QtGui.QPixmap(_fromUtf8("images/default-avatar.png")))
         self.displayPicture.setObjectName(_fromUtf8("displayPicture"))
         self.gridLayout.addWidget(self.displayPicture, 0, 0, 2, 2)
+
+        ##
+        # Add merchant label
+        #
         self.myMerchantsLabel = QtGui.QLabel(self.centralwidget)
         self.myMerchantsLabel.setObjectName(_fromUtf8("myMerchantsLabel"))
         self.gridLayout.addWidget(self.myMerchantsLabel, 0, 5, 1, 2)
+
+        ##
+        # Add "add store" button
+        #
         self.addStoreButton = QtGui.QPushButton(self.centralwidget)
         self.addStoreButton.setObjectName(_fromUtf8("addStoreButton"))
         self.gridLayout.addWidget(self.addStoreButton, 5, 6, 1, 1)
+
+        ##
+        # Add "My Notaries" label
         self.myNotariesLabel = QtGui.QLabel(self.centralwidget)
         self.myNotariesLabel.setObjectName(_fromUtf8("myNotariesLabel"))
         self.gridLayout.addWidget(self.myNotariesLabel, 6, 5, 1, 2)
+
+        ##
+        # Add "My Notary" line edit
+        #
         self.addNotaryText = QtGui.QLineEdit(self.centralwidget)
         self.addNotaryText.setObjectName(_fromUtf8("addNotaryText"))
         self.gridLayout.addWidget(self.addNotaryText, 8, 4, 1, 2)
         self.addNotaryButton = QtGui.QPushButton(self.centralwidget)
         self.addNotaryButton.setObjectName(_fromUtf8("addNotaryButton"))
         self.gridLayout.addWidget(self.addNotaryButton, 8, 6, 1, 1)
-        self.label = QtGui.QLabel(self.centralwidget)
-        self.label.setObjectName(_fromUtf8("label"))
-        self.gridLayout.addWidget(self.label, 2, 0, 1, 1)
+
+        ##
+        # Add balance label
+        self.bitcoin_balance_label = QtGui.QLabel(self.centralwidget)
+        self.bitcoin_balance_label.setObjectName(_fromUtf8("bitcoin_balance_label"))
+        self.gridLayout.addWidget(self.bitcoin_balance_label, 2, 0, 1, 1)
+
+        ##
+        # Add 'add store' text
+        #
         self.addStoreText = QtGui.QLineEdit(self.centralwidget)
         self.addStoreText.setObjectName(_fromUtf8("addStoreText"))
         self.gridLayout.addWidget(self.addStoreText, 5, 4, 1, 2)
+
+        ##
+        # Add list of notaries and fill with 3 empty entries
         self.myNotariesList = QtGui.QListWidget(self.centralwidget)
         self.myNotariesList.setObjectName(_fromUtf8("myNotariesList"))
         item = QtGui.QListWidgetItem()
@@ -78,73 +123,47 @@ class Ui_OpenBazaar(object):
         item = QtGui.QListWidgetItem()
         self.myNotariesList.addItem(item)
         self.gridLayout.addWidget(self.myNotariesList, 7, 4, 1, 3)
+
+        ##
+        # Add main tab menu
+        #
         self.tabMenu = QtGui.QTabWidget(self.centralwidget)
         self.tabMenu.setObjectName(_fromUtf8("tabMenu"))
         self.tab = QtGui.QWidget()
         self.tab.setObjectName(_fromUtf8("tab"))
-        self.textBrowser = QtGui.QTextBrowser(self.tab)
-        self.textBrowser.setGeometry(QtCore.QRect(-5, 1, 611, 441))
-        self.textBrowser.setObjectName(_fromUtf8("textBrowser"))
+
+        ##
+        # Add welcome tab
+        self.welcome_tab_browser = QtGui.QTextBrowser(self.tab)
+        self.welcome_tab_browser.setGeometry(QtCore.QRect(-5, 1, 611, 441))
+        self.welcome_tab_browser.setObjectName(_fromUtf8("welcome_tab_browser"))
         self.tabMenu.addTab(self.tab, _fromUtf8(""))
         self.tab_2 = QtGui.QWidget()
         self.tab_2.setObjectName(_fromUtf8("tab_2"))
-        self.pushButton_3 = QtGui.QPushButton(self.tab_2)
-        self.pushButton_3.setGeometry(QtCore.QRect(117, 50, 111, 27))
-        self.pushButton_3.setObjectName(_fromUtf8("pushButton_3"))
-        self.pushButton_4 = QtGui.QPushButton(self.tab_2)
-        self.pushButton_4.setGeometry(QtCore.QRect(240, 50, 98, 27))
-        self.pushButton_4.setObjectName(_fromUtf8("pushButton_4"))
-        self.pushButton_5 = QtGui.QPushButton(self.tab_2)
-        self.pushButton_5.setGeometry(QtCore.QRect(350, 50, 98, 27))
-        self.pushButton_5.setObjectName(_fromUtf8("pushButton_5"))
+
+
         self.tabMenu.addTab(self.tab_2, _fromUtf8(""))
         self.tab_3 = QtGui.QWidget()
         self.tab_3.setObjectName(_fromUtf8("tab_3"))
-        self.pushButton_6 = QtGui.QPushButton(self.tab_3)
-        self.pushButton_6.setGeometry(QtCore.QRect(120, 70, 98, 27))
-        self.pushButton_6.setObjectName(_fromUtf8("pushButton_6"))
-        self.pushButton_7 = QtGui.QPushButton(self.tab_3)
-        self.pushButton_7.setGeometry(QtCore.QRect(270, 70, 98, 27))
-        self.pushButton_7.setObjectName(_fromUtf8("pushButton_7"))
+
+        self.my_purchases_button = QtGui.QPushButton(self.tab_3)
+        self.my_purchases_button.setGeometry(QtCore.QRect(270, 70, 98, 27))
+        self.my_purchases_button.setObjectName(_fromUtf8("my_purchases_button"))
         self.tabMenu.addTab(self.tab_3, _fromUtf8(""))
         self.tab_4 = QtGui.QWidget()
         self.tab_4.setObjectName(_fromUtf8("tab_4"))
-        self.pushButton_8 = QtGui.QPushButton(self.tab_4)
-        self.pushButton_8.setGeometry(QtCore.QRect(110, 80, 98, 27))
-        self.pushButton_8.setObjectName(_fromUtf8("pushButton_8"))
-        self.pushButton_9 = QtGui.QPushButton(self.tab_4)
-        self.pushButton_9.setGeometry(QtCore.QRect(250, 80, 98, 27))
-        self.pushButton_9.setObjectName(_fromUtf8("pushButton_9"))
+
         self.tabMenu.addTab(self.tab_4, _fromUtf8(""))
         self.tab_5 = QtGui.QWidget()
         self.tab_5.setObjectName(_fromUtf8("tab_5"))
-        self.pushButton = QtGui.QPushButton(self.tab_5)
-        self.pushButton.setGeometry(QtCore.QRect(127, 60, 111, 27))
-        self.pushButton.setObjectName(_fromUtf8("pushButton"))
-        self.pushButton_2 = QtGui.QPushButton(self.tab_5)
-        self.pushButton_2.setGeometry(QtCore.QRect(280, 60, 98, 27))
-        self.pushButton_2.setObjectName(_fromUtf8("pushButton_2"))
+
         self.tabMenu.addTab(self.tab_5, _fromUtf8(""))
         self.tab_6 = QtGui.QWidget()
         self.tab_6.setObjectName(_fromUtf8("tab_6"))
-        self.pushButton_10 = QtGui.QPushButton(self.tab_6)
-        self.pushButton_10.setGeometry(QtCore.QRect(20, 60, 98, 27))
-        self.pushButton_10.setObjectName(_fromUtf8("pushButton_10"))
-        self.pushButton_11 = QtGui.QPushButton(self.tab_6)
-        self.pushButton_11.setGeometry(QtCore.QRect(140, 60, 98, 27))
-        self.pushButton_11.setObjectName(_fromUtf8("pushButton_11"))
-        self.pushButton_12 = QtGui.QPushButton(self.tab_6)
-        self.pushButton_12.setGeometry(QtCore.QRect(247, 60, 111, 27))
-        self.pushButton_12.setObjectName(_fromUtf8("pushButton_12"))
-        self.pushButton_13 = QtGui.QPushButton(self.tab_6)
-        self.pushButton_13.setGeometry(QtCore.QRect(20, 120, 98, 27))
-        self.pushButton_13.setObjectName(_fromUtf8("pushButton_13"))
-        self.pushButton_14 = QtGui.QPushButton(self.tab_6)
-        self.pushButton_14.setGeometry(QtCore.QRect(140, 120, 98, 27))
-        self.pushButton_14.setObjectName(_fromUtf8("pushButton_14"))
-        self.pushButton_15 = QtGui.QPushButton(self.tab_6)
-        self.pushButton_15.setGeometry(QtCore.QRect(260, 120, 98, 27))
-        self.pushButton_15.setObjectName(_fromUtf8("pushButton_15"))
+        self.store_info_button = QtGui.QPushButton(self.tab_6)
+        self.store_info_button.setGeometry(QtCore.QRect(20, 60, 98, 27))
+        self.store_info_button.setObjectName(_fromUtf8("store_info_button"))
+
         self.tabMenu.addTab(self.tab_6, _fromUtf8(""))
         self.gridLayout.addWidget(self.tabMenu, 7, 2, 1, 1)
         self.merchantsList = QtGui.QListWidget(self.centralwidget)
@@ -172,18 +191,26 @@ class Ui_OpenBazaar(object):
         self.recentTransactionsLabel = QtGui.QLabel(self.centralwidget)
         self.recentTransactionsLabel.setObjectName(_fromUtf8("recentTransactionsLabel"))
         self.gridLayout.addWidget(self.recentTransactionsLabel, 6, 0, 1, 1)
-        self.label_2 = QtGui.QLabel(self.centralwidget)
-        self.label_2.setText(_fromUtf8(""))
-        self.label_2.setPixmap(QtGui.QPixmap(_fromUtf8("images/banner.png")))
-        self.label_2.setObjectName(_fromUtf8("label_2"))
-        self.gridLayout.addWidget(self.label_2, 0, 2, 2, 1)
+        self.main_logo_label = QtGui.QLabel(self.centralwidget)
+        self.main_logo_label.setText(_fromUtf8(""))
+        self.main_logo_label.setPixmap(QtGui.QPixmap(_fromUtf8("images/banner.png")))
+        self.main_logo_label.setObjectName(_fromUtf8("main_logo_label"))
+        self.gridLayout.addWidget(self.main_logo_label, 0, 2, 2, 1)
         self.searchBarText = QtGui.QLineEdit(self.centralwidget)
         self.searchBarText.setObjectName(_fromUtf8("searchBarText"))
         self.gridLayout.addWidget(self.searchBarText, 4, 2, 1, 1)
         self.searchButton = QtGui.QPushButton(self.centralwidget)
         self.searchButton.setObjectName(_fromUtf8("searchButton"))
         self.gridLayout.addWidget(self.searchButton, 4, 3, 1, 1)
+
+        ##
+        # Set grid layout as central widget
+        #
         OpenBazaar.setCentralWidget(self.centralwidget)
+
+        ##
+        # Create menu bar for application
+        #
         self.menubar = QtGui.QMenuBar(OpenBazaar)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 1163, 25))
         self.menubar.setObjectName(_fromUtf8("menubar"))
@@ -203,6 +230,10 @@ class Ui_OpenBazaar(object):
         self.statusbar = QtGui.QStatusBar(OpenBazaar)
         self.statusbar.setObjectName(_fromUtf8("statusbar"))
         OpenBazaar.setStatusBar(self.statusbar)
+
+        ##
+        # Define action for clicking menu bar items
+        #
         self.actionMy_Listings = QtGui.QAction(OpenBazaar)
         self.actionMy_Listings.setObjectName(_fromUtf8("actionMy_Listings"))
         self.actionMy_Orders = QtGui.QAction(OpenBazaar)
@@ -237,6 +268,10 @@ class Ui_OpenBazaar(object):
         self.actionGet_Help_Online.setObjectName(_fromUtf8("actionGet_Help_Online"))
         self.actionUser_Guide = QtGui.QAction(OpenBazaar)
         self.actionUser_Guide.setObjectName(_fromUtf8("actionUser_Guide"))
+
+        ##
+        # Add actions to menu items
+        #
         self.menuHome.addAction(self.actionMy_Listings)
         self.menuHome.addAction(self.actionMy_Orders)
         self.menuHome.addAction(self.actionMy_Settings)
@@ -262,15 +297,31 @@ class Ui_OpenBazaar(object):
         self.menubar.addAction(self.menuNotaries.menuAction())
         self.menubar.addAction(self.menuHelp.menuAction())
 
+        ##
+        # Create "New Contract" Tab
+        #
         self.newContractTab = QtGui.QWidget()
         self.newContractUi = ContractGenUi()
         self.newContractUi.setupUi(self.newContractTab)
         self.tabMenu.addTab(self.newContractTab, "New Contract")
 
-        #self.exampleStoreTab = QtGui.QWidget()
-        #self.exampleStoreUi = storeTab()
-        #self.exampleStoreUi.setupUi(self.exampleStoreTab)
-        #self.tabMenu.addTab(self.exampleStoreTab, "Someone's Store")
+        ##
+        # Create a blank store tab
+        #
+        self.exampleStoreTab = QtGui.QWidget()
+        self.exampleStoreUi = storeTab()
+        self.exampleStoreUi.setupUi(self.exampleStoreTab)
+        self.tabMenu.addTab(self.exampleStoreTab, "Someone's Store")
+
+        ##
+        # Create a "My orders" tab
+        #
+        self.orders_tab = QtGui.QWidget()
+        self.orders_tab_ui = Ui_OrdersMenu()
+        self.orders_tab_ui.setupUi(self.orders_tab)
+        self.tabMenu.addTab(self.orders_tab, "My Orders")
+
+
 
         self.retranslateUi(OpenBazaar)
         self.tabMenu.setCurrentIndex(0)
@@ -288,7 +339,7 @@ class Ui_OpenBazaar(object):
         self.myNotariesLabel.setText(_translate("OpenBazaar", "My Notaries", None))
         self.addNotaryText.setText(_translate("OpenBazaar", "Enter Notary GUID", None))
         self.addNotaryButton.setText(_translate("OpenBazaar", "Add Notary", None))
-        self.label.setText(_translate("OpenBazaar", "$14,092", None))
+        self.bitcoin_balance_label.setText(_translate("OpenBazaar", "$14,092", None))
         self.addStoreText.setText(_translate("OpenBazaar", "Enter Store GUID", None))
         __sortingEnabled = self.myNotariesList.isSortingEnabled()
         self.myNotariesList.setSortingEnabled(False)
@@ -299,7 +350,7 @@ class Ui_OpenBazaar(object):
         item = self.myNotariesList.item(2)
         item.setText(_translate("OpenBazaar", "Notary 3", None))
         self.myNotariesList.setSortingEnabled(__sortingEnabled)
-        self.textBrowser.setHtml(_translate("OpenBazaar", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+        self.welcome_tab_browser.setHtml(_translate("OpenBazaar", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'Ubuntu\'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
@@ -313,25 +364,17 @@ class Ui_OpenBazaar(object):
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><img src=\"http://i.imgur.com/jAtFHXV.gif\" style=\"vertical-align: middle;\" /></p>\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'arial\'; font-size:14px; color:#666666; background-color:#ffffff;\">Your purchases and sales are in the </span><span style=\" font-family:\'arial\'; font-size:14px; font-weight:696; color:#666666;\">Orders</span><span style=\" font-family:\'arial\'; font-size:14px; color:#666666; background-color:#ffffff;\"> tab. </span><span style=\" font-family:\'arial\'; font-size:14px; color:#666666;\"> </span><span style=\" font-family:\'arial\'; font-size:14px; color:#666666; background-color:#ffffff;\">Please report problems to our </span><a href=\"https://github.com/OpenBazaar\"><span style=\" text-decoration: underline; color:#0000ff;\">Github</span></a><span style=\" font-family:\'arial\'; font-size:14px; color:#666666; background-color:#ffffff;\"> or </span><a href=\"https://www.reddit.com/r/OpenBazaar/\"><span style=\" text-decoration: underline; color:#0000ff;\">subreddit</span></a><span style=\" font-family:\'arial\'; font-size:14px; color:#666666; background-color:#ffffff;\">. Enjoy!</span></p></body></html>", None))
         self.tabMenu.setTabText(self.tabMenu.indexOf(self.tab), _translate("OpenBazaar", "Home", None))
-        self.pushButton_3.setText(_translate("OpenBazaar", "Send a Message", None))
-        self.pushButton_4.setText(_translate("OpenBazaar", "Inbox", None))
-        self.pushButton_5.setText(_translate("OpenBazaar", "Outbox", None))
+
         self.tabMenu.setTabText(self.tabMenu.indexOf(self.tab_2), _translate("OpenBazaar", "Messages", None))
-        self.pushButton_6.setText(_translate("OpenBazaar", "My Sales", None))
-        self.pushButton_7.setText(_translate("OpenBazaar", "My Purchases", None))
+
+        self.my_purchases_button.setText(_translate("OpenBazaar", "My Purchases", None))
         self.tabMenu.setTabText(self.tabMenu.indexOf(self.tab_3), _translate("OpenBazaar", "Orders", None))
-        self.pushButton_8.setText(_translate("OpenBazaar", "Notarized", None))
-        self.pushButton_9.setText(_translate("OpenBazaar", "Pending", None))
+
         self.tabMenu.setTabText(self.tabMenu.indexOf(self.tab_4), _translate("OpenBazaar", "Notarizations", None))
-        self.pushButton.setText(_translate("OpenBazaar", "Add a Contract", None))
-        self.pushButton_2.setText(_translate("OpenBazaar", "Republish", None))
+
         self.tabMenu.setTabText(self.tabMenu.indexOf(self.tab_5), _translate("OpenBazaar", "Contracts", None))
-        self.pushButton_10.setText(_translate("OpenBazaar", "Store Info", None))
-        self.pushButton_11.setText(_translate("OpenBazaar", "Keys", None))
-        self.pushButton_12.setText(_translate("OpenBazaar", "Communication", None))
-        self.pushButton_13.setText(_translate("OpenBazaar", "Notary", None))
-        self.pushButton_14.setText(_translate("OpenBazaar", "Advanced", None))
-        self.pushButton_15.setText(_translate("OpenBazaar", "Backup", None))
+        self.store_info_button.setText(_translate("OpenBazaar", "Store Info", None))
+
         self.tabMenu.setTabText(self.tabMenu.indexOf(self.tab_6), _translate("OpenBazaar", "Settings", None))
         __sortingEnabled = self.merchantsList.isSortingEnabled()
         self.merchantsList.setSortingEnabled(False)

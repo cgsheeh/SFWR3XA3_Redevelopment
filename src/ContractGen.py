@@ -62,7 +62,7 @@ class ContractGenUi(object):
         self.label_2.setLayoutDirection(QtCore.Qt.RightToLeft)
         self.label_2.setAutoFillBackground(False)
         self.label_2.setAlignment(QtCore.Qt.AlignCenter)
-        self.label_2.setObjectName(_fromUtf8("label_2"))
+        self.label_2.setObjectName(_fromUtf8("main_logo_label"))
         self.gridLayout.addWidget(self.label_2, 1, 1, 1, 1)
         self.textBrowser_2 = QtGui.QTextBrowser(self.gridLayoutWidget)
         self.textBrowser_2.setLayoutDirection(QtCore.Qt.LeftToRight)
