@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'Settings.ui'
 #
-# Created: Sun Nov 15 23:08:33 2015
+# Created: Mon Nov 16 00:10:10 2015
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -23,19 +23,12 @@ except AttributeError:
     def _translate(context, text, disambig):
         return QtGui.QApplication.translate(context, text, disambig)
 
-class Ui_Form(object):
+class Settings_Ui(object):
     def setupUi(self, Form):
         Form.setObjectName(_fromUtf8("Form"))
         Form.resize(1027, 758)
-        self.scrollArea = QtGui.QScrollArea(Form)
-        self.scrollArea.setGeometry(QtCore.QRect(69, -1, 931, 741))
-        self.scrollArea.setWidgetResizable(True)
-        self.scrollArea.setObjectName(_fromUtf8("scrollArea"))
-        self.scrollAreaWidgetContents = QtGui.QWidget()
-        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 929, 739))
-        self.scrollAreaWidgetContents.setObjectName(_fromUtf8("scrollAreaWidgetContents"))
-        self.verticalLayoutWidget = QtGui.QWidget(self.scrollAreaWidgetContents)
-        self.verticalLayoutWidget.setGeometry(QtCore.QRect(10, -470, 771, 1201))
+        self.verticalLayoutWidget = QtGui.QWidget(Form)
+        self.verticalLayoutWidget.setGeometry(QtCore.QRect(0, 10, 771, 1201))
         self.verticalLayoutWidget.setObjectName(_fromUtf8("verticalLayoutWidget"))
         self.verticalLayout = QtGui.QVBoxLayout(self.verticalLayoutWidget)
         self.verticalLayout.setMargin(0)
@@ -306,7 +299,6 @@ class Ui_Form(object):
         self.textBrowser_2.setObjectName(_fromUtf8("textBrowser_2"))
         self.gridLayout_6.addWidget(self.textBrowser_2, 1, 0, 1, 2)
         self.verticalLayout.addLayout(self.gridLayout_6)
-        self.scrollArea.setWidget(self.scrollAreaWidgetContents)
 
         self.retranslateUi(Form)
         QtCore.QMetaObject.connectSlotsByName(Form)

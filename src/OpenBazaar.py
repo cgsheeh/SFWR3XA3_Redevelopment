@@ -10,6 +10,8 @@
 from storeMenu import *
 from ContractGen import *
 from orderTab import *
+from sendMessage import *
+from Settings import *
 from PyQt4 import QtCore, QtGui
 
 try:
@@ -145,6 +147,8 @@ class Ui_OpenBazaar(object):
         self.welcome_tab_browser.setObjectName(_fromUtf8("welcome_tab_browser"))
         self.tabMenu.addTab(self.tab, _fromUtf8("Welcome"))
 
+
+
         self.gridLayout.addWidget(self.tabMenu, 7, 2, 1, 1)
         self.merchantsList = QtGui.QListWidget(self.centralwidget)
         self.merchantsList.setObjectName(_fromUtf8("merchantsList"))
@@ -208,6 +212,24 @@ class Ui_OpenBazaar(object):
         self.tabMenu.addTab(self.orders_tab, "My Orders")
 
         ##
+        # Create a new message tab
+        #
+        self.new_message_tab = QtGui.QWidget()
+        self.new_message_ui = SendMessage_Ui()
+        self.new_message_ui.setupUi(self.new_message_tab)
+        self.tabMenu.addTab(self.new_message_tab, "Send Message")
+
+        ##
+        # Create settings tab
+        #
+        self.settings_scroll = QtGui.QScrollArea()
+        self.settings_tab = QtGui.QWidget()
+        self.settings_tab_ui = Settings_Ui()
+        self.settings_tab_ui.setupUi(self.settings_tab)
+        self.settings_scroll.setWidget(self.settings_tab)
+        self.tabMenu.addTab(self.settings_scroll, "Settings")
+
+        ##
         # Set grid layout as central widget
         #
         OpenBazaar.setCentralWidget(self.centralwidget)
@@ -245,12 +267,14 @@ class Ui_OpenBazaar(object):
         self.actionMy_Orders.triggered.connect(lambda x: self.tabMenu.setCurrentIndex(self.tabMenu.indexOf(self.orders_tab)))
         self.actionMy_Settings = QtGui.QAction(OpenBazaar)
         self.actionMy_Settings.setObjectName(_fromUtf8("actionMy_Settings"))
+        self.actionMy_Settings.triggered.connect(lambda x: self.tabMenu.setCurrentIndex(self.tabMenu.indexOf(self.settings_scroll)))
         self.actionSend_a_Message = QtGui.QAction(OpenBazaar)
         self.actionSend_a_Message.setObjectName(_fromUtf8("actionSend_a_Message"))
         self.actionInbo = QtGui.QAction(OpenBazaar)
         self.actionInbo.setObjectName(_fromUtf8("actionInbo"))
         self.actionOutbox = QtGui.QAction(OpenBazaar)
         self.actionOutbox.setObjectName(_fromUtf8("actionOutbox"))
+        self.actionOutbox.triggered.connect(lambda x: self.tabMenu.setCurrentIndex(self.tabMenu.indexOf(self.new_message_tab)))
         self.actionPurchased = QtGui.QAction(OpenBazaar)
         self.actionPurchased.setObjectName(_fromUtf8("actionPurchased"))
         self.actionNewContract = QtGui.QAction(OpenBazaar)

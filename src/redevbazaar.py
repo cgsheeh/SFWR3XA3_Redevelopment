@@ -52,7 +52,7 @@ class BazaarMain(QtGui.QMainWindow):
         self.messagesMenu.addAction(send_message)
         self.messagesMenu.addAction(sent)
 
-        #
+        ##
         #  Define Contracts menu functionality
         #
         purchased = QtGui.QAction("Purchased", self)
