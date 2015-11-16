@@ -271,6 +271,7 @@ class Ui_OpenBazaar(object):
         self.actionMy_Settings.triggered.connect(lambda x: self.tabMenu.setCurrentIndex(self.tabMenu.indexOf(self.settings_scroll)))
         self.actionSend_a_Message = QtGui.QAction(OpenBazaar)
         self.actionSend_a_Message.setObjectName(_fromUtf8("actionSend_a_Message"))
+        self.actionSend_a_Message.triggered.connect(lambda x: self.tabMenu.setCurrentIndex(self.tabMenu.indexOf(self.new_message_tab)))
         self.actionInbo = QtGui.QAction(OpenBazaar)
         self.actionInbo.setObjectName(_fromUtf8("actionInbo"))
         self.actionOutbox = QtGui.QAction(OpenBazaar)
