@@ -6,6 +6,7 @@
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
+
 from storeMenu import *
 from ContractGen import *
 from orderTab import *
@@ -25,8 +26,11 @@ except AttributeError:
     def _translate(context, text, disambig):
         return QtGui.QApplication.translate(context, text, disambig)
 
+
 class Ui_OpenBazaar(object):
+
     def setupUi(self, OpenBazaar):
+
         ##
         # Set object name and initial size
         #
@@ -47,12 +51,13 @@ class Ui_OpenBazaar(object):
         self.centralwidget.setObjectName(_fromUtf8("centralwidget"))
         self.gridLayout = QtGui.QGridLayout(self.centralwidget)
         self.gridLayout.setObjectName(_fromUtf8("gridLayout"))
-        self.currencySelector = QtGui.QComboBox(self.centralwidget)
-        self.currencySelector.setObjectName(_fromUtf8("currencySelector"))
+
 
         ##
         # Add currency conversion options
         #
+        self.currencySelector = QtGui.QComboBox(self.centralwidget)
+        self.currencySelector.setObjectName(_fromUtf8("currencySelector"))
         self.currencySelector.addItem(_fromUtf8(""))
         self.currencySelector.addItem(_fromUtf8(""))
         self.currencySelector.addItem(_fromUtf8(""))
@@ -134,37 +139,12 @@ class Ui_OpenBazaar(object):
 
         ##
         # Add welcome tab
+        #
         self.welcome_tab_browser = QtGui.QTextBrowser(self.tab)
         self.welcome_tab_browser.setGeometry(QtCore.QRect(-5, 1, 611, 441))
         self.welcome_tab_browser.setObjectName(_fromUtf8("welcome_tab_browser"))
-        self.tabMenu.addTab(self.tab, _fromUtf8(""))
-        self.tab_2 = QtGui.QWidget()
-        self.tab_2.setObjectName(_fromUtf8("tab_2"))
+        self.tabMenu.addTab(self.tab, _fromUtf8("Welcome"))
 
-
-        self.tabMenu.addTab(self.tab_2, _fromUtf8(""))
-        self.tab_3 = QtGui.QWidget()
-        self.tab_3.setObjectName(_fromUtf8("tab_3"))
-
-        self.my_purchases_button = QtGui.QPushButton(self.tab_3)
-        self.my_purchases_button.setGeometry(QtCore.QRect(270, 70, 98, 27))
-        self.my_purchases_button.setObjectName(_fromUtf8("my_purchases_button"))
-        self.tabMenu.addTab(self.tab_3, _fromUtf8(""))
-        self.tab_4 = QtGui.QWidget()
-        self.tab_4.setObjectName(_fromUtf8("tab_4"))
-
-        self.tabMenu.addTab(self.tab_4, _fromUtf8(""))
-        self.tab_5 = QtGui.QWidget()
-        self.tab_5.setObjectName(_fromUtf8("tab_5"))
-
-        self.tabMenu.addTab(self.tab_5, _fromUtf8(""))
-        self.tab_6 = QtGui.QWidget()
-        self.tab_6.setObjectName(_fromUtf8("tab_6"))
-        self.store_info_button = QtGui.QPushButton(self.tab_6)
-        self.store_info_button.setGeometry(QtCore.QRect(20, 60, 98, 27))
-        self.store_info_button.setObjectName(_fromUtf8("store_info_button"))
-
-        self.tabMenu.addTab(self.tab_6, _fromUtf8(""))
         self.gridLayout.addWidget(self.tabMenu, 7, 2, 1, 1)
         self.merchantsList = QtGui.QListWidget(self.centralwidget)
         self.merchantsList.setObjectName(_fromUtf8("merchantsList"))
@@ -322,10 +302,6 @@ class Ui_OpenBazaar(object):
         self.menubar.addAction(self.menuNotaries.menuAction())
         self.menubar.addAction(self.menuHelp.menuAction())
 
-
-
-
-
         self.retranslateUi(OpenBazaar)
         self.tabMenu.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(OpenBazaar)
@@ -366,19 +342,7 @@ class Ui_OpenBazaar(object):
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'arial\'; font-size:14px; color:#666666; background-color:#ffffff;\">If selling an item, be sure to use descriptive keywords. Click on the markets you see on the right side of the screen to view their items, or use the search bar above. </span><span style=\" font-family:\'arial\'; font-size:14px; color:#666666;\"> </span><span style=\" font-family:\'arial\'; font-size:14px; color:#666666; background-color:#ffffff;\">You can directly contact other online users by selecting the blue Message Me button in their store front. Manage your messages in the </span><span style=\" font-family:\'arial\'; font-size:14px; font-weight:696; color:#666666;\">Messages</span><span style=\" font-family:\'arial\'; font-size:14px; color:#666666; background-color:#ffffff;\"> tab.</span></p>\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><img src=\"http://i.imgur.com/jAtFHXV.gif\" style=\"vertical-align: middle;\" /></p>\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'arial\'; font-size:14px; color:#666666; background-color:#ffffff;\">Your purchases and sales are in the </span><span style=\" font-family:\'arial\'; font-size:14px; font-weight:696; color:#666666;\">Orders</span><span style=\" font-family:\'arial\'; font-size:14px; color:#666666; background-color:#ffffff;\"> tab. </span><span style=\" font-family:\'arial\'; font-size:14px; color:#666666;\"> </span><span style=\" font-family:\'arial\'; font-size:14px; color:#666666; background-color:#ffffff;\">Please report problems to our </span><a href=\"https://github.com/OpenBazaar\"><span style=\" text-decoration: underline; color:#0000ff;\">Github</span></a><span style=\" font-family:\'arial\'; font-size:14px; color:#666666; background-color:#ffffff;\"> or </span><a href=\"https://www.reddit.com/r/OpenBazaar/\"><span style=\" text-decoration: underline; color:#0000ff;\">subreddit</span></a><span style=\" font-family:\'arial\'; font-size:14px; color:#666666; background-color:#ffffff;\">. Enjoy!</span></p></body></html>", None))
-        self.tabMenu.setTabText(self.tabMenu.indexOf(self.tab), _translate("OpenBazaar", "Home", None))
 
-        self.tabMenu.setTabText(self.tabMenu.indexOf(self.tab_2), _translate("OpenBazaar", "Messages", None))
-
-        self.my_purchases_button.setText(_translate("OpenBazaar", "My Purchases", None))
-        self.tabMenu.setTabText(self.tabMenu.indexOf(self.tab_3), _translate("OpenBazaar", "Orders", None))
-
-        self.tabMenu.setTabText(self.tabMenu.indexOf(self.tab_4), _translate("OpenBazaar", "Notarizations", None))
-
-        self.tabMenu.setTabText(self.tabMenu.indexOf(self.tab_5), _translate("OpenBazaar", "Contracts", None))
-        self.store_info_button.setText(_translate("OpenBazaar", "Store Info", None))
-
-        self.tabMenu.setTabText(self.tabMenu.indexOf(self.tab_6), _translate("OpenBazaar", "Settings", None))
         __sortingEnabled = self.merchantsList.isSortingEnabled()
         self.merchantsList.setSortingEnabled(False)
         item = self.merchantsList.item(0)
