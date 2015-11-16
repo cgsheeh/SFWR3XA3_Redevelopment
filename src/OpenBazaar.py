@@ -190,10 +190,12 @@ class Ui_OpenBazaar(object):
         ##
         # Create "New Contract" Tab
         #
+        self.newContractTab_scroll = QtGui.QScrollArea()
         self.newContractTab = QtGui.QWidget()
         self.newContractUi = ContractGenUi()
         self.newContractUi.setupUi(self.newContractTab)
-        self.tabMenu.addTab(self.newContractTab, "New Contract")
+        self.newContractTab_scroll.setWidget(self.newContractTab)
+        self.tabMenu.addTab(self.newContractTab_scroll, "New Contract")
 
         ##
         # Create a blank store tab
@@ -218,7 +220,8 @@ class Ui_OpenBazaar(object):
         self.new_message_tab = QtGui.QWidget()
         self.new_message_ui = SendMessage_Ui()
         self.new_message_ui.setupUi(self.new_message_tab)
-        self.tabMenu.addTab(self.new_message_tab, "Send Message")
+        self.new_message_scroll.setWidget(self.new_message_tab)
+        self.tabMenu.addTab(self.new_message_scroll, "Send Message")
 
         ##
         # Create settings tab
