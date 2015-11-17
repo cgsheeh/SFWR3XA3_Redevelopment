@@ -28,7 +28,6 @@ except AttributeError:
 class Ui_OpenBazaar(object):
 
     def setupUi(self, OpenBazaar):
-
         ##
         # Set object name and initial size
         #
@@ -417,11 +416,6 @@ class Ui_OpenBazaar(object):
         self.actionGet_Help_Online.setText(_translate("OpenBazaar", "Get Help Online", None))
         self.actionUser_Guide.setText(_translate("OpenBazaar", "User Guide", None))
 
-
-    ##
-    # Create a tab with the new contract menu
-    #
-    #def create_contract_tab(self):
 
 
 if __name__ == "__main__":
