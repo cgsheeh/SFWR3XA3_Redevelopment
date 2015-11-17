@@ -1,4 +1,4 @@
-__author__ = 'connor'
+__author__ = 'connor & danny'
 
 ##
 # Identity module
@@ -9,15 +9,14 @@ class Identity(object):
             self.guid = guid
             self.pubkey = pubkey
             self.privkey = privkey
-            #self.settings = self.Settings()
-            #self.notary_mod = self.Notary()
-            #self.store_mod = self.Store()
-            #self.contract_mod = self.Contracts()
+            self.settings = Identity.Settings()
 
 
         # Returns all identity data as a dictionary
-    def get_data(self):
-        return
+    def get(self):
+        return dict(guid=self.guid,
+                    pubkey=self.pubkey,
+                    settings=self.settings)
 
     ##
     # Settings module
@@ -26,50 +25,92 @@ class Identity(object):
     class Settings(object):
 
         def __init__(self):
-            self.nickname = ""
-            self.email = ""
-            self.bitcoin_receiving = ""
-            self.store_desc = ""
-            self.is_notary = False
-            self.shipping_info = {'recipient': '',
-                                      'street1': '',
-                                      'street2': '',
-                                      'city': '',
-                                      'region': '',
-                                      'postal': '',
-                                      'country': ''}
-        ##
-        # Returns user settings
-        def get(self):
-            return dict(nickname=self.nickname,
-                    email=self.email,
-                    address=self.bitcoin_receiving,
-                    store_desc=self.store_desc,
-                    isNotary=self.is_notary,
-                    shipping=self.shipping_info)
+            self.store = Identity.Store()
+            self.notary = Identity.Notary()
+            self.contracts = Identity.Contracts()
 
-        ##
-        # Sets user settings
-        #
-        def set(self, sett_dict):
-            return
     ##
     # Store module
     #     Holds all data relevant to stores
     class Store(object):
         def __init__(self):
-            self.t = 1
+            self.email = ""
+            self.nickname = ""
+            self.avatarURL = ""
+            self.bitcoinReceivingAddress = ""
+            self.storeDescription = ""
+            self.shippingInformation = {'recipient': '',
+                                      'street1': '',
+                                      'street2': '',
+                                      'city': '',
+                                      'province/state/region': '',
+                                      'postal/zip': '',
+                                      'country': ''}
+            self.myMerchants = []
+
+        def get(self):
+            return dict(email=self.email,
+                    nickname=self.nickname,
+                    avatarURL=self.avatarURL,
+                    bitcoinReceivingAddress=self.bitcoinReceivingAddress,
+                    storeDescription=self.storeDescription,
+                    shippingInformation=self.shippingInformation,
+                    myMerchants=self.myMerchants)
+
+        def set(self, dict):
+            self.email = dict['email']
+            self.nickname = dict['nickname']
+            self.avatarURL = dict['avatarURL']
+            self.bitcoinReceivingAddress = dict['bitcoinReceivingAddress']
+            self.storeDescription = dict['storeDescription']
+            self.shippingInformation = dict['shippingInformation']
+            self.myMerchants = dict['myMerchants']
+
+        def addMerchant(self, merchant):
+            self.myMerchants.append(merchant)
+
     ##
     # Notary module
     #     Holds all data relevant to notaries
     class Notary(object):
         def __init__(self):
-            self.t = 1
+            self.isNotary = "No"
+            self.percentage = ""
+            self.description = ""
+
+        def get(self):
+            return dict(isNotary=self.isNotary,
+                        percentage=self.percentage,
+                        description=self.description)
+
+        def set(self,dict):
+            self.isNotary = dict['isNotary']
+            self.percentage = dict['percentage']
+            self.description = dict['description']
     ##
     # Contract module
     #     Holds all data relevant to contracts
     class Contracts(object):
         def __init__(self):
-            self.t = 1
+            self.expiredContracts = []
+            self.onGoingContracts = []
+
+        def getExpiredContracts(self):
+            return  self.expiredContracts
+
+        def getOnGoingContracts(self):
+            return self.onGoingContracts
+
+        def addContract(self, contract):
+            self.onGoingContracts.append(contract)
+
+        def addExpiredContract(self, contract):
+            self.expiredContracts.append(contract)
+
+
+
+
+
+
 
 
