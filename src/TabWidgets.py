@@ -133,19 +133,20 @@ class storeTab(object):
         self.pushButton.setText(_translate("Form", "Report This User", None))
 
 
-##
-# This class contains the UI for the "My Settings" tab
-#
-class Settings_Ui(object):
-    def setupUi(self, Form):
-        Form.setObjectName(_fromUtf8("Form"))
-        Form.resize(800, 1300)
-        self.verticalLayoutWidget = QtGui.QWidget(Form)
+class Settings_Ui2(QtGui.QWidget):
+    def __init__(self, settings_dict):
+        super(Settings_Ui2, self).__init__()
+
+        self.setObjectName(_fromUtf8("Settings_Ui2"))
+        self.resize(800, 1300)
+
+        self.verticalLayoutWidget = QtGui.QWidget(self)
         self.verticalLayoutWidget.setGeometry(QtCore.QRect(10, 10, 771, 1201))
         self.verticalLayoutWidget.setObjectName(_fromUtf8("verticalLayoutWidget"))
         self.verticalLayout = QtGui.QVBoxLayout(self.verticalLayoutWidget)
         self.verticalLayout.setMargin(0)
         self.verticalLayout.setObjectName(_fromUtf8("verticalLayout"))
+
         self.gridLayout_5 = QtGui.QGridLayout()
         self.gridLayout_5.setObjectName(_fromUtf8("gridLayout_5"))
         self.lineEdit_5 = QtGui.QLineEdit(self.verticalLayoutWidget)
@@ -412,15 +413,11 @@ class Settings_Ui(object):
         self.textBrowser_2.setObjectName(_fromUtf8("textBrowser_2"))
         self.gridLayout_6.addWidget(self.textBrowser_2, 1, 0, 1, 2)
         self.verticalLayout.addLayout(self.gridLayout_6)
-        self.pushButton_2 = QtGui.QPushButton(Form)
+        self.pushButton_2 = QtGui.QPushButton(self)
         self.pushButton_2.setGeometry(QtCore.QRect(680, 1220, 98, 27))
         self.pushButton_2.setObjectName(_fromUtf8("pushButton_2"))
 
-        self.retranslateUi(Form)
-        QtCore.QMetaObject.connectSlotsByName(Form)
-
-    def retranslateUi(self, Form):
-        Form.setWindowTitle(_translate("Form", "Form", None))
+        self.setWindowTitle(_translate("Form", "Form", None))
         self.label_17.setText(_translate("Form", "Email", None))
         self.label_3.setText(_translate("Form", "Communication Info", None))
         self.lineEdit_2.setText(_translate("Form", "Bitcoin address to send all incoming fees or refunds to", None))
@@ -477,6 +474,7 @@ class Settings_Ui(object):
 "</style></head><body style=\" font-family:\'Ubuntu\'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Note: This information will be encrypted and only be sent to your seller when you have marked your order for payment.</p></body></html>", None))
         self.pushButton_2.setText(_translate("Form", "Save Changes", None))
+
 
 ##
 # This class contains the UI for the "Send a message" tab
