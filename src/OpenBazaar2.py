@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
-__author__ = 'connor'
 import os
 import pickle
-from InitializationMod import BazaarInit
+import InitializationMod
 from PyQt4 import QtCore, QtGui
 from TabWidgets import *
 
@@ -30,10 +29,10 @@ class OpenBazaar2(QtGui.QMainWindow):
 
         ##
         # Before doing anything check if a user has been initialized
-        # by looking for the existance of a identity pickle file
+        # by looking for the existence of an identity pickle file
         #
         if not os.path.isfile('identity/identity.p'):
-            BazaarInit().initialize_Bazaar()
+            InitializationMod.BazaarInit().initialize_Bazaar()
 
 
         ##

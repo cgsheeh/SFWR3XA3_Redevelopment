@@ -4,7 +4,7 @@ import os
 import gnupg
 import hashlib
 import pickle
-from Identity import Identity
+from identity.Identity import *
 
 ##
 # If program does not exist as a callable on the OS, return None
@@ -31,7 +31,8 @@ def which(program):
 # This class holds the procedure to set up OpenBazaar on first run.
 #
 class BazaarInit(object):
-    # Creates a new GUID from the signed pubkey
+    ##
+    #  Creates a new GUID from the signed pubkey
     @staticmethod
     def create_GUID(signed_pubkey):
         sha256 = hashlib.sha256()
@@ -41,6 +42,10 @@ class BazaarInit(object):
         rip160.update(tfs_hash)
         return rip160.hexdigest()
 
+
+    ##
+    # Initializes the OpenBazaar
+    #
     def initialize_Bazaar(self):
         gpg_which = which('gpg')
         if gpg_which == None:
@@ -52,13 +57,14 @@ class BazaarInit(object):
             #  export the armored key, create a GUID
             #
             call([gpg_which, '--batch', '--gen-key', 'init/unattend_init'])
-            gpg = gnupg.GPG(homedir='../identity')
+            gpg = gnupg.GPG(homedir='./identity')
             pub_key_armor = gpg.export_keys(gpg.list_keys()[0]['keyid'])
             priv_key_armor = gpg.export_keys(gpg.list_keys()[0]['keyid'], secret=True)
             guid = BazaarInit.create_GUID(str(gpg.sign(pub_key_armor, binary=True)))
 
             ##
             #  Add GUID, keys to Identity object.
-            #  Serializpe and store in identity folder
+            #  Serialize and store in identity folder
             id = Identity(guid, pub_key_armor, priv_key_armor)
             pickle.dump(id, open('identity/identity.p', 'w'))
+
