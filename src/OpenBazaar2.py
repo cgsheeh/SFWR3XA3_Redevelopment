@@ -44,6 +44,7 @@ class OpenBazaar2(QtGui.QMainWindow):
         # Set main object name
         #
         self.setObjectName("OpenBazaar")
+        self.setWindowTitle(_translate("OpenBazaar", "OpenBazaar", None))
         self.resize(1163, 867)
 
         ##
@@ -71,7 +72,21 @@ class OpenBazaar2(QtGui.QMainWindow):
         self.currencySelector.addItem(_fromUtf8(""))
         self.currencySelector.addItem(_fromUtf8(""))
         self.currencySelector.addItem(_fromUtf8(""))
+        self.currencySelector.setItemText(0, _translate("OpenBazaar", "CAD", None))
+        self.currencySelector.setItemText(1, _translate("OpenBazaar", "MBTC", None))
+        self.currencySelector.setItemText(2, _translate("OpenBazaar", "BTC", None))
+        self.currencySelector.setItemText(3, _translate("OpenBazaar", "USD", None))
+        self.currencySelector.setItemText(4, _translate("OpenBazaar", "EUR", None))
         self.gridLayout.addWidget(self.currencySelector, 2, 1, 1, 1)
+
+        ##
+        # Add balance label
+        #
+        self.bitcoin_balance_label = QtGui.QLabel(self.centralwidget)
+        self.bitcoin_balance_label.setObjectName(_fromUtf8("bitcoin_balance_label"))
+        ## TODO fill this in to draw from model
+        self.bitcoin_balance_label.setText(_translate("OpenBazaar", "CURRENT_BALANCE_HERE", None))
+        self.gridLayout.addWidget(self.bitcoin_balance_label, 2, 0, 1, 1)
 
         ##
         # Add display picture for user
@@ -87,6 +102,7 @@ class OpenBazaar2(QtGui.QMainWindow):
         #
         self.myMerchantsLabel = QtGui.QLabel(self.centralwidget)
         self.myMerchantsLabel.setObjectName(_fromUtf8("myMerchantsLabel"))
+        self.myMerchantsLabel.setText(_translate("OpenBazaar", "My Merchants", None))
         self.gridLayout.addWidget(self.myMerchantsLabel, 0, 5, 1, 2)
 
         ##
@@ -94,12 +110,14 @@ class OpenBazaar2(QtGui.QMainWindow):
         #
         self.addStoreButton = QtGui.QPushButton(self.centralwidget)
         self.addStoreButton.setObjectName(_fromUtf8("addStoreButton"))
+        self.addStoreButton.setText(_translate("OpenBazaar", "Add Store", None))
         self.gridLayout.addWidget(self.addStoreButton, 5, 6, 1, 1)
 
         ##
         # Add "My Notaries" label
         self.myNotariesLabel = QtGui.QLabel(self.centralwidget)
         self.myNotariesLabel.setObjectName(_fromUtf8("myNotariesLabel"))
+        self.myNotariesLabel.setText(_translate("OpenBazaar", "My Notaries", None))
         self.gridLayout.addWidget(self.myNotariesLabel, 6, 5, 1, 2)
 
         ##
@@ -110,19 +128,17 @@ class OpenBazaar2(QtGui.QMainWindow):
         self.gridLayout.addWidget(self.addNotaryText, 8, 4, 1, 2)
         self.addNotaryButton = QtGui.QPushButton(self.centralwidget)
         self.addNotaryButton.setObjectName(_fromUtf8("addNotaryButton"))
+        self.addNotaryText.setText(_translate("OpenBazaar", "Enter Notary GUID", None))
+        self.addNotaryButton.setText(_translate("OpenBazaar", "Add Notary", None))
         self.gridLayout.addWidget(self.addNotaryButton, 8, 6, 1, 1)
 
-        ##
-        # Add balance label
-        self.bitcoin_balance_label = QtGui.QLabel(self.centralwidget)
-        self.bitcoin_balance_label.setObjectName(_fromUtf8("bitcoin_balance_label"))
-        self.gridLayout.addWidget(self.bitcoin_balance_label, 2, 0, 1, 1)
 
         ##
         # Add 'add store' text
         #
         self.addStoreText = QtGui.QLineEdit(self.centralwidget)
         self.addStoreText.setObjectName(_fromUtf8("addStoreText"))
+        self.addStoreText.setText(_translate("OpenBazaar", "Enter Store GUID", None))
         self.gridLayout.addWidget(self.addStoreText, 5, 4, 1, 2)
 
         ##
@@ -135,6 +151,15 @@ class OpenBazaar2(QtGui.QMainWindow):
         self.myNotariesList.addItem(item)
         item = QtGui.QListWidgetItem()
         self.myNotariesList.addItem(item)
+        __sortingEnabled = self.myNotariesList.isSortingEnabled()
+        self.myNotariesList.setSortingEnabled(False)
+        item = self.myNotariesList.item(0)
+        item.setText(_translate("OpenBazaar", "Notary 1", None))
+        item = self.myNotariesList.item(1)
+        item.setText(_translate("OpenBazaar", "Notary 2", None))
+        item = self.myNotariesList.item(2)
+        item.setText(_translate("OpenBazaar", "Notary 3", None))
+        self.myNotariesList.setSortingEnabled(__sortingEnabled)
         self.gridLayout.addWidget(self.myNotariesList, 7, 4, 1, 3)
 
         ##
@@ -151,11 +176,30 @@ class OpenBazaar2(QtGui.QMainWindow):
         self.welcome_tab_browser = QtGui.QTextBrowser(self.tab)
         self.welcome_tab_browser.setGeometry(QtCore.QRect(-5, 1, 611, 441))
         self.welcome_tab_browser.setObjectName(_fromUtf8("welcome_tab_browser"))
+        self.welcome_tab_browser.setHtml(_translate("OpenBazaar", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'Ubuntu\'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:20px; margin-bottom:10px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'arial\'; font-size:x-large; font-weight:496; color:#666666;\">Getting started</span></p>\n"
+"<p style=\" margin-top:20px; margin-bottom:10px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'arial\'; font-size:large; font-weight:496; color:#666666;\">Set Up Your Store</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'arial\'; font-size:14px; color:#666666; background-color:#ffffff;\">Add a Bitcoin address you own in case of refunds, be sure to hit save in </span><span style=\" font-family:\'arial\'; font-size:14px; font-weight:696; color:#666666;\">Settings</span><span style=\" font-family:\'arial\'; font-size:14px; color:#666666; background-color:#ffffff;\">, and make a backup of your keys in the </span><span style=\" font-family:\'arial\'; font-size:14px; font-weight:696; color:#666666;\">Backup</span><span style=\" font-family:\'arial\'; font-size:14px; color:#666666; background-color:#ffffff;\"> section.</span></p>\n"
+"<p style=\" margin-top:20px; margin-bottom:10px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'arial\'; font-size:large; font-weight:496; color:#666666;\">Select a Notary</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'arial\'; font-size:14px; color:#666666; background-color:#ffffff;\">Notaries are a trusted third party to prevent scams. Only select a notary you trust, especially for larger transactions. For test transactions, you can use the &quot;Test Notary.&quot;</span></p>\n"
+"<p style=\" margin-top:20px; margin-bottom:10px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'arial\'; font-size:large; font-weight:496; color:#666666;\">Put an Item Up for Sale or Find an Item to Buy</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'arial\'; font-size:14px; color:#666666; background-color:#ffffff;\">If selling an item, be sure to use descriptive keywords. Click on the markets you see on the right side of the screen to view their items, or use the search bar above. </span><span style=\" font-family:\'arial\'; font-size:14px; color:#666666;\"> </span><span style=\" font-family:\'arial\'; font-size:14px; color:#666666; background-color:#ffffff;\">You can directly contact other online users by selecting the blue Message Me button in their store front. Manage your messages in the </span><span style=\" font-family:\'arial\'; font-size:14px; font-weight:696; color:#666666;\">Messages</span><span style=\" font-family:\'arial\'; font-size:14px; color:#666666; background-color:#ffffff;\"> tab.</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><img src=\"http://i.imgur.com/jAtFHXV.gif\" style=\"vertical-align: middle;\" /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'arial\'; font-size:14px; color:#666666; background-color:#ffffff;\">Your purchases and sales are in the </span><span style=\" font-family:\'arial\'; font-size:14px; font-weight:696; color:#666666;\">Orders</span><span style=\" font-family:\'arial\'; font-size:14px; color:#666666; background-color:#ffffff;\"> tab. </span><span style=\" font-family:\'arial\'; font-size:14px; color:#666666;\"> </span><span style=\" font-family:\'arial\'; font-size:14px; color:#666666; background-color:#ffffff;\">Please report problems to our </span><a href=\"https://github.com/OpenBazaar\"><span style=\" text-decoration: underline; color:#0000ff;\">Github</span></a><span style=\" font-family:\'arial\'; font-size:14px; color:#666666; background-color:#ffffff;\"> or </span><a href=\"https://www.reddit.com/r/OpenBazaar/\"><span style=\" text-decoration: underline; color:#0000ff;\">subreddit</span></a><span style=\" font-family:\'arial\'; font-size:14px; color:#666666; background-color:#ffffff;\">. Enjoy!</span></p></body></html>", None))
         self.tabMenu.addTab(self.tab, _fromUtf8("Welcome"))
 
 
-
+        ##
+        # Add tab menu to grid layout
+        #
         self.gridLayout.addWidget(self.tabMenu, 7, 2, 1, 1)
+
+        ##
+        # Create merchants list widget
+        #
         self.merchantsList = QtGui.QListWidget(self.centralwidget)
         self.merchantsList.setObjectName(_fromUtf8("merchantsList"))
         item = QtGui.QListWidgetItem()
@@ -165,6 +209,18 @@ class OpenBazaar2(QtGui.QMainWindow):
         item = QtGui.QListWidgetItem()
         self.merchantsList.addItem(item)
         self.gridLayout.addWidget(self.merchantsList, 1, 4, 4, 3)
+        __sortingEnabled = self.merchantsList.isSortingEnabled()
+        self.merchantsList.setSortingEnabled(False)
+        item = self.merchantsList.item(0)
+        item.setText(_translate("OpenBazaar", "Merchant 1", None))
+        item = self.merchantsList.item(1)
+        item.setText(_translate("OpenBazaar", "Merchant 2", None))
+        item = self.merchantsList.item(2)
+        item.setText(_translate("OpenBazaar", "Merchant 3", None))
+        self.merchantsList.setSortingEnabled(__sortingEnabled)
+
+        ##
+        # Add recent transactions table and label
         self.recentTransactionsTable = QtGui.QTableWidget(self.centralwidget)
         self.recentTransactionsTable.setObjectName(_fromUtf8("recentTransactionsTable"))
         self.recentTransactionsTable.setColumnCount(2)
@@ -180,17 +236,36 @@ class OpenBazaar2(QtGui.QMainWindow):
         self.gridLayout.addWidget(self.recentTransactionsTable, 7, 0, 1, 2)
         self.recentTransactionsLabel = QtGui.QLabel(self.centralwidget)
         self.recentTransactionsLabel.setObjectName(_fromUtf8("recentTransactionsLabel"))
+        item = self.recentTransactionsTable.verticalHeaderItem(0)
+        item.setText(_translate("OpenBazaar", "Fake Transaction 1", None))
+        item = self.recentTransactionsTable.verticalHeaderItem(1)
+        item.setText(_translate("OpenBazaar", "Fake Transaction 2", None))
+        item = self.recentTransactionsTable.horizontalHeaderItem(0)
+        item.setText(_translate("OpenBazaar", "Date", None))
+        item = self.recentTransactionsTable.horizontalHeaderItem(1)
+        item.setText(_translate("OpenBazaar", "Price", None))
+        self.recentTransactionsLabel.setText(_translate("OpenBazaar", "Recent Transactions", None))
         self.gridLayout.addWidget(self.recentTransactionsLabel, 6, 0, 1, 1)
+
+        ##
+        # Add main logo to screen
+        #
         self.main_logo_label = QtGui.QLabel(self.centralwidget)
         self.main_logo_label.setText(_fromUtf8(""))
         self.main_logo_label.setPixmap(QtGui.QPixmap(_fromUtf8("images/banner.png")))
         self.main_logo_label.setObjectName(_fromUtf8("main_logo_label"))
         self.gridLayout.addWidget(self.main_logo_label, 0, 2, 2, 1)
+
+        ##
+        # Add search bar line and button
+        #
         self.searchBarText = QtGui.QLineEdit(self.centralwidget)
         self.searchBarText.setObjectName(_fromUtf8("searchBarText"))
         self.gridLayout.addWidget(self.searchBarText, 4, 2, 1, 1)
         self.searchButton = QtGui.QPushButton(self.centralwidget)
         self.searchButton.setObjectName(_fromUtf8("searchButton"))
+        self.searchBarText.setText(_translate("OpenBazaar", "Search the OpenBazaar!", None))
+        self.searchButton.setText(_translate("OpenBazaar", "Search", None))
         self.gridLayout.addWidget(self.searchButton, 4, 3, 1, 1)
 
         ##
@@ -233,14 +308,17 @@ class OpenBazaar2(QtGui.QMainWindow):
         # Create settings tab
         #
         self.settings_scroll = QtGui.QScrollArea()
-        self.settings_tab = QtGui.QWidget()
-        self.settings_tab_ui = Settings_Ui()
-        self.settings_tab_ui.setupUi(self.settings_tab)
+        # self.settings_tab = QtGui.QWidget()
+        # self.settings_tab_ui = Settings_Ui()
+        # self.settings_tab_ui.setupUi(self.settings_tab)
+        self.settings_tab = Settings_Ui2(dict())
         self.settings_scroll.setWidget(self.settings_tab)
         self.tabMenu.addTab(self.settings_scroll, "Settings")
 
+
         ##
         # Set central widget
+        #
         self.setCentralWidget(self.centralwidget)
 
         ##
@@ -266,7 +344,7 @@ class OpenBazaar2(QtGui.QMainWindow):
         self.statusbar.setObjectName(_fromUtf8("statusbar"))
         self.setStatusBar(self.statusbar)
 
-         ##
+        ##
         # Define action for clicking menu bar items
         #
         self.actionMy_Listings = QtGui.QAction(self)
@@ -340,62 +418,9 @@ class OpenBazaar2(QtGui.QMainWindow):
         self.menubar.addAction(self.menuNotaries.menuAction())
         self.menubar.addAction(self.menuHelp.menuAction())
 
-        self.setWindowTitle(_translate("OpenBazaar", "OpenBazaar", None))
-        self.currencySelector.setItemText(0, _translate("OpenBazaar", "CAD", None))
-        self.currencySelector.setItemText(1, _translate("OpenBazaar", "MBTC", None))
-        self.currencySelector.setItemText(2, _translate("OpenBazaar", "BTC", None))
-        self.currencySelector.setItemText(3, _translate("OpenBazaar", "USD", None))
-        self.currencySelector.setItemText(4, _translate("OpenBazaar", "EUR", None))
-        self.myMerchantsLabel.setText(_translate("OpenBazaar", "My Merchants", None))
-        self.addStoreButton.setText(_translate("OpenBazaar", "Add Store", None))
-        self.myNotariesLabel.setText(_translate("OpenBazaar", "My Notaries", None))
-        self.addNotaryText.setText(_translate("OpenBazaar", "Enter Notary GUID", None))
-        self.addNotaryButton.setText(_translate("OpenBazaar", "Add Notary", None))
-        self.bitcoin_balance_label.setText(_translate("OpenBazaar", "$14,092", None))
-        self.addStoreText.setText(_translate("OpenBazaar", "Enter Store GUID", None))
-        __sortingEnabled = self.myNotariesList.isSortingEnabled()
-        self.myNotariesList.setSortingEnabled(False)
-        item = self.myNotariesList.item(0)
-        item.setText(_translate("OpenBazaar", "Notary 1", None))
-        item = self.myNotariesList.item(1)
-        item.setText(_translate("OpenBazaar", "Notary 2", None))
-        item = self.myNotariesList.item(2)
-        item.setText(_translate("OpenBazaar", "Notary 3", None))
-        self.myNotariesList.setSortingEnabled(__sortingEnabled)
-        self.welcome_tab_browser.setHtml(_translate("OpenBazaar", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'Ubuntu\'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:20px; margin-bottom:10px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'arial\'; font-size:x-large; font-weight:496; color:#666666;\">Getting started</span></p>\n"
-"<p style=\" margin-top:20px; margin-bottom:10px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'arial\'; font-size:large; font-weight:496; color:#666666;\">Set Up Your Store</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'arial\'; font-size:14px; color:#666666; background-color:#ffffff;\">Add a Bitcoin address you own in case of refunds, be sure to hit save in </span><span style=\" font-family:\'arial\'; font-size:14px; font-weight:696; color:#666666;\">Settings</span><span style=\" font-family:\'arial\'; font-size:14px; color:#666666; background-color:#ffffff;\">, and make a backup of your keys in the </span><span style=\" font-family:\'arial\'; font-size:14px; font-weight:696; color:#666666;\">Backup</span><span style=\" font-family:\'arial\'; font-size:14px; color:#666666; background-color:#ffffff;\"> section.</span></p>\n"
-"<p style=\" margin-top:20px; margin-bottom:10px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'arial\'; font-size:large; font-weight:496; color:#666666;\">Select a Notary</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'arial\'; font-size:14px; color:#666666; background-color:#ffffff;\">Notaries are a trusted third party to prevent scams. Only select a notary you trust, especially for larger transactions. For test transactions, you can use the &quot;Test Notary.&quot;</span></p>\n"
-"<p style=\" margin-top:20px; margin-bottom:10px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'arial\'; font-size:large; font-weight:496; color:#666666;\">Put an Item Up for Sale or Find an Item to Buy</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'arial\'; font-size:14px; color:#666666; background-color:#ffffff;\">If selling an item, be sure to use descriptive keywords. Click on the markets you see on the right side of the screen to view their items, or use the search bar above. </span><span style=\" font-family:\'arial\'; font-size:14px; color:#666666;\"> </span><span style=\" font-family:\'arial\'; font-size:14px; color:#666666; background-color:#ffffff;\">You can directly contact other online users by selecting the blue Message Me button in their store front. Manage your messages in the </span><span style=\" font-family:\'arial\'; font-size:14px; font-weight:696; color:#666666;\">Messages</span><span style=\" font-family:\'arial\'; font-size:14px; color:#666666; background-color:#ffffff;\"> tab.</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><img src=\"http://i.imgur.com/jAtFHXV.gif\" style=\"vertical-align: middle;\" /></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'arial\'; font-size:14px; color:#666666; background-color:#ffffff;\">Your purchases and sales are in the </span><span style=\" font-family:\'arial\'; font-size:14px; font-weight:696; color:#666666;\">Orders</span><span style=\" font-family:\'arial\'; font-size:14px; color:#666666; background-color:#ffffff;\"> tab. </span><span style=\" font-family:\'arial\'; font-size:14px; color:#666666;\"> </span><span style=\" font-family:\'arial\'; font-size:14px; color:#666666; background-color:#ffffff;\">Please report problems to our </span><a href=\"https://github.com/OpenBazaar\"><span style=\" text-decoration: underline; color:#0000ff;\">Github</span></a><span style=\" font-family:\'arial\'; font-size:14px; color:#666666; background-color:#ffffff;\"> or </span><a href=\"https://www.reddit.com/r/OpenBazaar/\"><span style=\" text-decoration: underline; color:#0000ff;\">subreddit</span></a><span style=\" font-family:\'arial\'; font-size:14px; color:#666666; background-color:#ffffff;\">. Enjoy!</span></p></body></html>", None))
-
-        __sortingEnabled = self.merchantsList.isSortingEnabled()
-        self.merchantsList.setSortingEnabled(False)
-        item = self.merchantsList.item(0)
-        item.setText(_translate("OpenBazaar", "Merchant 1", None))
-        item = self.merchantsList.item(1)
-        item.setText(_translate("OpenBazaar", "Merchant 2", None))
-        item = self.merchantsList.item(2)
-        item.setText(_translate("OpenBazaar", "Merchant 3", None))
-        self.merchantsList.setSortingEnabled(__sortingEnabled)
-        item = self.recentTransactionsTable.verticalHeaderItem(0)
-        item.setText(_translate("OpenBazaar", "Fake Transaction 1", None))
-        item = self.recentTransactionsTable.verticalHeaderItem(1)
-        item.setText(_translate("OpenBazaar", "Fake Transaction 2", None))
-        item = self.recentTransactionsTable.horizontalHeaderItem(0)
-        item.setText(_translate("OpenBazaar", "Date", None))
-        item = self.recentTransactionsTable.horizontalHeaderItem(1)
-        item.setText(_translate("OpenBazaar", "Price", None))
-        self.recentTransactionsLabel.setText(_translate("OpenBazaar", "Recent Transactions", None))
-        self.searchBarText.setText(_translate("OpenBazaar", "Search the OpenBazaar!", None))
-        self.searchButton.setText(_translate("OpenBazaar", "Search", None))
+        ##
+        # Set menu option text
+        #
         self.menuHome.setTitle(_translate("OpenBazaar", "Home", None))
         self.menuMessages.setTitle(_translate("OpenBazaar", "Messages", None))
         self.menuContracts.setTitle(_translate("OpenBazaar", "Contracts", None))
@@ -421,6 +446,8 @@ class OpenBazaar2(QtGui.QMainWindow):
         self.actionGet_Help_Online.setText(_translate("OpenBazaar", "Get Help Online", None))
         self.actionUser_Guide.setText(_translate("OpenBazaar", "User Guide", None))
 
+        ##
+        # Set current tab to Welcome screen
         self.tabMenu.setCurrentIndex(0)
 
         self.show()
