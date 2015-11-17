@@ -51,7 +51,7 @@ class BazaarInit(object):
             #  Generate the gpg key in the identity directory,
             #  export the armored key, create a GUID
             #
-            call([gpg_which, '--batch', '--gen-key', 'unattend_init'])
+            call([gpg_which, '--batch', '--gen-key', 'init/unattend_init'])
             gpg = gnupg.GPG(homedir='../identity')
             pub_key_armor = gpg.export_keys(gpg.list_keys()[0]['keyid'])
             priv_key_armor = gpg.export_keys(gpg.list_keys()[0]['keyid'], secret=True)
@@ -59,9 +59,6 @@ class BazaarInit(object):
 
             ##
             #  Add GUID, keys to Identity object.
-            #  Serialize and store in identity folder
+            #  Serializpe and store in identity folder
             id = Identity(guid, pub_key_armor, priv_key_armor)
             pickle.dump(id, open('identity/identity.p', 'w'))
-
-
-BazaarInit().initialize_Bazaar()

@@ -1,14 +1,12 @@
 # -*- coding: utf-8 -*-
-
-# Form implementation generated from reading ui file 'OpenBazaar.ui'
-#
-# Created: Fri Nov 13 14:25:15 2015
-#      by: PyQt4 UI code generator 4.10.4
-#
-# WARNING! All changes made in this file will be lost!
-
-from TabWidgets import *
+__author__ = 'connor'
+import os
+import pickle
+from InitializationMod import BazaarInit
 from PyQt4 import QtCore, QtGui
+from TabWidgets import *
+
+
 
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
@@ -25,30 +23,44 @@ except AttributeError:
         return QtGui.QApplication.translate(context, text, disambig)
 
 
-class Ui_OpenBazaar(object):
+class OpenBazaar2(QtGui.QMainWindow):
 
-    def setupUi(self, OpenBazaar):
+    def __init__(self):
+        super(OpenBazaar2, self).__init__()
+
         ##
-        # Set object name and initial size
+        # Before doing anything check if a user has been initialized
+        # by looking for the existance of a identity pickle file
         #
-        OpenBazaar.setObjectName(_fromUtf8("OpenBazaar"))
-        OpenBazaar.resize(1163, 867)
+        if not os.path.isfile('identity/identity.p'):
+            BazaarInit().initialize_Bazaar()
+
+
+        ##
+        # Create data modules
+        #
+        self.id_module = pickle.load(open('identity/identity.p', 'r'))
+
+        ##
+        # Set main object name
+        #
+        self.setObjectName("OpenBazaar")
+        self.resize(1163, 867)
 
         ##
         # Set tray logo
         #
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap(_fromUtf8("images/small_logo.jpeg")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        OpenBazaar.setWindowIcon(icon)
+        self.setWindowIcon(icon)
 
         ##
         # Create center widget, main grid layout
         #
-        self.centralwidget = QtGui.QWidget(OpenBazaar)
+        self.centralwidget = QtGui.QWidget(self)
         self.centralwidget.setObjectName(_fromUtf8("centralwidget"))
         self.gridLayout = QtGui.QGridLayout(self.centralwidget)
         self.gridLayout.setObjectName(_fromUtf8("gridLayout"))
-
 
         ##
         # Add currency conversion options
@@ -229,14 +241,13 @@ class Ui_OpenBazaar(object):
         self.tabMenu.addTab(self.settings_scroll, "Settings")
 
         ##
-        # Set grid layout as central widget
-        #
-        OpenBazaar.setCentralWidget(self.centralwidget)
+        # Set central widget
+        self.setCentralWidget(self.centralwidget)
 
         ##
         # Create menu bar for application
         #
-        self.menubar = QtGui.QMenuBar(OpenBazaar)
+        self.menubar = QtGui.QMenuBar(self)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 1163, 25))
         self.menubar.setObjectName(_fromUtf8("menubar"))
         self.menuHome = QtGui.QMenu(self.menubar)
@@ -251,54 +262,54 @@ class Ui_OpenBazaar(object):
         self.menuNotaries.setObjectName(_fromUtf8("menuNotaries"))
         self.menuHelp = QtGui.QMenu(self.menubar)
         self.menuHelp.setObjectName(_fromUtf8("menuHelp"))
-        OpenBazaar.setMenuBar(self.menubar)
-        self.statusbar = QtGui.QStatusBar(OpenBazaar)
+        self.setMenuBar(self.menubar)
+        self.statusbar = QtGui.QStatusBar(self)
         self.statusbar.setObjectName(_fromUtf8("statusbar"))
-        OpenBazaar.setStatusBar(self.statusbar)
+        self.setStatusBar(self.statusbar)
 
-        ##
+         ##
         # Define action for clicking menu bar items
         #
-        self.actionMy_Listings = QtGui.QAction(OpenBazaar)
+        self.actionMy_Listings = QtGui.QAction(self)
         self.actionMy_Listings.setObjectName(_fromUtf8("actionMy_Listings"))
-        self.actionMy_Orders = QtGui.QAction(OpenBazaar)
+        self.actionMy_Orders = QtGui.QAction(self)
         self.actionMy_Orders.setObjectName(_fromUtf8("actionMy_Orders"))
         self.actionMy_Orders.triggered.connect(lambda x: self.tabMenu.setCurrentIndex(self.tabMenu.indexOf(self.orders_tab)))
-        self.actionMy_Settings = QtGui.QAction(OpenBazaar)
+        self.actionMy_Settings = QtGui.QAction(self)
         self.actionMy_Settings.setObjectName(_fromUtf8("actionMy_Settings"))
         self.actionMy_Settings.triggered.connect(lambda x: self.tabMenu.setCurrentIndex(self.tabMenu.indexOf(self.settings_scroll)))
-        self.actionSend_a_Message = QtGui.QAction(OpenBazaar)
+        self.actionSend_a_Message = QtGui.QAction(self)
         self.actionSend_a_Message.setObjectName(_fromUtf8("actionSend_a_Message"))
         self.actionSend_a_Message.triggered.connect(lambda x: self.tabMenu.setCurrentIndex(self.tabMenu.indexOf(self.new_message_tab)))
-        self.actionInbo = QtGui.QAction(OpenBazaar)
+        self.actionInbo = QtGui.QAction(self)
         self.actionInbo.setObjectName(_fromUtf8("actionInbo"))
-        self.actionOutbox = QtGui.QAction(OpenBazaar)
+        self.actionOutbox = QtGui.QAction(self)
         self.actionOutbox.setObjectName(_fromUtf8("actionOutbox"))
         self.actionOutbox.triggered.connect(lambda x: self.tabMenu.setCurrentIndex(self.tabMenu.indexOf(self.new_message_tab)))
-        self.actionPurchased = QtGui.QAction(OpenBazaar)
+        self.actionPurchased = QtGui.QAction(self)
         self.actionPurchased.setObjectName(_fromUtf8("actionPurchased"))
-        self.actionNewContract = QtGui.QAction(OpenBazaar)
+        self.actionNewContract = QtGui.QAction(self)
         self.actionNewContract.setObjectName(_fromUtf8("actionNewContract"))
         self.actionNewContract.triggered.connect(lambda x: self.tabMenu.setCurrentIndex(self.tabMenu.indexOf(self.newContractTab)))
-        self.actionSold = QtGui.QAction(OpenBazaar)
+        self.actionSold = QtGui.QAction(self)
         self.actionSold.setObjectName(_fromUtf8("actionSold"))
-        self.actionActive = QtGui.QAction(OpenBazaar)
+        self.actionActive = QtGui.QAction(self)
         self.actionActive.setObjectName(_fromUtf8("actionActive"))
-        self.actionCreate_a_Store = QtGui.QAction(OpenBazaar)
+        self.actionCreate_a_Store = QtGui.QAction(self)
         self.actionCreate_a_Store.setObjectName(_fromUtf8("actionCreate_a_Store"))
-        self.actionView_a_Store = QtGui.QAction(OpenBazaar)
+        self.actionView_a_Store = QtGui.QAction(self)
         self.actionView_a_Store.setObjectName(_fromUtf8("actionView_a_Store"))
-        self.actionFind = QtGui.QAction(OpenBazaar)
+        self.actionFind = QtGui.QAction(self)
         self.actionFind.setObjectName(_fromUtf8("actionFind"))
-        self.actionBecome_a_Notary = QtGui.QAction(OpenBazaar)
+        self.actionBecome_a_Notary = QtGui.QAction(self)
         self.actionBecome_a_Notary.setObjectName(_fromUtf8("actionBecome_a_Notary"))
-        self.actionFind_a_Notary = QtGui.QAction(OpenBazaar)
+        self.actionFind_a_Notary = QtGui.QAction(self)
         self.actionFind_a_Notary.setObjectName(_fromUtf8("actionFind_a_Notary"))
-        self.actionHelp_with_Notaries = QtGui.QAction(OpenBazaar)
+        self.actionHelp_with_Notaries = QtGui.QAction(self)
         self.actionHelp_with_Notaries.setObjectName(_fromUtf8("actionHelp_with_Notaries"))
-        self.actionGet_Help_Online = QtGui.QAction(OpenBazaar)
+        self.actionGet_Help_Online = QtGui.QAction(self)
         self.actionGet_Help_Online.setObjectName(_fromUtf8("actionGet_Help_Online"))
-        self.actionUser_Guide = QtGui.QAction(OpenBazaar)
+        self.actionUser_Guide = QtGui.QAction(self)
         self.actionUser_Guide.setObjectName(_fromUtf8("actionUser_Guide"))
 
         ##
@@ -330,12 +341,7 @@ class Ui_OpenBazaar(object):
         self.menubar.addAction(self.menuNotaries.menuAction())
         self.menubar.addAction(self.menuHelp.menuAction())
 
-        self.retranslateUi(OpenBazaar)
-        self.tabMenu.setCurrentIndex(0)
-        QtCore.QMetaObject.connectSlotsByName(OpenBazaar)
-
-    def retranslateUi(self, OpenBazaar):
-        OpenBazaar.setWindowTitle(_translate("OpenBazaar", "OpenBazaar", None))
+        self.setWindowTitle(_translate("OpenBazaar", "OpenBazaar", None))
         self.currencySelector.setItemText(0, _translate("OpenBazaar", "CAD", None))
         self.currencySelector.setItemText(1, _translate("OpenBazaar", "MBTC", None))
         self.currencySelector.setItemText(2, _translate("OpenBazaar", "BTC", None))
@@ -416,14 +422,12 @@ class Ui_OpenBazaar(object):
         self.actionGet_Help_Online.setText(_translate("OpenBazaar", "Get Help Online", None))
         self.actionUser_Guide.setText(_translate("OpenBazaar", "User Guide", None))
 
+        self.tabMenu.setCurrentIndex(0)
 
+        self.show()
 
 if __name__ == "__main__":
     import sys
     app = QtGui.QApplication(sys.argv)
-    OpenBazaar = QtGui.QMainWindow()
-    ui = Ui_OpenBazaar()
-    ui.setupUi(OpenBazaar)
-    OpenBazaar.show()
+    OpenBazaar = OpenBazaar2()
     sys.exit(app.exec_())
-
