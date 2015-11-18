@@ -10,6 +10,7 @@ __author__ = 'connor'
 # WARNING! All changes made in this file will be lost!
 
 from PyQt4 import QtCore, QtGui
+from OBStrings import OBStrings
 
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
@@ -26,59 +27,50 @@ except AttributeError:
         return QtGui.QApplication.translate(context, text, disambig)
 
 
-##
-# This class contains the UI for a user's store
-#
-class storeTab(object):
-    def setupUi(self, Form):
-        Form.setObjectName(_fromUtf8("Form"))
-        Form.resize(552, 475)
-        self.verticalLayoutWidget = QtGui.QWidget(Form)
+class storeTab2(QtGui.QWidget):
+    def __init__(self, items):
+        super(storeTab2, self).__init__()
+
+        self.setObjectName(_fromUtf8("Form"))
+        self.resize(552, 475)
+        self.verticalLayoutWidget = QtGui.QWidget(self)
         self.verticalLayoutWidget.setGeometry(QtCore.QRect(10, 10, 531, 461))
         self.verticalLayoutWidget.setObjectName(_fromUtf8("verticalLayoutWidget"))
         self.verticalLayout = QtGui.QVBoxLayout(self.verticalLayoutWidget)
         self.verticalLayout.setMargin(0)
         self.verticalLayout.setObjectName(_fromUtf8("verticalLayout"))
         self.label = QtGui.QLabel(self.verticalLayoutWidget)
-        self.label.setObjectName(_fromUtf8("bitcoin_balance_label"))
+        self.label.setObjectName(_fromUtf8(""))
         self.verticalLayout.addWidget(self.label)
         self.horizontalLayout = QtGui.QHBoxLayout()
         self.horizontalLayout.setObjectName(_fromUtf8("horizontalLayout"))
-        self.tableWidget = QtGui.QTableWidget(self.verticalLayoutWidget)
-        self.tableWidget.setObjectName(_fromUtf8("tableWidget"))
-        self.tableWidget.setColumnCount(3)
-        self.tableWidget.setRowCount(3)
-        item = QtGui.QTableWidgetItem()
-        self.tableWidget.setVerticalHeaderItem(0, item)
-        item = QtGui.QTableWidgetItem()
-        self.tableWidget.setVerticalHeaderItem(1, item)
-        item = QtGui.QTableWidgetItem()
-        self.tableWidget.setVerticalHeaderItem(2, item)
-        item = QtGui.QTableWidgetItem()
-        self.tableWidget.setHorizontalHeaderItem(0, item)
-        item = QtGui.QTableWidgetItem()
-        self.tableWidget.setHorizontalHeaderItem(1, item)
-        item = QtGui.QTableWidgetItem()
-        self.tableWidget.setHorizontalHeaderItem(2, item)
-        item = QtGui.QTableWidgetItem()
-        self.tableWidget.setItem(0, 0, item)
-        item = QtGui.QTableWidgetItem()
-        self.tableWidget.setItem(0, 1, item)
-        item = QtGui.QTableWidgetItem()
-        self.tableWidget.setItem(0, 2, item)
-        item = QtGui.QTableWidgetItem()
-        self.tableWidget.setItem(1, 0, item)
-        item = QtGui.QTableWidgetItem()
-        self.tableWidget.setItem(1, 1, item)
-        item = QtGui.QTableWidgetItem()
-        self.tableWidget.setItem(1, 2, item)
-        item = QtGui.QTableWidgetItem()
-        self.tableWidget.setItem(2, 0, item)
-        item = QtGui.QTableWidgetItem()
-        self.tableWidget.setItem(2, 1, item)
-        item = QtGui.QTableWidgetItem()
-        self.tableWidget.setItem(2, 2, item)
-        self.horizontalLayout.addWidget(self.tableWidget)
+
+        ##
+        # Populate this list from saved local contracts
+        self.items_tableWidget = QtGui.QTableWidget(self.verticalLayoutWidget)
+        self.items_tableWidget.setObjectName(_fromUtf8("items_tableWidget"))
+        self.items_tableWidget.setColumnCount(3)
+
+        ##
+        # Create headers
+        header = QtGui.QTableWidgetItem("Item")
+        self.items_tableWidget.setHorizontalHeaderItem(0, header)
+        header = QtGui.QTableWidgetItem("Price")
+        self.items_tableWidget.setHorizontalHeaderItem(1, header)
+        header = QtGui.QTableWidgetItem("Expiry")
+        self.items_tableWidget.setHorizontalHeaderItem(2, header)
+
+        ##
+        # Add items to table
+        for i in range(len(items)):
+            self.items_tableWidget.setRowCount(i + 1)
+            self.items_tableWidget.setItem(i, 0, QtGui.QTableWidgetItem(items[i]['trade']['name']))
+            self.items_tableWidget.setItem(i, 1, QtGui.QTableWidgetItem(items[i]['trade']['price']))
+            self.items_tableWidget.setItem(i, 2, QtGui.QTableWidgetItem(items[i]['metadata']['expiry']))
+
+
+
+        self.horizontalLayout.addWidget(self.items_tableWidget)
         self.verticalLayout.addLayout(self.horizontalLayout)
         self.pushButton_2 = QtGui.QPushButton(self.verticalLayoutWidget)
         self.pushButton_2.setObjectName(_fromUtf8("save_button"))
@@ -90,47 +82,11 @@ class storeTab(object):
         self.horizontalLayout_2.setObjectName(_fromUtf8("horizontalLayout_2"))
         self.verticalLayout.addLayout(self.horizontalLayout_2)
 
-        self.retranslateUi(Form)
-        QtCore.QMetaObject.connectSlotsByName(Form)
-
-    def retranslateUi(self, Form):
-        Form.setWindowTitle(_translate("Form", "Form", None))
         self.label.setText(_translate("Form", "Store Owner\'s Name", None))
-        item = self.tableWidget.verticalHeaderItem(0)
-        item.setText(_translate("Form", "Hat", None))
-        item = self.tableWidget.verticalHeaderItem(1)
-        item.setText(_translate("Form", "Table", None))
-        item = self.tableWidget.verticalHeaderItem(2)
-        item.setText(_translate("Form", "Chair", None))
-        item = self.tableWidget.horizontalHeaderItem(0)
-        item.setText(_translate("Form", "Description", None))
-        item = self.tableWidget.horizontalHeaderItem(1)
-        item.setText(_translate("Form", "Price", None))
-        item = self.tableWidget.horizontalHeaderItem(2)
-        item.setText(_translate("Form", "# Available", None))
-        __sortingEnabled = self.tableWidget.isSortingEnabled()
-        self.tableWidget.setSortingEnabled(False)
-        item = self.tableWidget.item(0, 0)
-        item.setText(_translate("Form", "Put on your head", None))
-        item = self.tableWidget.item(0, 1)
-        item.setText(_translate("Form", "$5BTC", None))
-        item = self.tableWidget.item(0, 2)
-        item.setText(_translate("Form", "10", None))
-        item = self.tableWidget.item(1, 0)
-        item.setText(_translate("Form", "Put stuff on it", None))
-        item = self.tableWidget.item(1, 1)
-        item.setText(_translate("Form", "100BTC", None))
-        item = self.tableWidget.item(1, 2)
-        item.setText(_translate("Form", "45", None))
-        item = self.tableWidget.item(2, 0)
-        item.setText(_translate("Form", "Sit on it", None))
-        item = self.tableWidget.item(2, 1)
-        item.setText(_translate("Form", "0.5 BTC", None))
-        item = self.tableWidget.item(2, 2)
-        item.setText(_translate("Form", "150", None))
-        self.tableWidget.setSortingEnabled(__sortingEnabled)
+
         self.pushButton_2.setText(_translate("Form", "Direct Message", None))
         self.pushButton.setText(_translate("Form", "Report This User", None))
+
 
 
 class Settings_Ui2(QtGui.QWidget):
@@ -244,13 +200,13 @@ class Settings_Ui2(QtGui.QWidget):
         self.keys_label.setFont(font)
         self.keys_label.setObjectName(_fromUtf8("keys_label"))
         self.gridLayout_4.addWidget(self.keys_label, 0, 0, 1, 1)
-        self.bit32_seed_label = QtGui.QLabel(self.verticalLayoutWidget)
+        self.guid_label = QtGui.QLabel(self.verticalLayoutWidget)
         font = QtGui.QFont()
         font.setBold(True)
         font.setWeight(75)
-        self.bit32_seed_label.setFont(font)
-        self.bit32_seed_label.setObjectName(_fromUtf8("bit32_seed_label"))
-        self.gridLayout_4.addWidget(self.bit32_seed_label, 2, 0, 1, 1)
+        self.guid_label.setFont(font)
+        self.guid_label.setObjectName(_fromUtf8("guid_label"))
+        self.gridLayout_4.addWidget(self.guid_label, 2, 0, 1, 1)
         self.gpg_pubkey_label = QtGui.QLabel(self.verticalLayoutWidget)
         font = QtGui.QFont()
         font.setBold(True)
@@ -258,9 +214,9 @@ class Settings_Ui2(QtGui.QWidget):
         self.gpg_pubkey_label.setFont(font)
         self.gpg_pubkey_label.setObjectName(_fromUtf8("gpg_pubkey_label"))
         self.gridLayout_4.addWidget(self.gpg_pubkey_label, 3, 0, 1, 1)
-        self.bip32seed_lineEdit = QtGui.QLineEdit(self.verticalLayoutWidget)
-        self.bip32seed_lineEdit.setObjectName(_fromUtf8("bip32seed_lineEdit"))
-        self.gridLayout_4.addWidget(self.bip32seed_lineEdit, 2, 1, 1, 1)
+        self.guid_lineEdit = QtGui.QLineEdit(self.verticalLayoutWidget)
+        self.guid_lineEdit.setObjectName(_fromUtf8("guid_lineEdit"))
+        self.gridLayout_4.addWidget(self.guid_lineEdit, 2, 1, 1, 1)
         self.pubkey_textedit = QtGui.QTextEdit(self.verticalLayoutWidget)
         self.pubkey_textedit.setObjectName(_fromUtf8("pubkey_textedit"))
         self.gridLayout_4.addWidget(self.pubkey_textedit, 3, 1, 1, 1)
@@ -434,7 +390,7 @@ class Settings_Ui2(QtGui.QWidget):
         self.add_notary_line.setText(_translate("Form", "Enter a notary\'s OB guid", None))
         self.bitcoin_pubkey_label.setText(_translate("Form", "Bitcoin Public Key (Uncompressed)", None))
         self.keys_label.setText(_translate("Form", "OpenBazaar Keys", None))
-        self.bit32_seed_label.setText(_translate("Form", "BIP32 Seed", None))
+        self.guid_label.setText(_translate("Form", "OpenBazaar GUID", None))
         self.gpg_pubkey_label.setText(_translate("Form", "PGP Public Key", None))
         self.notary_details_label.setText(_translate("Form", "Notary Details", None))
         self.notary_percent_about_label.setHtml(_translate("Form", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
@@ -470,7 +426,7 @@ class Settings_Ui2(QtGui.QWidget):
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'Ubuntu\'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Note: This information will be encrypted and only be sent to your seller when you have marked your order for payment.</p></body></html>", None))
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Note: This information will be encrypted and only be sent to your seller when you have marked your order for payment.</p></body></html>""", None))
         self.save_button.setText(_translate("Form", "Save Changes", None))
 
 
@@ -482,7 +438,7 @@ class Settings_Ui2(QtGui.QWidget):
         self.bitcoin_lineEdit.setText(settings_dict['bitcoinReceivingAddress'])
         self.store_desc_edit.setText(settings_dict['storeDescription'])
         self.pubkey_textedit.setText(settings_dict['pubkey'])
-        self.notary_servicedesc_textEdit(settings_dict['description'])
+        self.notary_servicedesc_textEdit.setText(settings_dict['description'])
         self.percent_comboBox.setCurrentIndex(int(settings_dict['percentage']))
         self.recipient_lineEdit.setText(settings_dict['shippingInformation']['recipient'])
         self.street1_lineEdit.setText(settings_dict['shippingInformation']['street1'])
@@ -491,12 +447,35 @@ class Settings_Ui2(QtGui.QWidget):
         self.province_lineEdit.setText(settings_dict['shippingInformation']['province/state/region'])
         self.zip_lineEdit.setText(settings_dict['shippingInformation']['postal/zip'])
         self.country_lineEdit.setText(settings_dict['shippingInformation']['country'])
+        self.guid_lineEdit.setText(settings_dict['guid'])
+
+        self.save_button.clicked.connect(self.saveChanges)
+
 
     ##
-    # SaveChanges(self)
+    # saveChanges(self)
     #     Collects all filled in user data and sends to settings for saving
     def saveChanges(self):
-        return
+        ret = dict()
+        ret['nickname'] = self.nickname_lineEdit.text()
+        ret['email'] = self.email_lineEdit.text()
+        ret['bitcoinReceivingAddress'] = self.bitcoin_lineEdit.text()
+        ret['storeDescription'] = self.store_desc_edit.toPlainText()
+        ret['percentage'] = str(self.percent_comboBox.currentIndex())
+        ret['description'] = self.notary_servicedesc_textEdit.toPlainText()
+        shipping = dict()
+        shipping['recipient'] = self.recipient_lineEdit.text()
+        shipping['street1'] = self.street1_lineEdit.text()
+        shipping['street2'] = self.street2_lineEdit.text()
+        shipping['city'] = self.city_lineEdit.text()
+        shipping['province/state/region'] = self.province_lineEdit.text()
+        shipping['postal/zip'] = self.zip_lineEdit.text()
+        shipping['country'] = self.country_lineEdit.text()
+        ret['shippingInformation'] = shipping
+        ret['avatarURL'] = ""
+        ret['myMerchants'] = ""
+        ret['isNotary'] = ""
+        self.window().id_module.set_settings(ret)
 
 ##
 # This class contains the UI for the "Send a message" tab
@@ -604,15 +583,13 @@ class Ui_OrdersMenu(object):
         OrdersMenu.setWindowTitle(_translate("OrdersMenu", "Form", None))
         self.OrderLabel.setText(_translate("OrdersMenu", "Orders", None))
 
-##
-# This class contains the UI for the New Contract tab
-#
-class ContractGenUi(object):
-    def setupUi(self, Form):
-        Form.setObjectName(_fromUtf8("Form"))
-        Form.resize(788, 376)
-        Form.setAutoFillBackground(False)
-        self.gridLayoutWidget = QtGui.QWidget(Form)
+class ContractGenUi2(QtGui.QWidget):
+    def __init__(self):
+        super(ContractGenUi2, self).__init__()
+        self.setObjectName(_fromUtf8("Form"))
+        self.resize(788, 376)
+        self.setAutoFillBackground(False)
+        self.gridLayoutWidget = QtGui.QWidget(self)
         self.gridLayoutWidget.setGeometry(QtCore.QRect(10, 10, 671, 235))
         self.gridLayoutWidget.setObjectName(_fromUtf8("gridLayoutWidget"))
         self.gridLayout = QtGui.QGridLayout(self.gridLayoutWidget)
@@ -626,9 +603,9 @@ class ContractGenUi(object):
         self.label.setFont(font)
         self.label.setObjectName(_fromUtf8("store_details_label"))
         self.gridLayout.addWidget(self.label, 1, 0, 1, 1)
-        self.lineEdit_2 = QtGui.QLineEdit(self.gridLayoutWidget)
-        self.lineEdit_2.setObjectName(_fromUtf8("bitcoin_lineEdit"))
-        self.gridLayout.addWidget(self.lineEdit_2, 3, 1, 1, 1)
+        self.bitcoin_address_lineEdit = QtGui.QLineEdit(self.gridLayoutWidget)
+        self.bitcoin_address_lineEdit.setObjectName(_fromUtf8("bitcoin_lineEdit"))
+        self.gridLayout.addWidget(self.bitcoin_address_lineEdit, 3, 1, 1, 1)
         self.label_7 = QtGui.QLabel(self.gridLayoutWidget)
         font = QtGui.QFont()
         font.setBold(True)
@@ -636,15 +613,18 @@ class ContractGenUi(object):
         self.label_7.setFont(font)
         self.label_7.setObjectName(_fromUtf8("nickname_label"))
         self.gridLayout.addWidget(self.label_7, 6, 0, 1, 1)
-        self.lineEdit_4 = QtGui.QLineEdit(self.gridLayoutWidget)
-        self.lineEdit_4.setObjectName(_fromUtf8("bip32seed_lineEdit"))
-        self.gridLayout.addWidget(self.lineEdit_4, 5, 1, 1, 1)
-        self.lineEdit_5 = QtGui.QLineEdit(self.gridLayoutWidget)
-        self.lineEdit_5.setObjectName(_fromUtf8("email_lineEdit"))
-        self.gridLayout.addWidget(self.lineEdit_5, 6, 1, 1, 1)
-        self.lineEdit_3 = QtGui.QLineEdit(self.gridLayoutWidget)
-        self.lineEdit_3.setObjectName(_fromUtf8("add_notary_line"))
-        self.gridLayout.addWidget(self.lineEdit_3, 4, 1, 1, 1)
+        self.price_lineEdit = QtGui.QLineEdit(self.gridLayoutWidget)
+        self.price_lineEdit.setObjectName(_fromUtf8("guid_lineEdit"))
+        self.price_lineEdit.setText('4')
+        self.gridLayout.addWidget(self.price_lineEdit, 5, 1, 1, 1)
+        self.expiry_lineEdit = QtGui.QLineEdit(self.gridLayoutWidget)
+        self.expiry_lineEdit.setObjectName(_fromUtf8("email_lineEdit"))
+        self.expiry_lineEdit.setText('5')
+        self.gridLayout.addWidget(self.expiry_lineEdit, 6, 1, 1, 1)
+        self.item_name_lineEdit = QtGui.QLineEdit(self.gridLayoutWidget)
+        self.item_name_lineEdit.setObjectName(_fromUtf8("add_notary_line"))
+        self.item_name_lineEdit.setText('3')
+        self.gridLayout.addWidget(self.item_name_lineEdit, 4, 1, 1, 1)
         self.label_6 = QtGui.QLabel(self.gridLayoutWidget)
         font = QtGui.QFont()
         font.setBold(True)
@@ -676,20 +656,30 @@ class ContractGenUi(object):
         self.label_2.setAlignment(QtCore.Qt.AlignCenter)
         self.label_2.setObjectName(_fromUtf8("keys_label"))
         self.gridLayout.addWidget(self.label_2, 2, 1, 1, 1)
-        self.pushButton = QtGui.QPushButton(Form)
-        self.pushButton.setGeometry(QtCore.QRect(520, 260, 161, 27))
-        self.pushButton.setObjectName(_fromUtf8("add_notary_label"))
+        self.generate_contract_button = QtGui.QPushButton(self)
+        self.generate_contract_button.setGeometry(QtCore.QRect(520, 260, 161, 27))
+        self.generate_contract_button.setObjectName(_fromUtf8("add_notary_label"))
 
-        self.retranslateUi(Form)
-        QtCore.QMetaObject.connectSlotsByName(Form)
+        ##
+        # On clicked, generate the new contract data
+        self.generate_contract_button.clicked.connect(self.generate_from_input)
 
-    def retranslateUi(self, Form):
-        Form.setWindowTitle(_translate("Form", "Form", None))
+
         self.label.setText(_translate("Form", "Contract Generator", None))
         self.label_7.setText(_translate("Form", "Offer expiry date", None))
         self.label_6.setText(_translate("Form", "Price (in BTC) of item to sell", None))
         self.label_4.setText(_translate("Form", "Your Bitcoin address", None))
         self.label_5.setText(_translate("Form", "Name of item to sell", None))
         self.label_2.setText(_translate("Form", "Contract", None))
-        self.pushButton.setText(_translate("Form", "Generate Contract", None))
+        self.generate_contract_button.setText(_translate("Form", "Generate Contract", None))
+
+    def generate_from_input(self):
+        contract = dict()
+        contract['expiry'] = self.expiry_lineEdit.text()
+        contract['price'] = self.price_lineEdit.text()
+        contract['bitcoin_address'] = self.bitcoin_address_lineEdit.text()
+        contract['item_name'] = self.item_name_lineEdit.text()
+        self.window().id_module.new_contract(contract)
+
+
 

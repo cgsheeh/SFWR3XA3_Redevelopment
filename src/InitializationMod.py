@@ -49,7 +49,7 @@ class BazaarInit(object):
     def initialize_Bazaar(self):
         gpg_which = which('gpg')
         if gpg_which == None:
-            print "You do not have gpg installed. Please install gpg."
+            print "You do not have gpg installed. Please install gpg using \'sudo apt-get install gpg\' or some alternative."
             exit()
         else:
             ##

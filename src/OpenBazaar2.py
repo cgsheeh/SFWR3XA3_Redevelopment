@@ -2,6 +2,7 @@
 import os
 import pickle
 import InitializationMod
+from OBStrings import OBStrings
 from PyQt4 import QtCore, QtGui
 from TabWidgets import *
 
@@ -31,14 +32,14 @@ class OpenBazaar2(QtGui.QMainWindow):
         # Before doing anything check if a user has been initialized
         # by looking for the existence of an identity pickle file
         #
-        if not os.path.isfile('identity/identity.p'):
+        if not os.path.isfile(OBStrings.identity_pickle):
             InitializationMod.BazaarInit().initialize_Bazaar()
 
 
         ##
         # Create data modules
         #
-        self.id_module = pickle.load(open('identity/identity.p', 'r'))
+        self.id_module = pickle.load(open(OBStrings.identity_pickle, 'r'))
 
         ##
         # Set main object name
@@ -221,6 +222,7 @@ class OpenBazaar2(QtGui.QMainWindow):
 
         ##
         # Add recent transactions table and label
+        #
         self.recentTransactionsTable = QtGui.QTableWidget(self.centralwidget)
         self.recentTransactionsTable.setObjectName(_fromUtf8("recentTransactionsTable"))
         self.recentTransactionsTable.setColumnCount(2)
@@ -272,19 +274,17 @@ class OpenBazaar2(QtGui.QMainWindow):
         # Create "New Contract" Tab
         #
         self.newContractTab_scroll = QtGui.QScrollArea()
-        self.newContractTab = QtGui.QWidget()
-        self.newContractUi = ContractGenUi()
-        self.newContractUi.setupUi(self.newContractTab)
+        self.newContractTab = ContractGenUi2()
         self.newContractTab_scroll.setWidget(self.newContractTab)
         self.tabMenu.addTab(self.newContractTab_scroll, "New Contract")
 
         ##
         # Create a blank store tab
         #
-        self.exampleStoreTab = QtGui.QWidget()
-        self.exampleStoreUi = storeTab()
-        self.exampleStoreUi.setupUi(self.exampleStoreTab)
-        self.tabMenu.addTab(self.exampleStoreTab, "Someone's Store")
+        self.store_scroll = QtGui.QScrollArea()
+        self.exampleStoreTab = storeTab2(self.id_module.get_my_contracts())
+        self.store_scroll.setWidget(self.exampleStoreTab)
+        self.tabMenu.addTab(self.store_scroll, "Someone's Store")
 
         ##
         # Create a "My orders" tab
@@ -308,10 +308,7 @@ class OpenBazaar2(QtGui.QMainWindow):
         # Create settings tab
         #
         self.settings_scroll = QtGui.QScrollArea()
-        # self.settings_tab = QtGui.QWidget()
-        # self.settings_tab_ui = Settings_Ui()
-        # self.settings_tab_ui.setupUi(self.settings_tab)
-        self.settings_tab = Settings_Ui2(dict())
+        self.settings_tab = Settings_Ui2(self.id_module.get_settings())
         self.settings_scroll.setWidget(self.settings_tab)
         self.tabMenu.addTab(self.settings_scroll, "Settings")
 
