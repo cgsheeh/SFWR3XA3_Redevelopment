@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>788</width>
+    <width>829</width>
     <height>304</height>
    </rect>
   </property>
@@ -22,15 +22,27 @@
      <x>10</x>
      <y>10</y>
      <width>671</width>
-     <height>235</height>
+     <height>245</height>
     </rect>
    </property>
    <layout class="QGridLayout" name="gridLayout">
     <item row="7" column="1">
-     <widget class="QLineEdit" name="lineEdit_6"/>
+     <widget class="QLineEdit" name="image_edit"/>
+    </item>
+    <item row="3" column="1">
+     <widget class="QLineEdit" name="bitcoin_edit"/>
+    </item>
+    <item row="5" column="1">
+     <widget class="QLineEdit" name="price_edit"/>
+    </item>
+    <item row="6" column="1">
+     <widget class="QLineEdit" name="expiry_edit"/>
+    </item>
+    <item row="4" column="1">
+     <widget class="QLineEdit" name="name_edit"/>
     </item>
     <item row="1" column="0">
-     <widget class="QLabel" name="label">
+     <widget class="QLabel" name="ContractGen_label">
       <property name="font">
        <font>
         <pointsize>14</pointsize>
@@ -43,11 +55,8 @@
       </property>
      </widget>
     </item>
-    <item row="3" column="1">
-     <widget class="QLineEdit" name="lineEdit_2"/>
-    </item>
     <item row="6" column="0">
-     <widget class="QLabel" name="label_7">
+     <widget class="QLabel" name="expiry_label">
       <property name="font">
        <font>
         <weight>75</weight>
@@ -59,17 +68,8 @@
       </property>
      </widget>
     </item>
-    <item row="5" column="1">
-     <widget class="QLineEdit" name="lineEdit_4"/>
-    </item>
-    <item row="6" column="1">
-     <widget class="QLineEdit" name="lineEdit_5"/>
-    </item>
-    <item row="4" column="1">
-     <widget class="QLineEdit" name="lineEdit_3"/>
-    </item>
     <item row="5" column="0">
-     <widget class="QLabel" name="label_6">
+     <widget class="QLabel" name="price_label">
       <property name="font">
        <font>
         <weight>75</weight>
@@ -82,7 +82,7 @@
      </widget>
     </item>
     <item row="3" column="0">
-     <widget class="QLabel" name="label_4">
+     <widget class="QLabel" name="Bitcoin_address_label">
       <property name="font">
        <font>
         <weight>75</weight>
@@ -95,7 +95,7 @@
      </widget>
     </item>
     <item row="4" column="0">
-     <widget class="QLabel" name="label_5">
+     <widget class="QLabel" name="name_label">
       <property name="font">
        <font>
         <weight>75</weight>
@@ -108,7 +108,7 @@
      </widget>
     </item>
     <item row="2" column="1">
-     <widget class="QLabel" name="label_2">
+     <widget class="QLabel" name="Contract_label">
       <property name="font">
        <font>
         <weight>75</weight>
@@ -130,7 +130,7 @@
      </widget>
     </item>
     <item row="7" column="0">
-     <widget class="QLabel" name="label_8">
+     <widget class="QLabel" name="image_label">
       <property name="font">
        <font>
         <weight>75</weight>
@@ -142,9 +142,16 @@
       </property>
      </widget>
     </item>
+    <item row="7" column="2">
+     <widget class="QToolButton" name="browse_button">
+      <property name="text">
+       <string>Browse...</string>
+      </property>
+     </widget>
+    </item>
    </layout>
   </widget>
-  <widget class="QPushButton" name="pushButton">
+  <widget class="QPushButton" name="generate_button">
    <property name="geometry">
     <rect>
      <x>520</x>

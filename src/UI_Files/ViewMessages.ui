@@ -13,7 +13,7 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QLabel" name="label">
+  <widget class="QLabel" name="SenderName_title_label">
    <property name="geometry">
     <rect>
      <x>130</x>
@@ -33,7 +33,7 @@
     <string>Sender Nickname</string>
    </property>
   </widget>
-  <widget class="QTextBrowser" name="textBrowser">
+  <widget class="QTextBrowser" name="messages_browser">
    <property name="geometry">
     <rect>
      <x>80</x>

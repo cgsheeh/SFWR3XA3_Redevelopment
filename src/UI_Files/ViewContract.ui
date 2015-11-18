@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>442</width>
-    <height>396</height>
+    <width>473</width>
+    <height>407</height>
    </rect>
   </property>
   <property name="font">
@@ -31,7 +31,7 @@
    </property>
    <layout class="QGridLayout" name="gridLayout">
     <item row="1" column="0">
-     <widget class="QLabel" name="label_2">
+     <widget class="QLabel" name="nameitem_label">
       <property name="font">
        <font>
         <pointsize>11</pointsize>
@@ -45,10 +45,10 @@
      </widget>
     </item>
     <item row="1" column="1">
-     <widget class="QTextBrowser" name="textBrowser"/>
+     <widget class="QTextBrowser" name="nameitem_browser"/>
     </item>
     <item row="2" column="0">
-     <widget class="QLabel" name="label_3">
+     <widget class="QLabel" name="priceitem_label">
       <property name="font">
        <font>
         <pointsize>11</pointsize>
@@ -60,17 +60,17 @@
      </widget>
     </item>
     <item row="2" column="1">
-     <widget class="QTextBrowser" name="textBrowser_2"/>
+     <widget class="QTextBrowser" name="priceitem_browser"/>
     </item>
     <item row="0" column="0">
-     <widget class="QLabel" name="label">
+     <widget class="QLabel" name="contracttitle_label">
       <property name="text">
        <string>Contract Title</string>
       </property>
      </widget>
     </item>
     <item row="3" column="0">
-     <widget class="QLabel" name="label_4">
+     <widget class="QLabel" name="expiryitem_label">
       <property name="font">
        <font>
         <pointsize>11</pointsize>
@@ -84,10 +84,10 @@
      </widget>
     </item>
     <item row="3" column="1">
-     <widget class="QTextBrowser" name="textBrowser_3"/>
+     <widget class="QTextBrowser" name="expiryitem_browser"/>
     </item>
     <item row="4" column="0">
-     <widget class="QLabel" name="label_5">
+     <widget class="QLabel" name="imageitem_label">
       <property name="font">
        <font>
         <pointsize>11</pointsize>
@@ -101,7 +101,7 @@
      </widget>
     </item>
     <item row="4" column="1">
-     <widget class="QGraphicsView" name="graphicsView"/>
+     <widget class="QGraphicsView" name="image_graphicsview"/>
     </item>
    </layout>
   </widget>
