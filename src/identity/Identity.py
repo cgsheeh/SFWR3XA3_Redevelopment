@@ -131,7 +131,7 @@ class Store(object):
 class Notary(object):
     def __init__(self):
         self.isNotary = False
-        self.percentage = ""
+        self.percentage = "0"
         self.description = ""
 
     def get(self):
