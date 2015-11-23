@@ -680,5 +680,31 @@ class ContractGenUi2(QtGui.QWidget):
         contract['item_name'] = self.item_name_lineEdit.text()
         self.window().id_module.new_contract(contract)
 
+class bootStrap_Tab(QtGui.QWidget):
+    def __init__(self):
+        super(bootStrap_Tab, self).__init__()
+        self.setObjectName(_fromUtf8("OrdersMenu"))
+        self.resize(400, 300)
+        self.pushButton = QtGui.QPushButton(self)
+        self.pushButton.setGeometry(QtCore.QRect(70, 180, 98, 27))
+        self.pushButton.setObjectName(_fromUtf8("pushButton"))
+        self.lineEdit = QtGui.QLineEdit(self)
+        self.lineEdit.setGeometry(QtCore.QRect(50, 70, 161, 27))
+        self.lineEdit.setObjectName(_fromUtf8("lineEdit"))
+        self.lineEdit_2 = QtGui.QLineEdit(self)
+        self.lineEdit_2.setGeometry(QtCore.QRect(50, 120, 161, 27))
+        self.lineEdit_2.setObjectName(_fromUtf8("lineEdit_2"))
+        self.setWindowTitle(_translate("OrdersMenu", "Form", None))
+        self.pushButton.setText(_translate("OrdersMenu", "Bootstrap", None))
+        self.lineEdit.setText(_translate("OrdersMenu", "Enter IP Address", None))
+        self.lineEdit_2.setText(_translate("OrdersMenu", "Enter Port Number", None))
+
+        ##
+        # On clicked, generate the bootstrap
+        self.pushButton.clicked.connect(self.generate_from_input)
+
+    def generate_from_input(self):
+        self.window().id_module.attempt_bootstrap(self.lineEdit.text(), self.lineEdit_2.text())
+
 
 
