@@ -4,7 +4,9 @@ import os
 import gnupg
 import hashlib
 import pickle
+import OBStrings
 from identity.Identity import *
+from node.Node import OBNode
 
 ##
 # If program does not exist as a callable on the OS, return None
@@ -46,7 +48,8 @@ class BazaarInit(object):
     ##
     # Initializes the OpenBazaar
     #
-    def initialize_Bazaar(self):
+    @staticmethod
+    def initialize_Bazaar():
         gpg_which = which('gpg')
         if gpg_which == None:
             print "You do not have gpg installed. Please install gpg using \'sudo apt-get install gpg\' or some alternative."
@@ -63,8 +66,10 @@ class BazaarInit(object):
             guid = BazaarInit.create_GUID(str(gpg.sign(pub_key_armor, binary=True)))
 
             ##
-            #  Add GUID, keys to Identity object.
-            #  Serialize and store in identity folder
+            #  Create ID and node objects, serialize and store
+            #
             id = Identity(guid, pub_key_armor, priv_key_armor)
-            pickle.dump(id, open('identity/identity.p', 'w'))
+            node = OBNode(hashlib.sha1(guid).digest(), 5090)
 
+            pickle.dump(id, open(OBStrings.identity_pickle, 'w'))
+            pickle.dump(node, open(OBStrings.obnode_pickle, 'w'))

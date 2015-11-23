@@ -33,13 +33,16 @@ class OpenBazaar2(QtGui.QMainWindow):
         # by looking for the existence of an identity pickle file
         #
         if not os.path.isfile(OBStrings.identity_pickle):
-            InitializationMod.BazaarInit().initialize_Bazaar()
+            InitializationMod.BazaarInit.initialize_Bazaar()
 
 
         ##
         # Create data modules
+        #     TODO Create node module and make it work
         #
         self.id_module = pickle.load(open(OBStrings.identity_pickle, 'r'))
+        self.node = pickle.load(open(OBStrings.obnode_pickle, 'r'))
+        self.node.start_node(5090)
 
         ##
         # Set main object name
@@ -52,7 +55,7 @@ class OpenBazaar2(QtGui.QMainWindow):
         # Set tray logo
         #
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(_fromUtf8("images/small_logo.jpeg")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap(_fromUtf8(OBStrings.traylogo)), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.setWindowIcon(icon)
 
         ##
@@ -254,7 +257,7 @@ class OpenBazaar2(QtGui.QMainWindow):
         #
         self.main_logo_label = QtGui.QLabel(self.centralwidget)
         self.main_logo_label.setText(_fromUtf8(""))
-        self.main_logo_label.setPixmap(QtGui.QPixmap(_fromUtf8("images/banner.png")))
+        self.main_logo_label.setPixmap(QtGui.QPixmap(_fromUtf8(OBStrings.ob_banner)))
         self.main_logo_label.setObjectName(_fromUtf8("main_logo_label"))
         self.gridLayout.addWidget(self.main_logo_label, 0, 2, 2, 1)
 
@@ -298,9 +301,7 @@ class OpenBazaar2(QtGui.QMainWindow):
         # Create a new message tab
         #
         self.new_message_scroll = QtGui.QScrollArea()
-        self.new_message_tab = QtGui.QWidget()
-        self.new_message_ui = SendMessage_Ui()
-        self.new_message_ui.setupUi(self.new_message_tab)
+        self.new_message_tab = SendMessage_Ui2()
         self.new_message_scroll.setWidget(self.new_message_tab)
         self.tabMenu.addTab(self.new_message_scroll, "Send Message")
 

@@ -480,24 +480,26 @@ class Settings_Ui2(QtGui.QWidget):
 ##
 # This class contains the UI for the "Send a message" tab
 #
-class SendMessage_Ui(object):
-    def setupUi(self, Form):
-        Form.setObjectName(_fromUtf8("Form"))
-        Form.resize(400, 413)
-        self.verticalLayoutWidget = QtGui.QWidget(Form)
+class SendMessage_Ui2(QtGui.QWidget):
+    def __init__(self):
+        super(SendMessage_Ui2, self).__init__()
+
+        self.setObjectName(_fromUtf8("Form"))
+        self.resize(400, 413)
+        self.verticalLayoutWidget = QtGui.QWidget(self)
         self.verticalLayoutWidget.setGeometry(QtCore.QRect(10, 10, 381, 391))
         self.verticalLayoutWidget.setObjectName(_fromUtf8("verticalLayoutWidget"))
         self.verticalLayout = QtGui.QVBoxLayout(self.verticalLayoutWidget)
         self.verticalLayout.setMargin(0)
         self.verticalLayout.setObjectName(_fromUtf8("verticalLayout"))
-        self.label_2 = QtGui.QLabel(self.verticalLayoutWidget)
+        self.send_message_label = QtGui.QLabel(self.verticalLayoutWidget)
         font = QtGui.QFont()
         font.setPointSize(14)
         font.setBold(True)
         font.setWeight(75)
-        self.label_2.setFont(font)
-        self.label_2.setObjectName(_fromUtf8("keys_label"))
-        self.verticalLayout.addWidget(self.label_2)
+        self.send_message_label.setFont(font)
+        self.send_message_label.setObjectName(_fromUtf8("keys_label"))
+        self.verticalLayout.addWidget(self.send_message_label)
         self.horizontalLayout = QtGui.QHBoxLayout()
         self.horizontalLayout.setObjectName(_fromUtf8("horizontalLayout"))
         self.label = QtGui.QLabel(self.verticalLayoutWidget)
@@ -507,40 +509,37 @@ class SendMessage_Ui(object):
         self.lineEdit.setObjectName(_fromUtf8("nickname_lineEdit"))
         self.horizontalLayout.addWidget(self.lineEdit)
         self.verticalLayout.addLayout(self.horizontalLayout)
-        self.lineEdit_2 = QtGui.QLineEdit(self.verticalLayoutWidget)
-        self.lineEdit_2.setObjectName(_fromUtf8("bitcoin_lineEdit"))
-        self.verticalLayout.addWidget(self.lineEdit_2)
-        self.textEdit = QtGui.QTextEdit(self.verticalLayoutWidget)
-        self.textEdit.setObjectName(_fromUtf8("store_desc_edit"))
-        self.verticalLayout.addWidget(self.textEdit)
+        self.message_subject_lineEdit = QtGui.QLineEdit(self.verticalLayoutWidget)
+        self.message_subject_lineEdit.setObjectName(_fromUtf8("bitcoin_lineEdit"))
+        self.verticalLayout.addWidget(self.message_subject_lineEdit)
+        self.message_body_textEdit = QtGui.QTextEdit(self.verticalLayoutWidget)
+        self.message_body_textEdit.setObjectName(_fromUtf8("store_desc_edit"))
+        self.verticalLayout.addWidget(self.message_body_textEdit)
         self.horizontalLayout_2 = QtGui.QHBoxLayout()
         self.horizontalLayout_2.setObjectName(_fromUtf8("horizontalLayout_2"))
         spacerItem = QtGui.QSpacerItem(100, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
         self.horizontalLayout_2.addItem(spacerItem)
-        self.pushButton = QtGui.QPushButton(self.verticalLayoutWidget)
-        self.pushButton.setObjectName(_fromUtf8("add_notary_label"))
-        self.horizontalLayout_2.addWidget(self.pushButton)
-        self.pushButton_2 = QtGui.QPushButton(self.verticalLayoutWidget)
-        self.pushButton_2.setAutoFillBackground(False)
-        self.pushButton_2.setObjectName(_fromUtf8("save_button"))
-        self.horizontalLayout_2.addWidget(self.pushButton_2)
+        self.cancel_button = QtGui.QPushButton(self.verticalLayoutWidget)
+        self.cancel_button.setObjectName(_fromUtf8("add_notary_label"))
+        self.horizontalLayout_2.addWidget(self.cancel_button)
+        self.send_button = QtGui.QPushButton(self.verticalLayoutWidget)
+        self.send_button.setAutoFillBackground(False)
+        self.send_button.setObjectName(_fromUtf8("save_button"))
+        self.horizontalLayout_2.addWidget(self.send_button)
         self.verticalLayout.addLayout(self.horizontalLayout_2)
 
-        self.retranslateUi(Form)
-        QtCore.QMetaObject.connectSlotsByName(Form)
-
-    def retranslateUi(self, Form):
-        Form.setWindowTitle(_translate("Form", "Form", None))
-        self.label_2.setText(_translate("Form", "Send Message", None))
+        self.setWindowTitle(_translate("Form", "Form", None))
+        self.send_message_label.setText(_translate("Form", "Send Message", None))
         self.label.setText(_translate("Form", "To:", None))
-        self.lineEdit_2.setText(_translate("Form", "Enter a subject line", None))
-        self.textEdit.setHtml(_translate("Form", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+        self.message_subject_lineEdit.setText(_translate("Form", "Enter a subject line", None))
+        self.message_body_textEdit.setHtml(_translate("Form", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'Ubuntu\'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Enter a message</p></body></html>", None))
-        self.pushButton.setText(_translate("Form", "Cancel", None))
-        self.pushButton_2.setText(_translate("Form", "Send", None))
+        self.cancel_button.setText(_translate("Form", "Cancel", None))
+        self.send_button.setText(_translate("Form", "Send", None))
+
 
 ##
 # This class contains the UI for the "My Orders" menu
