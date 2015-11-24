@@ -63,10 +63,11 @@ class storeTab2(QtGui.QWidget):
         ##
         # Add items to table
         for i in range(len(items)):
+            item = items[i].get_dict()
             self.items_tableWidget.setRowCount(i + 1)
-            self.items_tableWidget.setItem(i, 0, QtGui.QTableWidgetItem(items[i]['trade']['name']))
-            self.items_tableWidget.setItem(i, 1, QtGui.QTableWidgetItem(items[i]['trade']['price']))
-            self.items_tableWidget.setItem(i, 2, QtGui.QTableWidgetItem(items[i]['metadata']['expiry']))
+            self.items_tableWidget.setItem(i, 0, QtGui.QTableWidgetItem(item['trade']['name']))
+            self.items_tableWidget.setItem(i, 1, QtGui.QTableWidgetItem(item['trade']['price']))
+            self.items_tableWidget.setItem(i, 2, QtGui.QTableWidgetItem(item['metadata']['expiry']))
 
 
 
@@ -704,7 +705,7 @@ class bootStrap_Tab(QtGui.QWidget):
         self.pushButton.clicked.connect(self.generate_from_input)
 
     def generate_from_input(self):
-        self.window().id_module.attempt_bootstrap(self.lineEdit.text(), self.lineEdit_2.text())
+        self.window().node.attempt_bootstrap(str(self.lineEdit.text()), int(self.lineEdit_2.text()))
 
 
 

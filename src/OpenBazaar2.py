@@ -41,6 +41,8 @@ class OpenBazaar2(QtGui.QMainWindow):
         #     TODO Create node module and make it work
         #
         self.id_module = pickle.load(open(OBStrings.identity_pickle, 'r'))
+        settings = self.id_module.get_settings()
+
         self.node = pickle.load(open(OBStrings.obnode_pickle, 'r'))
         self.node.start_node(5090)
 
@@ -95,11 +97,18 @@ class OpenBazaar2(QtGui.QMainWindow):
         ##
         # Add display picture for user
         #
-        self.displayPicture = QtGui.QLabel(self.centralwidget)
-        self.displayPicture.setText(_fromUtf8(""))
-        self.displayPicture.setPixmap(QtGui.QPixmap(_fromUtf8("images/default-avatar.png")))
-        self.displayPicture.setObjectName(_fromUtf8("displayPicture"))
-        self.gridLayout.addWidget(self.displayPicture, 0, 0, 2, 2)
+        try:
+            if settings['avatarURL'] is not "":
+                self.displayPicture_p = QtGui.QIcon(QtGui.QPixmap(_fromUtf8(settings['avatarURL'])))
+            else:
+                raise Exception
+        except:
+            self.displayPicture_p = QtGui.QIcon(QtGui.QPixmap(_fromUtf8("images/default-avatar.png")))
+        self.displayPicture_b = QtGui.QPushButton(self.centralwidget)
+        self.displayPicture_b.setFlat(True)
+        self.displayPicture_b.setIcon(self.displayPicture_p)
+        self.displayPicture_b.clicked.connect(self.set_picture)
+        self.gridLayout.addWidget(self.displayPicture_b, 0, 0, 2, 2)
 
         ##
         # Add merchant label
@@ -309,10 +318,15 @@ class OpenBazaar2(QtGui.QMainWindow):
         # Create settings tab
         #
         self.settings_scroll = QtGui.QScrollArea()
-        self.settings_tab = Settings_Ui2(self.id_module.get_settings())
+        self.settings_tab = Settings_Ui2(settings)
         self.settings_scroll.setWidget(self.settings_tab)
         self.tabMenu.addTab(self.settings_scroll, "Settings")
 
+        ##
+        # Create bootstrap tab
+        #
+        self.bootstrap_tab = bootStrap_Tab()
+        self.tabMenu.addTab(self.bootstrap_tab, "Bootstrap")
 
         ##
         # Set central widget
@@ -449,6 +463,30 @@ class OpenBazaar2(QtGui.QMainWindow):
         self.tabMenu.setCurrentIndex(0)
 
         self.show()
+
+    ##
+    # Describes what to do when the picture button is clicked
+    def set_picture(self):
+        ##
+        # Open a dialog and get the location of the avatar.
+        # Get settings before change
+        avatar = QtGui.QFileDialog.getOpenFileName(self, 'Upload Avatar', '', '')
+        sett = self.id_module.get_settings()
+
+        try:
+            ##
+            # Try and set the display picture to the specified location
+            self.displayPicture_p = QtGui.QIcon(QtGui.QPixmap(_fromUtf8(avatar)))
+            self.show()
+            app.processEvents()
+
+            ##
+            # Set user settings to the new avatar location
+            sett['avatarURL'] = avatar
+            self.id_module.set_settings(sett)
+        except Exception as e:
+            print "Didnt work: %s" % avatar
+            print e.message
 
 if __name__ == "__main__":
     import sys

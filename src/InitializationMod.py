@@ -42,7 +42,8 @@ class BazaarInit(object):
         sha256.update(signed_pubkey)
         tfs_hash = sha256.digest()
         rip160.update(tfs_hash)
-        return rip160.hexdigest()
+        guid = rip160.hexdigest()
+        return hashlib.sha1(guid).digest()
 
 
     ##
@@ -68,8 +69,15 @@ class BazaarInit(object):
             ##
             #  Create ID and node objects, serialize and store
             #
+            listening = False
+            default_port = 5090
             id = Identity(guid, pub_key_armor, priv_key_armor)
-            node = OBNode(hashlib.sha1(guid).digest(), 5090)
+            while not listening:
+                try:
+                    node = OBNode(guid, default_port)
+                    listening = True
+                except:
+                    default_port += 1
 
             pickle.dump(id, open(OBStrings.identity_pickle, 'w'))
             pickle.dump(node, open(OBStrings.obnode_pickle, 'w'))

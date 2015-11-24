@@ -1,6 +1,6 @@
 import pickle
-import time
 from OBStrings import OBStrings
+from RicardianContract import *
 ##
 # Identity module
 #     This class holds all the data related to a user identity,
@@ -31,34 +31,8 @@ class Identity(object):
 
     ##
     # Adds new contract data to the respective nodes
-    # Generate the Ricardian contract structure
-    #     - Metadata
-    #     - ID (buyer, seller, notary)
-    #     - Trade
-    #     - Ledger
-    #
     def new_contract(self, contract_dict):
-        contract = dict()
-        ##
-        # Add the metadata components to the contract
-        contract['metadata'] = dict(expiry=contract_dict['expiry'],
-                                    date=time.strftime("%Y:%m:%d:%H:%M:%S"))
-
-        ##
-        # Add the id components to the contract
-        contract['id'] = {}
-        contract['id']['seller'] = self.settings.store.get()
-        contract['id']['buyer'] = dict()
-        contract['id']['notary'] = dict()
-
-        ##
-        # Add the trade components to the contract
-        contract['trade'] = dict(price=contract_dict['price'], name=contract_dict['item_name'])
-
-        ##
-        # Add the ledger to the contract
-        contract['ledger'] = dict()
-
+        contract = RicardianContract(contract_dict, self.settings.store.get())
         ##
         # Add the contract to the contracts module
         # TODO Add the contract to the node/dht module
@@ -74,12 +48,12 @@ class Identity(object):
     # Save current object configuration to pickle file
     def save(self):
         pickle.dump(self, open(OBStrings.identity_pickle, 'w'))
+
 ##
 # Settings module
 #     Holds all data related to user settings
 #
 class Settings(object):
-
     def __init__(self):
         self.store = Store()
         self.notary = Notary()
@@ -104,6 +78,8 @@ class Store(object):
                                   'country': ''}
         self.myMerchants = []
 
+    ##
+    # Returns an dictionary of local user settings
     def get(self):
         return dict(email=self.email,
                     nickname=self.nickname,
@@ -113,6 +89,8 @@ class Store(object):
                     shippingInformation=self.shippingInformation,
                     myMerchants=self.myMerchants)
 
+    ##
+    # Sets the merchant settings specified in dict
     def set(self, dict):
         self.email = dict['email']
         self.nickname = dict['nickname']
@@ -122,6 +100,8 @@ class Store(object):
         self.shippingInformation = dict['shippingInformation']
         self.myMerchants = dict['myMerchants']
 
+    ##
+    # Adds a merchant to the list of merchants
     def addMerchant(self, merchant):
         self.myMerchants.append(merchant)
 
@@ -134,15 +114,20 @@ class Notary(object):
         self.percentage = "0"
         self.description = ""
 
+    ##
+    # Returns information about notaries
     def get(self):
         return dict(isNotary=self.isNotary,
                     percentage=self.percentage,
                     description=self.description)
 
+    ##
+    # Sets local user notary settings
     def set(self, settings_dict):
         self.isNotary = settings_dict['isNotary']
         self.percentage = settings_dict['percentage']
         self.description = settings_dict['description']
+
 ##
 # Contract module
 #     Holds all data relevant to contracts
@@ -151,12 +136,18 @@ class Contracts(object):
         self.expiredContracts = []
         self.onGoingContracts = []
 
+    ##
+    # Returns a list of expired contracts
     def getExpiredContracts(self):
         return self.expiredContracts
 
+    ##
+    # Returns a list of ongoing user contracts
     def getOnGoingContracts(self):
         return self.onGoingContracts
 
+    ##
+    # Adds a new ongoing contract
     def addContract(self, contract):
         self.onGoingContracts.append(contract)
 
