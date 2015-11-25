@@ -1,5 +1,5 @@
 import pickle
-from OBStrings import OBStrings
+#from OBStrings import OBStrings
 from RicardianContract import *
 ##
 # Identity module

@@ -2,6 +2,7 @@
 import os
 import pickle
 import InitializationMod
+import sys
 from OBStrings import OBStrings
 from PyQt4 import QtCore, QtGui
 from TabWidgets import *
@@ -33,7 +34,7 @@ class OpenBazaar2(QtGui.QMainWindow):
         # by looking for the existence of an identity pickle file
         #
         if not os.path.isfile(OBStrings.identity_pickle):
-            InitializationMod.BazaarInit.initialize_Bazaar()
+            InitializationMod.BazaarInit.initialize_Bazaar(int(sys.argv[1]))
 
 
         ##
@@ -44,13 +45,13 @@ class OpenBazaar2(QtGui.QMainWindow):
         settings = self.id_module.get_settings()
 
         self.node = pickle.load(open(OBStrings.obnode_pickle, 'r'))
-        self.node.start_node(5090)
+        self.node.start_node(int(sys.argv[1]))
 
         ##
         # Set main object name
         #
         self.setObjectName("OpenBazaar")
-        self.setWindowTitle(_translate("OpenBazaar", "OpenBazaar", None))
+        self.setWindowTitle(sys.argv[1])
         self.resize(1163, 867)
 
         ##
@@ -90,7 +91,6 @@ class OpenBazaar2(QtGui.QMainWindow):
         #
         self.bitcoin_balance_label = QtGui.QLabel(self.centralwidget)
         self.bitcoin_balance_label.setObjectName(_fromUtf8("bitcoin_balance_label"))
-        ## TODO fill this in to draw from model
         self.bitcoin_balance_label.setText(settings['nickname'])
         self.gridLayout.addWidget(self.bitcoin_balance_label, 2, 0, 1, 1)
 
@@ -484,7 +484,6 @@ class OpenBazaar2(QtGui.QMainWindow):
             # Try and set the display picture to the specified location
             self.displayPicture_p = QtGui.QIcon(QtGui.QPixmap(_fromUtf8(avatar)))
             self.displayPicture_b.setIcon(self.displayPicture_p)
-            #self.displayPicture_b.setIconSize()
 
             ##
             # Set user settings to the new avatar location
@@ -497,7 +496,6 @@ class OpenBazaar2(QtGui.QMainWindow):
             print e.message
 
 if __name__ == "__main__":
-    import sys
     app = QtGui.QApplication(sys.argv)
     OpenBazaar = OpenBazaar2()
     sys.exit(app.exec_())

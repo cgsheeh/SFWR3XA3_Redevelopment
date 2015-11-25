@@ -1,58 +1,76 @@
+import pickle
 import stun
+
 from kademlia.network import Server
 from twisted.internet import reactor
 from threading import Thread
 
 ##
-# Node
-#     Implements an OpenBazaar node
-#
-class OBNode(object):
+# OBNode2
+#     This class implements the information held by a node on the OB network
+class OBNode(Server):
+
+    ##
+    # Constructor
+    #     Initializes the OBNode
+    #     @param guid: 160 bit guid for the node
+    #     @param port: port for the server to listen on
     def __init__(self, guid, port):
-        ##
-        # Create server object, set it to listen on port
+        super(OBNode, self).__init__(id=guid)
+        self.listen_on_here(port)
         self.dynamic_ip = stun.get_ip_info()[1]
-        self.node_guid = guid
-        self.node_port = port
-        self.ob_server = Server(id=self.node_guid)
-        self.ob_server.listen(self.node_port)
-
-        ##
-        # Attempt bootstrap to network.
-        # TODO If the bootstrap fails, let user know
-        possible_bootstraps = self.ob_server.bootstrappableNeighbors()
-        self.ob_server.bootstrap(possible_bootstraps).addCallback(self.bootstrap_done, self.ob_server, "test")
-        self.ob_server.saveState('node/knode.p')
-        ##
-        # Run networking event loop
+        self.saveState()
         Thread(target=reactor.run, args=(False,)).start()
-
-
-    def bootstrap_done(self, *args):
-        print "BOOTSTRAPPED"
+        #reactor.run()
 
     ##
     # Start the Kademlia node from the saved state
     def start_node(self, port):
         self.dynamic_ip = stun.get_ip_info()[1]
         try:
-            self.ob_server.loadState('node/knode.p')
+            self.loadState('node/knode.p')
         except IOError:
-            print "Network not saved yet as no peers exist"
+            print "knode.p does not exist, network has not been saved."
 
+
+
+        print "%s:\t%s" % (self.dynamic_ip, self.node.port,)
+
+    ##
+    # Tries to listen on a port, starting at the specified
+    def listen_on_here(self, port):
+        ##
+        # Start attempting to listen on a port. Add 1 and continue if fail
         listening = False
         while not listening:
             try:
-                self.ob_server.listen(port)
+                self.listen(port)
                 listening = True
-                self.node_port = port
-            except:
+            except Exception as e:
+                print e.message
                 port += 1
 
     ##
     # Attempt to bootstrap the application to the network
+    #     @param ip: ip to attempt to bootstrap with
+    #     @param port: port to connect to on ip
     def attempt_bootstrap(self, ip, port):
-        self.ob_server.bootstrap([(ip, port,)]).addCallback(self.bootstrap_done, self.ob_server, "test2")
+        self.bootstrap([(ip, port,)]).addCallback(self.bootstrap_done, self, "test2")
+        print "attempt_bootstrap(%s, %s)" % (ip, port,)
+
+    ##
+    # Callback method for bootstrap calls
+    def bootstrap_done(self, *args, **kwargs):
+        print "bootstrap callback"
+
+    ##
+    # Saves the node state
+    # Override from Server
+    def saveState(self):
+        super(OBNode, self).saveState('node/knode.p')
+        pickle.dump(self, open('node/node.p', 'w'))
+
+
 
 class PubContract(object):
     def __init__(self):
