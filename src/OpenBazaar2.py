@@ -208,7 +208,7 @@ class OpenBazaar2(QtGui.QMainWindow):
         ##
         # Add tab menu to grid layout
         #
-        self.gridLayout.addWidget(self.tabMenu, 7, 2, 1, 1)
+        self.gridLayout.addWidget(self.tabMenu, 7, 3, 1, 1)
 
         ##
         # Create merchants list widget
@@ -268,19 +268,24 @@ class OpenBazaar2(QtGui.QMainWindow):
         self.main_logo_label.setText(_fromUtf8(""))
         self.main_logo_label.setPixmap(QtGui.QPixmap(_fromUtf8(OBStrings.ob_banner)))
         self.main_logo_label.setObjectName(_fromUtf8("main_logo_label"))
-        self.gridLayout.addWidget(self.main_logo_label, 0, 2, 2, 1)
+        self.gridLayout.addWidget(self.main_logo_label, 0, 3, 2, 1)
 
         ##
         # Add search bar line and button
         #
+        #spacerItem = QtGui.QSpacerItem(20, 20, QtGui.QSizePolicy.Preferred, QtGui.QSizePolicy.Minimum)
+        #self.gridLayout.addItem(spacerItem, 7, 2, 1, 1)
+        #spacerItem1 = QtGui.QSpacerItem(20, 20, QtGui.QSizePolicy.Preferred, QtGui.QSizePolicy.Minimum)
+        #self.gridLayout.addItem(spacerItem1, 7, 4, 1, 1)
+        self.horizontalLayout = QtGui.QHBoxLayout()
+        self.horizontalLayout.setObjectName(_fromUtf8("horizontalLayout"))
         self.searchBarText = QtGui.QLineEdit(self.centralwidget)
         self.searchBarText.setObjectName(_fromUtf8("searchBarText"))
-        self.gridLayout.addWidget(self.searchBarText, 4, 2, 1, 1)
+        self.horizontalLayout.addWidget(self.searchBarText)
         self.searchButton = QtGui.QPushButton(self.centralwidget)
         self.searchButton.setObjectName(_fromUtf8("searchButton"))
-        self.searchBarText.setText(_translate("OpenBazaar", "Search the OpenBazaar!", None))
-        self.searchButton.setText(_translate("OpenBazaar", "Search", None))
-        self.gridLayout.addWidget(self.searchButton, 4, 3, 1, 1)
+        self.horizontalLayout.addWidget(self.searchButton)
+        self.gridLayout.addLayout(self.horizontalLayout, 5, 3, 1, 1)
 
         ##
         # Create "New Contract" Tab
