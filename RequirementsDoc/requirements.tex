@@ -40,6 +40,8 @@ This documents outlines requirements for the OpenBazaar redevelopment project.
  \hline\hline
  1 & November 2nd, 2015 & Created Revision History & Daniel Mandel \\ [1ex] 
  \hline
+ 2 & November 25, 2015 & Section 4.1 - Kademlia and Ricardian Contract defined  & Shandelle Murray \\ [1ex]
+ \hline
 \end{tabular}
 \caption{Table to capture the history of the document}
 \label{table:1}
@@ -255,11 +257,15 @@ PyCharm: the chosen IDE for the project.
 \item
 GUI: graphical User Interface
 \item
-Git: source control for the projec, includes features such as revision history
+Git: source control for the project, includes features such as revision history
 \item
 Bitcoin: digital store of value and online payment system
 \item
-Ricardian contract: 
+Ricardian contract: used for the purpose of issuing digital currency, it is a document which states the terms under which a value is redeemable. 
+It is easily readable by people, readable by programs, and prevents unauthorized changes by making use of digitally signed and checksum hashed contracts. The contract carries keys and server information, and requires digital signatures of the issuer, a holder, and possibly a third-party notary in order for a value to be redeemed.
+\item
+Kademlia: a distributed hash table (DHT) for decentralized peer-to-peer computer networks that is designed to minimize the number of configuration  messages nodes must send to learn to about other nodes. The algorithm "routes queries and locates nodes using a novel XOR-based metric topology"(add source).
+(http://www.scs.stanford.edu/~dm/home/papers/kpos.pdf)
 
 \end{itemize}
 
