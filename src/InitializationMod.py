@@ -67,11 +67,10 @@ class BazaarInit(object):
             guid = BazaarInit.create_GUID(str(gpg.sign(pub_key_armor, binary=True)))
 
             ##
-            #  Create ID and node objects, serialize and store
+            #  Create ID and node objects
             #
             listening = False
             default_port = 5090
-            id = Identity(guid, pub_key_armor, priv_key_armor)
             while not listening:
                 try:
                     node = OBNode(guid, default_port)
@@ -79,5 +78,10 @@ class BazaarInit(object):
                 except:
                     default_port += 1
 
+            id = Identity(guid, pub_key_armor, priv_key_armor)
+
+            ##
+            # Dump state of id and node objects for future retrieval.
+            #
             pickle.dump(id, open(OBStrings.identity_pickle, 'w'))
             pickle.dump(node, open(OBStrings.obnode_pickle, 'w'))

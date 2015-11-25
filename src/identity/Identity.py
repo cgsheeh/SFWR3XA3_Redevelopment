@@ -24,6 +24,7 @@ class Identity(object):
 
     ##
     # Updates local settings to be saved to the identity pickle file
+    # @param settings_dict dictionary of settings to be saved to the state
     def set_settings(self, settings_dict):
         self.settings.store.set(settings_dict)
         self.settings.notary.set(settings_dict)
@@ -31,6 +32,7 @@ class Identity(object):
 
     ##
     # Adds new contract data to the respective nodes
+    # @param contract_dict dict representation of the Ricardian Contract
     def new_contract(self, contract_dict):
         contract = RicardianContract(contract_dict, self.settings.store.get())
         ##
@@ -52,6 +54,9 @@ class Identity(object):
 ##
 # Settings module
 #     Holds all data related to user settings
+#     @field store is a Store object which holds data about this node's store, as well as all stores known to the node
+#     @field notary is a Notary object holding data about known notaries
+#     @field contracts is a Contracts object holding data about known contracts
 #
 class Settings(object):
     def __init__(self):
@@ -63,6 +68,10 @@ class Settings(object):
 # Store module
 #     Holds all data relevant to stores
 class Store(object):
+    ##
+    # Store()
+    #     Initializes this node's Store module with default data/settings
+    #
     def __init__(self):
         self.email = ""
         self.nickname = ""
@@ -79,7 +88,7 @@ class Store(object):
         self.myMerchants = []
 
     ##
-    # Returns an dictionary of local user settings
+    # Returns a dictionary of local user settings
     def get(self):
         return dict(email=self.email,
                     nickname=self.nickname,
@@ -91,6 +100,7 @@ class Store(object):
 
     ##
     # Sets the merchant settings specified in dict
+    #     @param dict: dictionary of settings related to this module
     def set(self, dict):
         self.email = dict['email']
         self.nickname = dict['nickname']
@@ -102,6 +112,7 @@ class Store(object):
 
     ##
     # Adds a merchant to the list of merchants
+    #     @param merchant: merchant to be added
     def addMerchant(self, merchant):
         self.myMerchants.append(merchant)
 
@@ -132,6 +143,9 @@ class Notary(object):
 # Contract module
 #     Holds all data relevant to contracts
 class Contracts(object):
+    ##
+    # Contracts()
+    #     Initializes this node's Contract module
     def __init__(self):
         self.expiredContracts = []
         self.onGoingContracts = []

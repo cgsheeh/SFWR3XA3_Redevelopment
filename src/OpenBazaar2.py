@@ -91,7 +91,7 @@ class OpenBazaar2(QtGui.QMainWindow):
         self.bitcoin_balance_label = QtGui.QLabel(self.centralwidget)
         self.bitcoin_balance_label.setObjectName(_fromUtf8("bitcoin_balance_label"))
         ## TODO fill this in to draw from model
-        self.bitcoin_balance_label.setText(_translate("OpenBazaar", "CURRENT_BALANCE_HERE", None))
+        self.bitcoin_balance_label.setText(settings['nickname'])
         self.gridLayout.addWidget(self.bitcoin_balance_label, 2, 0, 1, 1)
 
         ##
@@ -107,6 +107,7 @@ class OpenBazaar2(QtGui.QMainWindow):
         self.displayPicture_b = QtGui.QPushButton(self.centralwidget)
         self.displayPicture_b.setFlat(True)
         self.displayPicture_b.setIcon(self.displayPicture_p)
+        self.displayPicture_b.setIconSize(self.displayPicture_b.size())
         self.displayPicture_b.clicked.connect(self.set_picture)
         self.gridLayout.addWidget(self.displayPicture_b, 0, 0, 2, 2)
 
@@ -477,14 +478,16 @@ class OpenBazaar2(QtGui.QMainWindow):
             ##
             # Try and set the display picture to the specified location
             self.displayPicture_p = QtGui.QIcon(QtGui.QPixmap(_fromUtf8(avatar)))
-            self.show()
-            app.processEvents()
+            self.displayPicture_b.setIcon(self.displayPicture_p)
+            #self.displayPicture_b.setIconSize()
 
             ##
             # Set user settings to the new avatar location
             sett['avatarURL'] = avatar
             self.id_module.set_settings(sett)
         except Exception as e:
+            ##
+            # Catch some exceptions that could occur (not pixmap compatible, etc)
             print "Didnt work: %s" % avatar
             print e.message
 

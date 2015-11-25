@@ -1,3 +1,4 @@
+import stun
 from kademlia.network import Server
 from twisted.internet import reactor
 from threading import Thread
@@ -10,6 +11,7 @@ class OBNode(object):
     def __init__(self, guid, port):
         ##
         # Create server object, set it to listen on port
+        self.dynamic_ip = stun.get_ip_info()[1]
         self.node_guid = guid
         self.node_port = port
         self.ob_server = Server(id=self.node_guid)
@@ -32,6 +34,7 @@ class OBNode(object):
     ##
     # Start the Kademlia node from the saved state
     def start_node(self, port):
+        self.dynamic_ip = stun.get_ip_info()[1]
         try:
             self.ob_server.loadState('node/knode.p')
         except IOError:

@@ -9,6 +9,7 @@ __author__ = 'connor'
 #
 # WARNING! All changes made in this file will be lost!
 
+import hashlib
 from PyQt4 import QtCore, QtGui
 from OBStrings import OBStrings
 
