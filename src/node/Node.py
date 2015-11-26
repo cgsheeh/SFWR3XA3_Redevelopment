@@ -35,7 +35,10 @@ class OBNode(Server):
         print "%s:\t%s" % (self.dynamic_ip, self.node.port,)
 
     ##
-    # Tries to listen on a port, starting at the specified
+    # Sets the node to list on the specified port.
+    # If the port is already in use, increment by 1 and try that port.
+    # This process continues until a successful port is found.
+    #     @param port: the port to listen on
     def listen_on_here(self, port):
         ##
         # Start attempting to listen on a port. Add 1 and continue if fail
@@ -45,7 +48,6 @@ class OBNode(Server):
                 self.listen(port)
                 listening = True
             except Exception as e:
-                print e.message
                 port += 1
 
     ##

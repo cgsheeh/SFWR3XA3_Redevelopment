@@ -52,7 +52,7 @@ class OpenBazaar2(QtGui.QMainWindow):
         # Set main object name
         #
         self.setObjectName("OpenBazaar")
-        self.setWindowTitle(sys.argv[1])
+        self.setWindowTitle('ip:%s\tport:%s' % (self.node.node.ip, self.node.node.port))
         self.resize(1163, 867)
 
         ##

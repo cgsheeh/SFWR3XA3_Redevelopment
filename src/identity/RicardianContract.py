@@ -48,7 +48,9 @@ class RicardianContract(object):
     ##
     # Return a hash of the contract
     def contract_hash(self):
-        return hashlib.sha256(json.dumps(self.contract))
+        json_d = json.dumps(self.contract)
+        hash_c = hashlib.sha256(json_d)
+        return hash_c.hexdigest()
 
     ##
     # Returns raw dict data for contract
