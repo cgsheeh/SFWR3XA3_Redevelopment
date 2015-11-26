@@ -2,8 +2,9 @@
 import os
 import pickle
 import InitializationMod
+from identity import Identity
+from node import Node
 import sys
-from OBStrings import OBStrings
 from PyQt4 import QtCore, QtGui
 from TabWidgets import *
 
@@ -33,7 +34,7 @@ class OpenBazaar2(QtGui.QMainWindow):
         # Before doing anything check if a user has been initialized
         # by looking for the existence of an identity pickle file
         #
-        if not os.path.isfile(OBStrings.identity_pickle):
+        if not Identity.Identity.is_init():
             InitializationMod.BazaarInit.initialize_Bazaar(int(sys.argv[1]))
 
 
@@ -41,10 +42,10 @@ class OpenBazaar2(QtGui.QMainWindow):
         # Create data modules
         #     TODO Create node module and make it work
         #
-        self.id_module = pickle.load(open(OBStrings.identity_pickle, 'r'))
+        self.id_module = Identity.Identity.get_id_mod()
         settings = self.id_module.get_settings()
 
-        self.node = pickle.load(open(OBStrings.obnode_pickle, 'r'))
+        self.node = pickle.load(open(Node.OBNodeStrings.obnode_pickle, 'r'))
         self.node.start_node(int(sys.argv[1]))
 
         ##
@@ -304,7 +305,7 @@ class OpenBazaar2(QtGui.QMainWindow):
         self.store_scroll = QtGui.QScrollArea()
         self.exampleStoreTab = storeTab2(self.id_module.get_my_contracts())
         self.store_scroll.setWidget(self.exampleStoreTab)
-        self.tabMenu.addTab(self.store_scroll, "Someone's Store")
+        self.tabMenu.addTab(self.store_scroll, "My Store")
 
         ##
         # Create a "My orders" tab
@@ -510,8 +511,9 @@ class OpenBazaar2(QtGui.QMainWindow):
 
         search_results = self.id_module.search(keywords)
 
-        self.node.
-
+class OBStrings(object):
+    traylogo = "images/small_logo.jpeg"
+    ob_banner = "images/banner.png"
 
 
 

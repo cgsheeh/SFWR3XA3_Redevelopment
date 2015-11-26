@@ -11,7 +11,6 @@ __author__ = 'connor'
 
 import hashlib
 from PyQt4 import QtCore, QtGui
-from OBStrings import OBStrings
 
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
@@ -459,7 +458,7 @@ class Settings_Ui2(QtGui.QWidget):
         self.province_lineEdit.setText(settings_dict['shippingInformation']['province/state/region'])
         self.zip_lineEdit.setText(settings_dict['shippingInformation']['postal/zip'])
         self.country_lineEdit.setText(settings_dict['shippingInformation']['country'])
-        self.guid_lineEdit.setText(settings_dict['guid'])
+        self.guid_lineEdit.setText(settings_dict['guid'].encode('hex'))
 
         self.save_button.clicked.connect(self.saveChanges)
 
@@ -689,6 +688,15 @@ class ContractGenUi2(QtGui.QWidget):
         self.generate_contract_button.setObjectName(_fromUtf8("add_notary_label"))
 
         ##
+        # Add keywords
+        self.keywords_label = QtGui.QLabel(self.gridLayoutWidget)
+        self.keywords_label.setText("Add keywords")
+        self.keywords_lineEdit = QtGui.QLineEdit(self.gridLayoutWidget)
+        self.keywords_lineEdit.setText("Separate keywords by comma (ie word1,word2,word3,...,wordn)")
+        self.gridLayout.addWidget(self.keywords_label)
+        self.gridLayout.addWidget(self.keywords_lineEdit)
+
+        ##
         # On clicked, generate the new contract data
         self.generate_contract_button.clicked.connect(self.generate_from_input)
 
@@ -706,11 +714,11 @@ class ContractGenUi2(QtGui.QWidget):
     # Creates a new contract using the fields in the UI
     def generate_from_input(self):
         contract = dict()
-        contract['expiry'] = self.expiry_lineEdit.text()
-        contract['price'] = self.price_lineEdit.text()
-        contract['bitcoin_address'] = self.bitcoin_address_lineEdit.text()
-        contract['item_name'] = self.item_name_lineEdit.text()
-        contract['keywords'] = ['test_keyword']
+        contract['expiry'] = str(self.expiry_lineEdit.text())
+        contract['price'] = str(self.price_lineEdit.text())
+        contract['bitcoin_address'] = str(self.bitcoin_address_lineEdit.text())
+        contract['item_name'] = str(self.item_name_lineEdit.text())
+        contract['keywords'] = str(self.keywords_lineEdit.text().split(','))
         self.window().id_module.new_contract(contract)
 
 

@@ -4,7 +4,6 @@ import os
 import gnupg
 import hashlib
 import pickle
-from OBStrings import *
 from identity.Identity import *
 from node.Node import OBNode
 
@@ -86,5 +85,5 @@ class BazaarInit(object):
             ##
             # Dump state of id and node objects for future retrieval.
             #
-            pickle.dump(id_mod, open(OBStrings.identity_pickle, 'w'))
+            id_mod.save()
             node.saveState()

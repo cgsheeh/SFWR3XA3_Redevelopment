@@ -26,7 +26,7 @@ class OBNode(Server):
     def start_node(self, port):
         self.dynamic_ip = stun.get_ip_info()[1]
         try:
-            self.loadState('node/knode.p')
+            self.loadState(OBNodeStrings.knode_pickle)
         except IOError:
             print "knode.p does not exist, network has not been saved."
 
@@ -65,27 +65,21 @@ class OBNode(Server):
     # Saves the node state
     # Override from Server
     def saveState(self):
-        super(OBNode, self).saveState('node/knode.p')
-        pickle.dump(self, open('node/node.p', 'w'))
+        super(OBNode, self).saveState(OBNodeStrings.knode_pickle)
+        pickle.dump(self, open(OBNodeStrings.obnode_pickle, 'w'))
 
     ##
     # Searches the network for the requested keyword
-    #     @param keywords: keywords to query the network for
+    #     @param keywords: list of keywords to query the network for
+    #     @return:
     def search_keywords(self, keywords):
         results = list()
-        def addCallbackToList():
+        for key, value in self.storage.iteritems():
+            for word in value.split(','):
+                if word in keywords:
+                    results.append()
 
-        for word in keywords:
-            self.get(word).addCallback()
 
-
-
-class PubContract(object):
-    def __init__(self):
-        self.t = 1
-
-class DHT(object):
-    def __init__(self):
-        self.t = 10
-
-#n = OBNode(1, 5090)
+class OBNodeStrings(object):
+    obnode_pickle = 'node/node.p'
+    knode_pickle = 'node/knode.p'

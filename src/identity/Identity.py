@@ -1,5 +1,5 @@
 import pickle
-#from OBStrings import OBStrings
+import os
 from RicardianContract import *
 ##
 # Identity module
@@ -59,6 +59,19 @@ class Identity(object):
             matching_contracts += self.settings.contracts.find_local_keyword(keywords)
 
         return matching_contracts
+
+
+    ##
+    # Load identity module from default location
+    @staticmethod
+    def get_id_mod():
+        return pickle.load(open(IdentityStrings.identity_pickle, 'r'))
+
+    ##
+    # Returns true if identity has already been initialized
+    @staticmethod
+    def is_init():
+        return os.path.isfile(IdentityStrings.identity_pickle)
 
 ##
 # Settings module

@@ -1,4 +1,5 @@
 import hashlib
+import json
 import time
 
 
@@ -47,7 +48,7 @@ class RicardianContract(object):
     ##
     # Return a hash of the contract
     def contract_hash(self):
-        return hashlib.sha256(self.contract)
+        return hashlib.sha256(json.dumps(self.contract))
 
     ##
     # Returns raw dict data for contract
