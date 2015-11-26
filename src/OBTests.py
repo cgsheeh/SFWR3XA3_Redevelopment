@@ -1,18 +1,32 @@
 import unittest2 as unittest
 import identity.RicardianContract
 import identity.Identity
-import identity.Settings
+import identity.Identity.Settings
 import identity.Store
 import identity.Notary
 import identity.Contracts
 import DHTMod
 import InitializationMod
 import node.Node
+import hashlib
+import time
+
 
 class RicardianContractTests(unittest.TestCase):
 
-    def test_constructor(self):
-        return None
+    #contract_dict
+    contract_dict = dict()
+    contract_dict['expiry'] = "30/12/15"
+    contract_dict['price'] = "50"
+    contract_dict['bitcoin_address'] = "19PhnZCxayeitE3D3SjWWJ3QbN9UEU2mMV"
+    contract_dict['item_name'] = "Hat"
+
+    #seller_settings
+    seller_settings = identity.Identity.Settings()
+
+    def test_constructor(self, contract_dict, seller_settings):
+        testRicardianContract = identity.RicardianContract(contract_dict, seller_settings)
+        self.assertIsInstance(testRicardianContract, identity.RicardianContract, "Constructor returns the correct instance type (Ricardian Contract)")
 
     def test_get_module(self):
         return None
@@ -146,6 +160,8 @@ class OBNodeTests(unittest.TestCase):
     def test_saveState(self):
         return None
 
+if __name__ == '__main__':
+    unittest.main()
 
 
 
