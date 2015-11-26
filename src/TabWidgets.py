@@ -27,8 +27,15 @@ except AttributeError:
     def _translate(context, text, disambig):
         return QtGui.QApplication.translate(context, text, disambig)
 
-
+##
+# StoreTab2
+#     This class is the GUI for a user's store.
 class storeTab2(QtGui.QWidget):
+
+    ##
+    # Constructor
+    #     Creates a users store for viewing.
+    #     @param items: holds all of the con
     def __init__(self, items):
         super(storeTab2, self).__init__()
 
@@ -90,7 +97,10 @@ class storeTab2(QtGui.QWidget):
         self.pushButton.setText(_translate("Form", "Report This User", None))
 
 
-
+##
+# Settings_Ui2
+#     This class is the GUI for the settings tab
+#     @param settings_dict: holds all the current user settings for drawing on the widget
 class Settings_Ui2(QtGui.QWidget):
     def __init__(self, settings_dict):
         super(Settings_Ui2, self).__init__()
@@ -483,6 +493,10 @@ class Settings_Ui2(QtGui.QWidget):
 # This class contains the UI for the "Send a message" tab
 #
 class SendMessage_Ui2(QtGui.QWidget):
+
+    ##
+    # Constructor
+    #     Creates the "Send Message" tab
     def __init__(self):
         super(SendMessage_Ui2, self).__init__()
 
@@ -547,6 +561,10 @@ class SendMessage_Ui2(QtGui.QWidget):
 # This class contains the UI for the "My Orders" menu
 #
 class Ui_OrdersMenu(object):
+
+
+    ##
+    #
     def setupUi(self, OrdersMenu):
         OrdersMenu.setObjectName(_fromUtf8("OrdersMenu"))
         OrdersMenu.resize(400, 300)
@@ -584,7 +602,16 @@ class Ui_OrdersMenu(object):
         OrdersMenu.setWindowTitle(_translate("OrdersMenu", "Form", None))
         self.OrderLabel.setText(_translate("OrdersMenu", "Orders", None))
 
+
+##
+# ContractGenUi2
+#     This class holds the UI for the contract generator
 class ContractGenUi2(QtGui.QWidget):
+
+
+    ##
+    # Constructor
+    #     Draws the layout of the "New Contract" tab
     def __init__(self):
         super(ContractGenUi2, self).__init__()
         self.setObjectName(_fromUtf8("Form"))
@@ -674,6 +701,9 @@ class ContractGenUi2(QtGui.QWidget):
         self.label_2.setText(_translate("Form", "Contract", None))
         self.generate_contract_button.setText(_translate("Form", "Generate Contract", None))
 
+
+    ##
+    # Creates a new contract using the fields in the UI
     def generate_from_input(self):
         contract = dict()
         contract['expiry'] = self.expiry_lineEdit.text()
@@ -682,7 +712,15 @@ class ContractGenUi2(QtGui.QWidget):
         contract['item_name'] = self.item_name_lineEdit.text()
         self.window().id_module.new_contract(contract)
 
+
+##
+# bootStrap_Tab
+#     This class holds the UI for the bootstrap tab
 class bootStrap_Tab(QtGui.QWidget):
+
+    ##
+    # Constructor
+    #     Creates the bootstrap tab
     def __init__(self):
         super(bootStrap_Tab, self).__init__()
         self.setObjectName(_fromUtf8("OrdersMenu"))
@@ -705,8 +743,7 @@ class bootStrap_Tab(QtGui.QWidget):
         # On clicked, generate the bootstrap
         self.pushButton.clicked.connect(self.generate_from_input)
 
+    ##
+    # Attempts to bootstrap the node module to the network using the fields in the tab
     def generate_from_input(self):
         self.window().node.attempt_bootstrap(str(self.lineEdit.text()), int(self.lineEdit_2.text()))
-
-
-
