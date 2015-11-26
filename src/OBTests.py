@@ -9,8 +9,6 @@ import time
 
 class RicardianContractTests(unittest.TestCase):
 
-
-
     def test_constructor(self):
 
         contract_dict = dict()
@@ -62,36 +60,67 @@ class RicardianContractTests(unittest.TestCase):
         seller_settings = idthing.get_settings()
 
         testRicardianContract = identity.RicardianContract.RicardianContract(contract_dict, seller_settings)
+
         hash1 = testRicardianContract.contract_hash()
         hash2 = testRicardianContract.contract_hash()
 
-        self.assertTrue(hash1 == hash2, "The hashes are the same for identitcal contracts")
+        self.assertEqual(hash1, hash2, "The hashes are the same for identitcal contracts")
 
-        #create a different contract and compare the hashes and make sure they are different.
+        #contract_dict
+        #different contract details
+        newcontract_dict = dict()
+        newcontract_dict['expiry'] = "30/12/17"
+        newcontract_dict['price'] = "70"
+        newcontract_dict['bitcoin_address'] = "19PhnZCxayeitE3D3SjWWJ3QbN9UEU2mMV"
+        newcontract_dict['item_name'] = "Scarf"
+        newcontract_dict['keywords'] = "Neck"
+
+        idthing = identity.Identity.Identity("adsasdffds23423423","asdadsfw3324","asdasdfasdf")
+        seller_settings = idthing.get_settings()
+
+        testRicardianContract2 = identity.RicardianContract.RicardianContract(newcontract_dict, seller_settings)
+
+        hash3 = testRicardianContract2.contract_hash()
+        self.assertFalse(hash3 == hash1)
 
 
     def test_get_dict(self):
+        #contract_dict
+        contract_dict = dict()
+        contract_dict['expiry'] = "30/12/15"
+        contract_dict['price'] = "50"
+        contract_dict['bitcoin_address'] = "19PhnZCxayeitE3D3SjWWJ3QbN9UEU2mMV"
+        contract_dict['item_name'] = "Hat"
+        contract_dict['keywords'] = "Head"
+
+        idthing = identity.Identity.Identity("adsasdffds23423423","asdadsfw3324","asdasdfasdf")
+        seller_settings = idthing.get_settings()
+
+        testRicardianContract = identity.RicardianContract.RicardianContract(contract_dict, seller_settings)
+        self.assertIsInstance(testRicardianContract.get_dict(), dict, "returns a dictionary incorrectly")
+
+class IdentityTests(unittest.TestCase):
+
+    def test_constructor(self):
+        idthing = identity.Identity.Identity("adsasdffds23423423","asdadsfw3324","asdasdfasdf")
+        self.assertIsInstance(idthing, identity.Identity.Identity, "Constructor returned incorrect object")
+
+    def test_get_settings(self):
+        idthing = identity.Identity.Identity("adsasdffds23423423","asdadsfw3324","asdasdfasdf")
+        settings = idthing.get_settings()
+        self.assertIsInstance(settings, dict, "Did not return the correct object type")
+
+    def test_set_settings(self):
         return None
 
-# class IdentityTests(unittest.TestCase):
-#
-#     def test_constructor(self):
-#         return None
-#
-#     def test_get_settings(self):
-#         return None
-#
-#     def test_set_settings(self):
-#         return None
-#
-#     def test_new_contract(self):
-#         return None
-#
-#     def test_get_my_contracts(self):
-#         return None
-#
-#     def test_save(self):
-#         return None
+    def test_new_contract(self):
+        return None
+
+    def test_get_my_contracts(self):
+        return None
+
+    def test_save(self):
+        return None
 #
 # class SettingsTests(unittest.TestCase):
 #
