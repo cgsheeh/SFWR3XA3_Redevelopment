@@ -285,6 +285,8 @@ class OpenBazaar2(QtGui.QMainWindow):
         self.horizontalLayout.addWidget(self.searchBarText)
         self.searchButton = QtGui.QPushButton(self.centralwidget)
         self.searchButton.setObjectName(_fromUtf8("searchButton"))
+        self.searchButton.clicked.connect(self.search_clicked)
+
         self.horizontalLayout.addWidget(self.searchButton)
         self.gridLayout.addLayout(self.horizontalLayout, 5, 3, 1, 1)
 
@@ -494,6 +496,24 @@ class OpenBazaar2(QtGui.QMainWindow):
             # Catch some exceptions that could occur (not pixmap compatible, etc)
             print "Didnt work: %s" % avatar
             print e.message
+
+    ##
+    # Defines action to be taken when search button is clicked
+    def search_clicked(self):
+        # Get the text in the search bar and split into words
+        search_text = self.searchBarText.text()
+        keywords = search_text.split(' ')
+
+        # Remove trailing punctuation that could hinder search results
+        for count, word in enumerate(keywords):
+            keywords[count] = word.rstrip('?:!.,;')
+
+        search_results = self.id_module.search(keywords)
+
+        self.node.
+
+
+
 
 if __name__ == "__main__":
     app = QtGui.QApplication(sys.argv)

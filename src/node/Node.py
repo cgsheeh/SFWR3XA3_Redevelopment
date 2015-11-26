@@ -9,7 +9,6 @@ from threading import Thread
 # OBNode2
 #     This class implements the information held by a node on the OB network
 class OBNode(Server):
-
     ##
     # Constructor
     #     Initializes the OBNode
@@ -21,7 +20,6 @@ class OBNode(Server):
         self.dynamic_ip = stun.get_ip_info()[1]
         self.saveState()
         Thread(target=reactor.run, args=(False,)).start()
-        #reactor.run()
 
     ##
     # Start the Kademlia node from the saved state
@@ -69,6 +67,16 @@ class OBNode(Server):
     def saveState(self):
         super(OBNode, self).saveState('node/knode.p')
         pickle.dump(self, open('node/node.p', 'w'))
+
+    ##
+    # Searches the network for the requested keyword
+    #     @param keywords: keywords to query the network for
+    def search_keywords(self, keywords):
+        results = list()
+        def addCallbackToList():
+
+        for word in keywords:
+            self.get(word).addCallback()
 
 
 

@@ -45,7 +45,12 @@ class BazaarInit(object):
         guid = rip160.hexdigest()
         return hashlib.sha1(guid).digest()
 
-
+    ##
+    # Generates GPG keys
+    @staticmethod
+    def gen_keys(gpg_path):
+        call([gpg_path, '--batch', '--gen-key', 'init/unattend_init'])
+        return gnupg.GPG(homedir='./identity')
     ##
     # Initializes the OpenBazaar
     #
@@ -60,8 +65,8 @@ class BazaarInit(object):
             #  Generate the gpg key in the identity directory,
             #  export the armored key, create a GUID
             #
-            call([gpg_which, '--batch', '--gen-key', 'init/unattend_init'])
-            gpg = gnupg.GPG(homedir='./identity')
+
+            gpg = BazaarInit.gen_keys(gpg_which)
             pub_key_armor = gpg.export_keys(gpg.list_keys()[0]['keyid'])
             priv_key_armor = gpg.export_keys(gpg.list_keys()[0]['keyid'], secret=True)
             guid = BazaarInit.create_GUID(str(gpg.sign(pub_key_armor, binary=True)))

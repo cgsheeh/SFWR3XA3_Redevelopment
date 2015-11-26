@@ -710,6 +710,7 @@ class ContractGenUi2(QtGui.QWidget):
         contract['price'] = self.price_lineEdit.text()
         contract['bitcoin_address'] = self.bitcoin_address_lineEdit.text()
         contract['item_name'] = self.item_name_lineEdit.text()
+        contract['keywords'] = ['test_keyword']
         self.window().id_module.new_contract(contract)
 
 

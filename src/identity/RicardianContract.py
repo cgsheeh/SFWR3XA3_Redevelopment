@@ -1,12 +1,15 @@
 import hashlib
 import time
 
+
 ##
 # RicardianContract
 #     Implements the interface of a Ricardian Contract
 #     Will store each state of the contract as it progresses through signing
 #
 class RicardianContract(object):
+
+
     ##
     # Creates a Ricardian Contract from the specified contract data,
     # using the user data specified in seller_settings
@@ -29,7 +32,8 @@ class RicardianContract(object):
         ##
         # Add the trade components to the contract
         self.contract['trade'] = dict(price=contract_dict['price'],
-                                      name=contract_dict['item_name'])
+                                      name=contract_dict['item_name'],
+                                      keywords=contract_dict['keywords'])
 
         ##
         # Add the ledger to the contract
@@ -50,3 +54,8 @@ class RicardianContract(object):
     # TODO improve this
     def get_dict(self):
         return self.contract
+
+    ##
+    # Returns list of keywords associated with this contract
+    def get_keywords(self):
+        return self.contract.get_module('trade')['keywords']

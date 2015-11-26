@@ -14,7 +14,6 @@ class Identity(object):
 
     ##
     # Returns all identity data as a dictionary
-    #
     def get_settings(self):
         ret = self.settings.store.get()
         ret.update(self.settings.notary.get())
@@ -24,7 +23,7 @@ class Identity(object):
 
     ##
     # Updates local settings to be saved to the identity pickle file
-    # @param settings_dict dictionary of settings to be saved to the state
+    #     @param settings_dict dictionary of settings to be saved to the state
     def set_settings(self, settings_dict):
         self.settings.store.set(settings_dict)
         self.settings.notary.set(settings_dict)
@@ -32,7 +31,7 @@ class Identity(object):
 
     ##
     # Adds new contract data to the respective nodes
-    # @param contract_dict dict representation of the Ricardian Contract
+    #     @param contract_dict dict representation of the Ricardian Contract
     def new_contract(self, contract_dict):
         contract = RicardianContract(contract_dict, self.settings.store.get())
         ##
@@ -49,7 +48,17 @@ class Identity(object):
     ##
     # Save current object configuration to pickle file
     def save(self):
-        pickle.dump(self, open(OBStrings.identity_pickle, 'w'))
+        pickle.dump(self, open(IdentityStrings.identity_pickle, 'w'))
+
+    ##
+    # Searches for contracts with the specified keyword
+    #     @param keywords: list of keywords to search for
+    def search(self, keywords):
+        matching_contracts = list()
+        for word in keywords:
+            matching_contracts += self.settings.contracts.find_local_keyword(keywords)
+
+        return matching_contracts
 
 ##
 # Settings module
@@ -101,14 +110,14 @@ class Store(object):
     ##
     # Sets the merchant settings specified in dict
     #     @param dict: dictionary of settings related to this module
-    def set(self, dict):
-        self.email = dict['email']
-        self.nickname = dict['nickname']
-        self.avatarURL = dict['avatarURL']
-        self.bitcoinReceivingAddress = dict['bitcoinReceivingAddress']
-        self.storeDescription = dict['storeDescription']
-        self.shippingInformation = dict['shippingInformation']
-        self.myMerchants = dict['myMerchants']
+    def set(self, sett_dict):
+        self.email = sett_dict['email']
+        self.nickname = sett_dict['nickname']
+        self.avatarURL = sett_dict['avatarURL']
+        self.bitcoinReceivingAddress = sett_dict['bitcoinReceivingAddress']
+        self.storeDescription = sett_dict['storeDescription']
+        self.shippingInformation = sett_dict['shippingInformation']
+        self.myMerchants = sett_dict['myMerchants']
 
     ##
     # Adds a merchant to the list of merchants
@@ -162,13 +171,27 @@ class Contracts(object):
 
     ##
     # Adds a new ongoing contract
+    #     @param contract: RicardianContract object to be added to local contract cache
     def addContract(self, contract):
         self.onGoingContracts.append(contract)
 
+    ##
+    # Searches locally stored contracts for the keyword specified
+    #     @param keyword: keyword to search for within local contracts
+    #     @return: list of RicardianContract instances containing the specified keyword
+    def find_local_keyword(self, keyword):
+        found = list()
+        for contract in self.onGoingContracts:
+            if keyword in contract.get_keywords():
+                found.append(contract)
+
+        return found
 
 
-
-
+##
+# Contains strings needed by identity
+class IdentityStrings(object):
+    identity_pickle = 'identity/identity.p'
 
 
 
