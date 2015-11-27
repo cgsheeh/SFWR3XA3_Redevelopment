@@ -21,7 +21,7 @@
 Testing the OpenBazaar application has several main goals and will span several testing domains. At the lowest level, unit testing must be completed to ensure accuracy of the application's dataflow. It is important to ensure that testing includes both white box and black box tests. White box tests will ensure that a module's secrets have been implemented adequately, and black box tests will ensure that the modules as a whole operate correctly. Further, usability testing will demonstrate the application's functionality from the perspective of use cases. Finally, security testing is essential for the application as confidential and sensitive data can be stored and transmitted via the application.
 
 \section{Approach}
-Our approach will encompass 
+Our approach involves the use of the unittest2 library that python has available. Test cases will be written using the same design as any NUnit or JUnit implementation (Arrange Act Assert). Meaning all variables at first will be created, manipulated and then verified. This is the most effective way of organizing unit tests and as well as extremely modular. All test cases will be ran from the command line by simply running the test fixture.
 
 \section{Definitions}
 \begin{itemize}
@@ -65,8 +65,15 @@ A distributed hash table for decentralized peer-to-peer networks. This is the in
 
 \section{Security Test Summary}
 
-\part*{Changes Derived from Tests}
-
-
+\section{Changes Derived from Tests}
+After running through all of our tests some changes were necessary. The following is a list of documented changes to our code after testing:\newline
+\newline
+\begin{itemize}
+\item Class: RicardianContract
+\item Test: test contract hash
+\item Output: Hash Object
+\item Expected: String
+\end{itemize} 
+After dicovering that the contract hash was returning the wrong object, we went back and reimplemented the contract hash function for the RicardianContract class.
 
 \end{document}
