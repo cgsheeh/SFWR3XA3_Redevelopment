@@ -18,10 +18,10 @@
 % Start of document content
 \part*{Introduction}
 \section{Objective}
-Testing the OpenBazaar application has several main goals and will span several testing domains. At the lowest level, unit testing must be completed to ensure accuracy of the application's dataflow. It is important to ensure that testing includes both white box and black box tests. White box tests will ensure that a module's secrets have been implemented adequately, and black box tests will ensure that the modules as a whole operate correctly. Further, usability testing will demonstrate the application's functionality from the perspective of use cases. Finally, security testing is essential for the application as confidential and sensitive data can be stored and transmitted via the application.
+The objective of this document is to report the test results of the OpenBazaar application, revision zero. Testing at this phase is used to demonstrate the application's usability and to improve the robustness of the product. Developing a test suite will ensure that changes in one section of code do not cause bugs in other sections. Further, if the secret of a module is changed for any reason (improved performance, new technology etc), a pre-defined test framework will ensure the application can function after the change.
 
 \section{Approach}
-Our approach will encompass 
+Testing the OpenBazaar application had several main goals and spanned several testing domains. At the lowest level, unit testing was completed to ensure accuracy of the application's dataflow. It is important to ensure that testing includes both white box and black box tests. White box tests ensured that a module's secrets had been implemented adequately, and black box tests demonstrated that the modules as a whole operate correctly. Further, usability testing shows the application's functionality from the perspective of use cases. Finally, application security testing was performed as confidential and sensitive data can be stored and transmitted via the application.
 
 \section{Definitions}
 \begin{itemize}
@@ -46,27 +46,45 @@ A distributed hash table for decentralized peer-to-peer networks. This is the in
 % taken from unit tests.
 \part*{Test Results}
 \section{Black Box Testing}
+\begin{itemize}
+\item[Initialization Module]
+Black box testing for the initialization module was performed by testing the \texttt{initialize\_bazaar} method. This method should be called on the first execution of OpenBazaar. After this method call completes, the identity module should contain several files related to GPG keys and an identity pickle file. The node module should also contain a pickle file.
+
+\item[Identity Module]
+
+\end{itemize}
 
 \section{White Box Testing}
+\begin{itemize}
+\item[Initialization Module]
+White box testing for the initialization module was performed by 
+\end{itemize}
 
 \section{Usability Testing}
+Usability testing for OpenBazaar is one of the most important phases of development. Concurrently, it is also one of the most difficult to develop adequate metrics for. The goal of OpenBazaar is to develop a decentralized trade medium that can compete with centralized services already in use. \cite{reqs_doc} To determine if OpenBazaar could be considered a viable replacement for such a service, testers were asked to proceed through the process of adding an item for sale, attempting to buy an item and messaging users.
 
-\section{Performance and Usability Tests}
+\section{Performance Testing}
+Several components of the OpenBazaar application were tested for their performance and reliability. 
 
 \section{Security Testing}
-
+Security testing of OpenBazaar is potentially the most important variety of testing due to the nature of the application. OpenBazaar must be secure in several different areas, specifically secure communication between network nodes and local data security. A person who wishes to perform an attack on the OpenBazaar could do so by intercepting communications between nodes (a man in the middle attack), hacking the locally stored user information, or spoofing the identity of a trusted user to gain access to privileged information.
 % Begin test summary section.
 % Summary contains plain english interpretations of the
 % test results.
 \part*{Test Summary}
-\section{Unit Test Summary}
 
-\section{Performance Test Summary}
-
-\section{Security Test Summary}
 
 \part*{Changes Derived from Tests}
+During unit testing several bugs were found and remedied. 
 
+\begin{itemize}
+\item
+On testing of the RicardianContract module it was discovered that due to dynamic and duck typing, the \texttt{contract\_hash} method was returning a full hash object, instead of the hexadecimal representation as desired. This test failure was fixed by forcing the object to return the value of \texttt{hexdigest} instead of \texttt{\_\_str\_\_}.
 
+\item
+\end{itemize}
+
+\bibliography{ob_bib}
+\bibliographystyle{plain}
 
 \end{document}

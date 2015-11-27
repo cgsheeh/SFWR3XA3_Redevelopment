@@ -158,6 +158,8 @@ class IdentityTests(unittest.TestCase):
     def is_init_test(self):
         return None
 
+##
+# This class contains tests for the Settings module
 class SettingsTests(unittest.TestCase):
 
     ##
@@ -174,6 +176,8 @@ class SettingsTests(unittest.TestCase):
                               "The notary module was not instantiated")
         self.assertIsInstance(self.settings.store, identity.Identity.Store,
                               "The store module was not instantiated")
+        self.assertIsInstance(self, identity.Identity.Settings,
+                              "The Settings module was not correctly instantiated")
 
 class StoreTests(unittest.TestCase):
 
@@ -274,34 +278,38 @@ class InitializationModTests(unittest.TestCase):
     def gen_keys_test(self):
         self.assertTrue(len(self.key_list) == len(set(self.key_list)), "Generated keys are not all unique")
 
-class NotaryModTests(unittest.TestCase):
 
-    def test_constructor(self):
-        return None
-
-    def test_get_all(self):
-        return None
-
-    def test_get(self):
-        return None
-
+##
+# This class contains test cases for the OBNode class
 class OBNodeTests(unittest.TestCase):
 
+    ##
+    # This method tests the OBNode constructor
     def test_constructor(self):
         return None
 
+    ##
+    # This method tests the start_node method
     def test_start_node(self):
         return None
 
+    ##
+    # This method tests the listen_on_here method
     def test_listen_on_here(self):
         return None
 
+    ##
+    # This method tests the attempt_bootstrap method
     def test_attempt_bootstrap(self):
         return None
 
+    ##
+    # This method tests the bootstrap_done method
     def test_bootstrap_done(self):
         return None
 
+    ##
+    # This method tests the saveState method
     def test_saveState(self):
         return None
 

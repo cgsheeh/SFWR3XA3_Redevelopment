@@ -518,7 +518,8 @@ class OpenBazaar2(QtGui.QMainWindow):
 
         search_results = self.id_module.search(keywords)
 
-
+##
+# Holds string values for the OpenBazaar2 class
 class OBStrings(object):
     traylogo = "images/small_logo.jpeg"
     ob_banner = "images/banner.png"
