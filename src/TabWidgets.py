@@ -737,22 +737,22 @@ class bootStrap_Tab(QtGui.QWidget):
         self.pushButton = QtGui.QPushButton(self)
         self.pushButton.setGeometry(QtCore.QRect(70, 180, 98, 27))
         self.pushButton.setObjectName(_fromUtf8("pushButton"))
-        self.lineEdit = QtGui.QLineEdit(self)
-        self.lineEdit.setGeometry(QtCore.QRect(50, 70, 161, 27))
-        self.lineEdit.setObjectName(_fromUtf8("lineEdit"))
-        self.lineEdit_2 = QtGui.QLineEdit(self)
-        self.lineEdit_2.setGeometry(QtCore.QRect(50, 120, 161, 27))
-        self.lineEdit_2.setObjectName(_fromUtf8("lineEdit_2"))
+        self.ip_lineEdit = QtGui.QLineEdit(self)
+        self.ip_lineEdit.setGeometry(QtCore.QRect(50, 70, 161, 27))
+        self.ip_lineEdit.setObjectName(_fromUtf8("ip_lineEdit"))
+        self.port_lineEdit = QtGui.QLineEdit(self)
+        self.port_lineEdit.setGeometry(QtCore.QRect(50, 120, 161, 27))
+        self.port_lineEdit.setObjectName(_fromUtf8("port_lineEdit"))
         self.setWindowTitle(_translate("OrdersMenu", "Form", None))
         self.pushButton.setText(_translate("OrdersMenu", "Bootstrap", None))
-        self.lineEdit.setText(_translate("OrdersMenu", "Enter IP Address", None))
-        self.lineEdit_2.setText(_translate("OrdersMenu", "Enter Port Number", None))
+        self.ip_lineEdit.setText(_translate("OrdersMenu", "Enter IP Address", None))
+        self.port_lineEdit.setText(_translate("OrdersMenu", "Enter Port Number", None))
 
         ##
         # On clicked, generate the bootstrap
-        self.pushButton.clicked.connect(self.generate_from_input)
+        self.pushButton.clicked.connect(self.initiate_bootstrap)
 
     ##
     # Attempts to bootstrap the node module to the network using the fields in the tab
-    def generate_from_input(self):
-        self.window().node.attempt_bootstrap(str(self.lineEdit.text()), int(self.lineEdit_2.text()))
+    def initiate_bootstrap(self):
+        self.window().node.attempt_bootstrap(str(self.ip_lineEdit.text()), int(self.port_lineEdit.text()))

@@ -30,6 +30,8 @@ class OpenBazaar2(QtGui.QMainWindow):
     def __init__(self):
         super(OpenBazaar2, self).__init__()
 
+
+
         ##
         # Before doing anything check if a user has been initialized
         # by looking for the existence of an identity pickle file
@@ -108,6 +110,7 @@ class OpenBazaar2(QtGui.QMainWindow):
         self.displayPicture_b = QtGui.QPushButton(self.centralwidget)
         self.displayPicture_b.setFlat(True)
         self.displayPicture_b.setIcon(self.displayPicture_p)
+        self.displayPicture_b.setGeometry(QtCore.QRect(100, 200, 300, 300))
         self.displayPicture_b.setIconSize(self.displayPicture_b.size())
         self.displayPicture_b.clicked.connect(self.set_picture)
         self.gridLayout.addWidget(self.displayPicture_b, 0, 0, 2, 2)
@@ -485,8 +488,13 @@ class OpenBazaar2(QtGui.QMainWindow):
         try:
             ##
             # Try and set the display picture to the specified location
-            self.displayPicture_p = QtGui.QIcon(QtGui.QPixmap(_fromUtf8(avatar)))
+            # If string is empty, set the avatar to the default
+            if not avatar:
+                self.displayPicture_p = QtGui.QIcon(QtGui.QPixmap(_fromUtf8(OBStrings.avatar_default)))
+            else:
+                self.displayPicture_p = QtGui.QIcon(QtGui.QPixmap(_fromUtf8(avatar)))
             self.displayPicture_b.setIcon(self.displayPicture_p)
+            self.displayPicture_b.setIconSize(self.displayPicture_b.size())
 
             ##
             # Set user settings to the new avatar location
@@ -495,7 +503,6 @@ class OpenBazaar2(QtGui.QMainWindow):
         except Exception as e:
             ##
             # Catch some exceptions that could occur (not pixmap compatible, etc)
-            print "Didnt work: %s" % avatar
             print e.message
 
     ##
@@ -507,13 +514,15 @@ class OpenBazaar2(QtGui.QMainWindow):
 
         # Remove trailing punctuation that could hinder search results
         for count, word in enumerate(keywords):
-            keywords[count] = word.rstrip('?:!.,;')
+            keywords[count] = str(word).rstrip('?:!.,;')
 
         search_results = self.id_module.search(keywords)
+
 
 class OBStrings(object):
     traylogo = "images/small_logo.jpeg"
     ob_banner = "images/banner.png"
+    avatar_default = "images/default-avatar.png"
 
 
 

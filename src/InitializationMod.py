@@ -11,7 +11,6 @@ from node.Node import OBNode
 # If program does not exist as a callable on the OS, return None
 #
 def which(program):
-    import os
     def is_exe(fpath):
         return os.path.isfile(fpath) and os.access(fpath, os.X_OK)
 
