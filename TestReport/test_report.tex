@@ -45,9 +45,39 @@ A distributed hash table for decentralized peer-to-peer networks. This is the in
 % Test results contain more numeric, pass/fail values
 % taken from unit tests.
 \part*{Test Results}
+
 \section{Black Box Testing}
 
 \section{White Box Testing}
+This section contains all unit test results that do not cover usability, performance or security. This is because the internal design of the software is known to the tester.\newline
+\newline
+Class: Ricardian Contract Tests\newline
+\begin{itemize}
+\item Test Case Name: \texttt{test\_constructor}
+\item Initial State: Nothing initialized
+\item Input: RicardianContract(\texttt{contract\_dict}, \texttt{seller\_settings})
+\item Expected Results: RicardianContract Object Instance
+\item Results Match: Yes\newline
+\end{itemize}
+
+\begin{itemize}
+\item Test Case Name: \texttt{test\_get\_module}
+\item Initial State: testRicardianContract, \texttt{seller\_settings}, \texttt{contract\_dict} objects initialized
+\item Input:
+\begin{itemize}
+\item tradeDict = testRicardianContract.\texttt{get\_module('trade')}
+\item price = tradeDict['price']
+\item \texttt{item\_name} = tradeDict['name']
+\item keywords = tradeDict['keywords']
+\end{itemize} 
+\item Expected Results:
+\begin{itemize}
+\item keywords == 'Head'
+\item \texttt{item\_name} == 'Hat'
+\item price == "50"
+\end{itemize}
+\item Results Match: Yes
+\end{itemize}
 
 \section{Usability Testing}
 
