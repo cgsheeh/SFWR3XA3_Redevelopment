@@ -873,7 +873,8 @@ class contractView_Tab(QtGui.QWidget):
         self.purchaseButton = QtGui.QPushButton(self)
         self.purchaseButton.setGeometry(QtCore.QRect(690, 660, 98, 27))
         self.purchaseButton.setObjectName(_fromUtf8("purchaseButton"))
-        self.retranslateUi(self)
+
+
         self.setWindowTitle(_translate("Form", "Form", None))
         self.label.setText(_translate("Form", "Item Name:", None))
         self.label_2.setText(_translate("Form", "Price:", None))
@@ -891,6 +892,7 @@ class contractView_Tab(QtGui.QWidget):
         self.price.setText(ricardian_dict['price'])
         ##setup keywords
         self.noteForMerchantLineEdit.setText(ricardian_dict['keywords'])
+        self.itemCondition.setText(ricardian_dict[''])
         
 
 ##

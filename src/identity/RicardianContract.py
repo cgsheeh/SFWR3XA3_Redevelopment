@@ -1,7 +1,8 @@
 import hashlib
 import json
 import time
-
+from PIL import Image
+from ImageStorage import *
 
 ##
 # RicardianContract
@@ -35,8 +36,13 @@ class RicardianContract(object):
         self.contract['trade'] = dict(price=contract_dict['price'],
                                       name=contract_dict['item_name'],
                                       keywords=contract_dict['keywords'],
-                                      description=contract_dict['description'],
-                                      images=contract_dict['images'])
+                                      description=contract_dict['description'])
+
+        ##
+        # Convert image from path to pickle-able object
+        self.contract['trade']['images'] = list()
+        for image_path in contract_dict['images']:
+            self.contract['trade']['images'].append(ImageStorage(image_path))
 
         ##
         # Add the ledger to the contract
@@ -64,3 +70,4 @@ class RicardianContract(object):
     # Returns list of keywords associated with this contract
     def get_keywords(self):
         return self.contract.get_module('trade')['keywords']
+

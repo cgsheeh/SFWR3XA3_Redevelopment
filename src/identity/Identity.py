@@ -2,6 +2,7 @@ import pickle
 import os
 import gnupg
 from RicardianContract import *
+from ImageStorage import *
 ##
 # Identity module
 #     This class holds all the data related to a user identity,
@@ -118,7 +119,7 @@ class Store(object):
     def __init__(self):
         self.email = ""
         self.nickname = ""
-        self.avatarURL = ""
+        self.avatar = None
         self.bitcoinReceivingAddress = ""
         self.storeDescription = ""
         self.shippingInformation = {'recipient': '',
@@ -135,7 +136,7 @@ class Store(object):
     def get(self):
         return dict(email=self.email,
                     nickname=self.nickname,
-                    avatarURL=self.avatarURL,
+                    avatar=self.avatar,
                     bitcoinReceivingAddress=self.bitcoinReceivingAddress,
                     storeDescription=self.storeDescription,
                     shippingInformation=self.shippingInformation,
@@ -147,7 +148,7 @@ class Store(object):
     def set(self, sett_dict):
         self.email = sett_dict['email']
         self.nickname = sett_dict['nickname']
-        self.avatarURL = sett_dict['avatarURL']
+        self.avatar = sett_dict['avatar']
         self.bitcoinReceivingAddress = sett_dict['bitcoinReceivingAddress']
         self.storeDescription = sett_dict['storeDescription']
         self.shippingInformation = sett_dict['shippingInformation']

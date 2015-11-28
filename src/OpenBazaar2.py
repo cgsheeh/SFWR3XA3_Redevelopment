@@ -2,7 +2,7 @@
 import os
 import pickle
 import InitializationMod
-from identity import Identity
+from identity import Identity, ImageStorage
 from node import Node
 import sys
 from PyQt4 import QtCore, QtGui
@@ -37,7 +37,7 @@ class OpenBazaar2(QtGui.QMainWindow):
         # by looking for the existence of an identity pickle file
         #
         if not Identity.Identity.is_init():
-            InitializationMod.BazaarInit.initialize_Bazaar(int(sys.argv[1]))
+            InitializationMod.BazaarInit.initialize_Bazaar(12345)
 
 
         ##
@@ -47,14 +47,14 @@ class OpenBazaar2(QtGui.QMainWindow):
         self.id_module = Identity.Identity.get_id_mod()
         settings = self.id_module.get_settings()
 
-        self.node = pickle.load(open(Node.OBNodeStrings.obnode_pickle, 'rb'))
-        self.node.start_node(12345)
+        #self.node = pickle.load(open(Node.OBNodeStrings.obnode_pickle, 'rb'))
+        #self.node.start_node(12345)
 
         ##
         # Set main object name
         #
         self.setObjectName("OpenBazaar")
-        self.setWindowTitle('ip:%s\tport:%s' % (self.node.node.ip, self.node.node.port))
+        self.setWindowTitle('OpenBazaar')
         self.resize(1163, 867)
 
         ##
@@ -101,12 +101,12 @@ class OpenBazaar2(QtGui.QMainWindow):
         # Add display picture for user
         #
         try:
-            if settings['avatarURL'] is not "":
-                self.displayPicture_p = QtGui.QIcon(QtGui.QPixmap(_fromUtf8(settings['avatarURL'])))
+            if settings['avatar'] is not None:
+                self.displayPicture_p = QtGui.QIcon(settings['avatar'].get_repr().toqpixmap())
             else:
                 raise Exception
         except:
-            self.displayPicture_p = QtGui.QIcon(QtGui.QPixmap(_fromUtf8("images/default-avatar.png")))
+            self.displayPicture_p = QtGui.QIcon(QtGui.QPixmap(_fromUtf8(OBStrings.avatar_default)))
         self.displayPicture_b = QtGui.QPushButton(self.centralwidget)
         self.displayPicture_b.setFlat(True)
         self.displayPicture_b.setIcon(self.displayPicture_p)
@@ -482,22 +482,24 @@ class OpenBazaar2(QtGui.QMainWindow):
         ##
         # Open a dialog and get the location of the avatar.
         # Get settings before change
-        avatar = QtGui.QFileDialog.getOpenFileName(self, 'Upload Avatar', '', '')
+        avatar_path = QtGui.QFileDialog.getOpenFileName(self, 'Upload Avatar', '', '')
+        avatar_image_storage = ImageStorage.ImageStorage(str(avatar_path))
         sett = self.id_module.get_settings()
 
         try:
             ##
             # Try and set the display picture to the specified location
             # If string is empty, set the avatar to the default
-            if not avatar:
+            if not avatar_path:
                 self.displayPicture_p = QtGui.QIcon(QtGui.QPixmap(_fromUtf8(OBStrings.avatar_default)))
             else:
-                self.displayPicture_p = QtGui.QIcon(QtGui.QPixmap(_fromUtf8(avatar)))
+                av_image = avatar_image_storage.get_repr()
+                self.displayPicture_p = QtGui.QIcon(av_image.toqpixmap())
             self.displayPicture_b.setIcon(self.displayPicture_p)
 
             ##
             # Set user settings to the new avatar location
-            sett['avatarURL'] = avatar
+            sett['avatar'] = avatar_image_storage
             self.id_module.set_settings(sett)
         except Exception as e:
             ##
