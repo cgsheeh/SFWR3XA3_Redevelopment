@@ -36,7 +36,7 @@ class Identity(object):
     # Adds new contract data to the respective nodes
     #     @param contract_dict dict representation of the Ricardian Contract
     def new_contract(self, contract_dict):
-        contract = RicardianContract(contract_dict, self.settings.store.get())
+        contract = RicardianContract(contract_dict, self.settings.store.get(), self.guid, self.pubkey)
         ##
         # Add the contract to the contracts module
         # TODO Add the contract to the node/dht module
@@ -148,11 +148,14 @@ class Store(object):
     def set(self, sett_dict):
         self.email = sett_dict['email']
         self.nickname = sett_dict['nickname']
-        self.avatar = sett_dict['avatar']
         self.bitcoinReceivingAddress = sett_dict['bitcoinReceivingAddress']
         self.storeDescription = sett_dict['storeDescription']
         self.shippingInformation = sett_dict['shippingInformation']
         self.myMerchants = sett_dict['myMerchants']
+        try:
+            self.avatar = sett_dict['avatar']
+        except KeyError:
+            pass
 
     ##
     # Adds a merchant to the list of merchants

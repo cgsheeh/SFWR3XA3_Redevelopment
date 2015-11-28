@@ -328,8 +328,10 @@ class OpenBazaar2(QtGui.QMainWindow):
         ##
         # TEST
         # Create contract view tab
+        self.contract_test_scroll = QtGui.QScrollArea()
         self.contract_test_tab = contractView_Tab()
-        self.tabMenu.addTab(self.contract_test_tab, "TEST CONTRACT")
+        self.contract_test_scroll.setWidget(self.contract_test_tab)
+        self.tabMenu.addTab(self.contract_test_scroll, "TEST CONTRACT")
 
         ##
         # Set central widget
