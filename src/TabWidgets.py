@@ -749,6 +749,7 @@ class ContractGenUi2(QtGui.QWidget):
 
     ##
     # Browse and add images
+    # Saves the first three selected image paths to self.images (list)
     def find_images(self):
         self.images = QtGui.QFileDialog.getOpenFileNames(self, 'Add Images', '', '')[0:3]
         if len(self.images) != 0:
