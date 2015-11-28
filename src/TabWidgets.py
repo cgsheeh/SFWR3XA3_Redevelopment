@@ -765,7 +765,8 @@ class contractView_Tab(QtGui.QWidget):
     ##
     # Constructor
     # Creates the contract view tab
-    def __init__(self, ricardian_contract):
+    #def __init__(self, ricardian_contract):
+    def __init__(self):
         super(contractView_Tab, self).__init__()
         self.setObjectName(_fromUtf8("Form"))
         self.resize(809, 696)
@@ -887,12 +888,12 @@ class contractView_Tab(QtGui.QWidget):
         self.label_9.setText(_translate("Form", "Note for Merchant:", None))
         self.purchaseButton.setText(_translate("Form", "Purchase", None))
 
-        ricardian_dict = ricardian_contract.get_dict()
-        self.itemName.setText(ricardian_dict['name'])
-        self.price.setText(ricardian_dict['price'])
-        ##setup keywords
-        self.noteForMerchantLineEdit.setText(ricardian_dict['keywords'])
-        self.itemCondition.setText(ricardian_dict[''])
+        # ricardian_dict = ricardian_contract.get_dict()
+        # self.itemName.setText(ricardian_dict['name'])
+        # self.price.setText(ricardian_dict['price'])
+        # ##setup keywords
+        # self.noteForMerchantLineEdit.setText(ricardian_dict['keywords'])
+        # self.itemCondition.setText(ricardian_dict[''])
         
 
 ##

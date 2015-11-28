@@ -72,22 +72,7 @@ class OpenBazaar2(QtGui.QMainWindow):
         self.gridLayout = QtGui.QGridLayout(self.centralwidget)
         self.gridLayout.setObjectName(_fromUtf8("gridLayout"))
 
-        ##
-        # Add currency conversion options
-        #
-        self.currencySelector = QtGui.QComboBox(self.centralwidget)
-        self.currencySelector.setObjectName(_fromUtf8("currencySelector"))
-        self.currencySelector.addItem(_fromUtf8(""))
-        self.currencySelector.addItem(_fromUtf8(""))
-        self.currencySelector.addItem(_fromUtf8(""))
-        self.currencySelector.addItem(_fromUtf8(""))
-        self.currencySelector.addItem(_fromUtf8(""))
-        self.currencySelector.setItemText(0, _translate("OpenBazaar", "CAD", None))
-        self.currencySelector.setItemText(1, _translate("OpenBazaar", "MBTC", None))
-        self.currencySelector.setItemText(2, _translate("OpenBazaar", "BTC", None))
-        self.currencySelector.setItemText(3, _translate("OpenBazaar", "USD", None))
-        self.currencySelector.setItemText(4, _translate("OpenBazaar", "EUR", None))
-        self.gridLayout.addWidget(self.currencySelector, 2, 1, 1, 1)
+
 
         ##
         # Add balance label
@@ -339,6 +324,12 @@ class OpenBazaar2(QtGui.QMainWindow):
         #
         self.bootstrap_tab = bootStrap_Tab()
         self.tabMenu.addTab(self.bootstrap_tab, "Bootstrap")
+
+        ##
+        # TEST
+        # Create contract view tab
+        self.contract_test_tab = contractView_Tab()
+        self.tabMenu.addTab(self.contract_test_tab, "TEST CONTRACT")
 
         ##
         # Set central widget

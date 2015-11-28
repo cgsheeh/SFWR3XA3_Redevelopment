@@ -118,7 +118,7 @@ class Store(object):
     #
     def __init__(self):
         self.email = ""
-        self.nickname = ""
+        self.nickname = "Give yourself a nickname!"
         self.avatar = None
         self.bitcoinReceivingAddress = ""
         self.storeDescription = ""
