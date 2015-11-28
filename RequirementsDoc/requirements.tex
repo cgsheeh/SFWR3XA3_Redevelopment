@@ -3,6 +3,7 @@
 \usepackage{xcolor} % for different colour comments
 \usepackage{graphicx}
 \graphicspath{{images/}}
+\usepackage{tabu}
 
 %% Comments
 \newif\ifcomments\commentstrue
@@ -15,6 +16,7 @@
 
 \begin{document}
 
+%Text in red represents major changes made to the document after Revision 0.
 
 \title{OpenBazaar Redevelopment - Requirements}
 \author{The Fair Traders \\ Daniel Mandel - mandeldr \\ Shandelle Murray - murras25 \\ Connor Sheehan - sheehacg}
@@ -304,12 +306,31 @@ A software application to connect users from all around the world to conduct tra
 \subsection{Work Partitioning}
 
 \begin{table}[h!]
+\color{red}
 \centering
-\begin{tabular}{||c c c ||}
+\begin{tabu} to 0.8\textwidth {|| X[l] | X[l] | X[l] ||}
  \hline
- \textbf {Event Name} & \textbf{Input and Output} & \textbf{Summary of BUC} \\ [0.5ex]
+ \textbf {Event Name} & \textbf{Input and Output} & \textbf{Summary} \\
  \hline
-\end{tabular}
+ 1.User inputs store information & Store Information (IN) & Seller saves store information \\
+ \hline
+ 2.User inputs new contract information & Contract (IN), Contract (OUT) & Seller lists new item for sale and it is listed in their store \\
+ \hline
+ 3.User inputs settings & Settings (IN) & User specifies personal or store settings \\
+ \hline
+ 4.User sends complaint with proof & Complaint (IN), Complaint (OUT) & Buyer or seller generates complaint and notary receives it \\
+ \hline
+ 5.User sends messsage & Message (OUT), Message (IN) & User sends message and another user receives message \\
+ \hline
+ 6.User searches for listings & Search Criteria (IN), Available Listings (OUT) & User searches for avaiable listings and application displays them \\
+ \hline
+ 7.User searches for store & Store ID (IN), Store (OUT) & User searches for store and application displays store \\
+ \hline
+ 8.User requests to purchase listing & Purchase Request (IN), Updated Contract (OUT) & User requests to purchase item or service and application advances contract to next step \\
+ \hline
+ 9.User provides decision about complaint & Decision (IN), Decision (OUT) & Notary makes ruling in favor of eithe party and application proceeds to complete the transaction according to the contract \\
+ \hline
+\end{tabu}
 \caption{Table to capture the inputs and outputs of an event}
 \label{table:2}
 \end{table}
