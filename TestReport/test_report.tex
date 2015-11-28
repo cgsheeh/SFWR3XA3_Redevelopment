@@ -56,9 +56,114 @@ Black box testing for the initialization module was performed by testing the \te
 \end{itemize}
 
 \section{White Box Testing}
+This section contains all unit test results that do not cover usability, performance or security. This is because the internal design of the software is known to the tester.\newline
+\newline
+Class: RicardianContractTests\newline
 \begin{itemize}
-\item[Initialization Module]
-White box testing for the initialization module was performed by 
+\item
+\begin{itemize}
+\item Test Case Name: \texttt{test\_constructor}
+\item Initial State: Nothing initialized
+\item Input: \texttt{RicardianContract(\texttt{contract\_dict}, \texttt{seller\_settings})}
+\item Expected Results: RicardianContract Object Instance
+\item Results Match: Yes\newline
+\end{itemize}
+\end{itemize}
+
+\begin{itemize}
+\item
+\begin{itemize}
+\item Test Case Name: \texttt{test\_get\_module}
+\item Initial State: testRicardianContract, \texttt{seller\_settings}, \texttt{contract\_dict} objects initialized
+\item Input:
+\begin{itemize}
+\item tradeDict = testRicardianContract.get\_module('trade')
+\item price = tradeDict['price']
+\item item\_name = tradeDict['name']
+\item keywords = tradeDict['keywords']
+\end{itemize} 
+\item Expected Results:
+\begin{itemize}
+\item \texttt{keywords == 'Head'
+\item \texttt{item\_name} == 'Hat'
+\item price == "50"}
+\end{itemize}
+\item Results Match: Yes\newline
+\end{itemize}
+\end{itemize}
+
+\begin{itemize}
+\item
+\begin{itemize}
+\item Test Case Name: \texttt{test\_contract\_hash}
+\item Initial State: testRicardianContract, testRicardianContract2 objects initialized
+\item Input:
+\begin{itemize}
+\item \texttt{hash1 = testRicardianContract.\texttt{contract\_hash()}
+\item hash2 = testRicardianContract.\texttt{contract\_hash()}
+\item hash3 = testRicardianContract2.\texttt{contract\_hash()}}
+\end{itemize}
+\item Expected Results:
+\begin{itemize}
+\item \texttt{hash1 == hash2
+\item hash1 != hash3}
+\end{itemize}
+\item Results Match: Yes\newline
+\end{itemize}
+\end{itemize}
+
+\begin{itemize}
+\item
+\begin{itemize}
+\item Test Case Name: \texttt{test\_get\_dict}
+\item Initial State: \texttt{contract\_dict}, idthing, \texttt{seller\_settings}, and testRicardianContract objects are initialized
+\item Input: \texttt{type(testRicardianContract.\texttt{get\_dict()})}
+\item Expected Results: \texttt{type(testRicardianContract.\texttt{get\_dict()}) == dict}
+\item Results Match: Yes\newline\newline
+\end{itemize}
+\end{itemize}
+
+\texttt{Class: InitializationModTests}\newline
+
+\begin{itemize}
+\item
+\begin{itemize}
+\item Test Case Name: \texttt{test\_create\_GUID}
+\item Initial State: \texttt{setUp()} is called generating list of ten GUID's
+\item Input: \texttt{len(guids) == len(set(guids))}
+\item Expected Results: True
+\item Results Match: Yes\newline
+\end{itemize}
+\end{itemize}
+
+\begin{itemize}
+\item
+\begin{itemize}
+\item Test Case Name: \texttt{test\_initialize\_Bazaar}
+\item Initial State: setUp() is called generating a list of ten GUID's
+\item Input:
+\begin{itemize}
+\item \texttt{self.assertTrue(os.path.isfile('identity/identity.p'))
+\item self.assertTrue(os.path.isfile('identity/pubring.gpg'))
+\item self.assertTrue(os.path.isfile('identity/\texttt{random\_seed'))}
+\item self.assertTrue(os.path.isfile('identity/secring.gpg'))
+\item self.assertTrue(os.path.isfile('identity/trustdb.gpg'))
+\item self.assertTrue(os.path.isfile('node/node.p'))}
+\end{itemize}
+\item Expected Results: True
+\item Results Match: Yes\newline
+\end{itemize}
+\end{itemize}
+
+\begin{itemize}
+\item
+\begin{itemize}
+\item Test Case Name:
+\item Initial State:
+\item Input:
+\item Expected Results:
+\item Results Match:
+\end{itemize}
 \end{itemize}
 
 \section{Usability Testing}
@@ -77,13 +182,13 @@ Security testing of OpenBazaar is potentially the most important variety of test
 
 
 \section{Changes Derived from Tests}
-After running through all of our tests some changes were necessary. The following is a list of documented changes to our code after testing:\newline
+After running through all of our tests some changes were necessary. The following is a list of documented changes to our code after testing:
 \newline
 \begin{itemize}
 \item Class: RicardianContract
 \item Test: test contract hash
 \item Output: Hash Object
-\item Expected: String
+\item Expected: String\newline
 \end{itemize} 
 After dicovering that the contract hash was returning the wrong object, we went back and reimplemented the contract hash function for the RicardianContract class.On testing of the RicardianContract module it was discovered that due to dynamic and duck typing, the \texttt{contract\_hash} method was returning a full hash object, instead of the hexadecimal representation as desired. This test failure was fixed by forcing the object to return the value of \texttt{hexdigest} instead of \texttt{\_\_str\_\_}.
 
