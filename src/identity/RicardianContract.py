@@ -34,7 +34,9 @@ class RicardianContract(object):
         # Add the trade components to the contract
         self.contract['trade'] = dict(price=contract_dict['price'],
                                       name=contract_dict['item_name'],
-                                      keywords=contract_dict['keywords'])
+                                      keywords=contract_dict['keywords'],
+                                      description=contract_dict['description'],
+                                      images=contract_dict['images'])
 
         ##
         # Add the ledger to the contract

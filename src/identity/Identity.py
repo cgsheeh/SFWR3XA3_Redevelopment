@@ -84,7 +84,9 @@ class Identity(object):
         decrypt.close()
 
         # Above lines handle encryption
-        return pickle.load(open(IdentityStrings.identity_pickle, 'rb'))
+        id_mod = pickle.load(open(IdentityStrings.identity_pickle, 'rb'))
+        os.remove(IdentityStrings.identity_pickle)
+        return id_mod
 
     ##
     # Returns true if identity has already been initialized
