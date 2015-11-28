@@ -47,7 +47,7 @@ class OpenBazaar2(QtGui.QMainWindow):
         self.id_module = Identity.Identity.get_id_mod()
         settings = self.id_module.get_settings()
 
-        self.node = pickle.load(open(Node.OBNodeStrings.obnode_pickle, 'r'))
+        self.node = pickle.load(open(Node.OBNodeStrings.obnode_pickle, 'rb'))
         self.node.start_node(int(sys.argv[1]))
 
         ##
@@ -494,7 +494,6 @@ class OpenBazaar2(QtGui.QMainWindow):
             else:
                 self.displayPicture_p = QtGui.QIcon(QtGui.QPixmap(_fromUtf8(avatar)))
             self.displayPicture_b.setIcon(self.displayPicture_p)
-            self.displayPicture_b.setIconSize(self.displayPicture_b.size())
 
             ##
             # Set user settings to the new avatar location

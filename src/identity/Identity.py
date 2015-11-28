@@ -1,15 +1,17 @@
 import pickle
 import os
+import gnupg
 from RicardianContract import *
 ##
 # Identity module
 #     This class holds all the data related to a user identity,
 #     including all submodule decompositions (settings, notary, store, contract)
 class Identity(object):
-    def __init__(self, guid, pubkey, privkey):
+    def __init__(self, guid, pubkey, privkey, gpg_obj):
             self.guid = guid
             self.pubkey = pubkey
             self.privkey = privkey
+            self.gpg_obj = gpg_obj
             self.settings = Settings()
 
     ##
@@ -48,7 +50,17 @@ class Identity(object):
     ##
     # Save current object configuration to pickle file
     def save(self):
-        pickle.dump(self, open(IdentityStrings.identity_pickle, 'w'))
+        orig = open(IdentityStrings.identity_pickle, 'wb')
+        pickle.dump(self, orig)
+        orig.close()
+
+        # Below we encrypt locally and save
+        to_crypt = open(IdentityStrings.identity_pickle, 'rb')
+        keyid = self.gpg_obj.list_keys()[0]['keyid']
+        data = self.gpg_obj.encrypt(to_crypt, keyid, output=IdentityStrings.identity_encrypted)
+        to_crypt.close()
+        os.remove(IdentityStrings.identity_pickle)
+
 
     ##
     # Searches for contracts with the specified keyword
@@ -65,20 +77,27 @@ class Identity(object):
     # Load identity module from default location
     @staticmethod
     def get_id_mod():
-        return pickle.load(open(IdentityStrings.identity_pickle, 'r'))
+        gpg = gnupg.GPG(homedir='identity')
+
+        decrypt = open(IdentityStrings.identity_encrypted, 'rb')
+        gpg.decrypt_file(decrypt, output=IdentityStrings.identity_pickle)
+        decrypt.close()
+
+        # Above lines handle encryption
+        return pickle.load(open(IdentityStrings.identity_pickle, 'rb'))
 
     ##
     # Returns true if identity has already been initialized
     @staticmethod
     def is_init():
-        return os.path.isfile(IdentityStrings.identity_pickle)
+        return os.path.isfile(IdentityStrings.identity_encrypted)
 
 ##
 # Settings module
 #     Holds all data related to user settings
-#     @field store is a Store object which holds data about this node's store, as well as all stores known to the node
-#     @field notary is a Notary object holding data about known notaries
-#     @field contracts is a Contracts object holding data about known contracts
+#     @field store: a Store object which holds data about this node's store, as well as all stores known to the node
+#     @field notary: a Notary object holding data about known notaries
+#     @field contracts: a Contracts object holding data about known contracts
 #
 class Settings(object):
     def __init__(self):
@@ -205,6 +224,7 @@ class Contracts(object):
 # Contains strings needed by identity
 class IdentityStrings(object):
     identity_pickle = 'identity/identity.p'
+    identity_encrypted = 'identity/id_safe'
 
 
 

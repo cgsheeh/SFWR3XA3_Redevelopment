@@ -697,8 +697,19 @@ class ContractGenUi2(QtGui.QWidget):
         self.gridLayout.addWidget(self.keywords_lineEdit)
 
         ##
+        # Add pictures
+        self.browse_images_label = QtGui.QLabel(self.gridLayoutWidget)
+        self.browse_images_label.setText("Add images: 0 images added")
+        self.images_button = QtGui.QPushButton(self.gridLayoutWidget)
+        self.images_button.setText("Browse...")
+        self.gridLayout.addWidget(self.browse_images_label)
+        self.gridLayout.addWidget(self.images_button)
+
+        ##
         # On clicked, generate the new contract data
+        # On clicked, find pictures
         self.generate_contract_button.clicked.connect(self.generate_from_input)
+        self.images_button.clicked.connect(self.find_images)
 
 
         self.label.setText(_translate("Form", "Contract Generator", None))
@@ -721,6 +732,10 @@ class ContractGenUi2(QtGui.QWidget):
         contract['keywords'] = str(self.keywords_lineEdit.text().split(','))
         self.window().id_module.new_contract(contract)
 
+    ##
+    # Browse and add images
+    def find_images(self):
+        images = QtGui.QFileDialog.getOpenFileNames(self, 'Add Images', '', '')
 
 ##
 # bootStrap_Tab

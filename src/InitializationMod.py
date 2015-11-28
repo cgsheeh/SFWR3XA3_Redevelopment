@@ -79,7 +79,7 @@ class BazaarInit(object):
             ##
             # Create Identity module
             #
-            id_mod = Identity(guid, pub_key_armor, priv_key_armor)
+            id_mod = Identity(guid, pub_key_armor, priv_key_armor, gpg)
 
             ##
             # Dump state of id and node objects for future retrieval.
