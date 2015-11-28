@@ -17,7 +17,7 @@ class RicardianContract(object):
     # using the user data specified in seller_settings
     #     @param contract_dict: data about the contract
     #     @param seller_settings: settings for contract creator
-    def __init__(self, contract_dict, seller_settings):
+    def __init__(self, contract_dict, seller_settings, guid, pubkey):
         self.contract = dict()
         ##
         # Add the metadata components to the contract
@@ -28,6 +28,8 @@ class RicardianContract(object):
         # Add the id components to the contract
         self.contract['id'] = {}
         self.contract['id']['seller'] = seller_settings
+        self.contract['id']['seller']['guid'] = guid
+        self.contract['id']['seller']['pubkey'] = pubkey
         self.contract['id']['buyer'] = dict()
         self.contract['id']['notary'] = dict()
 
@@ -42,7 +44,7 @@ class RicardianContract(object):
         # Convert image from path to pickle-able object
         self.contract['trade']['images'] = list()
         for image_path in contract_dict['images']:
-            self.contract['trade']['images'].append(ImageStorage(image_path))
+            self.contract['trade']['images'].append(ImageStorage(str(image_path)))
 
         ##
         # Add the ledger to the contract
