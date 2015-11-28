@@ -642,15 +642,12 @@ class ContractGenUi2(QtGui.QWidget):
         self.gridLayout.addWidget(self.label_7, 6, 0, 1, 1)
         self.price_lineEdit = QtGui.QLineEdit(self.gridLayoutWidget)
         self.price_lineEdit.setObjectName(_fromUtf8("guid_lineEdit"))
-        self.price_lineEdit.setText('4')
         self.gridLayout.addWidget(self.price_lineEdit, 5, 1, 1, 1)
         self.expiry_lineEdit = QtGui.QLineEdit(self.gridLayoutWidget)
         self.expiry_lineEdit.setObjectName(_fromUtf8("email_lineEdit"))
-        self.expiry_lineEdit.setText('5')
         self.gridLayout.addWidget(self.expiry_lineEdit, 6, 1, 1, 1)
         self.item_name_lineEdit = QtGui.QLineEdit(self.gridLayoutWidget)
         self.item_name_lineEdit.setObjectName(_fromUtf8("add_notary_line"))
-        self.item_name_lineEdit.setText('3')
         self.gridLayout.addWidget(self.item_name_lineEdit, 4, 1, 1, 1)
         self.label_6 = QtGui.QLabel(self.gridLayoutWidget)
         font = QtGui.QFont()
@@ -691,6 +688,10 @@ class ContractGenUi2(QtGui.QWidget):
         # Add keywords
         self.keywords_label = QtGui.QLabel(self.gridLayoutWidget)
         self.keywords_label.setText("Add keywords")
+        font = QtGui.QFont()
+        font.setBold(True)
+        font.setWeight(75)
+        self.keywords_label.setFont(font)
         self.keywords_lineEdit = QtGui.QLineEdit(self.gridLayoutWidget)
         self.keywords_lineEdit.setText("Separate keywords by comma (ie word1,word2,word3,...,wordn)")
         self.gridLayout.addWidget(self.keywords_label)
@@ -699,11 +700,23 @@ class ContractGenUi2(QtGui.QWidget):
         ##
         # Add pictures
         self.browse_images_label = QtGui.QLabel(self.gridLayoutWidget)
-        self.browse_images_label.setText("Add images: 0 images added")
+        self.browse_images_label.setText("Add images (max 3):")
+        self.browse_images_label.setFont(font)
         self.images_button = QtGui.QPushButton(self.gridLayoutWidget)
         self.images_button.setText("Browse...")
         self.gridLayout.addWidget(self.browse_images_label)
         self.gridLayout.addWidget(self.images_button)
+        self.images = list()
+
+        ##
+        # Add a description
+        self.description_label = QtGui.QLabel(self.gridLayoutWidget)
+        self.description_label.setText("Item Description:")
+        self.description_label.setFont(font)
+        self.gridLayout.addWidget(self.description_label)
+
+        self.description_box = QtGui.QLineEdit(self.gridLayoutWidget)
+        self.gridLayout.addWidget(self.description_box)
 
         ##
         # On clicked, generate the new contract data
@@ -730,12 +743,19 @@ class ContractGenUi2(QtGui.QWidget):
         contract['bitcoin_address'] = str(self.bitcoin_address_lineEdit.text())
         contract['item_name'] = str(self.item_name_lineEdit.text())
         contract['keywords'] = str(self.keywords_lineEdit.text().split(','))
+        contract['description'] = str(self.description_box.text())
+        contract['images'] = self.images
         self.window().id_module.new_contract(contract)
 
     ##
     # Browse and add images
     def find_images(self):
-        images = QtGui.QFileDialog.getOpenFileNames(self, 'Add Images', '', '')
+        self.images = QtGui.QFileDialog.getOpenFileNames(self, 'Add Images', '', '')[0:3]
+        if len(self.images) != 0:
+            self.images_button.setText(str(len(self.images)) + " selected")
+        else:
+            self.images_button.setText("Browse...")
+
 
 ##
 #contractView_Tab

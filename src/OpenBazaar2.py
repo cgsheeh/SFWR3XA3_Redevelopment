@@ -48,7 +48,7 @@ class OpenBazaar2(QtGui.QMainWindow):
         settings = self.id_module.get_settings()
 
         self.node = pickle.load(open(Node.OBNodeStrings.obnode_pickle, 'rb'))
-        self.node.start_node(int(sys.argv[1]))
+        self.node.start_node(12345)
 
         ##
         # Set main object name
