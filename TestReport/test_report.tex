@@ -18,27 +18,27 @@
 % Start of document content
 \part*{Introduction}
 \section{Objective}
-The objective of this document is to report the test results of the OpenBazaar application, revision zero. Testing at this phase is used to demonstrate the application's usability and to improve the robustness of the product. Developing a test suite will ensure that changes in one section of code do not cause bugs in other sections. Further, if the secret of a module is changed for any reason (improved performance, new technology etc), a pre-defined test framework will ensure the application can function after the change.
+The objective of this document is to report the test results of the OpenBazaar application, revision zero. Testing at this phase is used to demonstrate the application's usability and to improve the robustness of the product. Developing a test suite will ensure that changes in one section of code do not cause bugs in other sections. Further, if the secret of a module is changed for any reason (improved performance, new technology, etc), a pre-defined test framework will ensure the application can function after the change.
 
 \section{Approach}
 
-Our approach involves the use of the \texttt{unittest2} library that Python has available. Test cases will be written using the same design as any NUnit or JUnit implementation (Arrange Act Assert) \cite{aaa}. Meaning all variables at first will be created, manipulated and then verified. This is the most effective way of organizing unit tests and as well as extremely modular. All test cases will be run from the command line by simply running the test fixture (ex \texttt{python OBTests.py})
+Our approach involves the use of the \texttt{unittest2} library that Python has available. Test cases will be written using the same design as any NUnit or JUnit implementation (Arrange Act Assert) \cite{aaa}. This means that all variables at first will be created, manipulated, and then verified. This is the most effective way of organizing unit tests and is extremely modular. All test cases will be run from the command line by simply running the test fixture (ex \texttt{python OBTests.py})
 
 \section{Definitions}
 \begin{itemize}
-\item[Black Box Testing]
+\item[Black Box Testing:]
 The process of testing a function or module without taking the internal implementation into account.
 
-\item[White Box Testing]
-The process of testing which takes the internal implementation into account, and ensures it's correctness.
+\item[White Box Testing:]
+The process of testing which takes the internal implementation into account, and ensures its correctness.
 
-\item[Usability Testing]
-The process of evaluating a program by testing it on users. Provides direct input on how users will interact with the system.
+\item[Usability Testing:]
+The process of evaluating a program by testing it on users. This provides direct input on how users will interact with the system.
 
-\item[Ricardian Contract]
-A contractual agreement for a trade which aims to be exact and unchangeable. Any contract is comprised of several modules which provide information about the interaction, as well as a hash of the data to ensure that the contract is not changed retroactively. Ricardian Contract's are human readable, as well as machine parsable. 
+\item[Ricardian Contract:]
+A contractual agreement for a trade which aims to be exact and unchangeable, generally used for the purpose of issuing digital currency. Any contract is comprised of several modules which provide information about the interaction, the terms for which a value is redeemable, as well as a hash of the data to ensure that the contract is not changed retroactively. Ricardian contracts are human readable as well as machine parsable.  
 
-\item[Kademlia DHT]
+\item[Kademlia DHT:]
 A distributed hash table for decentralized peer-to-peer networks. This is the infrastructure used in the OpenBazaar application.
 \end{itemize}
 
@@ -182,7 +182,7 @@ Security testing of OpenBazaar is potentially the most important variety of test
 
 
 \section{Changes Derived from Tests}
-After running through all of our tests some changes were necessary. The following is a list of documented changes to our code after testing:
+After running through all of our tests, some changes were necessary. The following is a list of documented changes to our code after testing:
 \newline
 \begin{itemize}
 \item Class: RicardianContract
@@ -190,7 +190,7 @@ After running through all of our tests some changes were necessary. The followin
 \item Output: Hash Object
 \item Expected: String\newline
 \end{itemize} 
-After dicovering that the contract hash was returning the wrong object, we went back and reimplemented the contract hash function for the RicardianContract class.On testing of the RicardianContract module it was discovered that due to dynamic and duck typing, the \texttt{contract\_hash} method was returning a full hash object, instead of the hexadecimal representation as desired. This test failure was fixed by forcing the object to return the value of \texttt{hexdigest} instead of \texttt{\_\_str\_\_}.
+After discovering that the contract hash was returning the wrong object, we went back and reimplemented the contract hash function for the RicardianContract class. On testing of the RicardianContract module, it was discovered that due to dynamic and duck typing, the \texttt{contract\_hash} method was returning a full hash object instead of the hexadecimal representation as desired. This test failure was fixed by forcing the object to return the value of \texttt{hexdigest} instead of \texttt{\_\_str\_\_}.
 
 \bibliography{ob_bib}
 \bibliographystyle{plain}
