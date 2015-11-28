@@ -889,6 +889,8 @@ class contractView_Tab(QtGui.QWidget):
         self.itemName.setText(ricardian_dict['name'])
         self.price.setText(ricardian_dict['price'])
         ##setup keywords
+        self.noteForMerchantLineEdit.setText(ricardian_dict['keywords'])
+        
 
 ##
 # bootStrap_Tab
