@@ -32,7 +32,9 @@ def which(program):
 #
 class BazaarInit(object):
     ##
-    #  Creates a new GUID from the signed pubkey
+    # Creates a new GUID from the signed pubkey
+    #     @param signed_pubkey: signed GPG public key
+    #     @return: new GUID for OpenBazaar
     @staticmethod
     def create_GUID(signed_pubkey):
         sha256 = hashlib.sha256()
@@ -45,13 +47,15 @@ class BazaarInit(object):
 
     ##
     # Generates GPG keys
+    #     @param gpg_path: path to GPG on the local system
+    #     @return: gnupg.GPG object
     @staticmethod
     def gen_keys(gpg_path):
         call([gpg_path, '--batch', '--gen-key', 'init/unattend_init'])
         return gnupg.GPG(homedir='./identity')
     ##
     # Initializes the OpenBazaar
-    #
+    #     @param port: port to open the node on
     @staticmethod
     def initialize_Bazaar(port):
         gpg_which = which('gpg')
@@ -72,9 +76,7 @@ class BazaarInit(object):
             ##
             #  Create Node object
             #
-
             node = OBNode(guid, port)
-
 
             ##
             # Create Identity module

@@ -4,10 +4,15 @@ import gnupg
 from RicardianContract import *
 from ImageStorage import *
 ##
-# Identity module
-#     This class holds all the data related to a user identity,
-#     including all submodule decompositions (settings, notary, store, contract)
+# This class holds all the data related to a user identity,
+# including all submodule decompositions (settings, notary, store, contract)
 class Identity(object):
+    ##
+    # Initializes the identity module
+    #     @param guid: OpenBazaar GUID
+    #     @param pubkey: GPG public key
+    #     @param privkey: GPG private key
+    #     @param gpg_obj: gnupg.GPG object
     def __init__(self, guid, pubkey, privkey, gpg_obj):
             self.guid = guid
             self.pubkey = pubkey
@@ -26,7 +31,7 @@ class Identity(object):
 
     ##
     # Updates local settings to be saved to the identity pickle file
-    #     @param settings_dict dictionary of settings to be saved to the state
+    #     @param settings_dict: dictionary of settings to be saved to the state
     def set_settings(self, settings_dict):
         self.settings.store.set(settings_dict)
         self.settings.notary.set(settings_dict)
@@ -34,7 +39,7 @@ class Identity(object):
 
     ##
     # Adds new contract data to the respective nodes
-    #     @param contract_dict dict representation of the Ricardian Contract
+    #     @param contract_dict: dict representation of the Ricardian Contract
     def new_contract(self, contract_dict):
         contract = RicardianContract(contract_dict, self.settings.store.get(), self.guid, self.pubkey)
         ##
@@ -66,6 +71,7 @@ class Identity(object):
     ##
     # Searches for contracts with the specified keyword
     #     @param keywords: list of keywords to search for
+    #     @return: list of contracts matching keywords
     def search(self, keywords):
         matching_contracts = list()
         for word in keywords:
@@ -76,6 +82,7 @@ class Identity(object):
 
     ##
     # Load identity module from default location
+    #     @return: identity module created from encrypted file
     @staticmethod
     def get_id_mod():
         gpg = gnupg.GPG(homedir='identity')
@@ -91,6 +98,7 @@ class Identity(object):
 
     ##
     # Returns true if identity has already been initialized
+    #     @return: does the encrypted identity file exist
     @staticmethod
     def is_init():
         return os.path.isfile(IdentityStrings.identity_encrypted)
@@ -101,7 +109,6 @@ class Identity(object):
 #     @field store: a Store object which holds data about this node's store, as well as all stores known to the node
 #     @field notary: a Notary object holding data about known notaries
 #     @field contracts: a Contracts object holding data about known contracts
-#
 class Settings(object):
     def __init__(self):
         self.store = Store()
@@ -109,17 +116,14 @@ class Settings(object):
         self.contracts = Contracts()
 
 ##
-# Store module
-#     Holds all data relevant to stores
+# Holds all data relevant to stores
 class Store(object):
     ##
-    # Store()
-    #     Initializes this node's Store module with default data/settings
-    #
+    # Initializes this node's Store module with default data/settings
     def __init__(self):
         self.email = ""
         self.nickname = "Give yourself a nickname!"
-        self.avatar = None
+        self.avatar = ImageStorage(IdentityStrings.identity_avatar)
         self.bitcoinReceivingAddress = ""
         self.storeDescription = ""
         self.shippingInformation = {'recipient': '',
@@ -144,7 +148,7 @@ class Store(object):
 
     ##
     # Sets the merchant settings specified in dict
-    #     @param dict: dictionary of settings related to this module
+    #     @param sett_dict: dictionary of settings related to this module
     def set(self, sett_dict):
         self.email = sett_dict['email']
         self.nickname = sett_dict['nickname']
@@ -164,35 +168,37 @@ class Store(object):
         self.myMerchants.append(merchant)
 
 ##
-# Notary module
-#     Holds all data relevant to notaries
+# Holds all data relevant to notaries
 class Notary(object):
+    ##
+    # Initializes the Notary module
     def __init__(self):
         self.isNotary = False
         self.percentage = "0"
         self.description = ""
+        self.my_notaries = list()
 
     ##
     # Returns information about notaries
     def get(self):
         return dict(isNotary=self.isNotary,
                     percentage=self.percentage,
-                    description=self.description)
+                    description=self.description,
+                    notaries=self.my_notaries)
 
     ##
     # Sets local user notary settings
+    #     @param settings_dict: dictionary of settings
     def set(self, settings_dict):
         self.isNotary = settings_dict['isNotary']
         self.percentage = settings_dict['percentage']
         self.description = settings_dict['description']
 
 ##
-# Contract module
-#     Holds all data relevant to contracts
+# Holds all data relevant to contracts
 class Contracts(object):
     ##
-    # Contracts()
-    #     Initializes this node's Contract module
+    # Initializes this node's Contract module
     def __init__(self):
         self.expiredContracts = []
         self.onGoingContracts = []
@@ -231,7 +237,7 @@ class Contracts(object):
 class IdentityStrings(object):
     identity_pickle = 'identity/identity.p'
     identity_encrypted = 'identity/id_safe'
-
+    identity_avatar = 'identity/images/default-avatar.png'
 
 
 

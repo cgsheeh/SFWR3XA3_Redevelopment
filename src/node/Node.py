@@ -22,7 +22,7 @@ class OBNode(Server):
         self.saveState()
 
 
-        Thread(target=reactor.run, args=(False,)).start()
+        #Thread(target=reactor.run, args=(False,)).start()
 
 
     ##

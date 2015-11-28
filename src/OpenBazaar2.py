@@ -145,24 +145,14 @@ class OpenBazaar2(QtGui.QMainWindow):
         self.gridLayout.addWidget(self.addStoreText, 5, 4, 1, 2)
 
         ##
-        # Add list of notaries and fill with 3 empty entries
+        # Add list of notaries and fill with data from notary module
         self.myNotariesList = QtGui.QListWidget(self.centralwidget)
         self.myNotariesList.setObjectName(_fromUtf8("myNotariesList"))
-        item = QtGui.QListWidgetItem()
-        self.myNotariesList.addItem(item)
-        item = QtGui.QListWidgetItem()
-        self.myNotariesList.addItem(item)
-        item = QtGui.QListWidgetItem()
-        self.myNotariesList.addItem(item)
-        __sortingEnabled = self.myNotariesList.isSortingEnabled()
-        self.myNotariesList.setSortingEnabled(False)
-        item = self.myNotariesList.item(0)
-        item.setText(_translate("OpenBazaar", "Notary 1", None))
-        item = self.myNotariesList.item(1)
-        item.setText(_translate("OpenBazaar", "Notary 2", None))
-        item = self.myNotariesList.item(2)
-        item.setText(_translate("OpenBazaar", "Notary 3", None))
-        self.myNotariesList.setSortingEnabled(__sortingEnabled)
+
+        for count, notary in enumerate(settings['notaries']):
+            item = QtGui.QListWidgetItem()
+            item.setText(notary['name'])
+            self.myNotariesList.addItem(item)
         self.gridLayout.addWidget(self.myNotariesList, 7, 4, 1, 3)
 
         ##
@@ -205,22 +195,16 @@ class OpenBazaar2(QtGui.QMainWindow):
         #
         self.merchantsList = QtGui.QListWidget(self.centralwidget)
         self.merchantsList.setObjectName(_fromUtf8("merchantsList"))
-        item = QtGui.QListWidgetItem()
-        self.merchantsList.addItem(item)
-        item = QtGui.QListWidgetItem()
-        self.merchantsList.addItem(item)
-        item = QtGui.QListWidgetItem()
-        self.merchantsList.addItem(item)
         self.gridLayout.addWidget(self.merchantsList, 1, 4, 4, 3)
-        __sortingEnabled = self.merchantsList.isSortingEnabled()
-        self.merchantsList.setSortingEnabled(False)
-        item = self.merchantsList.item(0)
-        item.setText(_translate("OpenBazaar", "Merchant 1", None))
-        item = self.merchantsList.item(1)
-        item.setText(_translate("OpenBazaar", "Merchant 2", None))
-        item = self.merchantsList.item(2)
-        item.setText(_translate("OpenBazaar", "Merchant 3", None))
-        self.merchantsList.setSortingEnabled(__sortingEnabled)
+
+        ##
+        # Fill merchants list with data from store module
+        for count, merchant in enumerate(settings['myMerchants']):
+            item = QtGui.QListWidgetItem()
+            item.setText(merchant['name'])
+            self.merchantsList.addItem(item)
+
+
 
         ##
         # Add recent transactions table and label
@@ -326,12 +310,16 @@ class OpenBazaar2(QtGui.QMainWindow):
         self.tabMenu.addTab(self.bootstrap_tab, "Bootstrap")
 
         ##
-        # TEST
-        # Create contract view tab
-        self.contract_test_scroll = QtGui.QScrollArea()
-        self.contract_test_tab = contractView_Tab()
-        self.contract_test_scroll.setWidget(self.contract_test_tab)
-        self.tabMenu.addTab(self.contract_test_scroll, "TEST CONTRACT")
+        # jumpTEST
+        #
+        try:
+            self.test_contract_scroll = QtGui.QScrollArea()
+            self.test_contract = contractView_Tab(self.id_module.get_my_contracts()[0])
+            self.test_contract_scroll.setWidget(self.test_contract)
+            self.tabMenu.addTab(self.test_contract_scroll, "TEST CONTRACT")
+        except IndexError:
+            pass
+
 
         ##
         # Set central widget
@@ -484,16 +472,16 @@ class OpenBazaar2(QtGui.QMainWindow):
             # Try and set the display picture to the specified location
             # If string is empty, set the avatar to the default
             if not avatar_path:
-                self.displayPicture_p = QtGui.QIcon(QtGui.QPixmap(_fromUtf8(OBStrings.avatar_default)))
+                pass
             else:
                 av_image = avatar_image_storage.get_repr()
                 self.displayPicture_p = QtGui.QIcon(av_image.toqpixmap())
-            self.displayPicture_b.setIcon(self.displayPicture_p)
+                self.displayPicture_b.setIcon(self.displayPicture_p)
 
-            ##
-            # Set user settings to the new avatar location
-            sett['avatar'] = avatar_image_storage
-            self.id_module.set_settings(sett)
+                ##
+                # Set user settings to the new avatar location
+                sett['avatar'] = avatar_image_storage
+                self.id_module.set_settings(sett)
         except Exception as e:
             ##
             # Catch some exceptions that could occur (not pixmap compatible, etc)
@@ -517,11 +505,20 @@ class OpenBazaar2(QtGui.QMainWindow):
 class OBStrings(object):
     traylogo = "images/small_logo.jpeg"
     ob_banner = "images/banner.png"
-    avatar_default = "images/default-avatar.png"
 
 
 
 if __name__ == "__main__":
+    try:
+        if sys.argv[1] == '--restart':
+            os.remove('node/node.p')
+            os.remove('identity/id_safe')
+            os.remove('identity/pubring.gpg')
+            os.remove('identity/random_seed')
+            os.remove('identity/secring.gpg')
+            os.remove('identity/trustdb.gpg')
+    except:
+        pass
     app = QtGui.QApplication(sys.argv)
     OpenBazaar = OpenBazaar2()
     sys.exit(app.exec_())
