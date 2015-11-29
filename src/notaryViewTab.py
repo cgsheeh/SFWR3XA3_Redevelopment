@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'notaryView.ui'
 #
-# Created: Sat Nov 28 19:09:31 2015
+# Created: Sat Nov 28 19:24:51 2015
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -26,7 +26,7 @@ except AttributeError:
 class Ui_Form(object):
     def setupUi(self, Form):
         Form.setObjectName(_fromUtf8("Form"))
-        Form.resize(778, 390)
+        Form.resize(941, 390)
         self.label_11 = QtGui.QLabel(Form)
         self.label_11.setGeometry(QtCore.QRect(540, 6, 231, 211))
         self.label_11.setText(_fromUtf8(""))
@@ -102,6 +102,10 @@ class Ui_Form(object):
         self.label_8.setGeometry(QtCore.QRect(800, 20, 221, 211))
         self.label_8.setText(_fromUtf8(""))
         self.label_8.setObjectName(_fromUtf8("label_8"))
+        self.avatar = QtGui.QLabel(Form)
+        self.avatar.setGeometry(QtCore.QRect(780, 20, 151, 141))
+        self.avatar.setText(_fromUtf8(""))
+        self.avatar.setObjectName(_fromUtf8("avatar"))
 
         self.retranslateUi(Form)
         QtCore.QMetaObject.connectSlotsByName(Form)
