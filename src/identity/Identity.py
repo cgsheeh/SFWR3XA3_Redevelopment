@@ -97,9 +97,21 @@ class Identity(object):
 
         ##
         # Add my current listings to Merchant representation
-        info_dict['myListings'] = self.settings.contracts.get_my_contracts()
+        info_dict['myListings'] = self.settings.contracts.getOnGoingContracts()
 
         return Merchant(info_dict)
+
+    ##
+    # Adds a new merchant to the list of known merchants
+    def new_merchant(self, merchant_repr):
+        self.settings.store.addMerchant(merchant_repr)
+        self.save()
+
+    ##
+    # Adds a new notary to the list of known notaries
+    def new_notary(self, notary_repr):
+        self.settings.notary.add_notary(notary_repr)
+        self.save()
 
     ##
     # Load identity module from default location
@@ -176,7 +188,6 @@ class Store(object):
         self.bitcoinReceivingAddress = sett_dict['bitcoinReceivingAddress']
         self.storeDescription = sett_dict['storeDescription']
         self.shippingInformation = sett_dict['shippingInformation']
-        self.myMerchants = sett_dict['myMerchants']
         try:
             self.avatar = sett_dict['avatar']
         except KeyError:
@@ -214,6 +225,11 @@ class Notary(object):
         self.isNotary = settings_dict['isNotary']
         self.percentage = settings_dict['percentage']
         self.description = settings_dict['description']
+
+    ##
+    # Adds a new notary to the list of known notaries
+    def add_notary(self, notary_repr):
+        self.my_notaries.append(notary_repr)
 
 ##
 # Holds all data relevant to contracts
@@ -291,6 +307,36 @@ class Merchant(object):
 
     def get_avatar(self):
         return self.avatar
+
+    def get_listings(self):
+        return self.current_listings
+
+
+##
+# This class contains an object representation of a notary known to a node
+class NotaryRepresentation(object):
+    ##
+    # Initializes the Notary module
+    def __init__(self, settings_dict):
+        self.data = settings_dict
+    ##
+    # Returns information about notaries
+    def get(self):
+        return self.data
+
+    ##
+    # Sets local user notary settings
+    #     @param settings_dict: dictionary of settings
+    def set(self, settings_dict):
+        self.data['pubkey'] = settings_dict['pubkey']
+        self.data['fee'] = settings_dict['fee']
+        self.data['name'] = settings_dict['name']
+        self.data['guid'] = settings_dict['guid']
+        self.data['bitcoinReceivingAddress'] = settings_dict['bitcoinReceivingAddress']
+        self.data['description'] = settings_dict['description']
+        self.data['email'] = settings_dict['email']
+
+
 
 ##
 # Contains strings needed by identity

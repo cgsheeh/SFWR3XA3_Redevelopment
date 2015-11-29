@@ -1,8 +1,5 @@
-__author__ = 'connor'
-
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'storeMenu.ui'
 #
 # Created: Fri Nov 13 14:07:26 2015
 #      by: PyQt4 UI code generator 4.10.4
@@ -46,21 +43,59 @@ class storeTab2(QtGui.QWidget):
         self.label_12 = QtGui.QLabel(self)
         self.label_12.setGeometry(QtCore.QRect(0, 460, 111, 17))
         self.label_12.setObjectName(_fromUtf8("label_12"))
+
+        ##
+        # Set up table of user contracts and headers
         self.contractTable = QtGui.QTableWidget(self)
         self.contractTable.setGeometry(QtCore.QRect(0, 480, 1031, 201))
         self.contractTable.setObjectName(_fromUtf8("contractTable"))
-        self.contractTable.setColumnCount(3)
-        self.contractTable.setRowCount(2)
+        self.contractTable.setColumnCount(4)
+
         item = QtGui.QTableWidgetItem()
-        self.contractTable.setVerticalHeaderItem(0, item)
-        item = QtGui.QTableWidgetItem()
-        self.contractTable.setVerticalHeaderItem(1, item)
-        item = QtGui.QTableWidgetItem()
+        item.setText("Item Name")
         self.contractTable.setHorizontalHeaderItem(0, item)
+
+
         item = QtGui.QTableWidgetItem()
+        item.setText("Price")
         self.contractTable.setHorizontalHeaderItem(1, item)
+
         item = QtGui.QTableWidgetItem()
+        item.setText("Expiry")
         self.contractTable.setHorizontalHeaderItem(2, item)
+
+        item = QtGui.QTableWidgetItem()
+        item.setText("Description")
+        self.contractTable.setHorizontalHeaderItem(3, item)
+
+        ##
+        # Add listings to table of contracts
+        for count, listing in enumerate(merchant_representation.get_listings()):
+            trade_info = listing.get_module('trade')
+            metadata = listing.get_module('metadata')
+            ##
+            # Set row label to contract hash
+            self.contractTable.setRowCount(count + 1)
+            item = QtGui.QTableWidgetItem()
+            item.setText(str(listing.contract_hash()))
+            self.contractTable.setVerticalHeaderItem(count, item)
+
+            item = QtGui.QTableWidgetItem()
+            item.setText(trade_info['name'])
+            self.contractTable.setItem(count, 0, item)
+
+            item = QtGui.QTableWidgetItem()
+            item.setText(trade_info['price'])
+            self.contractTable.setItem(count, 1, item)
+
+            item = QtGui.QTableWidgetItem()
+            item.setText(metadata['expiry'])
+            self.contractTable.setItem(count, 2, item)
+
+            item = QtGui.QTableWidgetItem()
+            item.setText(trade_info['description'])
+            self.contractTable.setItem(count, 3, item)
+
         self.gridLayoutWidget = QtGui.QWidget(self)
         self.gridLayoutWidget.setGeometry(QtCore.QRect(0, 10, 771, 406))
         self.gridLayoutWidget.setObjectName(_fromUtf8("gridLayoutWidget"))
@@ -541,7 +576,7 @@ class Settings_Ui2(QtGui.QWidget):
         ret['myMerchants'] = ""
         ret['isNotary'] = ""
         self.window().id_module.set_settings(ret)
-        self.window().redraw(self.window().tabMenu.currentIndex())
+        self.window().redraw()
 
 ##
 # This class contains the UI for the "Send a message" tab
@@ -800,6 +835,7 @@ class ContractGenUi2(QtGui.QWidget):
         contract['description'] = str(self.description_box.text())
         contract['images'] = self.images
         self.window().id_module.new_contract(contract)
+        self.window().redraw()
 
     ##
     # Browse and add images

@@ -7,6 +7,7 @@ from node import Node
 import sys
 from PyQt4 import QtCore, QtGui
 from TabWidgets import *
+from DemoData import DemoData
 
 
 
@@ -44,11 +45,25 @@ class OpenBazaar2(QtGui.QMainWindow):
         # Create data modules (ie Identity module)
         #
         self.id_module = Identity.Identity.get_id_mod()
+        try:
+            if sys.argv[1] == '--load-demo':
+                demo_data = DemoData()
+                notary_data = demo_data.get_notary_data()
+                merchant_data = demo_data.get_merchant_data()
+
+                for merchant in merchant_data:
+                    print type(merchant)
+                    self.id_module.new_merchant(merchant)
+
+                for notary in notary_data:
+                    self.id_module.new_notary(notary)
+        except IndexError:
+            pass
 
         ##
         # Do initial draw of GUI. Can call this function to redraw at any time
         #
-        self.redraw(0)
+        self.redraw()
 
         ##
         # Set current tab to Welcome screen
@@ -56,7 +71,11 @@ class OpenBazaar2(QtGui.QMainWindow):
 
         self.show()
 
-    def redraw(self, tab_index):
+    def redraw(self):
+        try:
+            tab_index = self.tabMenu.currentIndex()
+        except AttributeError:
+            tab_index = 0
         settings = self.id_module.get_settings()
 
         #self.node = pickle.load(open(Node.OBNodeStrings.obnode_pickle, 'rb'))
@@ -157,8 +176,9 @@ class OpenBazaar2(QtGui.QMainWindow):
         self.myNotariesList.setObjectName(_fromUtf8("myNotariesList"))
 
         for count, notary in enumerate(settings['notaries']):
+            notary_info = notary.get()
             item = QtGui.QListWidgetItem()
-            item.setText(notary['name'])
+            item.setText(notary_info['name'])
             self.myNotariesList.addItem(item)
         self.gridLayout.addWidget(self.myNotariesList, 7, 4, 1, 3)
 
@@ -208,7 +228,7 @@ class OpenBazaar2(QtGui.QMainWindow):
         # Fill merchants list with data from store module
         for count, merchant in enumerate(settings['myMerchants']):
             item = QtGui.QListWidgetItem()
-            item.setText(merchant['name'])
+            item.setText(merchant.get_name())
             self.merchantsList.addItem(item)
 
 
@@ -266,6 +286,7 @@ class OpenBazaar2(QtGui.QMainWindow):
         self.searchButton = QtGui.QPushButton(self.centralwidget)
         self.searchButton.setObjectName(_fromUtf8("searchButton"))
         self.searchButton.clicked.connect(self.search_clicked)
+        self.searchButton.setText("Search")
 
         self.horizontalLayout.addWidget(self.searchButton)
         self.gridLayout.addLayout(self.horizontalLayout, 5, 3, 1, 1)
@@ -315,18 +336,6 @@ class OpenBazaar2(QtGui.QMainWindow):
         #
         self.bootstrap_tab = bootStrap_Tab()
         self.tabMenu.addTab(self.bootstrap_tab, "Bootstrap")
-
-        ##
-        # jumpTEST
-        #
-        try:
-            self.test_contract_scroll = QtGui.QScrollArea()
-            self.test_contract = contractView_Tab(self.id_module.get_my_contracts()[0])
-            self.test_contract_scroll.setWidget(self.test_contract)
-            self.tabMenu.addTab(self.test_contract_scroll, "TEST CONTRACT")
-        except IndexError:
-            pass
-
 
         ##
         # Set central widget

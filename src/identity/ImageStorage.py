@@ -1,4 +1,5 @@
 from PIL import Image
+import json
 ##
 # This class implements storage of image data for display as a QPixmap
 class ImageStorage(object):
@@ -13,3 +14,8 @@ class ImageStorage(object):
     # You can then call toqpixmap() on this object
     def get_repr(self):
         return Image.frombytes(self.data['mode'], self.data['size'], self.data['data'])
+
+    ##
+    # This method allows ImageStorage to be JSON serializable
+    def to_json(self):
+        return json.dumps(self.data)
