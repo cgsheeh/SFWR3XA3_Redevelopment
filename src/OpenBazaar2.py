@@ -179,7 +179,9 @@ class OpenBazaar2(QtGui.QMainWindow):
             notary_info = notary.get()
             item = QtGui.QListWidgetItem()
             item.setText(notary_info['name'])
+            item.setData(QtCore.Qt.UserRole, notary)
             self.myNotariesList.addItem(item)
+        self.myNotariesList.itemClicked.connect(self.notary_clicked)
         self.gridLayout.addWidget(self.myNotariesList, 7, 4, 1, 3)
 
         ##
@@ -229,8 +231,9 @@ class OpenBazaar2(QtGui.QMainWindow):
         for count, merchant in enumerate(settings['myMerchants']):
             item = QtGui.QListWidgetItem()
             item.setText(merchant.get_name())
+            item.setData(QtCore.Qt.UserRole, merchant)
             self.merchantsList.addItem(item)
-
+        self.merchantsList.itemClicked.connect(self.merchant_clicked)
 
 
         ##
@@ -469,6 +472,30 @@ class OpenBazaar2(QtGui.QMainWindow):
 
         self.tabMenu.setCurrentIndex(tab_index)
 
+    ##
+    # Add a new tab
+    def add_tab(self, tab, name):
+        self.tabMenu.addTab(tab, name)
+
+    ##
+    # Display the store view for this store
+    def merchant_clicked(self, item):
+        data_obj = item.data(QtCore.Qt.UserRole).toPyObject()
+        print type(data_obj)
+        merchant_scroll = QtGui.QScrollArea()
+        merchant_view = storeTab2(data_obj)
+        merchant_scroll.setWidget(merchant_view)
+        self.add_tab(merchant_scroll, data_obj.get_name())
+        #self.redraw()
+
+    ##
+    # Display the notary view for this notary
+    def notary_clicked(self, item):
+        data_obj = item.data(QtCore.Qt.UserRole).toPyObject()
+        notary_scroll = QtGui.QScrollArea()
+        notary_view = notaryViewTab(data_obj)
+        notary_scroll.setWidget(notary_view)
+        self.tabMenu.addTab(notary_scroll, data_obj.get()['name'])
     ##
     # Describes what to do when the picture button is clicked
     def set_picture(self):

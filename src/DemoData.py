@@ -44,7 +44,7 @@ class DemoData(object):
         merch_dict['nickname'] = "DanuelGinobli"
         merch_dict['bitcoinReceivingAddress'] = "19PhnZCxayeitE3D3SjWWJ3QbN9UEU2mMV"
         merch_dict['storeDescription'] = "The best computer wholesaler on the OpenBazaar"
-        merch_dict['myListings'] = identity.RicardianContract(listing_dict, merch_dict, guid, pub_key_armor)
+        merch_dict['myListings'] = [identity.RicardianContract(listing_dict, merch_dict, guid, pub_key_armor)]
         merch_dict['avatar'] = ImageStorage(DemoDataStrings.danny_profile)
 
         self.merchant_data.append(identity.Merchant(merch_dict))
