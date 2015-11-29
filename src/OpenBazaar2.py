@@ -275,7 +275,7 @@ class OpenBazaar2(QtGui.QMainWindow):
         # Create a blank store tab
         #
         self.store_scroll = QtGui.QScrollArea()
-        self.exampleStoreTab = storeTab2(self.id_module.get_my_contracts())
+        self.exampleStoreTab = storeTab2(self.id_module.merchant_repr())
         self.store_scroll.setWidget(self.exampleStoreTab)
         self.tabMenu.addTab(self.store_scroll, "My Store")
 

@@ -79,6 +79,27 @@ class Identity(object):
 
         return matching_contracts
 
+    ##
+    # This method returns the Merchant representation of this node
+    def merchant_repr(self):
+        ##
+        # Pull public data out of module
+        settings = self.get_settings()
+        wanted_info = ['guid',
+                       'pubkey',
+                       'email',
+                       'bitcoinReceivingAddress',
+                       'storeDescription',
+                       'myListings',
+                       'nickname',
+                       'avatar']
+        info_dict = dict([(i, settings[i]) for i in wanted_info if i in settings])
+
+        ##
+        # Add my current listings to Merchant representation
+        info_dict['myListings'] = self.settings.contracts.get_my_contracts()
+
+        return Merchant(info_dict)
 
     ##
     # Load identity module from default location
@@ -200,8 +221,14 @@ class Contracts(object):
     ##
     # Initializes this node's Contract module
     def __init__(self):
-        self.expiredContracts = []
-        self.onGoingContracts = []
+        self.expiredContracts = list()
+        self.onGoingContracts = list()
+        self.my_contracts = list()
+
+    ##
+    # Returns listings created by the user
+    def get_my_contracts(self):
+        return self.my_contracts
 
     ##
     # Returns a list of expired contracts
@@ -231,6 +258,39 @@ class Contracts(object):
 
         return found
 
+##
+# This class contains the representation of a merchant known to a node on the network
+class Merchant(object):
+    def __init__(self, info_dict):
+        self.guid = info_dict['guid']
+        self.key = info_dict['pubkey']
+        self.bitcoin_address = info_dict['bitcoinReceivingAddress']
+        self.current_listings = info_dict['myListings']
+        self.email = info_dict['email']
+        self.store_description = info_dict['storeDescription']
+        self.name = info_dict['nickname']
+        self.avatar = info_dict['avatar']
+
+    def get_guid(self):
+        return self.guid
+
+    def get_key(self):
+        return self.key
+
+    def get_bitcoin_address(self):
+        return self.bitcoin_address
+
+    def get_email(self):
+        return self.email
+
+    def get_description(self):
+        return self.store_description
+
+    def get_name(self):
+        return self.name
+
+    def get_avatar(self):
+        return self.avatar
 
 ##
 # Contains strings needed by identity
