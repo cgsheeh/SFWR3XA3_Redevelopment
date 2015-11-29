@@ -265,13 +265,13 @@ class InitializationModTests(unittest.TestCase):
     ##
     # This method tests the initialize_bazaar method
     def test_initialize_Bazaar(self):
-        self.assertTrue(os.path.isfile('identity/identity.p'))
-        self.assertTrue(os.path.isfile('identity/pubring.gpg'))
-        self.assertTrue(os.path.isfile('identity/random_seed'))
-        self.assertTrue(os.path.isfile('identity/secring.gpg'))
-        self.assertTrue(os.path.isfile('identity/trustdb.gpg'))
+        self.assertTrue(os.path.isfile('identity/id_safe'), "Initialize_Bazaar does not create encrypted id module")
+        self.assertTrue(os.path.isfile('identity/pubring.gpg'), "initialize_bazaar does not create pubkey")
+        self.assertTrue(os.path.isfile('identity/random_seed'), "initialize_bazaar does not create random_seed")
+        self.assertTrue(os.path.isfile('identity/secring.gpg'), "initialize_bazaar does not create private key")
+        self.assertTrue(os.path.isfile('identity/trustdb.gpg'), "initialize_bazaar does not create trust database")
 
-        self.assertTrue(os.path.isfile('node/node.p'))
+        self.assertTrue(os.path.isfile('node/node.p'), "initialize_bazaar does not create node.p file")
 
     ##
     # This method tests the gen_keys_test method

@@ -75,7 +75,7 @@ class Identity(object):
     def search(self, keywords):
         matching_contracts = list()
         for word in keywords:
-            matching_contracts += self.settings.contracts.find_local_keyword(keywords)
+            matching_contracts += self.settings.contracts.find_local_keyword(word)
 
         return matching_contracts
 

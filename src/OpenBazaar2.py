@@ -41,10 +41,22 @@ class OpenBazaar2(QtGui.QMainWindow):
 
 
         ##
-        # Create data modules
-        #     TODO Create node module and make it work
+        # Create data modules (ie Identity module)
         #
         self.id_module = Identity.Identity.get_id_mod()
+
+        ##
+        # Do initial draw of GUI. Can call this function to redraw at any time
+        #
+        self.redraw(0)
+
+        ##
+        # Set current tab to Welcome screen
+        self.tabMenu.setCurrentIndex(0)
+
+        self.show()
+
+    def redraw(self, tab_index):
         settings = self.id_module.get_settings()
 
         #self.node = pickle.load(open(Node.OBNodeStrings.obnode_pickle, 'rb'))
@@ -85,13 +97,7 @@ class OpenBazaar2(QtGui.QMainWindow):
         ##
         # Add display picture for user
         #
-        try:
-            if settings['avatar'] is not None:
-                self.displayPicture_p = QtGui.QIcon(settings['avatar'].get_repr().toqpixmap())
-            else:
-                raise Exception
-        except:
-            self.displayPicture_p = QtGui.QIcon(QtGui.QPixmap(_fromUtf8(OBStrings.avatar_default)))
+        self.displayPicture_p = QtGui.QIcon(settings['avatar'].get_repr().toqpixmap())
         self.displayPicture_b = QtGui.QPushButton(self.centralwidget)
         self.displayPicture_b.setFlat(True)
         self.displayPicture_b.setIcon(self.displayPicture_p)
@@ -146,6 +152,7 @@ class OpenBazaar2(QtGui.QMainWindow):
 
         ##
         # Add list of notaries and fill with data from notary module
+        #
         self.myNotariesList = QtGui.QListWidget(self.centralwidget)
         self.myNotariesList.setObjectName(_fromUtf8("myNotariesList"))
 
@@ -274,10 +281,10 @@ class OpenBazaar2(QtGui.QMainWindow):
         ##
         # Create a blank store tab
         #
-        self.store_scroll = QtGui.QScrollArea()
-        self.exampleStoreTab = storeTab2(self.id_module.merchant_repr())
-        self.store_scroll.setWidget(self.exampleStoreTab)
-        self.tabMenu.addTab(self.store_scroll, "My Store")
+        self.my_store_scroll = QtGui.QScrollArea()
+        self.myStoreTab = storeTab2(self.id_module.merchant_repr())
+        self.my_store_scroll.setWidget(self.myStoreTab)
+        self.tabMenu.addTab(self.my_store_scroll, "My Store")
 
         ##
         # Create a "My orders" tab
@@ -451,11 +458,7 @@ class OpenBazaar2(QtGui.QMainWindow):
         self.actionGet_Help_Online.setText(_translate("OpenBazaar", "Get Help Online", None))
         self.actionUser_Guide.setText(_translate("OpenBazaar", "User Guide", None))
 
-        ##
-        # Set current tab to Welcome screen
-        self.tabMenu.setCurrentIndex(0)
-
-        self.show()
+        self.tabMenu.setCurrentIndex(tab_index)
 
     ##
     # Describes what to do when the picture button is clicked
@@ -478,10 +481,16 @@ class OpenBazaar2(QtGui.QMainWindow):
                 self.displayPicture_p = QtGui.QIcon(av_image.toqpixmap())
                 self.displayPicture_b.setIcon(self.displayPicture_p)
 
+
                 ##
                 # Set user settings to the new avatar location
                 sett['avatar'] = avatar_image_storage
                 self.id_module.set_settings(sett)
+
+                ##
+                # Redraw store view
+                self.myStoreTab = storeTab2(self.id_module.merchant_repr())
+                self.my_store_scroll.setWidget(self.myStoreTab)
         except Exception as e:
             ##
             # Catch some exceptions that could occur (not pixmap compatible, etc)
@@ -491,14 +500,21 @@ class OpenBazaar2(QtGui.QMainWindow):
     # Defines action to be taken when search button is clicked
     def search_clicked(self):
         # Get the text in the search bar and split into words
-        search_text = self.searchBarText.text()
+        search_text = str(self.searchBarText.text())
         keywords = search_text.split(' ')
 
         # Remove trailing punctuation that could hinder search results
         for count, word in enumerate(keywords):
             keywords[count] = str(word).rstrip('?:!.,;')
 
+        ##
+        # Compile list of search results. Draw widget and add to tab menu
         search_results = self.id_module.search(keywords)
+        search_scroll = QtGui.QScrollArea()
+        search_tab = SearchResultsWidget(search_text, search_results)
+        search_scroll.setWidget(search_tab)
+        self.tabMenu.addTab(search_scroll, "Search Results")
+
 
 ##
 # Holds string values for the OpenBazaar2 class

@@ -541,6 +541,7 @@ class Settings_Ui2(QtGui.QWidget):
         ret['myMerchants'] = ""
         ret['isNotary'] = ""
         self.window().id_module.set_settings(ret)
+        self.window().redraw(self.window().tabMenu.currentIndex())
 
 ##
 # This class contains the UI for the "Send a message" tab
@@ -660,7 +661,6 @@ class Ui_OrdersMenu(object):
 # ContractGenUi2
 #     This class holds the UI for the contract generator
 class ContractGenUi2(QtGui.QWidget):
-
 
     ##
     # Constructor
@@ -1079,3 +1079,55 @@ class bootStrap_Tab(QtGui.QWidget):
     # Attempts to bootstrap the node module to the network using the fields in the tab
     def initiate_bootstrap(self):
         self.window().node.attempt_bootstrap(str(self.ip_lineEdit.text()), int(self.port_lineEdit.text()))
+
+##
+# This class is a view for the results of an OpenBazaar search
+class SearchResultsWidget(QtGui.QWidget):
+    def __init__(self, search, list_of_contracts):
+        super(SearchResultsWidget, self).__init__()
+
+        ##
+        # Save the list of contracts, so when one is selected we can draw the contract
+        # view using it's data
+        self.contracts_found = list_of_contracts
+
+        self.setObjectName(_fromUtf8("search_results_widget"))
+        self.resize(748, 568)
+        self.verticalLayoutWidget = QtGui.QWidget(self)
+        self.verticalLayoutWidget.setGeometry(QtCore.QRect(-1, -1, 751, 571))
+        self.verticalLayoutWidget.setObjectName(_fromUtf8("verticalLayoutWidget"))
+        self.verticalLayout = QtGui.QVBoxLayout(self.verticalLayoutWidget)
+        self.verticalLayout.setMargin(0)
+        self.verticalLayout.setObjectName(_fromUtf8("verticalLayout"))
+        self.search_results_label = QtGui.QLabel(self.verticalLayoutWidget)
+        self.search_query_label = QtGui.QLabel(self.verticalLayoutWidget)
+        header_font = QtGui.QFont()
+        header_font.setFamily(_fromUtf8("Latin Modern Sans"))
+        header_font.setPointSize(36)
+        self.search_query_label.setFont(header_font)
+        header_font.setUnderline(True)
+        self.search_results_label.setFont(header_font)
+        self.search_results_label.setObjectName(_fromUtf8("search_results_label"))
+        self.verticalLayout.addWidget(self.search_results_label)
+        self.verticalLayout.addWidget(self.search_query_label)
+        self.results_list = QtGui.QListWidget(self.verticalLayoutWidget)
+        self.results_list.setObjectName(_fromUtf8("results_list"))
+
+
+        ##
+        # Add all search results to the list
+        #
+        item_font = QtGui.QFont()
+        item_font.setPointSize(16)
+        for contract in self.contracts_found:
+            item = QtGui.QListWidgetItem()
+            item.setFont(item_font)
+            item.setText(contract.get_itemname())
+            self.results_list.addItem(item)
+
+        self.verticalLayout.addWidget(self.results_list)
+
+        self.setWindowTitle(_translate("search_results_widget", "Search Results", None))
+        self.search_results_label.setText(_translate("search_results_widget", "Search Results", None))
+        self.search_query_label.setText(_translate("search_results_widget", "Queried: " + search, None))
+        self.results_list.setSortingEnabled(False)
