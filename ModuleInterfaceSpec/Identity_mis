@@ -1,0 +1,264 @@
+Help on module identity.Identity in identity:
+
+NAME
+    identity.Identity
+
+FILE
+    /home/connor/OpenBazaar_Redevelopment/openbazaar-redevelopment/src/identity/Identity.py
+
+CLASSES
+    __builtin__.object
+        Contracts
+        Identity
+        IdentityStrings
+        Merchant
+        Notary
+        Settings
+        Store
+    
+    class Contracts(__builtin__.object)
+     |  ##
+     |  # Holds all data relevant to contracts
+     |  
+     |  Methods defined here:
+     |  
+     |  __init__(self)
+     |      ##
+     |      # Initializes this node's Contract module
+     |  
+     |  addContract(self, contract)
+     |      ##
+     |      # Adds a new ongoing contract
+     |      #     @param contract: RicardianContract object to be added to local contract cache
+     |  
+     |  find_local_keyword(self, keyword)
+     |      ##
+     |      # Searches locally stored contracts for the keyword specified
+     |      #     @param keyword: keyword to search for within local contracts
+     |      #     @return: list of RicardianContract instances containing the specified keyword
+     |  
+     |  getExpiredContracts(self)
+     |      ##
+     |      # Returns a list of expired contracts
+     |  
+     |  getOnGoingContracts(self)
+     |      ##
+     |      # Returns a list of ongoing user contracts
+     |  
+     |  get_my_contracts(self)
+     |      ##
+     |      # Returns listings created by the user
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors defined here:
+     |  
+     |  __dict__
+     |      dictionary for instance variables (if defined)
+     |  
+     |  __weakref__
+     |      list of weak references to the object (if defined)
+    
+    class Identity(__builtin__.object)
+     |  ##
+     |  # This class holds all the data related to a user identity,
+     |  # including all submodule decompositions (settings, notary, store, contract)
+     |  
+     |  Methods defined here:
+     |  
+     |  __init__(self, guid, pubkey, privkey, gpg_obj)
+     |      ##
+     |      # Initializes the identity module
+     |      #     @param guid: OpenBazaar GUID
+     |      #     @param pubkey: GPG public key
+     |      #     @param privkey: GPG private key
+     |      #     @param gpg_obj: gnupg.GPG object
+     |  
+     |  get_my_contracts(self)
+     |      ##
+     |      # Returns contracts created by the user
+     |  
+     |  get_settings(self)
+     |      ##
+     |      # Returns all identity data as a dictionary
+     |  
+     |  merchant_repr(self)
+     |      ##
+     |      # This method returns the Merchant representation of this node
+     |  
+     |  new_contract(self, contract_dict)
+     |      ##
+     |      # Adds new contract data to the respective nodes
+     |      #     @param contract_dict: dict representation of the Ricardian Contract
+     |  
+     |  save(self)
+     |      ##
+     |      # Save current object configuration to pickle file
+     |  
+     |  search(self, keywords)
+     |      ##
+     |      # Searches for contracts with the specified keyword
+     |      #     @param keywords: list of keywords to search for
+     |      #     @return: list of contracts matching keywords
+     |  
+     |  set_settings(self, settings_dict)
+     |      ##
+     |      # Updates local settings to be saved to the identity pickle file
+     |      #     @param settings_dict: dictionary of settings to be saved to the state
+     |  
+     |  ----------------------------------------------------------------------
+     |  Static methods defined here:
+     |  
+     |  get_id_mod()
+     |      ##
+     |      # Load identity module from default location
+     |      #     @return: identity module created from encrypted file
+     |  
+     |  is_init()
+     |      ##
+     |      # Returns true if identity has already been initialized
+     |      #     @return: does the encrypted identity file exist
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors defined here:
+     |  
+     |  __dict__
+     |      dictionary for instance variables (if defined)
+     |  
+     |  __weakref__
+     |      list of weak references to the object (if defined)
+    
+    class IdentityStrings(__builtin__.object)
+     |  ##
+     |  # Contains strings needed by identity
+     |  
+     |  Data descriptors defined here:
+     |  
+     |  __dict__
+     |      dictionary for instance variables (if defined)
+     |  
+     |  __weakref__
+     |      list of weak references to the object (if defined)
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data and other attributes defined here:
+     |  
+     |  identity_avatar = 'identity/images/default-avatar.png'
+     |  
+     |  identity_encrypted = 'identity/id_safe'
+     |  
+     |  identity_pickle = 'identity/identity.p'
+    
+    class Merchant(__builtin__.object)
+     |  ##
+     |  # This class contains the representation of a merchant known to a node on the network
+     |  
+     |  Methods defined here:
+     |  
+     |  __init__(self, info_dict)
+     |  
+     |  get_avatar(self)
+     |  
+     |  get_bitcoin_address(self)
+     |  
+     |  get_description(self)
+     |  
+     |  get_email(self)
+     |  
+     |  get_guid(self)
+     |  
+     |  get_key(self)
+     |  
+     |  get_name(self)
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors defined here:
+     |  
+     |  __dict__
+     |      dictionary for instance variables (if defined)
+     |  
+     |  __weakref__
+     |      list of weak references to the object (if defined)
+    
+    class Notary(__builtin__.object)
+     |  ##
+     |  # Holds all data relevant to notaries
+     |  
+     |  Methods defined here:
+     |  
+     |  __init__(self)
+     |      ##
+     |      # Initializes the Notary module
+     |  
+     |  get(self)
+     |      ##
+     |      # Returns information about notaries
+     |  
+     |  set(self, settings_dict)
+     |      ##
+     |      # Sets local user notary settings
+     |      #     @param settings_dict: dictionary of settings
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors defined here:
+     |  
+     |  __dict__
+     |      dictionary for instance variables (if defined)
+     |  
+     |  __weakref__
+     |      list of weak references to the object (if defined)
+    
+    class Settings(__builtin__.object)
+     |  ##
+     |  # Settings module
+     |  #     Holds all data related to user settings
+     |  #     @field store: a Store object which holds data about this node's store, as well as all stores known to the node
+     |  #     @field notary: a Notary object holding data about known notaries
+     |  #     @field contracts: a Contracts object holding data about known contracts
+     |  
+     |  Methods defined here:
+     |  
+     |  __init__(self)
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors defined here:
+     |  
+     |  __dict__
+     |      dictionary for instance variables (if defined)
+     |  
+     |  __weakref__
+     |      list of weak references to the object (if defined)
+    
+    class Store(__builtin__.object)
+     |  ##
+     |  # Holds all data relevant to stores
+     |  
+     |  Methods defined here:
+     |  
+     |  __init__(self)
+     |      ##
+     |      # Initializes this node's Store module with default data/settings
+     |  
+     |  addMerchant(self, merchant)
+     |      ##
+     |      # Adds a merchant to the list of merchants
+     |      #     @param merchant: merchant to be added
+     |  
+     |  get(self)
+     |      ##
+     |      # Returns a dictionary of local user settings
+     |  
+     |  set(self, sett_dict)
+     |      ##
+     |      # Sets the merchant settings specified in dict
+     |      #     @param sett_dict: dictionary of settings related to this module
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors defined here:
+     |  
+     |  __dict__
+     |      dictionary for instance variables (if defined)
+     |  
+     |  __weakref__
+     |      list of weak references to the object (if defined)
+
+

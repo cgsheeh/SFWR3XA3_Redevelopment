@@ -1,0 +1,56 @@
+Help on module InitializationMod:
+
+NAME
+    InitializationMod
+
+FILE
+    /home/connor/OpenBazaar_Redevelopment/openbazaar-redevelopment/src/InitializationMod.py
+
+CLASSES
+    __builtin__.object
+        BazaarInit
+    
+    class BazaarInit(__builtin__.object)
+     |  ##
+     |  # This class holds the procedure to set up OpenBazaar on first run.
+     |  
+     |  Static methods defined here:
+     |  
+     |  create_GUID(signed_pubkey)
+     |      ##
+     |      # Creates a new GUID from the signed pubkey
+     |      #     @param signed_pubkey: signed GPG public key
+     |      #     @return: new GUID for OpenBazaar
+     |  
+     |  gen_keys(gpg_path)
+     |      ##
+     |      # Generates GPG keys
+     |      #     @param gpg_path: path to GPG on the local system
+     |      #     @return: gnupg.GPG object
+     |  
+     |  initialize_Bazaar(port)
+     |      ##
+     |      # Initializes the OpenBazaar
+     |      #     @param port: port to open the node on
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors defined here:
+     |  
+     |  __dict__
+     |      dictionary for instance variables (if defined)
+     |  
+     |  __weakref__
+     |      list of weak references to the object (if defined)
+
+FUNCTIONS
+    which(program)
+        ##
+        # If program does not exist as a callable on the OS, return None
+
+DATA
+    __author__ = 'connor'
+
+AUTHOR
+    connor
+
+

@@ -1,0 +1,155 @@
+Help on module node.Node in node:
+
+NAME
+    node.Node
+
+FILE
+    /home/connor/OpenBazaar_Redevelopment/openbazaar-redevelopment/src/node/Node.py
+
+CLASSES
+    __builtin__.object
+        OBNodeStrings
+    kademlia.network.Server(__builtin__.object)
+        OBNode
+    
+    class OBNode(kademlia.network.Server)
+     |  ##
+     |  # OBNode2
+     |  #     This class implements the information held by a node on the OB network
+     |  
+     |  Method resolution order:
+     |      OBNode
+     |      kademlia.network.Server
+     |      __builtin__.object
+     |  
+     |  Methods defined here:
+     |  
+     |  __init__(self, guid, port)
+     |      ##
+     |      # Constructor
+     |      #     Initializes the OBNode
+     |      #     @param guid: 160 bit guid for the node
+     |      #     @param port: port for the server to listen on
+     |  
+     |  attempt_bootstrap(self, ip, port)
+     |      ##
+     |      # Attempt to bootstrap the application to the network
+     |      #     @param ip: ip to attempt to bootstrap with
+     |      #     @param port: port to connect to on ip
+     |  
+     |  bootstrap_done(self, *args, **kwargs)
+     |      ##
+     |      # Callback method for bootstrap calls
+     |  
+     |  listen_on_here(self, port)
+     |      ##
+     |      # Sets the node to list on the specified port.
+     |      # If the port is already in use, increment by 1 and try that port.
+     |      # This process continues until a successful port is found.
+     |      #     @param port: the port to listen on
+     |  
+     |  saveState(self)
+     |      ##
+     |      # Saves the node state
+     |      # Override from Server
+     |  
+     |  search_keywords(self, keywords)
+     |      ##
+     |      # Searches the network for the requested keyword
+     |      #     @param keywords: list of keywords to query the network for
+     |      #     @return:
+     |  
+     |  start_node(self, port)
+     |      ##
+     |      # Start the Kademlia node from the saved state
+     |  
+     |  ----------------------------------------------------------------------
+     |  Methods inherited from kademlia.network.Server:
+     |  
+     |  bootstrap(self, addrs)
+     |      Bootstrap the server by connecting to other known nodes in the network.
+     |      
+     |      Args:
+     |          addrs: A `list` of (ip, port) `tuple` pairs.  Note that only IP addresses
+     |                 are acceptable - hostnames will cause an error.
+     |  
+     |  bootstrappableNeighbors(self)
+     |      Get a :class:`list` of (ip, port) :class:`tuple` pairs suitable for use as an argument
+     |      to the bootstrap method.
+     |      
+     |      The server should have been bootstrapped
+     |      already - this is just a utility for getting some neighbors and then
+     |      storing them if this server is going down for a while.  When it comes
+     |      back up, the list of nodes can be used to bootstrap.
+     |  
+     |  get(self, key)
+     |      Get a key if the network has it.
+     |      
+     |      Returns:
+     |          :class:`None` if not found, the value otherwise.
+     |  
+     |  inetVisibleIP(self)
+     |      Get the internet visible IP's of this node as other nodes see it.
+     |      
+     |      Returns:
+     |          A `list` of IP's.  If no one can be contacted, then the `list` will be empty.
+     |  
+     |  listen(self, port)
+     |      Start listening on the given port.
+     |      
+     |      This is the same as calling::
+     |      
+     |          reactor.listenUDP(port, server.protocol)
+     |  
+     |  refreshTable(self)
+     |      Refresh buckets that haven't had any lookups in the last hour
+     |      (per section 2.3 of the paper).
+     |  
+     |  saveStateRegularly(self, fname, frequency=600)
+     |      Save the state of node with a given regularity to the given
+     |      filename.
+     |      
+     |      Args:
+     |          fname: File name to save retularly to
+     |          frequencey: Frequency in seconds that the state should be saved.
+     |                      By default, 10 minutes.
+     |  
+     |  set(self, key, value)
+     |      Set the given key to the given value in the network.
+     |  
+     |  ----------------------------------------------------------------------
+     |  Class methods inherited from kademlia.network.Server:
+     |  
+     |  loadState(self, fname) from __builtin__.type
+     |      Load the state of this node (the alpha/ksize/id/immediate neighbors)
+     |      from a cache file with the given fname.
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors inherited from kademlia.network.Server:
+     |  
+     |  __dict__
+     |      dictionary for instance variables (if defined)
+     |  
+     |  __weakref__
+     |      list of weak references to the object (if defined)
+    
+    class OBNodeStrings(__builtin__.object)
+     |  Data descriptors defined here:
+     |  
+     |  __dict__
+     |      dictionary for instance variables (if defined)
+     |  
+     |  __weakref__
+     |      list of weak references to the object (if defined)
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data and other attributes defined here:
+     |  
+     |  knode_pickle = 'node/knode.p'
+     |  
+     |  obnode_pickle = 'node/node.p'
+
+DATA
+    reactor = <twisted.internet.epollreactor.EPollReactor object>
+
+
