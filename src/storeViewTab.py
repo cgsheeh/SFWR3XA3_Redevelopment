@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'storeView.ui'
 #
-# Created: Sat Nov 28 18:02:22 2015
+# Created: Sat Nov 28 20:01:11 2015
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -13,7 +13,7 @@ try:
     _fromUtf8 = QtCore.QString.fromUtf8
 except AttributeError:
     def _fromUtf8(s):
-        return s   
+        return s
 
 try:
     _encoding = QtGui.QApplication.UnicodeUTF8
@@ -26,16 +26,16 @@ except AttributeError:
 class Ui_Form(object):
     def setupUi(self, Form):
         Form.setObjectName(_fromUtf8("Form"))
-        Form.resize(1038, 649)
+        Form.resize(1038, 686)
         self.label_11 = QtGui.QLabel(Form)
         self.label_11.setGeometry(QtCore.QRect(540, 6, 231, 211))
         self.label_11.setText(_fromUtf8(""))
         self.label_11.setObjectName(_fromUtf8("label_11"))
         self.label_12 = QtGui.QLabel(Form)
-        self.label_12.setGeometry(QtCore.QRect(0, 340, 111, 17))
+        self.label_12.setGeometry(QtCore.QRect(0, 460, 111, 17))
         self.label_12.setObjectName(_fromUtf8("label_12"))
         self.contractTable = QtGui.QTableWidget(Form)
-        self.contractTable.setGeometry(QtCore.QRect(0, 370, 1031, 251))
+        self.contractTable.setGeometry(QtCore.QRect(0, 480, 1031, 201))
         self.contractTable.setObjectName(_fromUtf8("contractTable"))
         self.contractTable.setColumnCount(3)
         self.contractTable.setRowCount(2)
@@ -50,7 +50,7 @@ class Ui_Form(object):
         item = QtGui.QTableWidgetItem()
         self.contractTable.setHorizontalHeaderItem(2, item)
         self.gridLayoutWidget = QtGui.QWidget(Form)
-        self.gridLayoutWidget.setGeometry(QtCore.QRect(0, 10, 771, 301))
+        self.gridLayoutWidget.setGeometry(QtCore.QRect(0, 10, 771, 406))
         self.gridLayoutWidget.setObjectName(_fromUtf8("gridLayoutWidget"))
         self.gridLayout = QtGui.QGridLayout(self.gridLayoutWidget)
         self.gridLayout.setMargin(0)
@@ -102,6 +102,13 @@ class Ui_Form(object):
         self.label_5 = QtGui.QLabel(self.gridLayoutWidget)
         self.label_5.setObjectName(_fromUtf8("label_5"))
         self.gridLayout.addWidget(self.label_5, 4, 0, 1, 1)
+        self.storeDescription = QtGui.QTextEdit(self.gridLayoutWidget)
+        self.storeDescription.setLineWrapMode(QtGui.QTextEdit.NoWrap)
+        self.storeDescription.setObjectName(_fromUtf8("storeDescription"))
+        self.gridLayout.addWidget(self.storeDescription, 5, 1, 1, 1)
+        self.label_6 = QtGui.QLabel(self.gridLayoutWidget)
+        self.label_6.setObjectName(_fromUtf8("label_6"))
+        self.gridLayout.addWidget(self.label_6, 5, 0, 1, 1)
         self.label_8 = QtGui.QLabel(Form)
         self.label_8.setGeometry(QtCore.QRect(800, 20, 221, 211))
         self.label_8.setText(_fromUtf8(""))
@@ -143,6 +150,7 @@ class Ui_Form(object):
         self.label_3.setText(_translate("Form", "GUID:", None))
         self.label_2.setText(_translate("Form", "User Email:", None))
         self.label_5.setText(_translate("Form", "Bitcoin Receiving Address:", None))
+        self.label_6.setText(_translate("Form", "Store Description", None))
 
 
 if __name__ == "__main__":
