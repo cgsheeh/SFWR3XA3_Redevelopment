@@ -62,6 +62,7 @@ class DemoData(object):
         notary_dict['bitcoinReceivingAddress'] = "19PhnZCxayeitE3D3SjWWJ3QbN9UEU2mMV"
         notary_dict['email'] = "mandeldr@mcmaster.ca"
         notary_dict['description'] = "Standard notarization services, great service, fair prices!"
+        notary_dict['avatar'] = ImageStorage(DemoDataStrings.danny_profile)
 
         #now set the notary settings
         self.notary_data.append(identity.NotaryRepresentation(notary_dict))

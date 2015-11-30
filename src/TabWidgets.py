@@ -1086,7 +1086,7 @@ class notaryViewTab(QtGui.QWidget):
     # Constructor
     # Creates the Notary View Tab
 
-    def __init__(self):
+    def __init__(self, notary_repr):
         super(notaryViewTab, self).__init__()
         self.setObjectName(_fromUtf8("Form"))
         self.resize(941, 527)
@@ -1195,6 +1195,16 @@ class notaryViewTab(QtGui.QWidget):
         self.label_5.setText(_translate("Form", "Bitcoin Receiving Address:", None))
         self.label_2.setText(_translate("Form", "User Email:", None))
         self.label_9.setText(_translate("Form", "Description", None))
+
+        self.bitcoinReceivingAddress.setText(notary_repr['bitcoinReceivingAddress'])
+        self.avatar.setPixmap(notary_repr['avatar'].get_repr().toqpixmap())
+        self.description.setText(notary_repr['description'])
+        self.fee.setText(notary_repr['fee'])
+        self.GUID.setText(notary_repr['guid'])
+        self.storeEmail.setText(notary_repr['email'])
+        self.publicKey.setText(notary_repr['pubkey'])
+        self.storeName.setText(notary_repr['name'])
+
 ##
 # bootStrap_Tab
 #     This class holds the UI for the bootstrap tab
