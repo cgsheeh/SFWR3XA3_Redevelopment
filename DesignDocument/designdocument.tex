@@ -17,7 +17,7 @@
 
 \begin{document}
 
-\title{OpenBazaar Redevelopment - Design Document}
+\title{OpenBazaar Redevelopment - Module Guide}
 \author{The Fair Traders \\ Daniel Mandel - mandeldr \\ Shandelle Murray - murras25 \\ Connor Sheehan - sheehacg}
 \date{\today}
 \maketitle
@@ -334,128 +334,6 @@ Initialization Module
 \subsection*{Description}
 The OpenBazaar modules are broken up into logical components, abstracting away portions of the application that do not depend on one another. The first logical decomposition of the application is to abstract the details of the graphical user interface from the details of the data implementation. Each of these respective components will run as its own thread in the application environment. The data implementation can then be manipulated and accessed by the user via interaction with the GUI. An additional connector module may need to be implemented to expose an interface for the GUI to interact with that submits and returns data for graphical display to the user.
 
-\iffalse
-
-*****THIS IS A ROUGH DRAFT OF THE MIS AND SHOULD NOT APPEAR IN THE DOCUMENT!!!!!!!!!!*****
-
-Settings Module 
-
-    GetSettings(self) 
-
-        Returns all user settings in a JSON format 
-
-    SetSettings(self, json_str) 
-
-        Sets users settings to values specified in str 
-
-     
-
-     
-
-Algorithms Module 
-
-    GenerateKeys() 
-
-        Returns a 2-tuple containing a public and private gpg key pair 
-
-    SHA256(in) 
-
-        Returns the SHA256 hash of the input data 
-
-    RIPEMD160(in) 
-
-        Returns the RIPEMD160 hash of the input data 
-
-    Calculate_distance(GUID1, GUID2) 
-
-        Calculates the node-distance between the two GUIDs 
-
- 
-DHT/Routing Table Module 
-
-    Ping(self, nodeInfo) 
-
-        Ping the node specified by nodeinfo to determine if it is alive/online 
-
-    Store(self, nodeInfo) 
-
-        Store the node specified by nodeinfo in a corresponding k-bucket/routing table 
-
-    Find_Node(self, nodeInfo) 
-
-        Sends a request to the network to find nodeInfo 
-
-    Find_Value(self, value) 
-
-        Sends a request to the network to find any occurances of the word value 
-
-     
-
-     
-
-Notary Module 
-
-    Get_all_notaries(self) 
-
-        Returns all notaries known to the node 
-
-    Get_notary(self, notaryInfo) 
-
-        Returns information about the specified notary 
-
-    Add_Notary(self, notaryInfo) 
-
-        Adds the specified notary to the list of known notaries 
-
-     
-
-     
-
-Store Module 
-
-    Get_known_stores(self) 
-
-        Returns all locally stored information about stores known to the node 
-
-    Get_store(self, storeInfo) 
-
-        Returns information about the store specified in storeInfo 
-
-    Add_store(self, storeInfo) 
-
-        Adds the store specified in storeInfo to the list of known stores 
-
-    Find_store(self, storeinfo) 
-
-        Searches the network for store information about the store specified in storeInfo and returns the info 
-
- 
-Initialization Module 
-
-    Initialize(self) 
-
-        Initializes the application, creating all necessary resources to become a valid network node (GPG keypair, GUID, bootstrap procedure) 
-
-     
-
-Active Contract Module 
-
-    Get_all_active(self) 
-
-        Returns information about all contracts which the user is engaged in but have not yet completed. 
-
-    Contract_activated(self, contractInfo) 
-
-        Add information about newly active contract to module 
-
-    Get_contract(self, contractInfo) 
-
-        Get information about a contract in this module 
-
-    Update(self, contractInfo) 
-
-        Update the state of the active contract (ie signed, funds sent, funds received etc.)
-\fi
 
 \addcontentsline{toc}{section}{Traceability Matrix}
 \section*{Traceability Matrix}
