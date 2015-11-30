@@ -67,6 +67,7 @@ class storeTab2(QtGui.QWidget):
         item = QtGui.QTableWidgetItem()
         item.setText("Description")
         self.contractTable.setHorizontalHeaderItem(3, item)
+        self.contractTable.itemClicked.connect(self.contract_clicked)
 
         ##
         # Add listings to table of contracts
@@ -78,6 +79,7 @@ class storeTab2(QtGui.QWidget):
             self.contractTable.setRowCount(count + 1)
             item = QtGui.QTableWidgetItem()
             item.setText(str(listing.contract_hash()))
+            item.setData(QtCore.Qt.UserRole, listing)
             self.contractTable.setVerticalHeaderItem(count, item)
 
             item = QtGui.QTableWidgetItem()
@@ -182,6 +184,18 @@ class storeTab2(QtGui.QWidget):
         self.avatar_label.setPixmap(merchant_representation.get_avatar().get_repr().toqpixmap())
         self.avatar_label.setScaledContents(True)
 
+    ##
+    # This method describes the action to be taken when a contract hash is clicked
+    def contract_clicked(self, item):
+        ##
+        # Try to get contract data from item
+        try:
+            ric_repr = item.data(QtCore.Qt.UserRole).toPyObject()
+        except:
+            print 'exception'
+            return
+
+        self.window().add_tab(contractView_Tab(ric_repr), ric_repr.get_itemname())
 
 
 
@@ -1080,13 +1094,14 @@ class contractView_Tab(QtGui.QWidget):
         self.sellerAvatar.setPixmap(avatar_pm)
         self.sellerAvatar.setScaledContents(True)
 
+##
+# This class holds the view for a notary
 class notaryViewTab(QtGui.QWidget):
 
     ##
     # Constructor
     # Creates the Notary View Tab
-
-    def __init__(self):
+    def __init__(self, notary_repr):
         super(notaryViewTab, self).__init__()
         self.setObjectName(_fromUtf8("Form"))
         self.resize(941, 527)
@@ -1169,9 +1184,6 @@ class notaryViewTab(QtGui.QWidget):
         self.avatar.setText(_fromUtf8(""))
         self.avatar.setObjectName(_fromUtf8("avatar"))
 
-        self.retranslateUi(self)
-        self.QMetaObject.connectSlotsByName(self)
-
         self.setWindowTitle(_translate("Form", "Form", None))
         self.GUID.setHtml(_translate("Form", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
@@ -1195,6 +1207,8 @@ class notaryViewTab(QtGui.QWidget):
         self.label_5.setText(_translate("Form", "Bitcoin Receiving Address:", None))
         self.label_2.setText(_translate("Form", "User Email:", None))
         self.label_9.setText(_translate("Form", "Description", None))
+
+
 ##
 # bootStrap_Tab
 #     This class holds the UI for the bootstrap tab
