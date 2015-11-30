@@ -1072,6 +1072,7 @@ class contractView_Tab(QtGui.QWidget):
         self.itemName.setText(trade['name'])
         self.price.setText(trade['price'])
         self.descriptionTextBrowser.setText(trade['description'])
+        self.keywords.setText(', '.join(trade['keywords']))
         for count, image_store in enumerate(trade['images']):
             if count == 0:
                 self.pictureOne.setPixmap(image_store.get_repr().toqpixmap())
@@ -1098,6 +1099,14 @@ class contractView_Tab(QtGui.QWidget):
         avatar_pm = id['seller']['avatar'].get_repr().toqpixmap()
         self.sellerAvatar.setPixmap(avatar_pm)
         self.sellerAvatar.setScaledContents(True)
+
+        self.purchaseButton.clicked.connect(self.purchase_contract)
+
+    ##
+    # Defines action to be taken when purchaseButton is clicked
+    def purchase_contract(self):
+        #self.window().id_module.
+        pass
 
 ##
 # This class holds the view for a notary
@@ -1302,7 +1311,10 @@ class SearchResultsWidget(QtGui.QWidget):
             item = QtGui.QListWidgetItem()
             item.setFont(item_font)
             item.setText(contract.get_itemname())
+            item.setData(QtCore.Qt.UserRole, contract)
             self.results_list.addItem(item)
+
+        self.results_list.itemClicked.connect(self.result_clicked)
 
         self.verticalLayout.addWidget(self.results_list)
 
@@ -1310,3 +1322,17 @@ class SearchResultsWidget(QtGui.QWidget):
         self.search_results_label.setText(_translate("search_results_widget", "Search Results", None))
         self.search_query_label.setText(_translate("search_results_widget", "Queried: " + search, None))
         self.results_list.setSortingEnabled(False)
+
+    ##
+    # Defines action to be taken on item result click.
+    def result_clicked(self, list_item):
+        ##
+        # Try to get contract data from item
+        try:
+            ric_repr = list_item.data(QtCore.Qt.UserRole).toPyObject()
+        except:
+            print 'exception'
+            return
+        scroll_area = QtGui.QScrollArea()
+        scroll_area.setWidget(contractView_Tab(ric_repr))
+        self.window().add_tab(scroll_area, ric_repr.get_itemname())

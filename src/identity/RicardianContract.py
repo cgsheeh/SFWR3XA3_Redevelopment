@@ -37,8 +37,14 @@ class RicardianContract(object):
         # Add the trade components to the contract
         self.contract['trade'] = dict(price=contract_dict['price'],
                                       name=contract_dict['item_name'],
-                                      keywords=contract_dict['keywords'],
                                       description=contract_dict['description'])
+
+        ##
+        # Convert keywords to a list
+        key_list = contract_dict['keywords'].split(',')
+        for count, key in enumerate(key_list):
+            key_list[count] = key.strip()
+        self.contract['trade']['keywords'] = key_list
 
         ##
         # Convert image from path to pickle-able object

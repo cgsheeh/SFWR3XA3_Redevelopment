@@ -76,6 +76,7 @@ class Identity(object):
         matching_contracts = list()
         for word in keywords:
             matching_contracts += self.settings.contracts.find_local_keyword(word)
+            matching_contracts += self.settings.store.find_local_keyword(word)
 
         return matching_contracts
 
@@ -112,6 +113,11 @@ class Identity(object):
     def new_notary(self, notary_repr):
         self.settings.notary.add_notary(notary_repr)
         self.save()
+
+    ##
+    # Takes another user's RicardianContract and signs it for purchase.
+    def make_purchase(self, desired_contract):
+        pass
 
     ##
     # Load identity module from default location
@@ -198,6 +204,19 @@ class Store(object):
     #     @param merchant: merchant to be added
     def addMerchant(self, merchant):
         self.myMerchants.append(merchant)
+
+    ##
+    # Finds listings from merchants that match the keyword
+    #     @param word: keyword to search for
+    #     @return: list of RicardianContracts that match
+    def find_local_keyword(self, word):
+        matching = []
+        for merchant in self.myMerchants:
+            for listing in merchant.get_listings():
+                if word in listing.get_keywords():
+                    matching.append(listing)
+
+        return matching
 
 ##
 # Holds all data relevant to notaries
