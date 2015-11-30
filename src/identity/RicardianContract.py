@@ -54,7 +54,24 @@ class RicardianContract(object):
 
         ##
         # Add the ledger to the contract
-        self.contract['ledger'] = dict()
+        self.contract['ledger'] = dict(buyer=dict(),
+                                       seller=dict())
+
+
+
+    ##
+    # Sign the contract
+    #     @param seller_gpg: GPG object for the seller
+    def sign(self, seller_gpg):
+        signature = seller_gpg.sign(str(self.contract_hash()))
+        self.contract['ledger']['seller'] = signature
+
+    ##
+    # Sign the contract for purchase
+    #     @param buyer_gpg: GPG object for the buyer
+    def purchase(self, buyer_gpg):
+        signature = buyer_gpg.sign(str(self.contract_hash()))
+        self.contract['ledger']['buyer'] = signature
 
     ##
     # Returns the specified module from this contract instance
@@ -77,5 +94,12 @@ class RicardianContract(object):
     def get_keywords(self):
         return self.get_module('trade')['keywords']
 
+    ##
+    # Returns the itemname for this contract
     def get_itemname(self):
         return self.get_module('trade')['name']
+
+    ##
+    # Returns the seller name
+    def get_sellername(self):
+        return self.get_module('id')['seller']['nickname']

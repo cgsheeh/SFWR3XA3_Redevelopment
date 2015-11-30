@@ -245,22 +245,31 @@ class OpenBazaar2(QtGui.QMainWindow):
         self.recentTransactionsTable = QtGui.QTableWidget(self.centralwidget)
         self.recentTransactionsTable.setObjectName(_fromUtf8("recentTransactionsTable"))
         self.recentTransactionsTable.setColumnCount(2)
-        self.recentTransactionsTable.setRowCount(2)
         item = QtGui.QTableWidgetItem()
-        self.recentTransactionsTable.setVerticalHeaderItem(0, item)
-        item = QtGui.QTableWidgetItem()
-        self.recentTransactionsTable.setVerticalHeaderItem(1, item)
-        item = QtGui.QTableWidgetItem()
+        item.setText("Name")
         self.recentTransactionsTable.setHorizontalHeaderItem(0, item)
+
         item = QtGui.QTableWidgetItem()
+        item.setText("Seller")
         self.recentTransactionsTable.setHorizontalHeaderItem(1, item)
+
+        for count, contract in enumerate(self.id_module.settings.contracts.getOnGoingContracts()):
+            self.recentTransactionsTable.setRowCount(count + 1)
+            item = QtGui.QTableWidgetItem()
+            item.setText(contract.get_itemname())
+            item.setData(QtCore.Qt.UserRole, contract)
+            self.recentTransactionsTable.setItem(count, 0, item)
+
+            item = QtGui.QTableWidgetItem()
+            item.setText(contract.get_sellername())
+            item.setData(QtCore.Qt.UserRole, contract)
+            self.recentTransactionsTable.setItem(count, 1, item)
+
+        self.recentTransactionsTable.itemClicked.connect(self.display_contract)
+
         self.gridLayout.addWidget(self.recentTransactionsTable, 7, 0, 1, 2)
         self.recentTransactionsLabel = QtGui.QLabel(self.centralwidget)
         self.recentTransactionsLabel.setObjectName(_fromUtf8("recentTransactionsLabel"))
-        item = self.recentTransactionsTable.verticalHeaderItem(0)
-        item.setText(_translate("OpenBazaar", "Fake Transaction 1", None))
-        item = self.recentTransactionsTable.verticalHeaderItem(1)
-        item.setText(_translate("OpenBazaar", "Fake Transaction 2", None))
         item = self.recentTransactionsTable.horizontalHeaderItem(0)
         item.setText(_translate("OpenBazaar", "Date", None))
         item = self.recentTransactionsTable.horizontalHeaderItem(1)
@@ -501,13 +510,22 @@ class OpenBazaar2(QtGui.QMainWindow):
         #self.redraw()
 
     ##
+    # Displays the contract in the recent transactions sidebar
+    def display_contract(self, item):
+        contract = item.data(QtCore.Qt.UserRole).toPyObject()
+        contract_scroll = QtGui.QScrollArea()
+        contract_view = contractView_Tab(contract)
+        contract_scroll.setWidget(contract_view)
+        self.tabMenu.addTab(contract_scroll, contract.get_itemname())
+
+    ##
     # Display the notary view for this notary
     def notary_clicked(self, item):
         data_obj = item.data(QtCore.Qt.UserRole).toPyObject()
         notary_scroll = QtGui.QScrollArea()
         notary_view = notaryViewTab(data_obj)
         notary_scroll.setWidget(notary_view)
-        self.tabMenu.addTab(notary_scroll, data_obj.get()['name'])
+        self.add_Tab(notary_scroll, data_obj.get()['name'])
     ##
     # Describes what to do when the picture button is clicked
     def set_picture(self):

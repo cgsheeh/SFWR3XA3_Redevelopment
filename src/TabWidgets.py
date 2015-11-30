@@ -873,8 +873,12 @@ class contractView_Tab(QtGui.QWidget):
     ##
     # Constructor
     # Creates the contract view tab
+    #     @param ricardian_contract: ricardian contract being viewed in the tab
     def __init__(self, ricardian_contract):
         super(contractView_Tab, self).__init__()
+
+        self.contract_obj = ricardian_contract
+
         self.setObjectName(_fromUtf8("Form"))
         self.resize(1199, 744)
         self.gridLayoutWidget = QtGui.QWidget(self)
@@ -1105,8 +1109,8 @@ class contractView_Tab(QtGui.QWidget):
     ##
     # Defines action to be taken when purchaseButton is clicked
     def purchase_contract(self):
-        #self.window().id_module.
-        pass
+        self.window().id_module.make_purchase(self.contract_obj)
+        self.window().redraw()
 
 ##
 # This class holds the view for a notary

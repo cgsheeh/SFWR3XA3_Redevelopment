@@ -42,6 +42,7 @@ class Identity(object):
     #     @param contract_dict: dict representation of the Ricardian Contract
     def new_contract(self, contract_dict):
         contract = RicardianContract(contract_dict, self.settings.store.get(), self.guid, self.pubkey)
+        contract.sign(self.gpg_obj)
         ##
         # Add the contract to the contracts module
         # TODO Add the contract to the node/dht module
@@ -117,7 +118,8 @@ class Identity(object):
     ##
     # Takes another user's RicardianContract and signs it for purchase.
     def make_purchase(self, desired_contract):
-        pass
+        desired_contract.purchase(self.gpg_obj)
+        self.settings.contracts.addContract(desired_contract)
 
     ##
     # Load identity module from default location
