@@ -455,61 +455,105 @@ The interface should be traversable with the tab button, to allow persons with h
 
 \section{Performance Requirements}
 \subsection{Speed and Latency Requirements}
-
+\begin{itemize}
+\item
+The application should be able to locate other nodes on the network within a reasonable time frame such as () seconds.
+\end{itemize}
 
 
 \subsection{Precision or Accuracy Requirements}
-
+\begin{itemize}
+\item
+Prices attached to listings should be precise to the equivalent of no smaller than 1 satoshi which is 0.000 000 01 of a bitcoin.
+\end{itemize}
 
 \subsection{Reliability and Availability Requirements}
+\begin{itemize}
+\item
+The application should be available at all times as long as the user has access to an uncensored internet connection.
+	
+\end{itemize}
 
 
 \subsection{Robustness or Fault-Tolerance Requirements}
-
+\begin{itemize}
+\item
+Data should not be lost by the application once a process has reached a point of completion at any phase (seller has created contract, buyer has made a motion to buy item listed, buyer has agreed that the product has been received, etc).  
+\end{itemize}
 
 \subsection{Capacity Requirements}
-
+\begin{itemize}
+	\item 
+	The peer-to-peer network should support use by millions of peers concurrently. 
+\end{itemize}
 
 \subsection{Scalability or Extensibility Requirements}
+\begin{itemize}
+\item 
 The application will be implemented as an easily scalable network of nodes that run the trade protocol. In the early days of the application the network will have few known nodes, but as more nodes are added the network will be able to expand. 
+\end{itemize}
 
 \subsection{Longevity Requirements}
-
+\begin{itemize}
+	\item 
+	Any listings should be available as long as the node that posted it is online. If the node goes offline and returns online, the information should still be retained and the listing once again available on the network.
+	\item
+	Settings and personalization information should be available each time the node reconnects to the network.
+\end{itemize}
 \section{Operational and Environmental Requirements}
-
+\begin{itemize}
+	\item 
+    The application is currently expected to run on the Linux operating system; however, in the future it will be expected to run on Windows and Mac operating systems as well.
+\end{itemize}
 \subsection{Expected Physical Environment}
-
+\begin{itemize}
+	\item 
+	The application is expected to run at any location in the world where there is a computer that can make an uncensored internet connection.
+\end{itemize}
 
 \subsection{Requirements for Interfacing with Adjacent Systems}
 An Application Programming Interface (API) will be provided publicly for easy integration of stores and listings into existing websites, such as classifieds and personals. This API will be implemented in a common web environment (Javascript, PHP etc) and return HTML5 frames for up-to-date display of data. For example, if the listing is displayed on a personal via the API, when the listing is taken off the network the personal ad should reflect this.
 
 \subsection{Productization Requirements}
-
+\begin{itemize}
+	\item 
+	The application should be easily installable by a person with enough technical knowledge to list or by items/services in an online marketplace.
+\end{itemize}
 
 \subsection{Release Requirements}
-There are few 
+\begin{itemize}
+	\item
+\end{itemize}
 
 \section{Maintainability and Support Requirements}
 
 \subsection{Maintenance Requirements}
-An update system will need to be implemented to ensure that security bugs, vulnerabilities and attack vectors are patched quickly on all network nodes. 
+An update system will need to be implemented to ensure that security bugs, vulnerabilities, and attack vectors are patched quickly on all network nodes. 
 
 \subsection{Supportability Requirements}
 
 
 \subsection{Adaptability Requirements}
 
-
 \section{Security Requirements}
 
 \subsection{Access Requirements}
-
+\begin{itemize}
+	\item 
+	Users should only have access to view and edit items for which they are authorized. For example, a user should not be able to list items in another user's store.   	
+\end{itemize}
 
 \subsection{Integrity Requirements}
-
+\begin{itemize}
+	\item 
+	The application should be secure against unauthorized attempts to alter or fabricate data such as unauthorized attempts to change contract information or attempts to fake network identities.   	
+\end{itemize}
 
 \subsection{Privacy Requirements}
-Users should be permitted to add as much or as little personal information to the application as they would like. All information added by the user should have a privacy setting which ensures the data is not released to any node that does not have permission to view it.
+\begin{itemize}
+	\item 
+	Users should be permitted to add as much or as little personal information to the application as they would like. All information added by the user should have a privacy setting which ensures the data is not released to any node that does not have permission to view it.   	
+\end{itemize}
 
 \subsection{Audit Requirements}
 
@@ -519,8 +563,19 @@ Users should be permitted to add as much or as little personal information to th
 \section{Cultural Requirements}
 \subsection{Cultural Requirements}
 
+\begin{itemize}
+\item
+The application itself should not display any culturally degrading images or phrases. This does not pertain to any information that users are able to input as there are no restrictions in place to control listings or descriptions. 
+
+\item
+The application should eventually be available in all languages with which users may consider their official language.
+\end{itemize}
 
 \section{Legal Requirements}
+\begin{itemize}
+\item
+The application shall accomodate legal intervention that law enforcement deems necessary such as in the case of illegal activity taking place through the network. 
+\end{itemize}
 \subsection{Compliance Requirements}
 
 
