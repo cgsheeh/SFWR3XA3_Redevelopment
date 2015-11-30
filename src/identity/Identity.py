@@ -335,6 +335,7 @@ class NotaryRepresentation(object):
         self.data['bitcoinReceivingAddress'] = settings_dict['bitcoinReceivingAddress']
         self.data['description'] = settings_dict['description']
         self.data['email'] = settings_dict['email']
+        self.data['avatar'] = settings_dict['avatar']
 
 
 

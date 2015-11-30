@@ -189,6 +189,9 @@ class OpenBazaar2(QtGui.QMainWindow):
         #
         self.tabMenu = QtGui.QTabWidget(self.centralwidget)
         self.tabMenu.setObjectName(_fromUtf8("tabMenu"))
+        self.tabMenu.setTabsClosable(True)
+        self.tabMenu.tabCloseRequested.connect(self.close_clicked_tab)
+
         self.tab = QtGui.QWidget()
         self.tab.setObjectName(_fromUtf8("tab"))
 
@@ -473,6 +476,16 @@ class OpenBazaar2(QtGui.QMainWindow):
         self.tabMenu.setCurrentIndex(tab_index)
 
     ##
+    # Action to be taken on tab close
+    #     @param index: index of tab to close
+    def close_clicked_tab(self, index):
+        widget = self.tabMenu.widget(index)
+        if widget is not None:
+            widget.deleteLater()
+
+        self.tabMenu.removeTab(index)
+
+    ##
     # Add a new tab
     def add_tab(self, tab, name):
         self.tabMenu.addTab(tab, name)
@@ -481,7 +494,6 @@ class OpenBazaar2(QtGui.QMainWindow):
     # Display the store view for this store
     def merchant_clicked(self, item):
         data_obj = item.data(QtCore.Qt.UserRole).toPyObject()
-        print type(data_obj)
         merchant_scroll = QtGui.QScrollArea()
         merchant_view = storeTab2(data_obj)
         merchant_scroll.setWidget(merchant_view)

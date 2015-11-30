@@ -84,18 +84,22 @@ class storeTab2(QtGui.QWidget):
 
             item = QtGui.QTableWidgetItem()
             item.setText(trade_info['name'])
+            item.setData(QtCore.Qt.UserRole, listing)
             self.contractTable.setItem(count, 0, item)
 
             item = QtGui.QTableWidgetItem()
             item.setText(trade_info['price'])
+            item.setData(QtCore.Qt.UserRole, listing)
             self.contractTable.setItem(count, 1, item)
 
             item = QtGui.QTableWidgetItem()
             item.setText(metadata['expiry'])
+            item.setData(QtCore.Qt.UserRole, listing)
             self.contractTable.setItem(count, 2, item)
 
             item = QtGui.QTableWidgetItem()
             item.setText(trade_info['description'])
+            item.setData(QtCore.Qt.UserRole, listing)
             self.contractTable.setItem(count, 3, item)
 
         self.gridLayoutWidget = QtGui.QWidget(self)
@@ -194,8 +198,9 @@ class storeTab2(QtGui.QWidget):
         except:
             print 'exception'
             return
-
-        self.window().add_tab(contractView_Tab(ric_repr), ric_repr.get_itemname())
+        scroll_area = QtGui.QScrollArea()
+        scroll_area.setWidget(contractView_Tab(ric_repr))
+        self.window().add_tab(scroll_area, ric_repr.get_itemname())
 
 
 
@@ -1101,7 +1106,7 @@ class notaryViewTab(QtGui.QWidget):
     ##
     # Constructor
     # Creates the Notary View Tab
-    def __init__(self, notary_repr):
+    def __init__(self, notary_repr_obj):
         super(notaryViewTab, self).__init__()
         self.setObjectName(_fromUtf8("Form"))
         self.resize(941, 527)
@@ -1208,6 +1213,16 @@ class notaryViewTab(QtGui.QWidget):
         self.label_2.setText(_translate("Form", "User Email:", None))
         self.label_9.setText(_translate("Form", "Description", None))
 
+        notary_repr = notary_repr_obj.get()
+        self.bitcoinReceivingAddress.setText(notary_repr['bitcoinReceivingAddress'])
+        self.avatar.setPixmap(notary_repr['avatar'].get_repr().toqpixmap())
+        self.avatar.setScaledContents(True)
+        self.description.setText(notary_repr['description'])
+        self.fee.setText(notary_repr['fee'])
+        self.GUID.setText(notary_repr['guid'])
+        self.storeEmail.setText(notary_repr['email'])
+        self.publicKey.setText(notary_repr['pubkey'])
+        self.storeName.setText(notary_repr['name'])
 
 ##
 # bootStrap_Tab

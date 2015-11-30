@@ -72,4 +72,4 @@ class RicardianContract(object):
         return self.get_module('trade')['keywords']
 
     def get_itemname(self):
-        return self.contract.get_module('trade')['name']
+        return self.get_module('trade')['name']
