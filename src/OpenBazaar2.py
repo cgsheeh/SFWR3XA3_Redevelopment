@@ -45,6 +45,9 @@ class OpenBazaar2(QtGui.QMainWindow):
         # Create data modules (ie Identity module)
         #
         self.id_module = Identity.Identity.get_id_mod()
+
+        ##
+        # If the '--load-demo' argument was passed on the command line, load demo data
         try:
             if sys.argv[1] == '--load-demo':
                 demo_data = DemoData()
@@ -61,6 +64,11 @@ class OpenBazaar2(QtGui.QMainWindow):
             pass
 
         ##
+        # This would have been where we create the node module.
+        #self.node = pickle.load(open(Node.OBNodeStrings.obnode_pickle, 'rb'))
+        #self.node.start_node(12345)
+
+        ##
         # Do initial draw of GUI. Can call this function to redraw at any time
         #
         self.redraw()
@@ -71,6 +79,8 @@ class OpenBazaar2(QtGui.QMainWindow):
 
         self.show()
 
+    ##
+    # Redraw command to be called
     def redraw(self):
         try:
             tab_index = self.tabMenu.currentIndex()
@@ -78,8 +88,7 @@ class OpenBazaar2(QtGui.QMainWindow):
             tab_index = 0
         settings = self.id_module.get_settings()
 
-        #self.node = pickle.load(open(Node.OBNodeStrings.obnode_pickle, 'rb'))
-        #self.node.start_node(12345)
+
 
         ##
         # Set main object name
