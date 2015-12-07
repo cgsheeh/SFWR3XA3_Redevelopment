@@ -21,25 +21,24 @@ fi
 # install from apt-get repos
 pyth_loc=$(which python);
 pip_loc=$(which pip);
-
-if [ $pyth_loc = "" ]
+if [ -z $pyth_loc ]
     then
         apt-get install python;
         pyth_loc=$(which python);
-        if [ $pyth_loc = "" ]
+        if [ -z $pyth_loc ]
             then
                 echo "Python could not be installed using apt-get. Install Python 2.7 and try again.";
                 exit;
         fi
 fi
 		
-if [ $pip_loc = "" ]
+if [ -z $pip_loc ]
     then
 		echo "\nBEFORE\n";
         $pyth_loc ./install/get-pip.py;
 		echo "\nAFTER\N";
         pip_loc=$(which pip);
-        if [ $pip_loc = "" ]
+        if [ -z $pip_loc ]
             then
                 echo "pip could not be installed.";
                 exit;
