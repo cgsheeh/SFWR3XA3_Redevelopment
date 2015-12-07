@@ -34,9 +34,7 @@ fi
 		
 if [ -z $pip_loc ]
     then
-		echo "\nBEFORE\n";
         $pyth_loc ./install/get-pip.py;
-		echo "\nAFTER\N";
         pip_loc=$(which pip);
         if [ -z $pip_loc ]
             then
