@@ -23,7 +23,7 @@ pyth_loc=$(which python);
 pip_loc=$(which pip);
 if [ -z $pyth_loc ]
     then
-        apt-get install python;
+        apt-get -y install python;
         pyth_loc=$(which python);
         if [ -z $pyth_loc ]
             then
@@ -48,10 +48,25 @@ fi
 ##
 # Install Python-dev
 # Install PyQt4 (framework for GUI)
-apt-get install python-dev;
-apt-get install python-qt4;
+apt-get -y install python-dev;
+apt-get -y install python-qt4;
 		
-		
+##
+# Install dependencies for Pillow
+apt-get -y install libtiff4-dev;
+apt-get -y install libjpeg8-dev;
+apt-get -y install zlib1g-dev;
+apt-get -y install libfreetype6-dev;
+apt-get -y install liblcms2-dev;
+apt-get -y install libwebp-dev;
+apt-get -y install tcl8.5-dev;
+apt-get -y install tk8.5-dev;
+
+##
+# Install requirements from pip	
 $pip_loc install -r reqs.txt;
+
+
+
 echo "Reqiuirement should now be installed. Run 'python OpenBazaar2.py' to start.";
 exit;

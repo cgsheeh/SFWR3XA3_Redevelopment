@@ -1,4 +1,4 @@
-Pillow
+Pillow==3.0.0
 gnupg
 unittest2
 enum
