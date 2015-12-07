@@ -55,7 +55,6 @@ class OpenBazaar2(QtGui.QMainWindow):
                 merchant_data = demo_data.get_merchant_data()
 
                 for merchant in merchant_data:
-                    print type(merchant)
                     self.id_module.new_merchant(merchant)
 
                 for notary in notary_data:
