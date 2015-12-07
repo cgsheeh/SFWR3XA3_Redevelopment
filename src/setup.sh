@@ -10,9 +10,9 @@
 ##
 # First, check for root
 if [ $(whoami) != "root" ]
-	then
-		echo "ERROR: Please run as root (using sudo or some other means).";
-		exit;
+    then
+        echo "ERROR: Please run as root (using sudo or some other means).";
+        exit;
 fi
 
 
@@ -24,24 +24,26 @@ pip_loc=$(which pip);
 
 if [ $pyth_loc = "" ]
     then
-	    apt-get install python;
+        apt-get install python;
         pyth_loc=$(which python);
-		if [ $pyth_loc = "" ]
+        if [ $pyth_loc = "" ]
             then
-	            echo "Python could not be installed using apt-get. Install Python 2.7 and try again.";
-		        exit;
+                echo "Python could not be installed using apt-get. Install Python 2.7 and try again.";
+                exit;
         fi
 fi
 		
 if [ $pip_loc = "" ]
     then
-	    $pyth_loc install/get-pip.py;
-		pip_loc=$(which pip);
-		if [ $pip_loc = "" ]
-		    then
-			    echo "pip could not be installed.";
-				exit;
-		fi
+		echo "\nBEFORE\n";
+        $pyth_loc ./install/get-pip.py;
+		echo "\nAFTER\N";
+        pip_loc=$(which pip);
+        if [ $pip_loc = "" ]
+            then
+                echo "pip could not be installed.";
+                exit;
+        fi
 fi
 		
 ##
