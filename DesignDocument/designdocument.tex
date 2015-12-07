@@ -36,8 +36,8 @@ This documents outlines design for the OpenBazaar redevelopment project.
 \section*{Revision History}
 
 \begin{table}[h!]
-\centering
-\begin{tabular}{||c c c c||}
+\begin{center}
+\hspace*{-3.5cm}\begin{tabular}{||c c c c||}
  \hline
  Revision Number & Revision Date & Description of Change & Author \\ [0.5ex]
  \hline\hline
@@ -45,8 +45,11 @@ This documents outlines design for the OpenBazaar redevelopment project.
  \hline
  2 & November 6th, 2015 & Added to Introduction, added numbering, created tables & Shandelle Murray \\ [1ex]
  \hline
+ 3 & December 7th, 2015 & Updated design details to correspond with current project. & Connor Sheehan \\ [1ex]
+ \hline
 \end{tabular}
-\caption{Table to capture the history of the document}
+\end{center}
+\caption{Revision history of the document}
 \label{table:1}
 \end{table}
 
@@ -146,26 +149,22 @@ This section outlines the modules used in the implementation of the application.
 \item[M1]
 GUI Module
 \item[M2]
-Backend Module
+ImageStorage Module
 \item[M3]
-Published Contract Module
-\item[M4]
 Identity Module
+\item[M4]
+TabWidgets Module
 \item[M5]
-Algorithms Module
+RicardianContract Module
 \item[M6]
-Active Contract Module
-\item[M7]
-DHT/Routing Table Module
-\item[M8]
 Settings Module
-\item[M9]
+\item[M7]
 Store Module
-\item[M10]
+\item[M8]
 Notary Module
-\item[M11]
+\item[M9]
 Initialization Module
-\item[M12]
+\item[M10]
 Node Module
 
 
@@ -178,21 +177,17 @@ Node Module
 		\textbf{Level 1} & \textbf{Level 2} & \textbf{Level 3}\\
 		\midrule
 		
-		{Hardware-Hiding Module} & GUI Module & ~ \\
+		{Hardware-Hiding Module} & GUI Module & TabWidgets Module \\
 		\midrule
 		
-		\multirow{7}{0.4\textwidth}{Behaviour-Hiding Module} & {Backend Module} & Published Contract Module \\
-		& ~ & DHT/Routing Table Module\\
+		\multirow{6}{0.4\textwidth}{Behaviour-Hiding Module} & {Identity Module} & Node Module\\
 		& ~ & Settings Module\\
 		& ~ & Store Module\\
 		& ~ & Notary Module\\
-		& ~ & Active Contract Module\\
-		& ~ & Identity Module\\
-		& ~ & Node Module\\
+		& ~ & RicardianContract Module\\
 		\midrule
 		
-		\multirow{3}{0.4\textwidth}{Software Decision Module} & Algorithms Module & ~ \\
-		& Initialization Module & ~ \\
+		\multirow{1}{0.4\textwidth}{Software Decision Module} & Initialization Module & ~ \\
 		\bottomrule
 		
 	\end{tabular}
@@ -227,18 +222,28 @@ GUI Module
 \item
 \textbf{Implemented by:} The module has been partly implemented via the PyQt4 framework. Implementation will be done by creating components which inherit from classes in the PyQt4 module.
 \end{itemize}
+
+\item
+TabWidgets Module
+\begin{itemize}
+\item
+\textbf{Secret:} GUI drawing procedures for tab menu items.
+
+\item
+\textbf{Services:} Provides widgets to be drawn into the tab menu
+\end{itemize}
 \end{enumerate}
 
 \subsection{Behaviour Hiding Modules}
 \begin{enumerate}
 \item
-Identity/Backend Module
+Identity Module
 \begin{itemize}
 \item
 \textbf{Secret:} The underlying data and behaviour requirements of the system.
 
 \item
-\textbf{Services:} The backend module is primarily responsible for holding all of the modules relevant to system requirements. It holds user data including all given personalization data, trade contracts and application settings. User interaction will pass through the connector module to this module.
+\textbf{Services:} The identity module is primarily responsible for holding all of the modules relevant to system requirements. It holds user data including all given personalization data, trade contracts and application settings. User interaction with the GUI will pass through this module.
 \end{itemize}
 
 \item
@@ -251,25 +256,7 @@ Node module
 \textbf{Services:} This module provides all data and behaviours that make a machine a valid network node.
 \end{itemize}
 
-\item
-DHT Module
-\begin{itemize}
-\item
-\textbf{Secret:} The contents and implementation of the distributed hash table and routing tables for the Kademlia peer-to-peer network.
 
-\item
-\textbf{Services:} The DHT module provides information about the distributed hash table used for networking. The module does node lookups and returns information about the node.
-\end{itemize}
-
-\item
-Published Contract Module
-\begin{itemize}
-\item
-\textbf{Secret:} Implementation structure of published contracts available on the network.
-
-\item
-\textbf{Services:} The Published Contract module holds information about all the published contracts known to the network node. Published contracts include information about the publisher that can be used to request detailed store, user or notary information to display.
-\end{itemize}
 
 \item
 Settings Module
@@ -302,26 +289,6 @@ Notary Module
 \end{itemize}
 
 \item
-Active Contract Module
-\begin{itemize}
-\item
-\textbf{Secret:} Storage of confidential contract and ledger data.
-
-\item
-\textbf{Services:} Securely stores details about contracts currently undertaken by the user. This includes all the potential roles of notary, buyer or seller.
-\end{itemize}
-
-\item
-Algorithms Module
-\begin{itemize}
-\item
-\textbf{Secret:} Algorithms used by application.
-
-\item
-\textbf{Services:} Contains and performs algorithmic calculations such as hashes, public and private key generation.
-\end{itemize}
-
-\item
 Initialization Module
 \begin{itemize}
 \item
@@ -329,6 +296,27 @@ Initialization Module
 
 \item
 \textbf{Services:} Provides initialization steps of application for first use including pubkey and privkey generation, GUID creation and connecting the node to the network.
+\end{itemize}
+
+
+\item
+RicardianContract Module
+\begin{itemize}
+\item
+\textbf{Secret:} Inner implementation structure of RicardianContract.
+
+\item
+\textbf{Services:} Provides methods for interacting with a generated Ricardian Contract.
+\end{itemize}
+
+\item
+ImageStorage Module
+\begin{itemize}
+\item
+\textbf{Secret:} Storage implementation for image data.
+
+\item
+\textbf{Services:} Provides a serializable object to store image data, for sending contract and store data to other nodes which can be redrawn by the GUI.
 \end{itemize}
 \end{enumerate}
 \subsection*{Description}
@@ -338,7 +326,7 @@ The OpenBazaar modules are broken up into logical components, abstracting away p
 \addcontentsline{toc}{section}{Traceability Matrix}
 \section*{Traceability Matrix}
 
-Below are two traceability matrices. The first demonstrates the connection between the functional requirements and modules while the second describes the connection between the anticipated changes and modules.
+Figures \ref{ac_trace} and \ref{mod_trace} are two traceability matrices. The first demonstrates the connection between the functional requirements and modules while the second describes the connection between the anticipated changes and modules.
 
 \begin{table}[h!]
 	\centering
@@ -361,7 +349,8 @@ Below are two traceability matrices. The first demonstrates the connection betwe
 		R13 & M10\\
 		\bottomrule
 	\end{tabular}
-	\caption{Table 2: Trace Between Requirements and Modules}
+	\caption{Trace Between Requirements and Modules}
+	\label{mod_trace}
 	
 \end{table}
 
@@ -390,25 +379,37 @@ Below are two traceability matrices. The first demonstrates the connection betwe
 		
 		\bottomrule
 	\end{tabular}
-	\caption{Table 3: Trace Between Anticipated Changes and Modules}
-	
+	\caption{Trace Between Anticipated Changes and Modules}
+	\label{ac_trace}
 \end{table}
 
 \addcontentsline{toc}{section}{Use Hierarchy Between Modules}
 \section*{Use Hierarchy Between Modules}
+\begin{figure}
 \includegraphics[scale=0.5]{use_hierarchy}
+\caption{Module uses hierarchy.}
+\label{uses_hierarchy}
+\end{figure}
 
-Above is a use hierarchy for the modules in the OpenBazaar application.
+Figure \ref{uses_hierarchy} is the use hierarchy for the modules in the OpenBazaar application.
 \addcontentsline{toc}{section}{Detailed Timeline}
 \section*{Detailed Timeline}
 
 \subsection*{Gantt Chart}
-\includegraphics[scale=0.5]{ganttchart}
+\begin{figure}
+\includegraphics[scale=0.5]{gantt_chart}
+\caption{Gantt Chart outlining project deadlines.}
+\label{gantt}
+\end{figure}
 
-Included above is a Gantt chart outlining project deadlines. The chart describes in detail the dates that the implementation and documentation will have to be completed in the form of milestones. Additionally, the period of time where those tasks will be focused is described in the top section of the chart.
+Included in figure \ref{gantt} is a Gantt chart outlining project deadlines. The chart describes in detail the dates that the implementation and documentation will have to be completed in the form of milestones. Additionally, the period of time where those tasks will be focused is described in the top section of the chart.
 
 \subsection*{Pert Chart}
+\begin{figure}
 \includegraphics[scale=0.4]{pertchart}
+\caption{Pert Chart detailing project progress.}
+\label{pert}
+\end{figure}
 
 
 
