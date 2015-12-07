@@ -25,11 +25,23 @@ pip_loc=$(which pip);
 if [ $pyth_loc = "" ]
     then
 	    apt-get install python;
+        pyth_loc=$(which python);
+		if [ $pyth_loc = "" ]
+            then
+	            echo "Python could not be installed using apt-get. Install Python 2.7 and try again.";
+		        exit;
+        fi
 fi
 		
 if [ $pip_loc = "" ]
     then
-	    apt-get install python-pip;
+	    $pyth_loc install/get-pip.py;
+		pip_loc=$(which pip);
+		if [ $pip_loc = "" ]
+		    then
+			    echo "pip could not be installed.";
+				exit;
+		fi
 fi
 		
 ##
@@ -38,21 +50,6 @@ fi
 apt-get install python-dev;
 apt-get install python-qt4;
 		
-##
-# Check again if programs are installed. If not, exit with a message
-pyth_loc=$(which python);
-pip_loc=$(which pip);
-
-if [ $pyth_loc = "" ]
-    then
-	    echo "Python could not be installed using apt-get. Install Python 2.7 and try again.";
-		exit
-fi
-		
-if [ $pip_loc = "" ]
-    then
-	    echo "Pip could not be installed. Install Python-pip and try again.";
-fi
 		
 $pip_loc install -r reqs.txt;
 echo "Reqiuirement should now be installed. Run 'python OpenBazaar2.py' to start.";
