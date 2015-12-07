@@ -24,3 +24,15 @@ to start the program.
 Please note that on first startup, a set of GPG keys
 will be created. On some operating systems this may take several
 minutes, and may require some generated entropy.
+
+To run the program with data from the demo, after startup run
+
+```
+$ python OpenBazaar2.py --load-demo
+```
+
+To re-initialize the identity module, run
+
+```
+$ python OpenBazaar2.py --restart
+```
