@@ -13,6 +13,7 @@ CLASSES
         IdentityStrings
         Merchant
         Notary
+        NotaryRepresentation
         Settings
         Store
     
@@ -81,6 +82,11 @@ CLASSES
      |      ##
      |      # Returns all identity data as a dictionary
      |  
+     |  make_purchase(self, desired_contract)
+     |      ##
+     |      # Takes another user's RicardianContract and signs it for purchase.
+     |      #     @param desired_contract: contract to be purchased by user.
+     |  
      |  merchant_repr(self)
      |      ##
      |      # This method returns the Merchant representation of this node
@@ -89,6 +95,16 @@ CLASSES
      |      ##
      |      # Adds new contract data to the respective nodes
      |      #     @param contract_dict: dict representation of the Ricardian Contract
+     |  
+     |  new_merchant(self, merchant_repr)
+     |      ##
+     |      # Adds a new merchant to the list of known merchants
+     |      #     @param merchant_repr: merchant representation to be added
+     |  
+     |  new_notary(self, notary_repr)
+     |      ##
+     |      # Adds a new notary to the list of known notaries
+     |      #     @param notary_repr: notary representation to be added
      |  
      |  save(self)
      |      ##
@@ -157,18 +173,36 @@ CLASSES
      |  __init__(self, info_dict)
      |  
      |  get_avatar(self)
+     |      ##
+     |      # Merchant avatar accessor
      |  
      |  get_bitcoin_address(self)
+     |      ##
+     |      # Bitcoin address accessor
      |  
      |  get_description(self)
+     |      ##
+     |      # Merchant description accessor
      |  
      |  get_email(self)
+     |      ##
+     |      # Merchant email accessor
      |  
      |  get_guid(self)
+     |      ##
+     |      # GUID accessor
      |  
      |  get_key(self)
+     |      ##
+     |      # Pubkey accessor
+     |  
+     |  get_listings(self)
+     |      ##
+     |      # Merchant listing accessor
      |  
      |  get_name(self)
+     |      ##
+     |      # Merchant name accessor
      |  
      |  ----------------------------------------------------------------------
      |  Data descriptors defined here:
@@ -186,6 +220,38 @@ CLASSES
      |  Methods defined here:
      |  
      |  __init__(self)
+     |      ##
+     |      # Initializes the Notary module
+     |  
+     |  add_notary(self, notary_repr)
+     |      ##
+     |      # Adds a new notary to the list of known notaries
+     |  
+     |  get(self)
+     |      ##
+     |      # Returns information about notaries
+     |  
+     |  set(self, settings_dict)
+     |      ##
+     |      # Sets local user notary settings
+     |      #     @param settings_dict: dictionary of settings
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors defined here:
+     |  
+     |  __dict__
+     |      dictionary for instance variables (if defined)
+     |  
+     |  __weakref__
+     |      list of weak references to the object (if defined)
+    
+    class NotaryRepresentation(__builtin__.object)
+     |  ##
+     |  # This class contains an object representation of a notary known to a node
+     |  
+     |  Methods defined here:
+     |  
+     |  __init__(self, settings_dict)
      |      ##
      |      # Initializes the Notary module
      |  
@@ -242,6 +308,12 @@ CLASSES
      |      ##
      |      # Adds a merchant to the list of merchants
      |      #     @param merchant: merchant to be added
+     |  
+     |  find_local_keyword(self, word)
+     |      ##
+     |      # Finds listings from merchants that match the keyword
+     |      #     @param word: keyword to search for
+     |      #     @return: list of RicardianContracts that match
      |  
      |  get(self)
      |      ##

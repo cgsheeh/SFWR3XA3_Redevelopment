@@ -34,6 +34,10 @@ CLASSES
      |      # Returns raw dict data for contract
      |      # TODO improve this
      |  
+     |  get_itemname(self)
+     |      ##
+     |      # Returns the itemname for this contract
+     |  
      |  get_keywords(self)
      |      ##
      |      # Returns list of keywords associated with this contract
@@ -41,6 +45,20 @@ CLASSES
      |  get_module(self, module)
      |      ##
      |      # Returns the specified module from this contract instance
+     |  
+     |  get_sellername(self)
+     |      ##
+     |      # Returns the seller name
+     |  
+     |  purchase(self, buyer_gpg)
+     |      ##
+     |      # Sign the contract for purchase
+     |      #     @param buyer_gpg: GPG object for the buyer
+     |  
+     |  sign(self, seller_gpg)
+     |      ##
+     |      # Sign the contract
+     |      #     @param seller_gpg: GPG object for the seller
      |  
      |  ----------------------------------------------------------------------
      |  Data descriptors defined here:

@@ -1,7 +1,7 @@
-Help on module ImageStorage:
+Help on module identity.ImageStorage in identity:
 
 NAME
-    ImageStorage
+    identity.ImageStorage
 
 FILE
     /home/connor/OpenBazaar_Redevelopment/openbazaar-redevelopment/src/identity/ImageStorage.py
@@ -22,6 +22,10 @@ CLASSES
      |      ##
      |      # Returns the image represented by this instance as a PIL.Image object
      |      # You can then call toqpixmap() on this object
+     |  
+     |  to_json(self)
+     |      ##
+     |      # This method allows ImageStorage to be JSON serializable
      |  
      |  ----------------------------------------------------------------------
      |  Data descriptors defined here:

@@ -1,0 +1,68 @@
+Help on module DemoData:
+
+NAME
+    DemoData
+
+FILE
+    /home/connor/OpenBazaar_Redevelopment/openbazaar-redevelopment/src/DemoData.py
+
+CLASSES
+    __builtin__.object
+        DemoData
+        DemoDataStrings
+    
+    class DemoData(__builtin__.object)
+     |  Methods defined here:
+     |  
+     |  __init__(self)
+     |  
+     |  get_merchant_data(self)
+     |  
+     |  get_notary_data(self)
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors defined here:
+     |  
+     |  __dict__
+     |      dictionary for instance variables (if defined)
+     |  
+     |  __weakref__
+     |      list of weak references to the object (if defined)
+    
+    class DemoDataStrings(__builtin__.object)
+     |  Data descriptors defined here:
+     |  
+     |  __dict__
+     |      dictionary for instance variables (if defined)
+     |  
+     |  __weakref__
+     |      list of weak references to the object (if defined)
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data and other attributes defined here:
+     |  
+     |  cleveland = 'images/demo/cleveland.jpg'
+     |  
+     |  computer = 'images/demo/computer.jpg'
+     |  
+     |  danny_profile = 'images/demo/danny_profile.jpg'
+     |  
+     |  hatman = 'images/demo/hatman.jpg'
+     |  
+     |  marlyn = 'images/demo/marilyn.jpg'
+     |  
+     |  necklace = 'images/demo/necklace.jpg'
+     |  
+     |  popeye = 'images/demo/popeyes.png'
+     |  
+     |  preback = 'images/demo/preback.png'
+     |  
+     |  prefront = 'images/demo/prefront.jpg'
+     |  
+     |  protienback = 'images/demo/protienback.jpg'
+     |  
+     |  protienfront = 'images/demo/protienfront.png'
+     |  
+     |  ring = 'images/demo/ring.jpg'
+
+

@@ -105,18 +105,21 @@ class Identity(object):
 
     ##
     # Adds a new merchant to the list of known merchants
+    #     @param merchant_repr: merchant representation to be added
     def new_merchant(self, merchant_repr):
         self.settings.store.addMerchant(merchant_repr)
         self.save()
 
     ##
     # Adds a new notary to the list of known notaries
+    #     @param notary_repr: notary representation to be added
     def new_notary(self, notary_repr):
         self.settings.notary.add_notary(notary_repr)
         self.save()
 
     ##
     # Takes another user's RicardianContract and signs it for purchase.
+    #     @param desired_contract: contract to be purchased by user.
     def make_purchase(self, desired_contract):
         desired_contract.purchase(self.gpg_obj)
         self.settings.contracts.addContract(desired_contract)
@@ -308,27 +311,43 @@ class Merchant(object):
         self.name = info_dict['nickname']
         self.avatar = info_dict['avatar']
 
+    ##
+    # GUID accessor
     def get_guid(self):
         return self.guid
 
+    ##
+    # Pubkey accessor
     def get_key(self):
         return self.key
 
+    ##
+    # Bitcoin address accessor
     def get_bitcoin_address(self):
         return self.bitcoin_address
 
+    ##
+    # Merchant email accessor
     def get_email(self):
         return self.email
 
+    ##
+    # Merchant description accessor
     def get_description(self):
         return self.store_description
 
+    ##
+    # Merchant name accessor
     def get_name(self):
         return self.name
 
+    ##
+    # Merchant avatar accessor
     def get_avatar(self):
         return self.avatar
 
+    ##
+    # Merchant listing accessor
     def get_listings(self):
         return self.current_listings
 
@@ -336,10 +355,12 @@ class Merchant(object):
 ##
 # This class contains an object representation of a notary known to a node
 class NotaryRepresentation(object):
+
     ##
     # Initializes the Notary module
     def __init__(self, settings_dict):
         self.data = settings_dict
+
     ##
     # Returns information about notaries
     def get(self):

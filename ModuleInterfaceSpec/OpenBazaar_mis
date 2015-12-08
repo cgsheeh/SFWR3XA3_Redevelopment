@@ -46,6 +46,31 @@ CLASSES
      |  
      |  __init__(self)
      |  
+     |  add_tab(self, tab, name)
+     |      ##
+     |      # Add a new tab
+     |  
+     |  close_clicked_tab(self, index)
+     |      ##
+     |      # Action to be taken on tab close
+     |      #     @param index: index of tab to close
+     |  
+     |  display_contract(self, item)
+     |      ##
+     |      # Displays the contract in the recent transactions sidebar
+     |  
+     |  merchant_clicked(self, item)
+     |      ##
+     |      # Display the store view for this store
+     |  
+     |  notary_clicked(self, item)
+     |      ##
+     |      # Display the notary view for this notary
+     |  
+     |  redraw(self)
+     |      ##
+     |      # Redraw command to be called
+     |  
      |  search_clicked(self)
      |      ##
      |      # Defines action to be taken when search button is clicked
