@@ -31,7 +31,9 @@ if [ -z $pyth_loc ]
                 exit;
         fi
 fi
-		
+
+##
+# Check if pip is on system
 if [ -z $pip_loc ]
     then
         $pyth_loc ./install/get-pip.py;
@@ -62,9 +64,10 @@ apt-get -y install tk8.5-dev;
 
 ##
 # Install requirements from pip	
-$pip_loc install -r reqs.txt;
+$pip_loc uninstall pil
+$pip_loc install -r install/reqs.txt;
 
 
-
-echo "Reqiuirement should now be installed. Run 'python OpenBazaar2.py' to start.";
+echo ""
+echo "Requirements should now be installed. Run 'python OpenBazaar2.py' to start.";
 exit;
