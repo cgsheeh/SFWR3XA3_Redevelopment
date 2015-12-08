@@ -23,11 +23,13 @@ This document outlines the test plan for the Openbazaar redevelopment project.
 
 \begin{table}[h!]
 \centering
-\begin{tabular}{||c c c c||} 
+\hspace*{-4cm}\begin{tabular}{||c c c c||} 
  \hline
  Revision Number & Revision Date & Description of Change & Author \\ [0.5ex] 
  \hline\hline
  1 & October 20th, 2015 & Created Test Plan Document & Daniel Mandel \\ [1ex] 
+ \hline
+ 2 & December 7th, 2015 & Remove messaging testing. Add encryption and GUID testing plans. & Connor Sheehan \\ [1ex]
  \hline
 \end{tabular}
 \caption{Table to capture the history of the document}
@@ -37,7 +39,7 @@ This document outlines the test plan for the Openbazaar redevelopment project.
 
 \addcontentsline{toc}{section}{Test Plan Identifier}
 \section*{Test Plan Identifier}
-Version 0.
+Version 1.
 
 \addcontentsline{toc}{section}{References}
 \section*{References}
@@ -46,7 +48,7 @@ IEEE Test Plan outline is used.
 \addcontentsline{toc}{section}{Introduction}
 \section*{Introduction}
 This is the test plan for the OpenBazaar desktop application.
-It will include only the most relevent portions of the project that are related to the process of completing a transaction over the network.
+It will include only the most relevent portions of the project that are related to the process of application initialization, creating contracts and the browsing of products and stores.
 The main intention of this plan is to simulate a user interacting with the system in real time in order to ensure the robustness and reliability of the application.
 
 \addcontentsline{toc}{section}{Test Items}
@@ -55,13 +57,17 @@ The following is a list of the most significant portions of the application to b
 \newline
 \begin{enumerate}
 \item
-Overall ease of use for sample users including the process of installation
+Overall ease of use for sample users including the process of installation.
 \item
 Correctness of messages being sent and received between mock server and application front-end
 \item
-Security of Ricardian contracts in order to prevent unauthorized changes
+Security of Ricardian Contracts in order to prevent unauthorized changes.
 \item
-Functionality of a user related to viewing a market's items, creating a Ricardian contract, purchasing items, rating a marketplace, and communicated with other users
+Functionality of a user related to viewing a market's items, creating a Ricardian contract, and purchasing items.
+\item
+The application initialization procedures.
+\item
+Data security within the application.
 
 
 \end{enumerate}
@@ -73,11 +79,11 @@ Some of these risks may include the following:
 \newline
 \begin{itemize}
  \item
-The selling of illegal goods or services
+The selling of illegal goods or services.
  \item
-IP spoofing and false identification/location of a user, marketplace, or notary
+IP spoofing and false identification/location of a user, marketplace, or notary.
  \item
-The price of a bitcoin
+The price of a bitcoin.
 \end{itemize}
 
 \addcontentsline{toc}{section}{Features to be Tested}
@@ -92,9 +98,9 @@ A seller must have the ability to post items for sale with the correct product d
  \item
 The notary must have the ability to offer notary/mediation services.
 \item
-A user must have the ability to rate a marketplace
+The application must initialize a user with unique globally unique identifier (GUID).
 \item
-A user must have the ability to communicate with other users
+The application must encrypt user data to ensure anonymity and confidentiality.
 \end{itemize}
 
 \addcontentsline{toc}{section}{Features not to be Tested}
@@ -112,7 +118,7 @@ The accessibility requirements of the project
 
 \addcontentsline{toc}{section}{Approach}
 \section*{Approach}
-The relevant components of this test plan relate to the GUI and the controllers in the application. User input into text fields, drop down panels and other graphical boxes will need to be checked for validity and security. On a commerce related application, injections and other malicious methods are viciously pursued by people with bad intentions. Unit testing of functions which convert input into machine readable format will ensure a safer trading environment for users. Since the creation of a reliable and secure peer-to-peer network is outside the scope of this project, we will implement the principle of hardware hiding within our application. Our GUI will then use an interface that could be applied to any network. This API will be unit tested to ensure it is valid and secure to use. On this platform, Ricardian contracts are used to create both machine and human readable agreements about transactions between parties. The functions used to turn user input into a Ricardian contract will be unit tested, verifying that the ID created is global and unique, signatures are valid, and content does not contain any injections, malicious code or otherwise undesired data. Each contract is also accompanied by a hash to provide authenticity, which can be tested for accuracy.
+The relevant components of this test plan relate to the GUI and the controllers in the application. User input into text fields, drop down panels and other graphical boxes will need to be checked for validity and security. On a commerce related application, injections and other malicious methods are viciously pursued by people with bad intentions. Unit testing of functions which convert input into machine readable format will ensure a safer trading environment for users. Since the creation of a reliable and secure peer-to-peer network is outside the scope of this project, we will implement the principle of hardware hiding within our application. Our GUI will then use an interface that could be applied to any network. This API will be unit tested to ensure it is valid and secure to use. On this platform, Ricardian Contracts are used to create both machine and human readable agreements about transactions between parties. The functions used to turn user input into a Ricardian contract will be unit tested, verifying that the ID created is global and unique, signatures are valid, and content does not contain any injections, malicious code or otherwise undesired data. Each contract is also accompanied by a hash to provide authenticity, which can be tested for accuracy.
 
 In order to test ease of use, a sample user, such as a person that does not specialize in software, will be timed performing various tasks such as creating a contract, buying an item, and installing the software. An acceptable time limit in order to satisfy the ease of use requirement will be determined at a later date.
 
@@ -154,20 +160,13 @@ Python IDE such as PyCharm
 A desktop computer with OS X or Linux installed with the bash terminal
 \end{itemize}
 
-\addcontentsline{toc}{section}{Schedule}
-\section*{Schedule}
-
-
-\addcontentsline{toc}{section}{Approvals}
-\section*{Approvals}
-This is the approvals section.
 
 \addcontentsline{toc}{section}{Summary}
 \section*{Summary}
-OpenBazaar will exist only if the three main users have the ability to do what they need.
+OpenBazaar will exist only if the main users have the ability to do what they need, and the application's technical details are correctly implemented.
 Buyers need to have the ability to post items for sale and the information that goes along with it.
 Sellers need to be able to view all of the items in a particular marketplace as well as each one individually.
-Notaries must be able to provide their services to both parties to ensure a fair transaction always occurs over the OpenBazaar.
+The application must meet confidentiality requirements, and uniquely identify users without requiring personal information.
 This test plan provides a framework for how the functionality will be tested for each significant role in the OpenBazaar.
 
 
