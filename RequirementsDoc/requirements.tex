@@ -4,6 +4,7 @@
 \usepackage{graphicx}
 \graphicspath{{images/}}
 \usepackage{tabu}
+\usepackage{float}
 
 %% Comments
 \newif\ifcomments\commentstrue
@@ -34,17 +35,24 @@ This documents outlines requirements for the OpenBazaar redevelopment project.
 \addcontentsline{toc}{section}{Revision History}
 \section*{Revision History}
 
-\begin{table}[h!]
+\begin{table}[H]
 \centering
-\begin{tabular}{||c c c c||} 
+\begin{tabu} to 1\textwidth {|| X[l] | X[l] | X[l] | X[l] ||}
  \hline
  Revision Number & Revision Date & Description of Change & Author \\ [0.5ex] 
  \hline\hline
  1 & November 2nd, 2015 & Created Revision History & Daniel Mandel \\ [1ex] 
  \hline
- 2 & November 25, 2015 & Section 4.1 - Kademlia and Ricardian Contract defined  & Shandelle Murray \\ [1ex]
+ 2 & November 10 - November 20, 2015 & Add non-functional requirements  & All members of group \\ [1ex]
  \hline
-\end{tabular}
+ 3 & November 25, 2015 & Section 4.1 - Kademlia and Ricardian Contract defined  & Shandelle Murray \\ [1ex]
+ \hline
+ 4 & November 28, 2015 & Sections 6.2 and 6.3 - Add context diagram and work partitioning table, create lists of figures and tables  & Shandelle Murray \\ [1ex]
+ \hline
+ 5 & December 8, 2015 & Add use case diagram, remaining non-functional requirements, and last sections  & Shandelle Murray \\ [1ex]
+ \hline
+ 
+\end{tabu}
 \caption{Table to capture the history of the document}
 \label{table:1}
 \end{table}
@@ -298,14 +306,14 @@ We will be focusing on developing the client side of the application due to the 
 A software application to connect users from all around the world to conduct trade freely is required. Users can add any peers to the network, as well as view their stores, and search for items to purchase. They will also have the ability to have their own store to sell items.
 
 \subsection{The Context of the Work}
-\begin{figure}[h!]
+\begin{figure}[H]
 \includegraphics[scale=0.5]{ContextDiagramOpenBazaar}
 \caption{\textcolor{red}{Context Diagram OpenBazaar}}
 \end{figure}
 
 \subsection{Work Partitioning}
 
-\begin{table}[h!]
+\begin{table}[H]
 \color{red}
 \centering
 \begin{tabu} to 0.8\textwidth {|| X[l] | X[l] | X[l] ||}
@@ -335,29 +343,12 @@ A software application to connect users from all around the world to conduct tra
 \label{table:2}
 \end{table}
 
-\section{Business Data Model and Data Dictionary}
-
-\begin{table}[h!]
-\centering
-\begin{tabular}{||c c c ||}
- \hline
- \textbf {Name} & \textbf{Content} & \textbf{Type} \\ [0.5ex]
- \hline
-\end{tabular}
-\caption{Table to capture all the applications data, and type}
-\label{table:3}
-\end{table}
-
-
 \section{The Scope of the Product}
-\subsection{Product Boundary}
-\subparagraph{Examples}
-\subparagraph{Form}
-
-\subsection{Product Use Case Table}
-
-\subsection{Individual Product Use Cases}
-\subparagraph{Form}
+\subsection{Product Use Case}
+\begin{figure}[H]
+	\includegraphics[scale=0.5]{usecase}
+	\caption{\textcolor{red}{Use Case Diagram}}
+\end{figure}
 
 \addcontentsline{toc}{section}{Functional Requirements}
 \section*{Functional Requirements}
@@ -392,6 +383,7 @@ Notaries shall have the ability to mediate a trade based on the terms of the con
 
 \end{description}
 
+\color{red}
 \addcontentsline{toc}{section}{Non-functional Requirements}
 \section*{Non-functional Requirements}
 
@@ -523,17 +515,30 @@ An Application Programming Interface (API) will be provided publicly for easy in
 \subsection{Release Requirements}
 \begin{itemize}
 	\item
+	Future releases of the application shall have more functionality related to the networking components.
 \end{itemize}
 
 \section{Maintainability and Support Requirements}
 
 \subsection{Maintenance Requirements}
-An update system will need to be implemented to ensure that security bugs, vulnerabilities, and attack vectors are patched quickly on all network nodes. 
+\begin{itemize}
+	\item
+	An update system will need to be implemented to ensure that security bugs, vulnerabilities, and attack vectors are patched quickly on all network nodes. 
+\end{itemize}
 
 \subsection{Supportability Requirements}
 
+\begin{itemize}
+	\item
+	The final application shall not be supported after the completion of the project; however, the source code and will be available for viewing and editing.
+\end{itemize}
 
 \subsection{Adaptability Requirements}
+
+\begin{itemize}
+	\item
+	The application is expected to run on Linux Ubuntu 14 currently, but will eventually be required to run on Windows and Mac operating systems as well.
+\end{itemize}
 
 \section{Security Requirements}
 
@@ -556,12 +561,14 @@ An update system will need to be implemented to ensure that security bugs, vulne
 \end{itemize}
 
 \subsection{Audit Requirements}
+Not applicable
 
 \subsection{Immunity Requirements}
-
+Not applicable
 
 \section{Cultural Requirements}
 \subsection{Cultural Requirements}
+Not applicable
 
 \begin{itemize}
 \item
@@ -577,86 +584,50 @@ The application should eventually be available in all languages with which users
 The application shall accomodate legal intervention that law enforcement deems necessary such as in the case of illegal activity taking place through the network. 
 \end{itemize}
 \subsection{Compliance Requirements}
-
+Not applicable
 
 \subsection{Standards Requirements}
-
+Not applicable
 
 \addcontentsline{toc}{section}{Project Issues}
 \section*{Project Issues}
 
 \section{Open Issues}
+Currently, the networking component of the application has not yet been implemented. Due to the timeframe of the project, the scope has been narrowed to focus on the GUI and the personal/local portions of the application with mock data added in for testing and demonstration purposes. Due to the constraints of the library being used for peer to peer network, this is difficult to implement.
+
+Additionally, the application currently only runs on Linux Ubuntu 14 which will have to be modified in the future in order to increase the portability of the application. 
 
 \section{Off-the-Shelf Solutions}
-
-\subsection{Ready-Made Products}
-
-
-\subsection{Reusable Components}
-
-
-\subsection{Products That Can Be Copied}
-
-
+There is an open sourced version OpenBazaar currently being developed which is set to be realeased by late 2015 or early 2016. 
 \section{New Problems}
-
-\subsection{Effects on the Current Environment}
-
-
-\subsection{Effects on the Installed Systems}
-
-
-\subsection{Potential User Problems}
-
-
-\subsection{Limitations in the Anticipated Implementation Environment That May Inhibit the New Product}
-
-
-\subsection{Follow-Up Problems}
-
-
+Not applicable
 \section{Tasks}
-
-\subsection{Project Planning}
- 
-
-\subsection{Planning of the Development Phase}
-
+\begin{itemize}
+	\item
+	Implement networking component
+	\item
+	Make executable on multiple operating systems
+\end{itemize}
 
 \section{Migration to the New Product}
-
-\subsection{Requirements for Migration to the New Product}
-
-
-\subsection{Data That Has to Be Modified or Translated for the New System}
-
-
+Not applicable
 \section{Risks}
-
+There are security risks involved in online trade and transactions that will have to be further tested. Additional mechanisms may have to be put into place and verified.
 \section{Costs}
-
+Not applicable
 \section{User Documentation and Training}
-
-\subsection{User Documentation Requirements}
-
-
-\subsection{Training Requirements}
-
-
+There is not currently a user training manual; however, there is a text file available outlining the proper installation procedures.
 \section{Waiting Room}
-
-
+Not applicable
 \section{Ideas for Solutions}
-
-\subsection{User Documentation Requirements}
-
+Not applicable
 
 \addcontentsline{toc}{section}{List of Figures}
-\section*{List of Figures}
+
 \listoffigures
 
 \addcontentsline{toc}{section}{List of Tables}
-\section*{List of Tables}
+
 \listoftables
 
 \end{document}
