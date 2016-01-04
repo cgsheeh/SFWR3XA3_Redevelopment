@@ -1,3 +1,15 @@
+# OpenBazaar Redevelopment Project
+
+This repo contains the OpenBazaar Redevelopment project for SFWR 3XA3 at McMaster University
+
+The course mission was to integrate the body of knowledge obtained up to this point in the program in an open ended way. This was done by allowing students to select an open source project and 'redevelop' it, with teacher guidance. The focus of the course was on documentation and following good practices, rather than creating a large implementation. Due to time constraints, only the front-end components of the application were developed, with a "Node" module to implement the networking component at a later time (after the course completion). Below this point is the project in its final submission.
+
+Some important skills learned through this course:
++ Proper use of Git and revisions
++ Automatic code generation
++ Importance of deadlines and project scheduling
+___
+
 ```
 _____                 ______
 |  _  |                | ___ \
